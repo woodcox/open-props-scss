@@ -2,7 +2,7 @@ name: Build css
 on:
   push:
     branches:
-      - "test"
+      - "Test"
       
 # Conditional environmental if's      
 env:
