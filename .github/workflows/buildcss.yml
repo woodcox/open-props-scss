@@ -2,7 +2,7 @@ name: Build css
 on:
   push:
     branches:
-      - "@use-refactor-gorko"
+      - "test"
       
 # Conditional environmental if's      
 env:
@@ -26,7 +26,7 @@ jobs:
         
       - name: Npm Build
         if: env.UPDATE_NPM != 'true'
-        run: npm run test
+        run: npm run build
         
       - name: Commit changes
         if: env.UPDATE_NPM != 'false'
@@ -34,7 +34,7 @@ jobs:
         with:
           author_name: woodcox
           author_email: woodcox@users.noreply.github.com
-          message: "Add test files"
+          message: "Add files"
           add: "test"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
