@@ -74,7 +74,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--', '$');
       
       // for CSS variables which reference another CSS variable replace var(--cssvar) with $scssvar
-      if (value.includes('var(')) {
+      if (value.includes('var')) {
         value = value.replace(/var\(--(.*?)\)/g, '$$$1')`;
       }
       
