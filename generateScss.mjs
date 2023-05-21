@@ -68,6 +68,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
+      // for css variables which reference another css variable replace var(--cssvar) with $scssvar
+      if (value.includes('var(')) {
+        value = value.replace(/var\(--(.*?)\)/g, '$$$1')`;
+      }
+      
       if (key.includes('@')) {
         return;
       }
