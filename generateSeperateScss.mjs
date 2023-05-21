@@ -45,8 +45,12 @@ const writeSCSSModule = async (moduleName, content) => {
 };
 
 const generateSCSSModule = async (moduleName, importObj) => {
-  let generatedScss = '@use "sass:list";\n';
-
+  let generatedScss = '';
+  
+  if (moduleName.toLowerCase() === 'aspects') {
+    generatedScss = '@use "sass:list";\n';
+  }
+  
   if (moduleName.toLowerCase() === 'aspects') {
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$');
