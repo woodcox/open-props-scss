@@ -1,0 +1,14 @@
+:root {
+  --page-bg: #e9ecef;
+  --page-text: #212529;
+  background-color: var(--page-bg);
+  color: var(--page-text);
+}
+@media ((prefers-color-scheme: dark)) {
+  :root {
+    --page-bg: #212529;
+    --page-text: #f1f3f5;
+  }
+}
+
+/*# sourceMappingURL=test.css.map */
