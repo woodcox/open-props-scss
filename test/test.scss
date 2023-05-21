@@ -1,4 +1,4 @@
-@use 'open-props-scss' as op;
+@use 'index' as op;
 
 :root {
   --page-bg: #{op.$gray-2};
