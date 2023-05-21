@@ -24,6 +24,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const customMediaHelper = new CustomMediaHelper(CustomMedia);
 
 const openPropFiles = {
+  CustomMedia,
   Sizes,
   Colors,
   ColorsHSL,
@@ -49,9 +50,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   
   if (moduleName.toLowerCase() === 'aspects') {
     generatedScss = '@use "sass:list";\n';
-  }
-  
-  if (moduleName.toLowerCase() === 'aspects') {
+    
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$');
       if (value.includes('/')) {
@@ -59,6 +58,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       generatedScss += `${key}: ${value};\n`;
     });
+    
+  } else if (moduleName.toLowerCase() === 'custommedia') {
+    Object.keys(importObj).forEach((queryName) => {
+      const processedQuery = customMediaHelper.process(queryName);
+      queryName = queryName.replace('--', '$');
+      generatedScss += `${queryName}: '${processedQuery}';\n`;
+    });
+    
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@')) {
