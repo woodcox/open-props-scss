@@ -35,7 +35,7 @@ jobs:
           author_name: woodcox
           author_email: woodcox@users.noreply.github.com
           message: "Add files"
-          add: "test"
+          add: '["*.json", "*.scss", "*.css"]'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
