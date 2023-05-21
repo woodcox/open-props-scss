@@ -47,13 +47,23 @@ const writeSCSSModule = async (moduleName, content) => {
 const generateSCSSModule = async (moduleName, importObj) => {
   let generatedScss = '@use "sass:list";\n';
 
-  Object.entries(importObj).forEach(([key, value]) => {
-    if (key.includes('@')) {
-      return;
-    }
-    key = key.replace('--', '$');
-    generatedScss += `${key}: ${value};\n`;
-  });
+  if (moduleName.toLowerCase() === 'aspects') {
+    Object.entries(importObj).forEach(([key, value]) => {
+      key = key.replace('--', '$');
+      if (value.includes('/')) {
+        value = `list.slash(${value.replace('/', ',')})`; // fix sass deprecation warning: https://sass-lang.com/documentation/breaking-changes/slash-div
+      }
+      generatedScss += `${key}: ${value};\n`;
+    });
+  } else {
+    Object.entries(importObj).forEach(([key, value]) => {
+      if (key.includes('@')) {
+        return;
+      }
+      key = key.replace('--', '$');
+      generatedScss += `${key}: ${value};\n`;
+    });
+  }
 
   await writeSCSSModule(moduleName, generatedScss);
 };
