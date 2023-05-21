@@ -12,7 +12,7 @@ import Zindex from 'open-props/src/zindex';
 import MaskEdges from 'open-props/src/masks.edges';
 import MaskCornerCuts from 'open-props/src/masks.corner-cuts';
 import { CustomMedia } from 'open-props/src/media';
-// import Animations from 'open-props/src/animations';
+import Animations from 'open-props/src/animations';
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -38,6 +38,7 @@ const openPropFiles = {
   Zindex,
   MaskEdges,
   MaskCornerCuts,
+  Animations,
 };
 
 const writeSCSSModule = async (moduleName, content) => {
@@ -68,15 +69,15 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
-      if (key.includes('@')) {
+      if (key.includes('@media') || key.includes('@import')) {
         return;
       }
       key = key.replace('--', '$');
       
       // for CSS variables which reference another CSS variable, replace var(--cssvar) with $cssvar
-      if (typeof value === 'string' && value.includes('var(')) {
-        value = value.replace(/var\(--(.*?)\)/g, '$$$1');
-      }
+      //if (typeof value === 'string' && value.includes('var(')) {
+      //  value = value.replace(/var\(--(.*?)\)/g, '$$$1');
+      //}
       
       generatedScss += `${key}: ${value};\n`;
     });
