@@ -68,14 +68,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
     
   } else if (moduleName.toLowerCase() === 'animations') {
-    generatedScss = '@use "easings" as _e;\n@use "media" as _m;\n\n';
+    generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
-        const animationName = key.replace(/--animation-(.*?)-@media:dark/, '$1');
-        generatedScss += `@media (_m.$OSdark) {\n`;
-        generatedScss += `${value};\n`;
-        generatedScss += `}\n\n`;
+        key = key.replace(/--animation-(.*?)-@media:dark/, '$1');
+        generatedScss += `@media (_mq.$OSdark) {\n`;
+        generatedScss += `  ${value};\n`;
+        generatedScss += `}\n`;
       }
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
