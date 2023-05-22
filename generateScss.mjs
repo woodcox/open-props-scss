@@ -75,6 +75,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         const animationName = key.replace(/--animation-(.*?)-@media:dark/, '$1');
         generatedScss += `@media (_m.$OSdark) {\n`;
         generatedScss += `${value};\n`;
+        generatedScss += `}\n\n`;
       }
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
