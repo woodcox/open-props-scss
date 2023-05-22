@@ -102,7 +102,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (key.includes('-@media:dark')) {
         generatedScss = `@media (_mq.$OSdark) {
         :where(html) {`;
-        const variableName = key.replace(/--(.*?)-@media:dark/, '--$1');
+        const variableName = key.replace(/--([^@]*)-@media:dark/, '--$1');
         generatedScss += `\n    ${variableName}: ${value};`;
         generatedScss += `
           }
