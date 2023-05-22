@@ -75,7 +75,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         return; // Skip the key-value pair for @media:dark
       }
       key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)\)/g, 'e.$$$1'); // Replace var(--cssvar) with e.$cssvar
+      value = value.replace(/var\(--(.*?)\)/g, 'e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
       if (value.includes('@keyframe')) {
         key = '';
         generatedScss += `${value};\n`;
@@ -88,14 +88,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(importObj).forEach(([key, value]) => {
       // if (key.includes('@media') || key.includes('@import')) {
       if (key.includes('@')) {
-        return;
+        return; // Skip the key-value pair for anything containing @
       }
       key = key.replace('--', '$');
       
-      // for CSS variables which reference another CSS variable, replace var(--cssvar) with $cssvar
-      //if (typeof value === 'string' && value.includes('var(')) {
-      //  value = value.replace(/var\(--(.*?)\)/g, '$$$1');
-      //}
+      if (typeof value === 'string' && value.includes('var(')) {
+        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
+      }
       
       generatedScss += `${key}: ${value};\n`;
     });
