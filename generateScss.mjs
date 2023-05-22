@@ -70,7 +70,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = '@use "easings" as e;\n\n';
     
-    Object.entries(importObj).forEach(([key, value]) => {
+    Object.entries(importObj).sort((a, b) => a[1] - b[1]).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         return; // Skip the key-value pair for @media:dark
       }
