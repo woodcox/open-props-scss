@@ -81,6 +81,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
       //}
       
       generatedScss += `${key}: ${value};\n`;
+      
+      if (key.startsWith('@keyframes')) {
+        const animationName = key.replace(/@keyframes /, '').replace(/@/g, '-');
+        generatedScss += `@keyframes ${animationName} {\n${value}\n}\n\n`;
+      }
     });
   }
 
