@@ -72,8 +72,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--', '$');
       if (value.includes('@keyframe')) {
         key = '';
+        generatedScss += `${value};\n`;
+      } else {
+        generatedScss += `${key}: ${value};\n`;
       }
-      generatedScss += `${key}: ${value};\n`;
     });
     
   } else {
