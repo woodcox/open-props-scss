@@ -11,7 +11,7 @@ import Svg from 'open-props/src/svg';
 import Zindex from 'open-props/src/zindex';
 import MaskEdges from 'open-props/src/masks.edges';
 import MaskCornerCuts from 'open-props/src/masks.corner-cuts';
-import { CustomMedia } from 'open-props/src/media';
+import { CustomMedia as Media } from 'open-props/src/media';
 import Animations from 'open-props/src/animations';
 
 import fs from 'node:fs/promises';
@@ -24,7 +24,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const customMediaHelper = new CustomMediaHelper(CustomMedia);
 
 const openPropFiles = {
-  CustomMedia,
+  Media,
   Sizes,
   Colors,
   ColorsHSL,
@@ -60,7 +60,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${key}: ${value};\n`;
     });
     
-  } else if (moduleName.toLowerCase() === 'custommedia') {
+  } else if (moduleName.toLowerCase() === 'media') {
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
       queryName = queryName.replace('--', '$');
