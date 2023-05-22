@@ -89,6 +89,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
+      generatedScss = '@use "media" as _mq;\n';
       if (key.includes('-@media:dark')) {
         generatedScss = `@media (_mq.$OSdark) {
         :where(html) {`;
