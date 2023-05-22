@@ -1,7 +1,7 @@
 import Sizes from 'open-props/src/sizes';
 import Colors from 'open-props/src/colors';
 import ColorsHSL from 'open-props/src/colors-hsl';
-import { StaticShadows as Shadows } from 'open-props/src/shadows';
+import { Shadows } from 'open-props/src/shadows';
 import Aspects from 'open-props/src/aspects';
 import Borders from 'open-props/src/borders';
 import Fonts from 'open-props/src/fonts';
