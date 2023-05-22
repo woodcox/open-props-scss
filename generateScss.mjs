@@ -69,8 +69,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
-      //if (key.includes('@media') || key.includes('@import')) {
-      if (key.includes('@')) {
+      if (key.includes('@media') || key.includes('@import')) {
+      //if (key.includes('@')) {
         return;
       }
       key = key.replace('--', '$');
@@ -82,7 +82,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       
       generatedScss += `${key}: ${value};\n`;
       
-      if (typeof value === 'string' && key.endsWith('-@')) {
+      if (typeof value === 'string' && value.startsWith('@keyframes')) {
         const animationName = key.replace('-@', '');
         generatedScss += `${value}\n`;
       }
