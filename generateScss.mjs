@@ -105,6 +105,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
         :where(html) {`;
         const variableName = key.replace(/--(.*?)-@media:dark/, '--$1');
         generatedScss += `\n    ${variableName}: ${value};`;
+        generatedScss += `
+          }
+        }`;
       }
     });
   }
