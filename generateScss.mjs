@@ -61,6 +61,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
     
   } else if (moduleName.toLowerCase() === 'media') {
+    generatedScss = '@use "easings as e";\n';
+    
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
       queryName = queryName.replace('--', '$');
@@ -73,6 +75,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         return; // Skip the key-value pair for @media:dark
       }
       key = key.replace('--', '$');
+      value = value.replace(/var\(--(.*?)\)/g, 'e.$$1'); // Replace var(--cssvar) with e.$cssvar
       if (value.includes('@keyframe')) {
         key = '';
         generatedScss += `${value};\n`;
