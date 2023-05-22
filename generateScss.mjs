@@ -72,7 +72,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
-        key = key.replace(/--animation-(.*?)-@media:dark/, '$1'); // Create @media dark mode @keyframes
+        // Create @media dark mode @keyframes
         generatedScss += `@media (_mq.$OSdark) {\n`;
         generatedScss += `  ${value};\n`;
         generatedScss += `}\n`;
