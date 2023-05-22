@@ -1,5 +1,5 @@
 @use "easings" as _e;
-@use "media" as _m;
+@use "media" as _mq;
 
 $animation-fade-in: fade-in .5s _e.$ease-3;
 
@@ -13,15 +13,14 @@ $animation-fade-in-bloom: fade-in-bloom 2s _e.$ease-3;
  10% { opacity: 1; filter: brightness(2) blur(10px) }
 100% { opacity: 1; filter: brightness(1) blur(0) }
 };
-@media (_m.$OSdark) {
-
+@media (_mq.$OSdark) {
+  
 @keyframes fade-in-bloom {
   0% { opacity: 0; filter: brightness(1) blur(20px) }
  10% { opacity: 1; filter: brightness(0.5) blur(10px) }
 100% { opacity: 1; filter: brightness(1) blur(0) }
 };
 }
-
 
 @keyframes fade-in-bloom {
   0% { opacity: 0; filter: brightness(1) blur(20px) }
@@ -40,15 +39,14 @@ $animation-fade-out-bloom: fade-out-bloom 2s _e.$ease-3;
  10% { opacity: 1; filter: brightness(2) blur(10px) }
   0% { opacity: 1; filter: brightness(1) blur(0) }
 };
-@media (_m.$OSdark) {
-
+@media (_mq.$OSdark) {
+  
 @keyframes fade-out-bloom {
 100% { opacity: 0; filter: brightness(1) blur(20px) }
  10% { opacity: 1; filter: brightness(0.5) blur(10px) }
   0% { opacity: 1; filter: brightness(1) blur(0) }
 };
 }
-
 
 @keyframes fade-out-bloom {
 100% { opacity: 0; filter: brightness(1) blur(20px) }
