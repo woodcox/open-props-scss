@@ -92,9 +92,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       key = key.replace('--', '$');
       
-      if (typeof value === 'string' && value.includes('var(')) {
-        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
-      }
+      // If use this hsl colors throw an error in shadows.scss because the sass variable is not split into $hue, $saturation and $lightness.
+      // Therefore must use dynamic css variables for shadows. May also need css variables to deal with dark module.
+      //if (typeof value === 'string' && value.includes('var(')) {
+      //  value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
+      //}
       
       generatedScss += `${key}: ${value};\n`;
     });
