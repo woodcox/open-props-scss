@@ -83,7 +83,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${key}: ${value};\n`;
       
       if (typeof value === 'string' && value.includes('@keyframes')) {
-        generatedScss += `${value};\n`;
+        const keyframesRegex = /@keyframes\s+(\w+)\s*{([^}]*)}/g;
+        let match;
+        while ((match = keyframesRegex.exec(value)) !== null) {
+          const animationName = match[1];
+          const animationBody = match[2].trim();
+
+          generatedScss += `@keyframes ${animationName} {\n${animationBody}\n}\n\n`;
+        }
       }
     });
   }
