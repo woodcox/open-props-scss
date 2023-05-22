@@ -75,7 +75,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         return; // Skip the key-value pair for @media:dark
       }
       key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)\)/g, 'e.$$1'); // Replace var(--cssvar) with e.$cssvar
+      value = value.replace(/var\(--(.*?)\)/g, 'e.$$$1'); // Replace var(--cssvar) with e.$cssvar
       if (value.includes('@keyframe')) {
         key = '';
         generatedScss += `${value};\n`;
