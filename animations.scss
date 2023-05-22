@@ -1,3 +1,4 @@
+@use "easings" as e;
 $animation-fade-in: fade-in .5s e.$1;
 
 @keyframes fade-in {
