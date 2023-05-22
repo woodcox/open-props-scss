@@ -89,17 +89,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
-      if (key.includes('@') && !key.includes('@media')) {
-        return; // Skip the key-value pair for anything containing @
-      }
-      key = key.replace('--', '$');
-      generatedScss += `${key}: ${value};\n`;
-      // If use this hsl colors throw an error in shadows.scss because the sass variable is not split into $hue, $saturation and $lightness.
-      // Therefore must use dynamic css variables for shadows. May also need css variables to deal with dark module.
-      //if (typeof value === 'string' && value.includes('var(')) {
-      //  value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
-      //}
-      if (typeof value === 'string' && key.includes('-@media:dark')) {
+      if (key.includes('-@media:dark')) {
         generatedScss = `@media (_mq.$OSdark) {
         :where(html) {`;
         const variableName = key.replace(/--([^@]*)-@media:dark/, '--$1');
@@ -107,6 +97,16 @@ const generateSCSSModule = async (moduleName, importObj) => {
         generatedScss += `
           }
         }`;
+      } else if (key.includes('@')) {
+        return; // Skip the key-value pair for anything containing @
+      } else {
+        key = key.replace('--', '$');
+        generatedScss += `${key}: ${value};\n`;
+      // If use this hsl colors throw an error in shadows.scss because the sass variable is not split into $hue, $saturation and $lightness.
+      // Therefore must use dynamic css variables for shadows. May also need css variables to deal with dark module.
+      //if (typeof value === 'string' && value.includes('var(')) {
+      //  value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
+      //}
       }
     });
   }
