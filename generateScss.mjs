@@ -79,7 +79,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-      else if (value.includes('@keyframe')) {
+      if (value.includes('@keyframe')) {
         key = '';
         generatedScss += `${value};\n`;
       } else {
