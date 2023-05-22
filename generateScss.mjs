@@ -61,8 +61,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
     
   } else if (moduleName.toLowerCase() === 'media') {
-    generatedScss = '@use "easings" as e;\n';
-    
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
       queryName = queryName.replace('--', '$');
@@ -70,6 +68,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
     
   } else if (moduleName.toLowerCase() === 'animations') {
+    generatedScss = '@use "easings" as e;\n';
+    
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         return; // Skip the key-value pair for @media:dark
