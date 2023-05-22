@@ -99,6 +99,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
         generatedScss += `
           }
         }`;
+      } else {
+        key = key.replace('--', '$');
+        generatedScss += `${key}: ${value};\n`;
       }
     });
     
