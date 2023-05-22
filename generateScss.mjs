@@ -70,6 +70,24 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = '@use "easings" as e;\n\n';
     
+    const sortedEntries = Object.entries(importObj)
+  .filter(([key]) => !key.includes('@media:dark'))
+  .map(([key, value]) => {
+    key = key.replace('--', '$');
+    value = value.replace(/var\(--(.*?)\)/g, 'e.$$$1'); // Replace var(--cssvar) with e.$cssvar
+    return { key, value };
+  })
+  .sort((a, b) => a.key.localeCompare(b.key));
+
+sortedEntries.forEach(({ key, value }) => {
+  if (value.includes('@keyframe')) {
+    generatedScss += `${value};\n`;
+  } else {
+    generatedScss += `${key}: ${value};\n`;
+  }
+});
+
+    
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         return; // Skip the key-value pair for @media:dark
