@@ -69,6 +69,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else if (moduleName.toLowerCase() === 'animations') {
     Object.entries(importObj).forEach(([key, value]) => {
+      if (key.includes('@media:dark')) {
+        return; // Skip the key-value pair for @media:dark
+      }
       key = key.replace('--', '$');
       if (value.includes('@keyframe')) {
         key = '';
