@@ -89,8 +89,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
-      // if (key.includes('@media') || key.includes('@import')) {
-      if (key.includes('@')) {
+      if (key.includes('@') && !key.includes('@media')) {
         return; // Skip the key-value pair for anything containing @
       }
       key = key.replace('--', '$');
