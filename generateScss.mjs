@@ -82,7 +82,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       
       generatedScss += `${key}: ${value};\n`;
       
-      if (typeof value === 'string' && value.startsWith('@keyframes')) {
+      if (typeof value === 'string' && value.includes('@keyframes')) {
         generatedScss += `${value};\n`;
       }
     });
