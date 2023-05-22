@@ -68,14 +68,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
     
   } else if (moduleName.toLowerCase() === 'animations') {
-    generatedScss = '@use "easings" as e;\n\n';
+    generatedScss = '@use "easings" as _e;\n\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         return; // Skip the key-value pair for @media:dark
       }
       key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)\)/g, 'e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
+      value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
       if (value.includes('@keyframe')) {
         key = '';
         generatedScss += `${value};\n`;
