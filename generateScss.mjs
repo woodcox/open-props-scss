@@ -76,7 +76,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         // Create @media dark mode @keyframes
-        key = key.replace(/--|-@media:|animation-/g, 'dark-');
+        key = key.replace(/--|-@media:|animation-/g, '');
         mediaStr += `@mixin ${key}{@media #{_mq.$OSdark} { ${value} }}\n`;
       } else if (value.includes('@keyframes')) {
         key = key.replace(/--|-@|animation-/g, '');
@@ -102,7 +102,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         generatedScss += `${key}: ${value};\n`;
       }
     });
-    generatedScss += `@media _mq.#{$OSdark} { :where(html) { ${darkMediaStr} } }`;
+    generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
     
   } else {  
     Object.entries(importObj).forEach(([key, value]) => {
