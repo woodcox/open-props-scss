@@ -82,10 +82,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       } else {
         key = key.replace('--', '$');
         value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        animationsObj += `${key}: ${value};`;
+        animationsObj += `${key}: ${value};\n`;
       }
     });
-    generatedScss += `${animationsObj};\n${keyframesObj};\n${mediaObj};\n`;
+    generatedScss += `${animationsObj};${keyframesObj};${mediaObj};`;
     
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
