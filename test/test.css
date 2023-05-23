@@ -204,7 +204,7 @@
   background-color: var(--page-bg);
   color: var(--page-text);
 }
-@media ((prefers-color-scheme: dark)) {
+@media (prefers-color-scheme: dark) {
   :root {
     --page-bg: #212529;
     --page-text: #f1f3f5;
