@@ -93,7 +93,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
         if (cssVarName) {
           // Create Css: Sass key-value pair
-          animationsStr += `--${cssVarName}: #{$${cssVarName}};\n`;
+          animationsStr += `--${cssVarName}: ${cssVarName};\n`;
         }
       }
     });
