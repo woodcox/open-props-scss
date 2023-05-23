@@ -80,7 +80,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       } else if (value.includes('@keyframes')) {
         key = key.replace('--', '');
         key = key.replace('-@', '');
-        keyframesObj += `@mixin ${key}{${value}}`; // create keyframes sass mixins
+        keyframesObj += `@mixin ${key}{${value}}\n`; // create keyframes sass mixins
       } else {
         key = key.replace('--', '$');
         const cssVar = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
