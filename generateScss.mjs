@@ -69,17 +69,20 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n';
+    let animationsObj = '';
+    let keyframesObj = '';
+    let mediaObj = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         // Create @media dark mode @keyframes
-        const mediaObj = `@media #{_mq.$OSdark} { ${value} }\n`;
+        mediaObj += `@media #{_mq.$OSdark} { ${value} }\n`;
       } else if (value.includes('@keyframe')) {
-        const keyframesObj = `${value};\n`;
+        keyframesObj += `${value};\n`;
       } else {
         key = key.replace('--', '$');
         value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        const animationsObj = `${key}: ${value};`;
+        animationsObj += `${key}: ${value};`;
       }
     });
     generatedScss += `${animationsObj};\n${keyframesObj};\n${mediaObj};\n`;
