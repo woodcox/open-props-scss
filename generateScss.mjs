@@ -76,7 +76,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         // Create @media dark mode @keyframes
-        mediaObj += `@media #{_mq.$OSdark} { ${value} }\n`;
+        mediaObj += `@media #{_mq.$OSdark} { ${value}; }\n`;
       } else if (value.includes('@keyframe')) {
         keyframesObj += `${value};`;
       } else {
