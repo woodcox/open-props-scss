@@ -4,38 +4,6 @@
     --shadow-strength: 25%;
   }
 }
-@media (prefers-color-scheme: dark) {
-  @keyframes fade-in-bloom {
-    0% {
-      opacity: 0;
-      filter: brightness(1) blur(20px);
-    }
-    10% {
-      opacity: 1;
-      filter: brightness(0.5) blur(10px);
-    }
-    100% {
-      opacity: 1;
-      filter: brightness(1) blur(0);
-    }
-  }
-}
-@media (prefers-color-scheme: dark) {
-  @keyframes fade-out-bloom {
-    100% {
-      opacity: 0;
-      filter: brightness(1) blur(20px);
-    }
-    10% {
-      opacity: 1;
-      filter: brightness(0.5) blur(10px);
-    }
-    0% {
-      opacity: 1;
-      filter: brightness(1) blur(0);
-    }
-  }
-}
 :root {
   --page-bg: #e9ecef;
   --page-text: #212529;
