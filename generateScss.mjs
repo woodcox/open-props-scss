@@ -85,7 +85,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         animationsObj += `${key}: ${value};\n`;
       }
     });
-    generatedScss += `${animationsObj}${keyframesObj}${mediaObj}`;
+    generatedScss += `${animationsObj}${keyframesObj}\n${mediaObj}`;
     
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
