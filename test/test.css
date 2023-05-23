@@ -9,6 +9,72 @@
     --shadow-strength: 25%;
   }
 }
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(html) {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
 @keyframes fade-in {
   to {
     opacity: 1;
