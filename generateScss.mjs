@@ -91,11 +91,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (key.includes('-@media:dark')) {
         const mediaKey = key.replace(/--([^@]*)-@media:dark/, '--$1');
         mediaMap += `${mediaKey}: ${value};\n`;
-        generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${mediaMap} } }\n`;
       } else {
         key = key.replace('--', '$');
         generatedScss += `${key}: ${value};\n`;
       }
+      generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${mediaMap} } }\n`;
     });
     
   } else {  
