@@ -83,7 +83,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       } else {
         key = key.replace('--', '$');
         const cssVar = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        animationsObj += `${key}: ${cssVar};\n`;
+        animationsObj += `${key}: ${cssVar};\n`
       }
     });
     generatedScss += `${animationsObj}${keyframesObj}\n${mediaObj}`;
