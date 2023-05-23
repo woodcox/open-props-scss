@@ -95,8 +95,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
         key = key.replace('--', '$');
         generatedScss += `${key}: ${value};\n`;
       }
-      generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${mediaMap} } }\n`;
     });
+    generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${mediaMap} } }\n`;
     
   } else {  
     Object.entries(importObj).forEach(([key, value]) => {
