@@ -90,7 +90,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
-    let darkMediaObj = '';
+    let darkMediaStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-@media:dark')) {
