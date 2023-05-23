@@ -68,7 +68,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
     
   } else if (moduleName.toLowerCase() === 'animations') {
-    generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n\n';
+    generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
