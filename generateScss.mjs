@@ -73,30 +73,31 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         // Create @media dark mode @keyframes
-        generatedScss += `@media #{_mq.$OSdark} { ${value} }\n`;
+        const mediaObj = `@media #{_mq.$OSdark} { ${value} }\n`;
       } else if (value.includes('@keyframe')) {
-        generatedScss += `${value};\n`;
+        const keyframesObj = `${value};\n`;
       } else {
         key = key.replace('--', '$');
         value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        generatedScss += `${key}: ${value};`;
+        const animationsObj = `${key}: ${value};`;
       }
     });
+    generatedScss += `${animationsObj};\n${keyframesObj};\n${mediaObj};\n`;
     
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
-    let mediaMap = '';
+    let darkMediaObj = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-@media:dark')) {
         const mediaKey = key.replace(/--([^@]*)-@media:dark/, '--$1');
-        mediaMap += `${mediaKey}: ${value};`;
+        darkMediaObj += `${mediaKey}: ${value};`;
       } else {
         key = key.replace('--', '$');
         generatedScss += `${key}: ${value};\n`;
       }
     });
-    generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${mediaMap} } }`;
+    generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaObj} } }`;
     
   } else {  
     Object.entries(importObj).forEach(([key, value]) => {
