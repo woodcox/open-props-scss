@@ -1,6 +1,5 @@
 @use "easings" as _e;
 @use "media" as _mq;
-
 $animation-fade-in: fade-in .5s _e.$ease-3;
 
 @keyframes fade-in {
