@@ -1,3 +1,5 @@
+// very helpful - https://medium.com/beyn-technology/using-css-variables-in-scss-functions-9521be4de4e3
+
 import Sizes from 'open-props/src/sizes';
 import Colors from 'open-props/src/colors';
 import ColorsHSL from 'open-props/src/colors-hsl';
