@@ -85,11 +85,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
+    let mediaMap = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-@media:dark')) {
-        const varCSSName = key.replace(/--([^@]*)-@media:dark/, '--$1');
-        generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${varCSSName}: ${value}; } }\n`;
+        const mediaKey = key.replace(/--([^@]*)-@media:dark/, '--$1');
+        mediaMap += `${mediaKey}: ${value};\n`;
+        generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${mediaMap} } }\n`;
       } else {
         key = key.replace('--', '$');
         generatedScss += `${key}: ${value};\n`;
