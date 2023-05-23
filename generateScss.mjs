@@ -69,24 +69,24 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n';
-    let animationsObj = '';
-    let keyframesObj = '';
-    let mediaObj = '';
+    let animationsStr = '';
+    let keyframesStr = '';
+    let mediaStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         // Create @media dark mode @keyframes
-        mediaObj += `@media #{_mq.$OSdark} { ${value} }\n`;
+        mediaStr += `@media #{_mq.$OSdark} { ${value} }\n`;
       } else if (value.includes('@keyframes')) {
         key = key.replace(/--|-@|animation-/g, '');
-        keyframesObj += `@mixin ${key}{${value}}\n`; // create keyframes sass mixins
+        keyframesStr += `@mixin ${key}{${value}}\n`; // create keyframes sass mixins
       } else {
         key = key.replace('--', '$');
         const sassVar = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        animationsObj += `${key}: ${sassVar};\n`;
+        animationsStr += `${key}: ${sassVar};\n`;
       }
     });
-    generatedScss += `${animationsObj}${keyframesObj}\n${mediaObj}`;
+    generatedScss += `${animationsStr}${keyframesStr}\n${mediaStr}`;
     
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
@@ -95,13 +95,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-@media:dark')) {
         const mediaKey = key.replace(/--([^@]*)-@media:dark/, '--$1');
-        darkMediaObj += `${mediaKey}: ${value};`;
+        darkMediaStr += `${mediaKey}: ${value};`;
       } else {
         key = key.replace('--', '$');
         generatedScss += `${key}: ${value};\n`;
       }
     });
-    generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaObj} } }`;
+    generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
     
   } else {  
     Object.entries(importObj).forEach(([key, value]) => {
