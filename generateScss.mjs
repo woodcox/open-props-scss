@@ -74,12 +74,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (key.includes('@media:dark')) {
         // Create @media dark mode @keyframes
         generatedScss += `@media #{_mq.$OSdark} { ${value} }\n`;
-      }
-      key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-      if (value.includes('@keyframe')) {
+      } else if (value.includes('@keyframe')) {
         generatedScss += `${value};\n`;
       } else {
+        key = key.replace('--', '$');
+        value = value.replace(/var\(--(.*?)\)/g, '_e.$$$1'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
         generatedScss += `${key}: ${value};`;
       }
     });
