@@ -5,6 +5,90 @@
   }
 }
 :root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+}
+
+:root {
+  --ease-out-5: cubic-bezier(0, 0, 0, 1);
+}
+
+:root {
+  --ease-out-5: cubic-bezier(0, 0, 0, 1);
+}
+
+:root {
+  --ease-out-3: cubic-bezier(0, 0, 0.3, 1);
+}
+
+:root {
+  --ease-out-3: cubic-bezier(0, 0, 0.3, 1);
+}
+
+:root {
+  --ease-in-out-3: cubic-bezier(0.5, 0, 0.5, 1);
+}
+
+:root {
+  --ease-squish-2: cubic-bezier(0.5, -0.3, 0.1, 1.5);
+}
+
+:root {
+  --ease-out-3: cubic-bezier(0, 0, 0.3, 1);
+}
+
+:root {
   --page-bg: #e9ecef;
   --page-text: #212529;
   background-color: var(--page-bg);
