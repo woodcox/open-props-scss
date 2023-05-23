@@ -22,76 +22,76 @@ $animation-blink: blink 1s _e.$ease-out-3 infinite;
 $animation-float: float 3s _e.$ease-in-out-3 infinite;
 $animation-bounce: bounce 2s _e.$ease-squish-2 infinite;
 $animation-pulse: pulse 2s _e.$ease-out-3 infinite;
-
+@mixin animation-fade-in{
 @keyframes fade-in {
   to { opacity: 1 }
-}
+}}@mixin animation-fade-in-bloom{
 @keyframes fade-in-bloom {
   0% { opacity: 0; filter: brightness(1) blur(20px) }
  10% { opacity: 1; filter: brightness(2) blur(10px) }
 100% { opacity: 1; filter: brightness(1) blur(0) }
-}
+}}@mixin animation-fade-out{
 @keyframes fade-out {
   to { opacity: 0 }
-}
+}}@mixin animation-fade-out-bloom{
 @keyframes fade-out-bloom {
 100% { opacity: 0; filter: brightness(1) blur(20px) }
  10% { opacity: 1; filter: brightness(2) blur(10px) }
   0% { opacity: 1; filter: brightness(1) blur(0) }
-}
+}}@mixin animation-scale-up{
 @keyframes scale-up {
   to { transform: scale(1.25) }
-}
+}}@mixin animation-scale-down{
 @keyframes scale-down {
   to { transform: scale(.75) }
-}
+}}@mixin animation-slide-out-up{
 @keyframes slide-out-up {
   to { transform: translateY(-100%) }
-}
+}}@mixin animation-slide-out-down{
 @keyframes slide-out-down {
   to { transform: translateY(100%) }
-}
+}}@mixin animation-slide-out-right{
 @keyframes slide-out-right {
   to { transform: translateX(100%) }
-}
+}}@mixin animation-slide-out-left{
 @keyframes slide-out-left {
   to { transform: translateX(-100%) }
-}
+}}@mixin animation-slide-in-up{
 @keyframes slide-in-up {
   from { transform: translateY(100%) }
-}
+}}@mixin animation-slide-in-down{
 @keyframes slide-in-down {
   from { transform: translateY(-100%) }
-}
+}}@mixin animation-slide-in-right{
 @keyframes slide-in-right {
   from { transform: translateX(-100%) }
-}
+}}@mixin animation-slide-in-left{
 @keyframes slide-in-left {
   from { transform: translateX(100%) }
-}
+}}@mixin animation-shake-x{
 @keyframes shake-x {
   0%, 100% { transform: translateX(0%) }
   20% { transform: translateX(-5%) }
   40% { transform: translateX(5%) }
   60% { transform: translateX(-5%) }
   80% { transform: translateX(5%) }
-}
+}}@mixin animation-shake-y{
 @keyframes shake-y {
   0%, 100% { transform: translateY(0%) }
   20% { transform: translateY(-5%) }
   40% { transform: translateY(5%) }
   60% { transform: translateY(-5%) }
   80% { transform: translateY(5%) }
-}
+}}@mixin animation-spin{
 @keyframes spin {
   to { transform: rotate(1turn) }
-}
+}}@mixin animation-ping{
 @keyframes ping {
   90%, 100% {
     transform: scale(2);
     opacity: 0;
   }
-}
+}}@mixin animation-blink{
 @keyframes blink {
   0%, 100% {
     opacity: 1
@@ -99,18 +99,18 @@ $animation-pulse: pulse 2s _e.$ease-out-3 infinite;
   50% {
     opacity: .5
   }
-}
+}}@mixin animation-float{
 @keyframes float {
   50% { transform: translateY(-25%) }
-}
+}}@mixin animation-bounce{
 @keyframes bounce {
   25% { transform: translateY(-20%) }
   40% { transform: translateY(-3%) }
   0%, 60%, 100% { transform: translateY(0) }
-}
+}}@mixin animation-pulse{
 @keyframes pulse {
   50% { transform: scale(.9,.9) }
-}
+}}
 @media #{_mq.$OSdark} { 
 @keyframes fade-in-bloom {
   0% { opacity: 0; filter: brightness(1) blur(20px) }
