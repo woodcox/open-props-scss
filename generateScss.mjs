@@ -81,7 +81,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         key = '';
         generatedScss += `${value};\n`;
       } else {
-        generatedScss += `${key}: ${value};\n`;
+        generatedScss += `${key}: ${value};`;
       }
     });
     
