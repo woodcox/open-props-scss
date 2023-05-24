@@ -51,6 +51,9 @@ const writeSCSSModule = async (moduleName, content) => {
 const generateSCSSModule = async (moduleName, importObj) => {
   let generatedScss = '';
   
+  //=========================
+  // Aspects
+  //=========================
   if (moduleName.toLowerCase() === 'aspects') {
     generatedScss = '@use "sass:list";\n';
     
@@ -62,6 +65,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${key}: ${value};\n`;
     });
     
+  //=========================
+  // Media
+  //=========================  
   } else if (moduleName.toLowerCase() === 'media') {
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
@@ -69,6 +75,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${queryName}: '${processedQuery}';\n`;
     });
     
+  //=========================
+  // Animations
+  //=========================  
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n';
     let animationsStr = '';
@@ -98,7 +107,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
     });
     generatedScss += `${animationsStr}${keyframesStr}\n${mediaStr}`;
-    
+  
+  //=========================
+  // Shadows
+  //=========================  
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
@@ -113,10 +125,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
     });
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
-    
+  
+  //=========================  
+  // All other Open Props
+  //=========================
   } else {  
     Object.entries(importObj).forEach(([key, value]) => {
-      // if (key.includes('@media') || key.includes('@import')) {
       if (key.includes('@')) {
         return; // Skip the key-value pair for anything containing @
       }
@@ -137,7 +151,9 @@ Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
   generateSCSSModule(moduleName.toLowerCase(), importObj);
 });
 
+//=========================
 // Generate index.scss
+//=========================
 let indexScss = '';
 for (const moduleName in openPropFiles) {
   indexScss += `@forward '${moduleName.toLowerCase()}';\n`;
