@@ -86,12 +86,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
-        // Create @media dark mode @keyframes
         key = key.replace(/--|@media:|animation-/g, '');
-        mediaStr += `@mixin ${key}{@media #{_mq.$OSdark} { ${value} }}\n`;
+        mediaStr += `@mixin ${key}{@media #{_mq.$OSdark} { ${value} }}\n`; // Create sass mixin for @media dark mode
       } else if (value.includes('@keyframes')) {
         key = key.replace(/--|-@|animation-/g, '');
-        keyframesStr += `@mixin ${key}{${value}}\n`; // create keyframes sass mixins
+        keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
       } else {
         key = key.replace('--', '$');
         const sassVar = value.replace(/var\(--(.*?)\)/g, 'var(#{_e.$$$1})'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
