@@ -128,11 +128,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
         return; // Skip the key-value pair for anything containing @
       }
       key = key.replace('--', '$');
+      if (typeof value === 'string' && value.includes('var(--')) {
+        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
+      }
       generatedScss += `${key}: ${value};\n`;
       
-      //if (typeof value === 'string' && value.includes('var(')) {
-      //  value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
-      //}
+      
       // Extract CSS variable name
       //  const cssVarName = value.match(/var\(--(.*?)\)/)?.[1];
 
