@@ -94,23 +94,17 @@ const generateSCSSModule = async (moduleName, importObj) => {
         keyframesStr += `@mixin ${key}{${value}}\n`; // create keyframes sass mixins
       } else {
         key = key.replace('--', '$');
-        // const sassVar = value.replace(/var\(--(.*?)\)/g, 'var(#{_e.$$$1})'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        animationsStr += `${key}: ${value};\n`;
-        
-        // Extract CSS variable name
-        const cssVarName = value.match(/var\(--(.*?)\)/)?.[1];
-
-        if (cssVarName) {
-          // Create Css: Sass key-value pair
-          animationsStr += `:root { --${cssVarName}: #{_e.$${cssVarName}};}\n`;
-        }
+        const sassVar = value.replace(/var\(--(.*?)\)/g, 'var(#{_e.$$$1})'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
+        animationsStr += `${key}: ${sassVar};\n`;
       }
     });
     generatedScss += `${animationsStr}${keyframesStr}\n${mediaStr}`;
   
   //=========================
   // Shadows
-  //=========================  
+  //=========================
+  // Shadows uses hsl colors in '--shadow-color: 220 3% 15%;'. However when this is converted to a sass variable sass will throw an error because the sass variable is not split into $hue, $saturation and $lightness.
+  // Therefore must use dynamic css variables for shadows. This also affects the dark mode.
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
@@ -136,11 +130,17 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       key = key.replace('--', '$');
       generatedScss += `${key}: ${value};\n`;
-      // If use this hsl colors throw an error in shadows.scss because the sass variable is not split into $hue, $saturation and $lightness.
-      // Therefore must use dynamic css variables for shadows. May also need css variables to deal with dark module.
+      
       //if (typeof value === 'string' && value.includes('var(')) {
       //  value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
       //}
+      // Extract CSS variable name
+      //  const cssVarName = value.match(/var\(--(.*?)\)/)?.[1];
+
+       // if (cssVarName) {
+          // Create Css: Sass key-value pair
+       //   animationsStr += `:root { --${cssVarName}: #{_e.$${cssVarName}};}\n`;
+       //}
     });
   }
 
