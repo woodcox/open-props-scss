@@ -2,7 +2,7 @@
 
 import Sizes from 'open-props/src/sizes';
 import Colors from 'open-props/src/colors';
-import ColorsHSL from 'open-props/src/colors-hsl';
+import ColorsHsl from 'open-props/src/colors-hsl';
 import Shadows from 'open-props/src/shadows';
 import Aspects from 'open-props/src/aspects';
 import Borders from 'open-props/src/borders';
@@ -149,7 +149,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 };
 
 Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
-  generateSCSSModule(moduleName.replace(/[A-Z]/g, (moduleNameStr) => `-${moduleNameStr.toLowerCase()}`), importObj);
+  generateSCSSModule(moduleName.replace(/[A-Z]/g, (moduleNameStr) => `${moduleNameStr.toLowerCase()}`), importObj);
 });
 
 //=========================
@@ -157,7 +157,7 @@ Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
 //=========================
 let indexScss = '';
 for (const moduleName in openPropFiles) {
-  indexScss += `@forward '${moduleName.toLowerCase()}';\n`;
+  indexScss += `@forward '${moduleName.replace(/[A-Z]/g, (moduleNameStr) => `${moduleNameStr.toLowerCase()}';\n`;
 }
 
 const indexOutFile = path.join(__dirname, 'index.scss');
