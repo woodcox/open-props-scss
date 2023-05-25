@@ -148,14 +148,25 @@ const generateSCSSModule = async (moduleName, importObj) => {
   await writeSCSSModule(moduleName, generatedScss);
 };
 
-// Function to convert string to kebab case
+//=========================
+// Function to convert string to kebab case unless the string starts with 'masks'. This is to match the Open Props naming convensions.
+//=========================
 function convertToKebabCase(str) {
+  if (str.startsWith('masks')) {
+    const suffix = str.slice(5);
+    if (suffix === 'Edges') {
+      return 'masks.edges';
+    } else if (suffix === 'CornerCuts') {
+      return 'masks.corner-cuts';
+    }
+  }
+
   return str.replace(/[A-Z]/g, (letter, index) => {
     return index === 0 ? letter.toLowerCase() : '-' + letter.toLowerCase();
   });
 }
 
-// Loop over the openPropFiles, convert them to kebab case then generate the scss modules
+// Loop over the openPropFiles, convert them to kebab case then generate each scss module.
 Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
   const kebabCaseModuleName = convertToKebabCase(moduleName);
   generateSCSSModule(kebabCaseModuleName, importObj);
