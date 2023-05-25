@@ -120,7 +120,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         const cssVarName = value.match(/var\(--(.*?)\)/)?.[1];
         if (cssVarName) {
         // Create Css: Sass key-value pair
-         cssVarStr += `:root { --${cssVarName}: #{$${cssVarName}};}\n`;
+         cssVarStr += `:where(html) { --${cssVarName}: #{$${cssVarName}};}\n`;
         }
       }
     });
