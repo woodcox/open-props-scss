@@ -163,7 +163,7 @@ function convertToKebabCase(str) {
 
   return str.replace(/[A-Z]/g, (letter, index) => {
     return index === 0 ? letter.toLowerCase() : '-' + letter.toLowerCase();
-  });
+  }).replace(/^-/, '');
 }
 
 // Loop over the openPropFiles, convert them to kebab case then generate each scss module.
