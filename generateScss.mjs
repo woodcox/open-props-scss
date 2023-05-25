@@ -148,8 +148,17 @@ const generateSCSSModule = async (moduleName, importObj) => {
   await writeSCSSModule(moduleName, generatedScss);
 };
 
+// Function to convert string to kebab case
+function convertToKebabCase(str) {
+  return str.replace(/[A-Z]/g, (letter, index) => {
+    return index === 0 ? letter.toLowerCase() : '-' + letter.toLowerCase();
+  });
+}
+
+// Loop over the openPropFiles, convert them to kebab case then generate the scss modules
 Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
-  generateSCSSModule(moduleName.replace(/[A-Z]/g, (moduleNameStr) => `${moduleNameStr.toLowerCase()}`), importObj);
+  const kebabCaseModuleName = convertToKebabCase(moduleName);
+  generateSCSSModule(kebabCaseModuleName, importObj);
 });
 
 //=========================
@@ -157,7 +166,8 @@ Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
 //=========================
 let indexScss = '';
 for (const moduleName in openPropFiles) {
-  indexScss += `@forward '${moduleName.replace(/[A-Z]/g, (moduleNameStr) => `${moduleNameStr.toLowerCase()}`)}';\n`;
+  const kebabCaseModuleName = convertToKebabCase(moduleName);
+  indexScss += `@forward '${kebabCaseModuleName}';\n`;
 }
 
 const indexOutFile = path.join(__dirname, 'index.scss');
