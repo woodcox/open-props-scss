@@ -157,7 +157,7 @@ Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
 //=========================
 let indexScss = '';
 for (const moduleName in openPropFiles) {
-  indexScss += `@forward '${moduleName.replace(/[A-Z]/g, (moduleNameStr) => `${moduleNameStr.toLowerCase()}';\n`;
+  indexScss += `@forward '${moduleName.replace(/[A-Z]/g, (moduleNameStr) => `${moduleNameStr.toLowerCase()}`)}';\n`;
 }
 
 const indexOutFile = path.join(__dirname, 'index.scss');
