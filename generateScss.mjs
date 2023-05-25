@@ -11,8 +11,8 @@ import Easings from 'open-props/src/easing';
 import Gradients from 'open-props/src/gradients';
 import Svg from 'open-props/src/svg';
 import Zindex from 'open-props/src/zindex';
-import MaskEdges from 'open-props/src/masks.edges';
-import MaskCornerCuts from 'open-props/src/masks.corner-cuts';
+import MasksEdges from 'open-props/src/masks.edges';
+import MasksCornerCuts from 'open-props/src/masks.corner-cuts';
 import { CustomMedia as Media } from 'open-props/src/media';
 import Animations from 'open-props/src/animations';
 
@@ -38,8 +38,8 @@ const openPropFiles = {
   Gradients,
   Svg,
   Zindex,
-  MaskEdges,
-  MaskCornerCuts,
+  MasksEdges,
+  MasksCornerCuts,
   Animations,
 };
 
