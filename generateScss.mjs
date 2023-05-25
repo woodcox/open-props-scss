@@ -107,6 +107,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
+    let cssVarStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-@media:dark')) {
@@ -115,8 +116,15 @@ const generateSCSSModule = async (moduleName, importObj) => {
       } else {
         key = key.replace('--', '$');
         generatedScss += `${key}: ${value};\n`;
+        // Extract CSS variable name
+        const cssVarName = value.match(/var\(--(.*?)\)/)?.[1];
+        if (cssVarName) {
+        // Create Css: Sass key-value pair
+         cssVarStr += `:root { --${cssVarName}: #{$${cssVarName}};}\n`;
+        }
       }
     });
+    generatedScss += `${cssVarStr}`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
   //=========================  
@@ -134,15 +142,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
         value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occurs in a value
       }
       generatedScss += `${key}: ${value};\n`;
-      
-      
-      // Extract CSS variable name
-      //  const cssVarName = value.match(/var\(--(.*?)\)/)?.[1];
-
-       // if (cssVarName) {
-          // Create Css: Sass key-value pair
-       //   animationsStr += `:root { --${cssVarName}: #{_e.$${cssVarName}};}\n`;
-       //}
     });
   }
 
