@@ -1,7 +1,7 @@
 @forward 'media';
 @forward 'sizes';
 @forward 'colors';
-@forward 'colorshsl';
+@forward 'colors-hsl';
 @forward 'shadows';
 @forward 'aspects';
 @forward 'borders';
@@ -10,6 +10,6 @@
 @forward 'gradients';
 @forward 'svg';
 @forward 'zindex';
-@forward 'maskedges';
-@forward 'maskcornercuts';
+@forward 'mask-edges';
+@forward 'mask-corner-cuts';
 @forward 'animations';
