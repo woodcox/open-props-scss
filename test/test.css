@@ -1,3 +1,47 @@
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
+:root {
+  --shadow-color: 220 3% 15%;
+}
+
 @media (prefers-color-scheme: dark) {
   :where(html) {
     --shadow-color: 220 40% 2%;
