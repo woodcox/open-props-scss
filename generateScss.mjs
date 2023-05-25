@@ -149,7 +149,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 };
 
 Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
-  generateSCSSModule(moduleName.replace(/[A-Z]/g, (moduleNameStr) => `-${moduleNameStr.toLowerCase()}, importObj);
+  generateSCSSModule(moduleName.replace(/[A-Z]/g, (moduleNameStr) => `-${moduleNameStr.toLowerCase()}`), importObj);
 });
 
 //=========================
