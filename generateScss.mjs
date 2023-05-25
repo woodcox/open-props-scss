@@ -29,7 +29,7 @@ const openPropFiles = {
   Media,
   Sizes,
   Colors,
-  ColorsHSL,
+  ColorsHsl,
   Shadows,
   Aspects,
   Borders,
