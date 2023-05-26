@@ -118,7 +118,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         generatedScss += `${key}: ${value};\n`;
         
         // Extract CSS variable names
-        const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]);
+        const cssVarNames = [...new Set(value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]))];
         console.log('cssVarNames:', cssVarNames);
         
         if (cssVarNames && cssVarNames.length > 0) {
