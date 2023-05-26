@@ -124,12 +124,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates from cssVarNames array
           const uniqueCssVarNames = [...new Set(cssVarNames)];
-          
+
           // Create CSS: Sass key-value pairs from a map
-          uniqueCssVarNames.forEach((cssVarName) => {
-            uniqueCssVarStr += [...new Set(`"--${cssVarName}: #{$${cssVarName}}",`)];
-          });
-          
+          uniqueCssVarStr += uniqueCssVarNames
+            .map(cssVarName => `--${cssVarName}: #{$${cssVarName}}`)
+            .join(';\n');
         }
       }
     });
