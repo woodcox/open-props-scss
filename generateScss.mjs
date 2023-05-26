@@ -107,7 +107,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
-    let cssVarMap = '';
+    let cssVarStr = '';
     let uniqueCssVarStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
@@ -128,7 +128,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
           console.log('css:', uniqueCssOutputs);
           // Create CSS: Sass key-value pairs from a map
           uniqueCssOutputs.forEach((cssVarName) => {
-            const cssVarStr = `--${cssVarName}: #{$${cssVarName}}\n`;
+            let cssVarStr += `--${cssVarName}: #{$${cssVarName}}\n`;
           });
           
         }
