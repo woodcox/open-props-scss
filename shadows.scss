@@ -38,26 +38,4 @@ $inner-shadow-1: inset 0 1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-s
 $inner-shadow-2: inset 0 1px 4px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
 $inner-shadow-3: inset 0 2px 8px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
 $inner-shadow-4: inset 0 2px 14px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%));
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
-:where(html) { --shadow-color: #{$shadow-color}; }
-:where(html) { --shadow-strength: #{$shadow-strength}; }
 @media #{_mq.$OSdark} { :where(html) { --shadow-color: 220 40% 2%;--shadow-strength: 25%; } }
