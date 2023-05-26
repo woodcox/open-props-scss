@@ -117,7 +117,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         key = key.replace('--', '$');
         generatedScss += `${key}: ${value};\n`;
         // Extract only unique CSS variable names
-        const cssVarNames = value.match(/var\(--([^)]+)\)/g)?.map((match) => match.match(/var\(--([^)]+)\)/)[1]);
+        const cssVarNames = value.match(/var\(--([^\)]+)\)/g)?.map((match) => match.match(/var\(--([^\)]+)\)/)[1]);
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates from cssVarNames array
           const uniqueCssVarNames = [...new Set(cssVarNames)];
