@@ -127,7 +127,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         }
       }
     });
-    generatedScss += `${cssVarStr}`;
+    generatedScss += cssVarStr;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
   //=========================  
