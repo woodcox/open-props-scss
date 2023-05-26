@@ -118,7 +118,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
         generatedScss += `${key}: ${value};\n`;
         // Extract only unique CSS variable names
         const cssVarNames = [...new Set(value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]))];
-        console.log('cssVarNames:', cssVarNames); // Added console log
         
         if (cssVarNames) {
           // Create CSS: Sass key-value pairs from a map
