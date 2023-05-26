@@ -119,7 +119,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         
         // Extract CSS variable names
         const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]);
-        console.log('cssVarNames:', CssVarNames);
+        console.log('cssVarNames:', cssVarNames);
         
         if (cssVarNames && cssVarNames.length > 0) {
         // Create CSS: Sass key-value pairs
