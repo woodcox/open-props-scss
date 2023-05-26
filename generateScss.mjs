@@ -107,7 +107,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
-    let cssVarMap = {};
+    let cssVarMap = '';
     let uniqueCssVarStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
@@ -120,7 +120,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
         
         // Extract CSS variable names
         const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]);
-        console.log('cssVarNames:', cssVarNames);
         
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates from cssVarNames array
