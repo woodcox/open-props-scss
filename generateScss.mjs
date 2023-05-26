@@ -116,11 +116,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
       } else {
         key = key.replace('--', '$');
         generatedScss += `${key}: ${value};\n`;
-        // Extract CSS variable name
-        const cssVarName = value.match(/var\(--(.*?)\)/)?.[1];
-        if (cssVarName) {
-        // Create Css: Sass key-value pair
-         cssVarStr += `:where(html) { --${cssVarName}: #{$${cssVarName}};}\n`;
+        // Extract CSS variable names
+        const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]);
+
+        if (cssVarNames) {
+          // Create CSS: Sass key-value pairs from a map
+          cssVarNames.forEach((cssVarName) => {
+            cssVarStr += `:where(html) { --${cssVarName}: #{$${cssVarName}}; }\n`;
+          });
         }
       }
     });
