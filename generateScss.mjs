@@ -122,10 +122,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
         console.log('cssVarNames:', cssVarNames);
         
         if (cssVarNames && cssVarNames.length > 0) {
-        // Create CSS: Sass key-value pairs
+          // Create CSS: Sass key-value pairs
           cssVarNames.forEach((cssVarName) => {
-          cssVarStr += `:where(html) { --${cssVarName}: #{$${cssVarName}}; }\n`;
-        });
+            cssVarStr += `:where(html) { --${cssVarName}: #{$${cssVarName}}; }\n`;
+          });
+        }
       }
     });
     generatedScss += `${cssVarStr}`;
