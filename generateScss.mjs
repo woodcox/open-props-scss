@@ -107,7 +107,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
-    let cssVarStr = '';
+    let cssVarMap = {};
+    let uniqueCssVarStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-@media:dark')) {
@@ -124,14 +125,17 @@ const generateSCSSModule = async (moduleName, importObj) => {
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates from cssVarNames array
           const uniqueCssVarNames = [...new Set(cssVarNames)];
-          console.log('UQcssVarNames:', uniqueCssVarNames);
+
           // Create CSS: Sass key-value pairs from a map
           uniqueCssVarNames.forEach((cssVarName) => {
-            cssVarStr += `:where(html) { --${cssVarName}: #{$${cssVarName}}; }\n`;
+            const cssVarStr += `--${cssVarName}: #{$${cssVarName}}\n`;
+            cssVarMap = [...new Set(cssVarStr)];
+            console.log('cssVarMap:', cssVarMap);
           });
         }
       }
     });
+    uniqueCssVarStr += `where: (html)`
     generatedScss += `${cssVarStr}`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
