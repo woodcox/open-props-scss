@@ -124,16 +124,16 @@ const generateSCSSModule = async (moduleName, importObj) => {
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates from cssVarNames array
           const uniqueCssVarNames = [...new Set(cssVarNames)];
-          const uniqueCssOutputs = Array.from(new Set(uniqueCssVarNames.map(JSON.stringify)), JSON.parse);
-          console.log('css:', uniqueCssOutputs);
+          
           // Create CSS: Sass key-value pairs from a map
-          uniqueCssOutputs.forEach((cssVarName) => {
-            cssVarStr += `--${cssVarName}: #{$${cssVarName}}\n`;
+          uniqueCssVarNames.forEach((cssVarName) => {
+            uniqueCssVarStr += `--${cssVarName}: #{$${cssVarName}}\n`;
           });
           
         }
       }
     });
+    console.log('css:', uniqueCssVarStr);
     // uniqueCssVarStr += `{ :where (html) { ${cssVarMap} }}`
     generatedScss += `{ :where(html) { ${cssVarStr} } }`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
