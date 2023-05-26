@@ -127,7 +127,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
           
           // Create CSS: Sass key-value pairs from a map
           uniqueCssVarNames.forEach((cssVarName) => {
-            uniqueCssVarStr += `--${cssVarName}: #{$${cssVarName}}\n`;
+            uniqueCssVarStr += `{ "${cssVarName}": "#{$${cssVarName}}" }`;
           });
           
         }
@@ -135,7 +135,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
     console.log('css:', uniqueCssVarStr);
     // uniqueCssVarStr += `{ :where (html) { ${cssVarMap} }}`
-    generatedScss += `{ :where(html) { ${cssVarStr} } }`;
+    // generatedScss += `{ :where(html) { ${cssVarStr} } }`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
   //=========================  
