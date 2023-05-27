@@ -22,4 +22,11 @@
   }
 }
 
+.card {
+  box-shadow: var(--shadow-1);
+}
+.card:hover {
+  box-shadow: var(--shadow-3);
+}
+
 /*# sourceMappingURL=test.css.map */
