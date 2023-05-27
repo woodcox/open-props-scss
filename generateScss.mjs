@@ -107,7 +107,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
-    let cssSassVarMap = '';
+    let cssSassVarStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-@media:dark')) {
@@ -125,7 +125,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
           const uniqueCssVarStr = [...new Set(cssVarNames)];
           
           // Create CSS: Sass key-value pairs from a map
-          cssSassVarMap += uniqueCssVarStr
+          cssSassVarStr += uniqueCssVarStr
             .map(varName => `--${varName}: #{$${varName}}|`)
             .join('')
             .split('|');
@@ -133,10 +133,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
     });
 
-    //const uniqueCssSass = [...new Set(cssSassVarMap.split(','))].join(',').replace(/,/g, ';');
-    //console.log('sass:', uniqueCssSass);
+    // Remove duplicates of all the CSS: sass key value pairs
+    const uniqueCssSass = [...new Set(cssSassVarStr.split(','))].join(',').replace(/,/g, ';');
     
-    generatedScss += `:where(html) { ${cssSassVarMap} }\n`;
+    generatedScss += `:where(html) { ${uniqueCssSass} }\n`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
   //=========================  
