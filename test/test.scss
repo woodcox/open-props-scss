@@ -3,8 +3,8 @@
 :root {
   --page-bg: #{op.$gray-2};
   --page-text: #{op.$gray-9};
-  --shadow-1: #{op.$shadow-1};
-  --shadow-3: #{op.$shadow-3};
+  --shadow-5: #{op.$shadow-5};
+  --shadow-6: #{op.$shadow-6};
 
   @media #{op.$OSdark} {
     --page-bg: #{op.$gray-9};
@@ -16,9 +16,9 @@
 }
 
 .card {
-  box-shadow: var(--shadow-1);
+  box-shadow: var(--shadow-5);
 
   &:hover {
-    box-shadow: var(--shadow-3);
+    box-shadow: var(--shadow-6);
   }
 }
