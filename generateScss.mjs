@@ -127,7 +127,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
           const uniqueCssVarStr = [...new Set(cssVarNames)];
 
           // Create CSS: Sass key-value pairs from a map
-          cssSassVarMap += uniqueCssVarStr.map(varName => `--${varName}: #{$${varName}}`)
+          cssSassVarMap += uniqueCssVarStr.map(varName => `--${varName}: #{$${varName}},`)
         }
       }
     });
