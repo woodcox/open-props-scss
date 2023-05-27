@@ -130,6 +130,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
           cssSassVarMap += uniqueCssVarStr
             .map(varName => `--${varName}: #{$${varName}},`)
             //.split(',,')
+            .join(';\n')
+            .replace(/;\n$/, '');
         }
       }
     });
