@@ -108,7 +108,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
     let cssVarStr = '';
-    let uniqueCssVarStr = '';
+    let cssSassVarMap = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-@media:dark')) {
@@ -123,16 +123,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
         
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates from cssVarNames array
-          const uniqueCssVarNames = [...new Set(cssVarNames)];
+          const uniqueCssVarStr = [...new Set(cssVarNames)];
 
           // Create CSS: Sass key-value pairs from a map
-          uniqueCssVarStr += uniqueCssVarNames
-            .map(cssVarName => `--${cssVarName}: #{$${cssVarName}}`)
-            .join(';\n');
+          cssSassVarMap += uniqueCssVarNames.map(varName => `--${varName}: #{$${varName}}`)
         }
       }
     });
-    console.log('css:', uniqueCssVarStr);
+    console.log('css:', cssSassVarMap);
     // uniqueCssVarStr += `{ :where (html) { ${cssVarMap} }}`
     // generatedScss += `{ :where(html) { ${cssVarStr} } }`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
