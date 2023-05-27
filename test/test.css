@@ -29,7 +29,7 @@
   margin: 150px auto;
   width: 450px;
   padding: 20px;
-  background-color: 210 18% 96%;
+  background-color: hsl(210, 18%, 96%);
   border-radius: 2px;
   border: 0;
   box-shadow: var(--shadow-5);
