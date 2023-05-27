@@ -12,3 +12,11 @@
   background-color: var(--page-bg);
   color: var(--page-text);
 }
+
+.card {
+  box-shadow: var(--shadow-1);
+
+  &:hover {
+    box-shadow: var(--shadow-3);
+  }
+}
