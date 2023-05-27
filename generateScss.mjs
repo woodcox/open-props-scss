@@ -118,16 +118,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
         generatedScss += `${key}: ${value};\n`;
         
         // Extract CSS variable names
-        const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match
-          .match(/var\(--(.*?)\)/)[1])
-          .join('')
-          .split('|');
-        console.log('css:', cssVarNames);
+        const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]);
         
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates and empty string from cssVarNames 
           const uniqueCssVarStr = [...new Set(cssVarNames)];
-          console.log('UNIQUE:', uniqueCssVarStr);
           
           // Create CSS: Sass key-value pairs and split using || as a delimiter
           cssSassVarStr += uniqueCssVarStr
