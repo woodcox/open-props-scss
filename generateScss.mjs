@@ -107,7 +107,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'shadows') {
     generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
-    let cssVarStr = '';
     let cssSassVarMap = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
@@ -134,10 +133,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
     });
 
-    const uniqueCssSass = [...new Set(cssSassVarMap.split(','))].join(',').replace(/,/g, ';');
-    console.log('sass:', uniqueCssSass);
+    //const uniqueCssSass = [...new Set(cssSassVarMap.split(','))].join(',').replace(/,/g, ';');
+    //console.log('sass:', uniqueCssSass);
     
-    generatedScss += `:where(html) { ${uniqueCssSass} }\n`;
+    generatedScss += `:where(html) { ${cssSassVarMap} }\n`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
   //=========================  
