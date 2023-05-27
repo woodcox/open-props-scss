@@ -3,8 +3,8 @@
 :root {
   --page-bg: #{op.$gray-2};
   --page-text: #{op.$gray-9};
-  --shadow-5: #{op.$shadow-5};
-  --shadow-6: #{op.$shadow-6};
+  --shadow-2: #{op.$shadow-2};
+  --shadow-3: #{op.$shadow-3};
 
   @media #{op.$OSdark} {
     --page-bg: #{op.$gray-9};
@@ -17,15 +17,17 @@
 
 .card {
   position: relative;
-  margin: 150px auto;
   width: 450px;
+  height: 100%;
+  min-height: 200px;
   padding: 20px;
+  margin: 50px auto;
   background-color: hsl(op.$stone-1-hsl);
   border-radius: op.$radius-1;
   border: 0;
-  box-shadow: var(--shadow-5);
+  box-shadow: var(--shadow-2);
 
   &:hover {
-    box-shadow: var(--shadow-6);
+    box-shadow: var(--shadow-3);
   }
 }
