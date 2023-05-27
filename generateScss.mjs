@@ -122,12 +122,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
           .match(/var\(--(.*?)\)/)[1])
           .join('')
           .split('|');
-        console.log('css:' cssVarNames);
+        console.log('css:', cssVarNames);
         
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates and empty string from cssVarNames 
           const uniqueCssVarStr = [...new Set(cssVarNames)];
-          console.log('css:' uniqueCssVarStr);
+          console.log('UNIQUE:', uniqueCssVarStr);
           
           // Create CSS: Sass key-value pairs and split using || as a delimiter
           cssSassVarStr += uniqueCssVarStr
