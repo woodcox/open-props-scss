@@ -3,6 +3,8 @@
 :root {
   --page-bg: #{op.$gray-2};
   --page-text: #{op.$gray-9};
+  --shadow-1: #{op.$shadow-1};
+  --shadow-3: #{op.$shadow-3};
 
   @media #{op.$OSdark} {
     --page-bg: #{op.$gray-9};
