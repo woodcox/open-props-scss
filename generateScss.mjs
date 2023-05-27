@@ -134,7 +134,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
     });
     console.log('css:', cssSassVarMap);
-    const uniqueCssSass = [...new Set(cssVarStr.split(','))];
+    const uniqueCssSass = [...new Set(cssSassVarMap.split(','))];
     console.log('sass:', uniqueCssSass);
     // uniqueCssVarStr += `{ :where (html) { ${cssVarMap} }}`
     // generatedScss += `{ :where(html) { ${cssVarStr} } }`;
