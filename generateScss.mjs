@@ -121,14 +121,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
         const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]);
         
         if (cssVarNames && cssVarNames.length > 0) {
-          // Remove duplicates from cssVarNames and empty string
+          // Remove duplicates and empty string from cssVarNames 
           const uniqueCssVarStr = [...new Set(cssVarNames)];
           
-          // Create CSS: Sass key-value pairs from a map
+          // Create CSS: Sass key-value pairs and split using || as a delimiter
           cssSassVarStr += uniqueCssVarStr
-            .map(varName => `--${varName}: #{$${varName}}|`)
+            .map(varName => `--${varName}: #{$${varName}}||`)
             .join('')
-            .split('|');
+            .split('||');
         }
       }
     });
