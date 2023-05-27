@@ -133,11 +133,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
         }
       }
     });
-    console.log('css:', cssSassVarMap);
+
     const uniqueCssSass = [...new Set(cssSassVarMap.split(','))].join(',').replace(/,/g, ';');
     console.log('sass:', uniqueCssSass);
-    // uniqueCssVarStr += `{ :where (html) { ${cssVarMap} }}`
-    // generatedScss += `{ :where(html) { ${cssVarStr} } }`;
+    
+    generatedScss += `{ :where(html) { ${uniqueCssSass} } }`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
   //=========================  
