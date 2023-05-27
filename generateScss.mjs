@@ -137,7 +137,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     const uniqueCssSass = [...new Set(cssSassVarMap.split(','))].join(',').replace(/,/g, ';');
     console.log('sass:', uniqueCssSass);
     
-    generatedScss += `{ :where(html) { ${uniqueCssSass} } };\n`;
+    generatedScss += `:where(html) { ${uniqueCssSass} }\n`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
   //=========================  
