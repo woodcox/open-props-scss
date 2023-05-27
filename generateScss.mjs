@@ -120,16 +120,16 @@ const generateSCSSModule = async (moduleName, importObj) => {
         
         // Extract CSS variable names
         const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]);
-        console.log('Names:', cssVarNames);
         
         if (cssVarNames && cssVarNames.length > 0) {
           // Remove duplicates from cssVarNames and empty string
           const uniqueCssVarStr = [...new Set(cssVarNames)];
-
+          console.log('Names:', uniqueCssVarStr);
+          
           // Create CSS: Sass key-value pairs from a map
           cssSassVarMap += uniqueCssVarStr
             .map(varName => `--${varName}: #{$${varName}},`)
-            .split(',,');
+            .split(',,')
         }
       }
     });
