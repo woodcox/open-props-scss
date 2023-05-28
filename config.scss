@@ -1,0 +1,27 @@
+//====================
+// Light / Dark config
+//====================
+
+$op-config: (
+  'selector-scope': (
+    'where': true,
+    'root': false,
+    'host': false,
+    'null': false,
+  ),
+  'theme': (
+    'light': (
+      'items': $op-theme,
+      'output': 'standard',
+      'property': 'color'
+     )
+  )
+
+$op-theme: (
+  '300': $gorko-base-size * 0.8,
+  '400': $gorko-base-size,
+  '500': $gorko-base-size * 1.25,
+  '600': $gorko-base-size * 1.6,
+  '700': $gorko-base-size * 2,
+  '900': $gorko-base-size * 3
+) !default;
