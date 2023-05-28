@@ -23,6 +23,8 @@ $op-theme: (
   )
 ) !default;
 
+// the function takes the $selector-scope and $theme as parameters. It first retrieves the selector configuration from $op-config and the theme values from $op-theme. Based on the provided $selector-scope, it generates the appropriate selector output and adds the theme values accordingly. If the $theme is 'dark', it also includes the dark mode media query.
+
 
 @function generate-output($selector-scope, $theme) {
   $selector-config: map-get($op-config, 'selector-scope');
