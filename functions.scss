@@ -1,19 +1,20 @@
 // the function takes the $selector-scope and $theme as parameters. It first retrieves the selector configuration from $op-config and the theme values from $op-theme. Based on the provided $selector-scope, it generates the appropriate selector output and adds the theme values accordingly. If the $theme is 'dark', it also includes the dark mode media query.
+@use 'sass:map';
 @use 'config' as _c;
 
-@function generate-output($selector-scope, $theme) {
-  $selector-config: map-get($op-config, 'selector-scope');
-  $theme-values: map-get($op-theme, $theme);
+@function generate-output(_c.$selector-scope, _c.$theme) {
+  $selector-config: map-get(_c.$op-config, 'selector-scope');
+  $theme-values: map-get(_c.$op-theme, _c.$theme);
 
   $selector-output: '';
 
-  @if ($selector-scope == 'where') {
+  @if (_c.$selector-scope == 'where') {
     $selector-output: ":where#{map-get($selector-config, 'where')} {\n";
-  } @else if ($selector-scope == 'root') {
+  } @else if (_c.$selector-scope == 'root') {
     $selector-output: ":root {\n";
-  } @else if ($selector-scope == 'host') {
+  } @else if (_c.$selector-scope == 'host') {
     $selector-output: ":host#{map-get($selector-config, 'host')} {\n";
-  } @else if ($selector-scope == 'null') {
+  } @else if (_c.$selector-scope == 'null') {
     $selector-output: "#{map-get($selector-config, 'null')} {\n";
   }
 
@@ -28,7 +29,7 @@
     @if ($theme == 'dark') {
       $output: $output +
         "@media (prefers-color-scheme: dark) {\n" +
-        "  " + $selector-output +
+        "  " + _c.$selector-output +
         "    --shadow-color: #{map-get($theme-values, 'shadow-color')};\n" +
         "    --shadow-strength: #{map-get($theme-values, 'shadow-strength')};\n" +
         "  }\n" +
