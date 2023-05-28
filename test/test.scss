@@ -1,6 +1,6 @@
 @use '../index' as op;
 
-$output: generate-output('root', 'dark');
+//$output: generate-output('root', 'dark');
 
 :root {
   --page-bg: #{op.$gray-2};
