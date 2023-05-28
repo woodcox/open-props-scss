@@ -5,33 +5,25 @@
 
 $op-config: (
   'selector-scope': (
-    'where': :where (html),
-    'root': :root,
-    'host': :host (),
-    'null': null
+    'where': ':where (html)',
+    'root': ':root',
+    'host': ':host ()',
+    'null': ''
   ),
-  'theme': (
-    'light': (
-      $shadow-color: 220 3% 15%;
-      $shadow-strength: 1%;
-    ),
-    'dark': (
-      $shadow-color: 220 40% 2%;
-      $shadow-strength: 25%;
-    )
+) !default;
+
+$op-theme: (
+  'light': (
+    $shadow-color: 220 3% 15%;
+    $shadow-strength: 1%;
+  ),
+  'dark': (
+    $shadow-color: 220 40% 2%;
+    $shadow-strength: 25%;
   )
 ) !default;
 
-$colors: map-merge(
-  $brand-colors,
-  (
-    "text": $color-body,
-    "background": $color-background,
-    "light": #fff,
-    "dark": rgba(black, 0.87),
-  )
-);
 
-@function color($key) {
-  @return map-get($colors, $key);
+@function theme($key) {
+  @return map-get($op-theme, $key);
 }
