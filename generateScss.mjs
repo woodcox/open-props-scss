@@ -178,7 +178,7 @@ Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
 //=========================
 // Generate index.scss
 //=========================
-let indexScss = `@forward 'config';\n`;
+let indexScss = '';
 
 for (const moduleName in openPropFiles) {
   const kebabCaseModuleName = convertToKebabCase(moduleName);
@@ -187,3 +187,5 @@ for (const moduleName in openPropFiles) {
 
 const indexOutFile = path.join(__dirname, 'index.scss');
 await fs.writeFile(indexOutFile, indexScss, { encoding: 'utf-8' });
+
+indexScss += `@forward 'config';\n`;
