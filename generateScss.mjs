@@ -185,7 +185,7 @@ for (const moduleName in openPropFiles) {
   indexScss += `@forward '${kebabCaseModuleName}';\n`;
 }
 
-indexScss += `@forward 'functions';\n`;
+indexScss += `@forward 'config/config';\n`;
 
 const indexOutFile = path.join(__dirname, 'index.scss');
 await fs.writeFile(indexOutFile, indexScss, { encoding: 'utf-8' });
