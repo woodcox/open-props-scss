@@ -5,10 +5,10 @@
 
 $op-config: (
   'selector-scope': (
-    'where': true,
-    'root': false,
-    'host': false,
-    'null': false
+    'where': ':where (html)',
+    'root': ':root',
+    'host': ':host (),
+    'null': ''
   ),
   'theme': (
     'light': (
