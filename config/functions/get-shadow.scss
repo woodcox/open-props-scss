@@ -2,7 +2,7 @@
 @use '../variables' as _v;
 
 // GET SHADOW FUNCTION
-// Function tries to match the passed $key with the $op-shadows map. Returns null
+// Function tries to match the passed $key with the $op-shadows map for the specified $theme. Returns null
 // if it can’t find a match.
 //
 // @param {string} $theme - The theme ('light' or 'dark')
