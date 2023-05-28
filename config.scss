@@ -1,3 +1,4 @@
+@use "sass:map";
 //====================
 // Light / Dark config
 //====================
@@ -7,15 +8,29 @@ $op-config: (
     'where': true,
     'root': false,
     'host': false,
-    'null': false,
-  ),
-  'theme': (
-    'light': (
-      'items': $op-theme,
-      'output': 'standard',
-      'property': 'color'
-     )
+    'null': false
   )
+) !default;
+  
+$color-body: scale-color(
+  $color-primary,
+  $lightness: -80%,
+  $saturation: -20%
+) !default;
+
+$colors: map-merge(
+  $brand-colors,
+  (
+    "text": $color-body,
+    "background": $color-background,
+    "light": #fff,
+    "dark": rgba(black, 0.87),
+  )
+);
+
+@function color($key) {
+  @return map-get($colors, $key);
+}
 
 $op-theme: (
   '300': $gorko-base-size * 0.8,
