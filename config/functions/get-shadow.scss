@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use 'config' as _c;
+@use '../variables' as _v;
 
 /// GET SHADOW FUNCTION
 /// Function tries to match the passed $key with the $op-shadows map. Returns null
@@ -8,7 +8,7 @@
 /// @param {string} $key - The shadow that you want to get
 ///
 @function get-shadow($key) {
-  $response: map.get(_c.$op-shadows, $key);
+  $response: map.get(_v.$op-shadows, $key);
 
   @if ($response) {
     @return $response;
