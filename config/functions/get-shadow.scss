@@ -1,20 +1,21 @@
 @use 'sass:map';
 @use '../variables' as _v;
 
-/// GET SHADOW FUNCTION
-/// Function tries to match the passed $key with the $op-shadows map. Returns null
-/// if it can’t find a match.
-///
-/// @param {string} $key - The shadow that you want to get
-///
-@function get-shadow($key) {
-  $response: map.get(_v.$op-shadows, $key);
+// GET SHADOW FUNCTION
+// Function tries to match the passed $key with the $op-shadows map. Returns null
+// if it can’t find a match.
+//
+// @param {string} $theme - The theme ('light' or 'dark')
+// @param {string} $key - The shadow that you want to get
+//
+@function get-shadow($theme, $key) {
+  $response: map.get(map-get(_v.$op-shadows, _v.$theme), $key);
 
   @if ($response) {
     @return $response;
   }
 
-  @warn #{'Open props "' + $key + '" not found in $op-shadows'};
+  @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
 
   @return null;
 }
