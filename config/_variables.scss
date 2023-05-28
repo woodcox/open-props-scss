@@ -1,10 +1,6 @@
 @use 'sass:map';
 @use 'open-props-scss' as op;
 
-//===============
-// Variables
-//===============
-
 $op-shadows: (
   'light': (
     'shadow-color': 220 3% 15%,
