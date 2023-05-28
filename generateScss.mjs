@@ -178,7 +178,7 @@ Object.entries(openPropFiles).forEach(([moduleName, importObj]) => {
 //=========================
 // Generate index.scss
 //=========================
-let indexScss = "@forward 'config';\n";
+let indexScss = `@forward 'config';\n`;
 
 for (const moduleName in openPropFiles) {
   const kebabCaseModuleName = convertToKebabCase(moduleName);
