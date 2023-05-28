@@ -24,6 +24,40 @@ $op-theme: (
 ) !default;
 
 
-@function theme($key) {
-  @return map-get($op-theme, $key);
+@function generate-output($selector-scope, $theme) {
+  $selector-config: map-get($op-config, 'selector-scope');
+  $theme-values: map-get($op-theme, $theme);
+
+  $selector-output: '';
+
+  @if ($selector-scope == 'where') {
+    $selector-output: ":where#{map-get($selector-config, 'where')} {\n";
+  } @else if ($selector-scope == 'root') {
+    $selector-output: ":root {\n";
+  } @else if ($selector-scope == 'host') {
+    $selector-output: ":host#{map-get($selector-config, 'host')} {\n";
+  } @else if ($selector-scope == 'null') {
+    $selector-output: "#{map-get($selector-config, 'null')} {\n";
+  }
+
+  $output: '';
+
+  @if ($selector-output != '') {
+    $output: $selector-output +
+      "  --shadow-color: #{map-get($theme-values, 'shadow-color')};\n" +
+      "  --shadow-strength: #{map-get($theme-values, 'shadow-strength')};\n" +
+      "}\n";
+
+    @if ($theme == 'dark') {
+      $output: $output +
+        "@media (prefers-color-scheme: dark) {\n" +
+        "  " + $selector-output +
+        "    --shadow-color: #{map-get($theme-values, 'shadow-color')};\n" +
+        "    --shadow-strength: #{map-get($theme-values, 'shadow-strength')};\n" +
+        "  }\n" +
+        "}\n";
+    }
+  }
+
+  @return $output;
 }
