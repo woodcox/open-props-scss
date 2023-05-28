@@ -9,13 +9,17 @@ $op-config: (
     'root': false,
     'host': false,
     'null': false
+  ),
+  'theme': (
+    'light': (
+      $shadow-color: 220 3% 15%;
+      $shadow-strength: 1%;
+    )'
+    'dark': (
+      $shadow-color: 220 40% 2%;
+      $shadow-strength: 25%;
+    )
   )
-) !default;
-  
-$color-body: scale-color(
-  $color-primary,
-  $lightness: -80%,
-  $saturation: -20%
 ) !default;
 
 $colors: map-merge(
@@ -31,12 +35,3 @@ $colors: map-merge(
 @function color($key) {
   @return map-get($colors, $key);
 }
-
-$op-theme: (
-  '300': $gorko-base-size * 0.8,
-  '400': $gorko-base-size,
-  '500': $gorko-base-size * 1.25,
-  '600': $gorko-base-size * 1.6,
-  '700': $gorko-base-size * 2,
-  '900': $gorko-base-size * 3
-) !default;
