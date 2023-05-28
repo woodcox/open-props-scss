@@ -23,7 +23,7 @@ $dark-colors: (
 $selector-scope: (
   'where': ':where (html)',
   'root': ':root',
-  'host': ':host ()',
+  'host': ':host',
   'null': ''
 ) !default;
 
