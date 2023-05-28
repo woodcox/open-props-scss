@@ -1,20 +1,20 @@
 @use 'sass:map';
 @use 'config' as _c;
 
-/// GET COLOR FUNCTION
-/// Function tries to match the passed $key with the $op-colors map. Returns null
+/// GET SHADOW FUNCTION
+/// Function tries to match the passed $key with the $op-shadows map. Returns null
 /// if it can’t find a match.
 ///
-/// @param {string} $key - The color that you want to get
+/// @param {string} $key - The shadow that you want to get
 ///
-@function get-color($key) {
-  $response: map.get(_c.$op-colors, $key);
+@function get-shadow($key) {
+  $response: map.get(_c.$op-shadows, $key);
 
   @if ($response) {
     @return $response;
   }
 
-  @warn #{'Color "' + $key + '" not found in $op-colors'};
+  @warn #{'Open props "' + $key + '" not found in $op-shadows'};
 
   @return null;
 }
