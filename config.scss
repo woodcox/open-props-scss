@@ -1,15 +1,23 @@
+@use 'sass:map';
+@use 'open-props-scss' as op;
+
 //===============
 // Variables
 //===============
 
+$op-colors: (
+  'dark': #1a1a1a,
+  'light': #f3f3f3
+) !default;
+
 $light-colors: (
-  'text': map-get($gorko-colors, 'dark'),
-  'bg': map-get($gorko-colors, 'light')
+  'text': map-get($op-colors, 'dark'),
+  'bg': map-get($op-colors, 'light')
 );
 
 $dark-colors: (
-  'text': map-get($gorko-colors, 'light'),
-  'bg': map-get($gorko-colors, 'dark')
+  'text': map-get($op-colors, 'light'),
+  'bg': map-get($op-colors, 'dark')
 );
 
 $selector-scope: (
