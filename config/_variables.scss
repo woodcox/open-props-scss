@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use 'open-props-scss' as op;
+@use '../index' as op;
 
 $op-shadows: (
   'light': (
