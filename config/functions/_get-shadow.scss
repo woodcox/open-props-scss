@@ -11,7 +11,7 @@
 @function get-shadow($theme, $key) {
   $response: map.get(_v.$op-shadows, $theme, $key);
 
-  @if ($response) {
+  @if $response {
     @return $response;
   } @else {
     @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
