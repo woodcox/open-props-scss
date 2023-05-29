@@ -13,9 +13,8 @@
 
   @if ($response) {
     @return $response;
+  } @else {
+    @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
+    @return null;
   }
-
-  @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
-
-  @return null;
 }
