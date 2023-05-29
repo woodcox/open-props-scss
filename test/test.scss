@@ -7,7 +7,7 @@
   --page-text: #{op.$gray-9};
   --shadow-2: #{op.$shadow-2};
   --shadow-3: #{op.$shadow-3};
-  @debug --shadow-strength: op.get-shadow('light', 'shadow-strength');
+  --shadow-strength: op.get-shadow('light', 'shadow-strength');
 
   @media #{op.$OSdark} {
     --page-bg: #{op.$gray-9};
