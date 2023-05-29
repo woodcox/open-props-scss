@@ -8,8 +8,8 @@
 // @param {string} $theme - The theme ('light' or 'dark')
 // @param {string} $key - The shadow that you want to get
 //
-@function get-shadow($theme, $key) {
-  $response: @debug map.get(map.get(_v.$op-shadows, $theme), $key);
+@debug @function get-shadow($theme, $key) {
+  #{$response}: map.get(map.get(_v.$op-shadows, $theme), $key);
 
   @if ($response) {
     @return $response;
