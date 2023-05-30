@@ -11,10 +11,10 @@
 
 @function get-shadow($op-shadows, $keys...) {
     @each $key in $keys {
-      _v.$op-shadows: map-get($op-shadows, $key);
+      $op-shadows: map-get(_v.$op-shadows, $key);
     }
     @if $op-shadows {
-      @return _v.$op-shadows;
+      @return $op-shadows;
     }
   
     @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
