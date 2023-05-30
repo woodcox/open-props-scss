@@ -4,10 +4,10 @@
 // @param {...*} $args - The arguments representing the hue, saturation, and lightness values.
 // @returns {String} - The constructed HSL color value.
 
-@function hsl($args...) {
+@function true-hsl($args...) {
   @return #{'hsl(#{$args})'};
 }
 
 @function hsla($args...) {
-  @return hsl($args...);
+  @return true-hsl($args...);
 }
