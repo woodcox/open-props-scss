@@ -4,7 +4,7 @@
 $shdw-color: get-shadow('light', 'shadow-color');
 
 html {
-  background: get-shadow('light', 'shadow-color');
+  background: $shdw-color;
 }
 
 .card {
