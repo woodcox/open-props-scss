@@ -14,7 +14,7 @@
   $result: map.get(_v.$op-shadows, $theme, $key);
 
   @if $result {
-    @return $result;
+    @return hsl($result);
   }
   @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
   
