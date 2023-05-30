@@ -3,19 +3,7 @@
 
 $shdw-color: get-shadow('light', 'shadow-color');
 
-:root {
-  --page-bg: #{op.$gray-2};
-  --page-text: #{op.$gray-9};
-  --shadow-2: #{op.$shadow-2};
-  --shadow-3: #{op.$shadow-3};
-
-  @media #{op.$OSdark} {
-    --page-bg: #{op.$gray-9};
-    --page-text: #{op.$gray-1};
-  }
-}
-
-:where(html) {
+html {
   background: hsl($shdw-color);
 }
 
