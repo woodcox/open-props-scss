@@ -8,7 +8,7 @@
   --shadow-2: #{op.$shadow-2};
   --shadow-3: #{op.$shadow-3};
   $test-shadow-strength: op.get-shadow('light', 'shadow-strength');
-  $testing: hsl(op.$stone-1-hsl, get-map(op.$op-shadows, 'light', 'shadow-strength'));
+  $testing: hsl(op.$stone-1-hsl / get-map(op.$op-shadows, 'light', 'shadow-strength'));
 
   @media #{op.$OSdark} {
     --page-bg: #{op.$gray-9};
