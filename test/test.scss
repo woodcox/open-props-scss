@@ -1,7 +1,7 @@
 @use '../index' as op;
 @use "sass:color";
 
-$shdw-color: get-shadow('light', 'shadow-color');
+$shdw-color: op.get-shadow('light', 'shadow-color');
 
 html {
   background: $shdw-color;
