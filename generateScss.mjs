@@ -14,6 +14,7 @@ import Zindex from 'open-props/src/zindex';
 import MasksEdges from 'open-props/src/masks.edges';
 import MasksCornerCuts from 'open-props/src/masks.corner-cuts';
 import { CustomMedia as Media } from 'open-props/src/media';
+import Animations from 'open-props/src/animations';
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -39,6 +40,7 @@ const openPropFiles = {
   'zindex': Zindex,
   'masks.edges': MasksEdges,
   'masks.corner-cuts': MasksCornerCuts,
+  'animations': Animations,
 };
 
 const writeSCSSModule = async (moduleName, content) => {
@@ -74,7 +76,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${queryName}: '${processedQuery}';\n`;
     });
     
-   //=========================
+  //=========================
   // Animations
   //=========================  
   } else if (moduleName.toLowerCase() === 'animations') {
@@ -138,7 +140,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss += `:where(html) { ${uniqueCssSass} }\n`;
     generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
   
-  /=========================
+  //=========================
   // All other Open Props
   //=========================
   } else {
