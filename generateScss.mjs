@@ -85,3 +85,7 @@ let indexScss = '';
 for (const moduleName in openPropFiles) {
   indexScss += `@forward '${moduleName}';\n`;
 }
+
+const indexOutFile = path.join(__dirname, 'index.scss');
+await fs.writeFile(indexOutFile, indexScss, { encoding: 'utf-8' });
+
