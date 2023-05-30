@@ -2,11 +2,11 @@
 
 $op-shadows: (
   'light': (
-    'shadow-color': 220 3% 15%,
+    'shadow-color': 220deg 3% 15%,
     'shadow-strength': 0.01
   ),  
   'dark': (
-    'shadow-color': 220 40% 2%,
+    'shadow-color': 220deg 40% 2%,
     'shadow-strength': 0.25
   )
 ) !default;
