@@ -9,7 +9,7 @@
 // @param {args} $keys - The nested keys representing the specific shadow value to retrieve.
 // @return {*} - The nested shadow value if found; otherwise, null.
 
-@function get-shadow(_v.$op-shadows, $keys...) {
+@function get-shadow($op-shadows, $keys...) {
     @each $key in $keys {
       _v.$op-shadows: map-get($op-shadows, $key);
     }
