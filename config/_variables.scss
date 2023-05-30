@@ -1,33 +1,12 @@
-@use 'sass:map';
-
 $op-shadows: (
   'light': (
-    'shadow-color': '220 3% 15%',
+    'shadow-color': 220 3% 15%,
     'shadow-strength': 1%
   ),  
   'dark': (
-    'shadow-color': '220 40% 2%',
+    'shadow-color': 220 40% 2%,
     'shadow-strength': 25%
   )
-) !default;
-
-$op-colors: (
-  'dark': #1a1a1a,
-  'light': #f3f3f3
-) !default;
-
-$light-colors: (
-  'text': map-get($op-colors, 'dark'),
-  'bg': map-get($op-colors, 'light'),
-  'shdw-color': map-get($op-colors, 'shadow-color-light'),
-  'shdw-str': map-get($op-colors, 'shadow-strength-light')
-) !default;
-
-$dark-colors: (
-  'text': map-get($op-colors, 'light'),
-  'bg': map-get($op-colors, 'dark'),
-  'shdw-color': map-get($op-colors, 'shadow-color-dark'),
-  'shdw-str': map-get($op-colors, 'shadow-strength-dark')
 ) !default;
 
 $selector-scope: (
