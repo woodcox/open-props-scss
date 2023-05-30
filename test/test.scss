@@ -1,10 +1,10 @@
 @use '../index' as op;
 @use "sass:color";
 
-$shdw-color: get-shadow('light', 'shadow-color');
+$shdw-color-hsl: get-shadow('light', 'shadow-color');
 
 html {
-  background: hsl($shdw-color);
+  background: hsl($shdw-color-hsl);
 }
 
 .card {
