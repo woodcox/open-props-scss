@@ -9,6 +9,10 @@
     --shadow-strength: 25%;
   }
 }
+html {
+  background: hsl-color(get-shadow("light", "shadow-color"));
+}
+
 .card {
   position: relative;
   width: 450px;
