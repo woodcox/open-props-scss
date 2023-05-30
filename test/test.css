@@ -10,7 +10,7 @@
   }
 }
 html {
-  background: 220 3% 15%;
+  background: hsl(220, 3%, 15%);
 }
 
 .card {
