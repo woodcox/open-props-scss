@@ -1,8 +1,8 @@
-// HSL(A) NOT TRANSFORMED TO RGB(A) FUNCTION
+// HSL(A) TO STRING FOR USE IN MIXING OPEN PROPS HSL COLORS
 // These functions constructs the HSL/HSLA color value using the provided arguments and returns it as a string.
 //
-// @param {...*} $args - The arguments representing the hue, saturation, and lightness values.
-// @returns {String} - The constructed HSL color value.
+// @param {...*} $args - The arguments representing the hue, saturation, lightness and alpha values.
+// @returns {String} - The constructed HSL/HSLA color as a string.
 
 @function mix-hsl($args...) {
   @return #{'hsl(#{$args})'};
