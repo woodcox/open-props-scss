@@ -10,20 +10,13 @@
 // @param {string} $keys - The shadow value to retrieve.
 
 
-//@function get-shadow($theme, $key) {
-//  $result: map.get(_v.$op-shadows, $theme, $key);
+@function get-shadow($theme, $key) {
+  $result: map.get(_v.$op-shadows, $theme, $key);
 
-//  @if $result {
-//    @return $result;
-//  }
-//  @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
+  @if $result {
+    @return #{$result};
+  }
+  @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
   
-//  @return null;
-//}
-
-@function get-shadow($op-shadows, $keys...) {
-    @each $key in $keys {
-      $op-shadows: map-get(_v.$op-shadows, $key);
-    }
-    @return $op-shadows;
+  @return null;
 }
