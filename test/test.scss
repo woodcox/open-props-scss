@@ -1,7 +1,7 @@
 @use '../index' as op;
 @use "sass:color";
 
-$shdw-color: get-shadow('light', 'shadow-color')
+$shdw-color: get-shadow('light', 'shadow-color');
 
 :root {
   --page-bg: #{op.$gray-2};
