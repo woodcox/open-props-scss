@@ -1,5 +1,4 @@
 @use '../index' as op;
-@use "sass:color";
 
 $shdw-color: op.get-shadow('light', 'shadow-color');
 $shdw-str: op.get-shadow('light', 'shadow-strength');
