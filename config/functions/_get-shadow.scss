@@ -2,23 +2,21 @@
 @use '../variables' as _v;
 
 // GET DEEP SHADOW FUNCTION
-// Retrieves nested shadow values from the $op-shadows map using multiple keys.
-// If the nested value is found, it is returned; otherwise, it returns null.
+// Retrieves nested shadow values from the $op-shadows map for the specified $theme.
+// Returns null if it can't find a match.
 //
 // @param {map} $op-shadows - The map containing the shadow values.
-// @param {args} $keys - The nested keys representing the specific shadow value to retrieve.
-// @return {*} - The nested shadow value if found; otherwise, null.
+// @param {string} $theme - The theme ('light' or 'dark')
+// @param {string} $keys - The shadow value to retrieve.
 
-@function get-shadow($op-shadows, $keys...) {
-    @each $key in $keys {
-      $op-shadows: map-get(_v.$op-shadows, $key);
-    }
-    @if $op-shadows {
-      @return $op-shadows;
-    }
-  
-    @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
-  
-    @return null;
+
+@function get-shadow($theme, $key) {
+  $result: map.get(_v.op-shadows, $theme, $key);
+
+  @if $result {
+    @return $result;
   }
+  @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
+  
+  @return null;
 }
