@@ -10,7 +10,7 @@
   }
 }
 html {
-  background: true-hsl(get-shadow("light", "shadow-color"));
+  background: get-shadow("light", "shadow-color");
 }
 
 .card {
