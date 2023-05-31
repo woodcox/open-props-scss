@@ -18,7 +18,7 @@ $selector-scope: (
 
 $theme: light !default;
 $shadow-c:  220 3% 15% !default;
-$shdow-s: 1% !default;
+$shadow-s: 1% !default;
 
 @if $theme == dark {
   $shadow-c:  220 40% 2% !default;
