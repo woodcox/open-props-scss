@@ -9,10 +9,6 @@
     --shadow-strength: 25%;
   }
 }
-html {
-  background: hsl(220 3% 15% 1%);
-}
-
 .card {
   position: relative;
   width: 450px;
