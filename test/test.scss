@@ -4,7 +4,7 @@
 $shdw-color: sd.get-theme('light', 'shadow-color');
 $shdw-str: sd.get-theme('light', 'shadow-strength');
 
-html {lm
+html {
  // background: op.mix-hsl($shdw-color $shdw-str);
 }
 
