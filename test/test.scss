@@ -16,7 +16,7 @@ html {
 @media (prefers-color-scheme: dark) {
   :host {
     $shadow-color: sd.$shadow-c;
-    $shadow-color sd.$shadow-s;
+    $shadow-color: sd.$shadow-s;
   }
 }
 
