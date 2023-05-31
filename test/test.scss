@@ -8,14 +8,14 @@ html {
 }
 
 :host {
-  $shadow-color: op.$shadow-color;
-  $shadow-strength: op.$shadow-color;;
+  --shadow-color: op.$shadow-color;
+  --shadow-strength: op.$shadow-color;;
 }
 
 @media (prefers-color-scheme: dark) {
   :host {
-    $shadow-color: op.$shadow-c;
-    $shadow-color: op.$shadow-s;
+    --shadow-color: op.$shadow-c;
+    --shadow-color: op.$shadow-s;
   }
 }
 
