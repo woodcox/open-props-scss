@@ -1,10 +1,22 @@
-@use '../index' as op;
+@use '../index' as op with ($theme: dark) as shadows-dark;
 
 $shdw-color: op.get-theme('light', 'shadow-color');
 $shdw-str: op.get-theme('light', 'shadow-strength');
 
 html {
   background: op.mix-hsl($shdw-color $shdw-str);
+}
+
+:host {
+  $shadow-color: op.$shadow-color;
+  $shadow-strength: op.$shadow-color;;
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    $shadow-color;
+    $shadow-color;
+  }
 }
 
 .card {
