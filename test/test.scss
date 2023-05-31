@@ -1,11 +1,10 @@
-@use '../config/variables.scss' as sd with ($theme: dark);
-@use '../index' as op;
+@use '../index' as op with ($theme: dark);
 
 $shdw-color: op.get-theme('light', 'shadow-color');
 $shdw-str: op.get-theme('light', 'shadow-strength');
 
 html {
- // background: op.mix-hsl($shdw-color $shdw-str);
+ background: op.mix-hsl($shdw-color $shdw-str);
 }
 
 :host {
@@ -15,8 +14,8 @@ html {
 
 @media (prefers-color-scheme: dark) {
   :host {
-    $shadow-color: sd.$shadow-c;
-    $shadow-color: sd.$shadow-s;
+    $shadow-color: op.$shadow-c;
+    $shadow-color: op.$shadow-s;
   }
 }
 
