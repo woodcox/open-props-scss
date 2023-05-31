@@ -1,7 +1,7 @@
 @use '../index' as op;
 
-$shdw-color: op.get-shadow('light', 'shadow-color');
-$shdw-str: op.get-shadow('light', 'shadow-strength');
+$shdw-color: op.get-theme('light', 'shadow-color');
+$shdw-str: op.get-theme('light', 'shadow-strength');
 
 html {
   background: op.mix-hsl($shdw-color $shdw-str);
