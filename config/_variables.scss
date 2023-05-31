@@ -15,3 +15,12 @@ $selector-scope: (
   'host': ':host',
   'null': ''
 ) !default;
+
+$theme: light !default;
+$shadow-color:  220 3% 15% !default;
+$shadow-strength: 1% !default;
+
+@if $theme == dark {
+  $shadow-color:  220 40% 2% !default;
+  $shadow-strength: 25% !default;
+}
