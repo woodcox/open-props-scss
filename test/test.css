@@ -13,6 +13,17 @@ html {
   background: hsl(220 3% 15% 1%);
 }
 
+:host {
+  --shadow-color: op.$shadow-color;
+  --shadow-strength: op.$shadow-color;
+}
+
+@media (prefers-color-scheme: dark) {
+  :host {
+    --shadow-color: op.$shadow-c;
+    --shadow-color: op.$shadow-s;
+  }
+}
 .card {
   position: relative;
   width: 450px;
