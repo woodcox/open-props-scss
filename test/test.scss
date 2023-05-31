@@ -1,10 +1,10 @@
 @use '../index' as op;
-@use '../config/variables.scss' with ($theme: dark) as shadows-dark;
+@use '../config/variables.scss' as sd with ($theme: dark;);
 
 $shdw-color: op.get-theme('light', 'shadow-color');
 $shdw-str: op.get-theme('light', 'shadow-strength');
 
-html {
+html {lm
   background: op.mix-hsl($shdw-color $shdw-str);
 }
 
