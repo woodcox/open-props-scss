@@ -4,7 +4,7 @@ import Sizes from 'open-props/src/sizes';
 import Colors from 'open-props/src/colors';
 import ColorsHsl from 'open-props/src/colors-hsl';
 //import ColorsOklch from 'open-props/src/colors-oklch';
-//import ColorsOklchHues from 'open-props/src/colors-oklch-hues';
+import ColorsOklchHues from 'open-props/src/colors-oklch-hues';
 import Shadows from 'open-props/src/shadows';
 import Aspects from 'open-props/src/aspects';
 import Borders from 'open-props/src/borders';
@@ -33,7 +33,7 @@ const openPropFiles = {
   'colors': Colors,
   'colors-hsl': ColorsHsl,
   //'colors-oklch': ColorsOklch,
-  //'colors-oklch-hues': ColorsOklchHues,
+  'colors-oklch-hues': ColorsOklchHues,
   'shadows': Shadows,
   'aspects': Aspects,
   'borders': Borders,
