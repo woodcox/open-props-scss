@@ -26,7 +26,7 @@ jobs:
         
       - name: Npm Build
         if: env.UPDATE_NPM != 'true'
-        run: npm run build
+        run: npm run lib:js
         
       - name: Commit changes
         if: env.UPDATE_NPM != 'true'
