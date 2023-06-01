@@ -4,10 +4,10 @@
 // @param {...*} $args - The arguments representing the hue, saturation, lightness and alpha values.
 // @returns {String} - The constructed HSL/HSLA color as a string.
 
-@function mix-hsl($args...) {
+@function hsl-to-str($args...) {
   @return #{'hsl(#{$args})'};
 }
 
-@function mix-hsla($args...) {
-  @return mix-hsl($args...);
+@function hsla-to-str($args...) {
+  @return hsl-to-str($args...);
 }
