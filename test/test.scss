@@ -8,15 +8,15 @@ $shadow-str-dark: op.get-theme('dark', 'shadow-strength');
 
 
 :root {
-  --shadow-color: $shadow-color-light;
-  --shadow-strength: $shadow-str-light;
+  --shadow-color: #{$shadow-color-light};
+  --shadow-strength: #{$shadow-str-light;
   // ...
 }
 
 @media (prefers-color-scheme: dark) {
  :root {
-    --shadow-color: $shadow-color-dark;
-    --shadow-strength: $shadow-str-dark;
+   --shadow-color: #{$shadow-color-dark};
+   --shadow-strength: #{$shadow-str-dark};
     // ...
   }
 }
