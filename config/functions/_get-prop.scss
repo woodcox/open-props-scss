@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use '../variables' as _v;
+@use '../op-maps' as _m;
 
 // GET DEEP THEME FUNCTION
 // Retrieves nested theme values from the $op-theme map for the specified $theme.
@@ -11,7 +11,7 @@
 
 
 @function get-prop($theme, $key) {
-  $result: map.get(_v.$open-props-map, $theme, $key);
+  $result: map.get(_m.$open-props-map, $theme, $key);
 
   @if $result {
     @return $result;
