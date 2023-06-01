@@ -20,3 +20,23 @@
   
   @return null;
 }
+
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Key chain
+/// @return {*} - Desired value
+@function get-op-props($map, $keys...) {
+    @each $key in $keys {
+        $response: map-get($open-props-map, $key);
+    }
+    @return $response;
+}
+
+//  @if $get == null {
+//      @warn "Map has no value for key search `#{$warn}`";
+//    }
+//    @else if type-of($get) != 'map' {
+//      @warn "Non-map value found for key search `#{$warn}`, cannot search for key `#{$key}`";
+//    }
+//  }
+//  @return null;
+
