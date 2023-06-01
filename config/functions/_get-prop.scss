@@ -30,14 +30,14 @@
 /// @return {*} - Desired value to retrieve
 
 @function get-op-props($keys...) {
-    @each $key in $keys {
-        $get: map-get(_m.$open-props-map, $key);
-    }
-    @if $get {
-      @return $get;
-    }
-    @warn #{'Open props "' + $key + '" not found in op-maps.$open-props-map'};
+  @each $key in $keys {
+      $get: map-get(_m.$open-props-map, $key);
+  }
+  @if $get {
+    @return $get;
+  }
+  @warn #{'Open props "' + $key + '" not found in op-maps.$open-props-map'};
   
-    @return null;
+  @return null;
 }
 
