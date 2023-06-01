@@ -1,22 +1,22 @@
 @use '../index' as op with ($theme: dark);
 
-$shdw-color: op.get-theme('light', 'shadow-color');
-$shdw-str: op.get-theme('light', 'shadow-strength');
+$shadow-color-light: op.get-theme('light', 'shadow-color');
+$shadow-str-light: op.get-theme('light', 'shadow-strength');
 
-html {
- background: op.mix-hsl($shdw-color $shdw-str);
-}
+$shadow-color-dark: op.get-theme('dark', 'shadow-color');
+$shadow-str-dark: op.get-theme('dark', 'shadow-strength');
+
 
 :root {
-  --shadow-color: op.get-theme('light', 'shadow-color');
-  --shadow-strength: op.get-theme('light', 'shadow-strength');
+  --shadow-color: $shadow-color-light;
+  --shadow-strength: $shadow-str-light;
   // ...
 }
 
 @media (prefers-color-scheme: dark) {
  :root {
-    --shadow-color: op.get-theme('dark', 'shadow-color');
-    --shadow-strength: op.get-theme('dark', 'shadow-strength');
+    --shadow-color: $shadow-color-dark;
+    --shadow-strength: $shadow-str-dark;
     // ...
   }
 }
