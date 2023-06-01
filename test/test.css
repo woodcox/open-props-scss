@@ -31,7 +31,7 @@
   background-color: hsl(210, 18%, 96%);
   border-radius: 2px;
   border: 0;
-  box-shadow: var(--shadow-2);
+  box-shadow: 0 1px 2px -1px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 9%));
 }
 .card:hover {
   box-shadow: var(--shadow-3);
