@@ -12,6 +12,7 @@
 :root {
   --shadow-color: 220 3% 15%;
   --shadow-strength: 1%;
+  --shdw-2: 0 3px 5px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 3%)), 0 7px 14px -5px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 5%));
 }
 
 @media (prefers-color-scheme: dark) {
