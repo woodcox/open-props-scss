@@ -30,3 +30,11 @@ $shadows-map: (
     'inner-shadow-4': 'inset 0 2px 14px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%))'
   )
 ) !default;
+
+$open-props-map: (
+  'light': (),  
+  'dark': (),
+  'cssvar': ()
+) !default;
+
+map.deep-merge($open-props-map, $shadows-map)
