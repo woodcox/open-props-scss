@@ -33,6 +33,7 @@ $shadows-map: (
   )
 ) !default;
 
+// Merge all openPropFiles maps into one
 $open-props-map: map.deep-merge($shadows-map,
   (
     'light': (),  
