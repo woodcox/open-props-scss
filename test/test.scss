@@ -32,7 +32,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   background-color: hsl(op.$stone-1-hsl);
   border-radius: op.$radius-1;
   border: 0;
-  box-shadow: var(--shadow-2);
+  box-shadow: op.get-prop('cssvar', 'shadow-1');
 
   &:hover {
     box-shadow: var(--shadow-3);
