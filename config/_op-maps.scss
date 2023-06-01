@@ -9,6 +9,8 @@ $theme: light !default;
   $shadow-strength: 25% !default;
 }
 
+// For the cssvars - Must wrap the values in parentheses ()
+// See https://stackoverflow.com/questions/51792566/comma-inside-scss-map-value-box-shadow
 $shadows-map: (
   'light': (
     'shadow-color': 220 3% 15%,
