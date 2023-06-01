@@ -1,13 +1,13 @@
 @use 'sass:map';
 @use '../op-maps' as _m;
 
-// GET DEEP THEME FUNCTION
-// Retrieves nested theme values from the $op-theme map for the specified $theme.
-// Returns null if it can't find a match.
-//
-// @param {map} $op-theme - The map containing the theme values.
-// @param {string} $theme - The theme ('light' or 'dark')
-// @param {string} $keys - The key-value to retrieve.
+/// GET DEEP THEME FUNCTION
+/// Retrieves nested theme values from the `$open-props-map` map for the specified `$theme`.
+/// Returns null if it can't find a match.
+///
+/// @param {map} $open-props-map - The map containing the theme values.
+/// @param {string} $theme - The theme ('light', 'dark' or the 'cssvar')
+/// @param {string} $keys - The key-value to retrieve.
 
 
 @function get-prop($theme, $key) {
@@ -16,27 +16,28 @@
   @if $result {
     @return $result;
   }
-  @warn #{'Open props "' + $key + '" not found in $op-shadows for theme "' + $theme + '"'};
+  @warn #{'Open props "' + $key + '" not found in op-maps.$op-props-map for the "' + $theme + '" theme '};
   
   @return null;
 }
 
-/// @param {Map} $map - Map
-/// @param {Arglist} $keys - Key chain
-/// @return {*} - Desired value
-@function get-op-props($map, $keys...) {
-    @each $key in $keys {
-        $response: map-get($open-props-map, $key);
-    }
-    @return $response;
-}
+/// GET DEEP FUNCTION TO ANY DEPTH
+/// Retrieves nested values from the `$open-props-map` map.
+/// Returns null if it can't find a match.
+///
+/// @param {Map} $open-props-map - The map containing the values
+/// @param {Arglist} $keys - The theme ('light' or 'dark') or the 'cssvar', then the relevant prop. E.g - get-open-oprops('cssvar', 'shadow-1')
+/// @return {*} - Desired value to retrieve
 
-//  @if $get == null {
-//      @warn "Map has no value for key search `#{$warn}`";
-//    }
-//    @else if type-of($get) != 'map' {
-//      @warn "Non-map value found for key search `#{$warn}`, cannot search for key `#{$key}`";
-//    }
-//  }
-//  @return null;
+@function get-op-props($keys...) {
+    @each $key in $keys {
+        $get: map-get(_m.$open-props-map, $key);
+    }
+    @if $get {
+      @return $get;
+    }
+    @warn #{'Open props "' + $key + '" not found in op-maps.$open-props-map'};
+  
+    @return null;
+}
 
