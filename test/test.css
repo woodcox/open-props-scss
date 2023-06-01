@@ -10,14 +10,14 @@
   }
 }
 :root {
-  --shadow-color: $shadow-color-light;
-  --shadow-strength: $shadow-str-light;
+  --shadow-color: 220 3% 15%;
+  --shadow-strength: 1%;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --shadow-color: $shadow-color-dark;
-    --shadow-strength: $shadow-str-dark;
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
   }
 }
 .card {
