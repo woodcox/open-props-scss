@@ -14,7 +14,7 @@
   $result: map.get(_m.$open-props-map, $theme, $key);
 
   @if $result {
-    @return $result;
+    @return #${result};
   }
   @warn #{'Open props "' + $key + '" not found in op-maps.$op-props-map for the "' + $theme + '" theme '};
   
@@ -34,7 +34,7 @@
       $get: map-get(_m.$open-props-map, $key);
   }
   @if $get {
-    @return $get;
+    @return #{$get};
   }
   @warn #{'Open props "' + $key + '" not found in op-maps.$open-props-map'};
   
