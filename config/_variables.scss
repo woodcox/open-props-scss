@@ -31,4 +31,4 @@ $shadows-map: (
   )
 ) !default;
 
-$open-props-map: deep-merge($shadows-map) !default;
+$open-props-map: merge($shadows-map) !default;
