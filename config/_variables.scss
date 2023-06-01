@@ -37,4 +37,4 @@ $open-props-map: (
   'cssvar': ()
 ) !default;
 
-map.deep-merge($open-props-map, $shadows-map)
+map.deep-merge($open-props-map, $shadows-map);
