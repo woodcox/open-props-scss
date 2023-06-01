@@ -5,11 +5,12 @@ $shadow-str-light: op.get-prop('light', 'shadow-strength');
 
 $shadow-color-dark: op.get-prop('dark', 'shadow-color');
 $shadow-str-dark: op.get-prop('dark', 'shadow-strength');
-
+$shdw-2: op.get-prop('cssvar, 'shadow-2');
 
 :root {
   --shadow-color: #{$shadow-color-light};
   --shadow-strength: #{$shadow-str-light};
+  --shdw-2: #{$shdw-2};
   // ...
 }
 
