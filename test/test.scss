@@ -1,10 +1,10 @@
 @use '../index' as op with ($theme: dark);
 
-$shadow-color-light: op.get-theme('light', 'shadow-color');
-$shadow-str-light: op.get-theme('light', 'shadow-strength');
+$shadow-color-light: op.get-prop('light', 'shadow-color');
+$shadow-str-light: op.get-prop('light', 'shadow-strength');
 
-$shadow-color-dark: op.get-theme('dark', 'shadow-color');
-$shadow-str-dark: op.get-theme('dark', 'shadow-strength');
+$shadow-color-dark: op.get-prop('dark', 'shadow-color');
+$shadow-str-dark: op.get-prop('dark', 'shadow-strength');
 
 
 :root {
