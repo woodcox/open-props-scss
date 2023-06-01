@@ -10,7 +10,7 @@
 // @param {string} $keys - The key-value to retrieve.
 
 
-@function get-theme($theme, $key) {
+@function get-prop($theme, $key) {
   $result: map.get(_v.$op-theme, $theme, $key);
 
   @if $result {
