@@ -31,10 +31,4 @@ $shadows-map: (
   )
 ) !default;
 
-$open-props-map: (
-  'light': (),  
-  'dark': (),
-  'cssvar': ()
-) !default;
-
-map.deep-merge($open-props-map, $shadows-map);
+$open-props-map: map.deep-merge($shadows-map) !default;
