@@ -11,7 +11,7 @@
 
 
 @function get-prop($theme, $key) {
-  $result: map.get(_v.$op-theme, $theme, $key);
+  $result: map.get(_v.$open-props-map, $theme, $key);
 
   @if $result {
     @return $result;
