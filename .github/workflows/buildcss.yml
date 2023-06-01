@@ -6,7 +6,7 @@ on:
       
 # Conditional environmental if's      
 env:
-  UPDATE_NPM: false # false = deploy css , true = update npm
+  UPDATE_NPM: true # false = deploy css , true = update npm
 
 jobs:
   build_css:
@@ -18,15 +18,15 @@ jobs:
       - name: Set up Node.js 16.x
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18'
           # cache: 'npm'
 
       - name: Install dependencies
         run: npm install
         
-      - name: Npm Build
+      - name: Npm build
         if: env.UPDATE_NPM != 'true'
-        run: npm run lib:js
+        run: npm run build
         
       - name: Commit changes
         if: env.UPDATE_NPM != 'true'
