@@ -7,15 +7,17 @@ html {
  background: op.mix-hsl($shdw-color $shdw-str);
 }
 
-:host {
- --shadow-color: op.#{$shadow-color};
- --shadow-strength: op.#{$shadow-color};
+:root {
+  --shadow-color: op.get-theme('light', 'shadow-color');
+  --shadow-strength: op.get-theme('light', 'shadow-strength');
+  // ...
 }
 
 @media (prefers-color-scheme: dark) {
-  :host {
-   --shadow-color: op.#{$shadow-c};
-   --shadow-color: op.#{$shadow-s};
+ :root {
+    --shadow-color: op.get-theme('dark', 'shadow-color');
+    --shadow-strength: op.get-theme('dark', 'shadow-strength');
+    // ...
   }
 }
 
