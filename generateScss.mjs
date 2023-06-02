@@ -87,6 +87,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--shadow-', '');
       key = key.replace('--inner-shadow-', 'inner');
       value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}');
+      generatedScss += `${key}: ${value};\n`;
     });
   
   //=========================
