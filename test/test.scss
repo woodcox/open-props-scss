@@ -12,7 +12,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   box-shadow: op.shadow(1, dark);
 }
 
-@include op.configure(var(--my-shadow-color-hsl), 10%);
+@include op.custom-shadow(var(--my-shadow-color-hsl), 10%);
 
 :root {
   --my-shadow-color-hsl: 0 0% 0%;
