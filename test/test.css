@@ -8,16 +8,8 @@
   --shadow-strength: 25%;
 }
 
-.my-thing {
-  box-shadow: 0 1px 2px -1px Hsl(220 40% 2%/34%);
-}
-
 :root {
   --my-shadow-color-hsl: 0 0% 0%;
-}
-
-.my-thing {
-  box-shadow: 0 3px 5px -2px Hsl(var(--my-shadow-color-hsl)/13%), 0 7px 14px -5px Hsl(var(--my-shadow-color-hsl)/15%);
 }
 
 :root {
