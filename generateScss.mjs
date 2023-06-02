@@ -88,7 +88,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     const entries = Object.entries(importObj);
     
     for (let index = 0; index < entries.length; index++) {
-      const [key, value] = entries[index];
+      let [key, value] = entries[index];
     
       if (key.includes('@')) {
         continue; // Skip the key-value pair for anything containing @
