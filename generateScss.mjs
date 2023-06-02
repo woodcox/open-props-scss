@@ -154,9 +154,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       key = key.replace('--', '$');
       
-      // Exclude colors-hd and oklch-hues
+      //==================
+      // Exclude colors-hd
+      //==================
       if (typeof value === 'string' && value.includes('var(--')) {
-        if (moduleName !== 'colors-hd' && moduleName !== 'oklch-hues') {
+        if (moduleName !== 'colors-hd') {
           value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
         }
       }
