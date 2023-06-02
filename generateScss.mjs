@@ -94,7 +94,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         continue; // Skip the key-value pair for anything containing @
       }
       key = key.replace('--shadow-', '');
-      key = key.replace('--inner-shadow-', 'inner');
+      key = key.replace('--inner-shadow-', 'inner-');
       value = value.replace(/var\(--(.*?)\)/g, '$$$1');
       value = value.replace(/hsl/g, 'Hsl')
       mapKeyValue += `${key}: (${value})`;
