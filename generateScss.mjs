@@ -104,7 +104,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
     };
     
-    generatedScss += `$shadows-map: (${mapKeyValue})\n`;
+    generatedScss += `$shadows-map: (\n${mapKeyValue}\n)`;
   
   //=========================
   // All other Open Props
