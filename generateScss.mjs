@@ -102,7 +102,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (index < entries.length - 1) {
         mapKeyValue += ',\n '; // Add comma  and new linefor all entries except the last one
       }
-    });
+    };
     
     generatedScss += `$shadows-map: (${mapKeyValue})\n`;
   
