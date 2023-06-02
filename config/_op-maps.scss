@@ -22,8 +22,8 @@
 /// If the global variables are not set, it falls back to default values based on the 'light' or 'dark' theme
 
 @function shadow($level, $theme: light) {
-  $shadow-color: $-shadow-color or @if ($theme == dark { 220 40% 2% }, 220 3% 15%);
-  $shadow-strength: $-shadow-strength or @if ($theme == dark { 25% }, 1%);
+  $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);
+  $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);
 
   $shadows-map: (
     1: (0 1px 2px -1px Hsl($shadow-color / calc($shadow-strength + 9%))),
