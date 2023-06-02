@@ -83,6 +83,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
   //=========================
   } else if (moduleName.toLowerCase() === 'shadows') {
     
+    generatedScss += `$shadow-color: 220 3% 15% !default; $shadow-strength: 1% !default;`;
+    
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@')) {
         return; // Skip the key-value pair for anything containing @
