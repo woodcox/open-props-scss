@@ -84,6 +84,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'shadows') {
     
     Object.entries(importObj).forEach(([key, value]) => {
+      if (key.includes('@')) {
+        return; // Skip the key-value pair for anything containing @
+      }
       key = key.replace('--shadow-', '');
       key = key.replace('--inner-shadow-', 'inner');
       value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}');
