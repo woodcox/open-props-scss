@@ -1,5 +1,3 @@
-// very helpful - https://medium.com/beyn-technology/using-css-variables-in-scss-functions-9521be4de4e3
-
 import Sizes from 'open-props/src/sizes';
 import Colors from 'open-props/src/colors';
 import ColorsHsl from 'open-props/src/colors-hsl';
@@ -16,7 +14,7 @@ import Zindex from 'open-props/src/zindex';
 import MasksEdges from 'open-props/src/masks.edges';
 import MasksCornerCuts from 'open-props/src/masks.corner-cuts';
 import { CustomMedia as Media } from 'open-props/src/media';
-import Animations from 'open-props/src/animations';
+//import Animations from 'open-props/src/animations';
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -44,7 +42,7 @@ const openPropFiles = {
   'zindex': Zindex,
   'masks.edges': MasksEdges,
   'masks.corner-cuts': MasksCornerCuts,
-  'animations': Animations,
+  //'animations': Animations,
 };
 
 const writeSCSSModule = async (moduleName, content) => {
@@ -79,38 +77,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
       queryName = queryName.replace('--', '$');
       generatedScss += `${queryName}: '${processedQuery}';\n`;
     });
-    
-  //=========================
-  // Animations
-  //=========================  
-  } else if (moduleName.toLowerCase() === 'animations') {
-    generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n';
-    let animationsStr = '';
-    let keyframesStr = '';
-    let mediaStr = '';
-    
-    Object.entries(importObj).forEach(([key, value]) => {
-      if (key.includes('@media:dark')) {
-        key = key.replace(/--|@media:|animation-/g, '');
-        mediaStr += `@mixin ${key}{@media #{_mq.$OSdark} { ${value} }}\n`; // Create sass mixin for @media dark mode
-      } else if (value.includes('@keyframes')) {
-        key = key.replace(/--|-@|animation-/g, '');
-        keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
-      } else {
-        key = key.replace('--', '$');
-        const sassVar = value.replace(/var\(--(.*?)\)/g, 'var(#{_e.$$$1})'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        animationsStr += `${key}: ${sassVar};\n`;
-      }
-    });
-    generatedScss += `${animationsStr}${keyframesStr}\n${mediaStr}`;
   
   //=========================
   // Shadows
   //=========================
-  // Shadows uses hsl colors in '--shadow-color: 220 3% 15%;'. However when this is converted to a sass variable sass will throw an error because the sass variable is not split into $hue, $saturation and $lightness.
-  // Therefore must use dynamic css variables for shadows. This also affects the dark mode.
   } else if (moduleName.toLowerCase() === 'shadows') {
-    generatedScss = '@use "media" as _mq;\n';
     let darkMediaStr = '';
     let cssSassVarStr = '';
     
@@ -142,7 +113,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     const uniqueCssSass = [...new Set(cssSassVarStr.split(','))].join(',').replace(/,/g, ';');
     
     generatedScss += `:where(html) { ${uniqueCssSass} }\n`;
-    generatedScss += `@media #{_mq.$OSdark} { :where(html) { ${darkMediaStr} } }`;
+    generatedScss += `{ :where(html) { ${darkMediaStr} } }`;
   
   //=========================
   // All other Open Props
