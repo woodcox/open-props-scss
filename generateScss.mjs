@@ -3,7 +3,7 @@ import Colors from 'open-props/src/colors';
 import ColorsHsl from 'open-props/src/colors-hsl';
 import ColorsHd from 'open-props/src/props.colors-oklch.js';
 import OklchHues from 'open-props/src/props.colors-oklch-hues.js';
-import Shadows from 'open-props/src/shadows';
+import { StaticShadows as Shadows } from 'open-props/src/shadows';
 import Aspects from 'open-props/src/aspects';
 import Borders from 'open-props/src/borders';
 import Fonts from 'open-props/src/fonts';
@@ -82,38 +82,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // Shadows
   //=========================
   } else if (moduleName.toLowerCase() === 'shadows') {
-    let darkMediaStr = '';
-    let cssSassVarStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
-      if (key.includes('-@media:dark')) {
-        const mediaKey = key.replace(/--([^@]*)-@media:dark/, '--$1');
-        darkMediaStr += `${mediaKey}: ${value};`;
-      } else {
-        key = key.replace('--', '$');
-        generatedScss += `${key}: ${value};\n`;
-        
-        // Extract CSS variable names
-        const cssVarNames = value.match(/var\(--(.*?)\)/g)?.map((match) => match.match(/var\(--(.*?)\)/)[1]);
-        
-        if (cssVarNames && cssVarNames.length > 0) {
-          // Remove duplicates and empty string from cssVarNames 
-          const uniqueCssVarStr = [...new Set(cssVarNames)];
-          
-          // Create CSS: Sass key-value pairs and split using || as a delimiter
-          cssSassVarStr += uniqueCssVarStr
-            .map(varName => `--${varName}: #{$${varName}}||`)
-            .join('')
-            .split('||');
-        }
-      }
+      key = key.replace('--shadow-', '');
+      key = key.replace('--inner-shadow-', 'inner');
+      value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}');
     });
-
-    // Remove duplicates of all the CSS: sass key value pairs
-    const uniqueCssSass = [...new Set(cssSassVarStr.split(','))].join(',').replace(/,/g, ';');
-    
-    generatedScss += `:where(html) { ${uniqueCssSass} }\n`;
-    generatedScss += `:where(html) { ${darkMediaStr} }`;
   
   //=========================
   // All other Open Props
