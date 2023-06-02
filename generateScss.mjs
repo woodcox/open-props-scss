@@ -83,7 +83,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
   //=========================
   } else if (moduleName.toLowerCase() === 'shadows') {
     
-    generatedScss += `$shadow-color: 220 3% 15% !default; $shadow-strength: 1% !default;`;
+    generatedScss += `$shadow-color: 220 3% 15% !default;\n$shadow-strength: 1% !default;\n`;
+    let mapKeyValue = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@')) {
@@ -93,8 +94,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--inner-shadow-', 'inner');
       value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}');
       value = value.replace(/hsl/g, 'Hsl')
-      generatedScss += `$shadows-map: (${key}: (${value})\n);`;
+      mapKeyValue= `${key}: (${value})\n)`;
     });
+    
+    generatedScss += `$shadows-map: (${mapKeyValue}\n);`;
   
   //=========================
   // All other Open Props
