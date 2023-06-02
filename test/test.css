@@ -3,12 +3,11 @@
   --shadow-strength: 1%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :where(html) {
-    --shadow-color: 220 40% 2%;
-    --shadow-strength: 25%;
-  }
+:where(html) {
+  --shadow-color: 220 40% 2%;
+  --shadow-strength: 25%;
 }
+
 .my-thing {
   box-shadow: 0 1px 2px -1px Hsl(220 40% 2%/34%);
 }
