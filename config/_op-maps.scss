@@ -14,7 +14,8 @@ $-shadow-strength: null;
 
  $shadows: (
   1: 0 1px 2px -1px Hsl($shadow-color / calc($shadow-strength + 9%)),
-  2: // ...
+  2: (0 3px 5px -2px Hsl($shadow-color / calc($shadow-strength + 3%)),
+    0 7px 14px -5px Hsl($shadow-color / calc($shadow-strength + 5%)))
  );
 
  @return map.get($shadows, $level);
