@@ -113,7 +113,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     const uniqueCssSass = [...new Set(cssSassVarStr.split(','))].join(',').replace(/,/g, ';');
     
     generatedScss += `:where(html) { ${uniqueCssSass} }\n`;
-    generatedScss += `{ :where(html) { ${darkMediaStr} } }`;
+    generatedScss += `{ :where(html) { ${darkMediaStr} }`;
   
   //=========================
   // All other Open Props
