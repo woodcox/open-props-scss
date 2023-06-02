@@ -1,25 +1,47 @@
 @use 'sass:map';
 
-$-shadow-color: null;
-$-shadow-strength: null;
+/// REPLACE-SHADOW MIXIN
+/// Configures the global variables for shadow color and strength.
+/// Allows overriding the default values with custom values.
+///
+/// @param {Color} $shadow-color - The custom shadow color value. Defaults to null.
+/// @param {Number} $shadow-strength - The custom shadow strength value. Defaults to null.
 
 @mixin configure($shadow-color: null, $shadow-strength: null) {
- $-shadow-color: $shadow-color !global;
- $-shadow-strength: $shadow-strength !global;
+  $-shadow-color: $shadow-color !global;
+  $-shadow-strength: $shadow-strength !global;
 }
+
+/// SHADOW FUNCTION
+/// Generates a shadow value based on the provided level and theme.
+///
+/// @param {Number or String} $level - The level of the shadow.
+/// @param {String} $theme - The theme ('light' or 'dark'). Defaults to 'light'.
+/// @returns {List} - The shadow value for the specified level and theme.
+/// It uses the global variables $-shadow-color and $-shadow-strength to determine the shadow color and strength. 
+/// If the global variables are not set, it falls back to default values based on the theme ('light' or 'dark')
 
 @function shadow($level, $theme: light) {
- $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);
- $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%); 
+  $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);
+  $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);
 
- $shadows: (
-  1: 0 1px 2px -1px Hsl($shadow-color / calc($shadow-strength + 9%)),
-  2: (0 3px 5px -2px Hsl($shadow-color / calc($shadow-strength + 3%)),
-    0 7px 14px -5px Hsl($shadow-color / calc($shadow-strength + 5%)))
- );
+  $shadows: (
+    '1': 0 1px 2px -1px Hsl($shadow-color / calc($shadow-strength + 9%)),
+    '2': (0 3px 5px -2px Hsl($shadow-color / calc($shadow-strength + 3%)), 0 7px 14px -5px Hsl($shadow-color / calc($shadow-strength + 5%)))
+    '3': (0 -1px 3px 0 Hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)), 0 1px 2px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)), 0 2px 5px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)), 0 4px 12px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)), 0 12px 15px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%))),
+    '4': (0 -2px 5px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)), 0 1px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)), 0 2px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)), 0 5px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)), 0 9px 9px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)), 0 16px 16px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%))),
+    '5': (0 -1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)), 0 2px 1px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)), 0 5px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)), 0 10px 10px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)), 0 20px 20px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)), 0 40px 40px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%))),
+    '6': (0 -1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 2%)), 0 3px 2px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)), 0 7px 5px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 3%)), 0 12px 10px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 4%)), 0 22px 18px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 5%)), 0 41px 33px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 6%)), 0 100px 80px -2px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 7%))),
+    'inner-shadow-0': (inset 0 0 0 1px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%))),
+    'inner-shadow-1': (inset 0 1px 2px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%))),
+    'inner-shadow-2': (inset 0 1px 4px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%))),
+    'inner-shadow-3': (inset 0 2px 8px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%))),
+    'inner-shadow-4': (inset 0 2px 14px 0 hsl(var(--shadow-color) / calc(var(--shadow-strength) + 9%)))
+  );
 
- @return map.get($shadows, $level);
+  @return map.get($shadows, $level);
 }
+
 
 // For the cssvars - Must wrap the values in parentheses ()
 // See https://stackoverflow.com/questions/51792566/comma-inside-scss-map-value-box-shadow
