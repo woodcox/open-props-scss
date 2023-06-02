@@ -1,4 +1,4 @@
-@use '../index' as op with ($theme: dark);
+@use '../index' as op;
 
 $shadow-color-light: op.get-prop('light', 'shadow-color');
 $shadow-str-light: op.get-prop('light', 'shadow-strength');
@@ -6,6 +6,24 @@ $shadow-str-light: op.get-prop('light', 'shadow-strength');
 $shadow-color-dark: op.get-prop('dark', 'shadow-color');
 $shadow-str-dark: op.get-prop('dark', 'shadow-strength');
 $shdw-2: op.get-prop('cssvar', 'shadow-2');
+
+
+.my-thing {
+  box-shadow: $op.shadow(2, dark);
+}
+
+@include op.configure(
+  $shadow-color: var(--my-shadow-color-hsl),
+  $shadow-strength: 10%
+);
+
+:root {
+  --my-shadow-color-hsl: 0 0% 0%;
+}
+
+.my-thing {
+  box-shadow: $shadows.shadow(2);
+}
 
 :root {
   --shadow-color: #{$shadow-color-light};
