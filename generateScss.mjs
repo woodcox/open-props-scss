@@ -94,7 +94,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--inner-shadow-', 'inner');
       value = value.replace(/var\(--(.*?)\)/g, '$$$1');
       value = value.replace(/hsl/g, 'Hsl')
-      mapKeyValue= `${key}: (${value})`;
+      mapKeyValue += `${key}: (${value})`;
     });
     
     generatedScss += `$shadows-map: (${mapKeyValue})\n`;
