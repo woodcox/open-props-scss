@@ -85,6 +85,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     generatedScss += `$shadow-color: 220 3% 15% !default;\n$shadow-strength: 1% !default;\n`;
     let mapKeyValue = '';
+    let index = 0;
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@')) {
