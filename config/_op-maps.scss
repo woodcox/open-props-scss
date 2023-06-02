@@ -25,7 +25,7 @@
   $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);
   $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);
 
-  $shadows-map: (
+  $-shadows-map: (
     1: (0 1px 2px -1px Hsl($shadow-color / calc($shadow-strength + 9%))),
     2: (0 3px 5px -2px Hsl($shadow-color / calc($shadow-strength + 3%)), 0 7px 14px -5px Hsl($shadow-color / calc($shadow-strength + 5%))),
     3: (0 -1px 3px 0 Hsl($shadow-color / calc($shadow-strength + 2%)), 0 1px 2px -5px Hsl($shadow-color / calc($shadow-strength + 2%)), 0 2px 5px -5px Hsl($shadow-color / calc($shadow-strength + 4%)), 0 4px 12px -5px Hsl($shadow-color / calc($shadow-strength + 5%)), 0 12px 15px -5px Hsl($shadow-color / calc($shadow-strength + 7%))),
@@ -39,13 +39,13 @@
     'inner-4': (inset 0 2px 14px 0 Hsl($shadow-color / calc($shadow-strength + 9%)))
   );
 
-  @return map.get($shadows-map, $level);
+  @return map.get($-shadows-map, $level);
 }
 
 
 // Must wrap the values in parentheses ()
 // See https://stackoverflow.com/questions/51792566/comma-inside-scss-map-value-box-shadow
-$shadows-map: (
+$--shadows-map: (
   'light': (
     'shadow-color': 220 3% 15%,
     'shadow-strength': 1%
@@ -70,7 +70,7 @@ $shadows-map: (
 ) !default;
 
 // Merge all openPropFiles maps into one
-$open-props-map: map.deep-merge($shadows-map,
+$open-props-map: map.deep-merge($--shadows-map,
   (
     'light': (),  
     'dark': (),
