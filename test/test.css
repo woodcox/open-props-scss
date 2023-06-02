@@ -10,7 +10,7 @@
   }
 }
 .my-thing {
-  box-shadow: 0 3px 5px -2px Hsl(220 40% 2%/28%), 0 7px 14px -5px Hsl(220 40% 2%/30%);
+  box-shadow: 0 1px 2px -1px Hsl(220 40% 2%/34%);
 }
 
 :root {
