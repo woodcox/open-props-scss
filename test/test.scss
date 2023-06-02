@@ -9,7 +9,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 
 
 .my-thing {
-  box-shadow: $op.shadow(2, dark);
+  box-shadow: op.shadow(2, dark);
 }
 
 @include op.configure(
