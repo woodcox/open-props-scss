@@ -27,7 +27,7 @@
 
   $shadows-map: (
     '1': (0 1px 2px -1px Hsl($shadow-color / calc($shadow-strength + 9%))),
-    '2': (0 3px 5px -2px Hsl($shadow-color / calc($shadow-strength + 3%)), 0 7px 14px -5px Hsl($shadow-color / calc($shadow-strength + 5%)))
+    '2': (0 3px 5px -2px Hsl($shadow-color / calc($shadow-strength + 3%)), 0 7px 14px -5px Hsl($shadow-color / calc($shadow-strength + 5%))),
     '3': (0 -1px 3px 0 Hsl($shadow-color / calc($shadow-strength + 2%)), 0 1px 2px -5px Hsl($shadow-color / calc($shadow-strength + 2%)), 0 2px 5px -5px Hsl($shadow-color / calc($shadow-strength + 4%)), 0 4px 12px -5px Hsl($shadow-color / calc($shadow-strength + 5%)), 0 12px 15px -5px Hsl($shadow-color / calc($shadow-strength + 7%))),
     '4': (0 -2px 5px 0 Hsl($shadow-color / calc($shadow-strength + 2%)), 0 1px 1px -2px Hsl($shadow-color / calc($shadow-strength + 3%)), 0 2px 2px -2px Hsl($shadow-color / calc($shadow-strength + 3%)), 0 5px 5px -2px Hsl($shadow-color / calc($shadow-strength + 4%)), 0 9px 9px -2px Hsl($shadow-color / calc($shadow-strength + 5%)), 0 16px 16px -2px Hsl($shadow-color / calc($shadow-strength + 6%))),
     '5': (0 -1px 2px 0 Hsl($shadow-color / calc($shadow-strength + 2%)), 0 2px 1px -2px Hsl($shadow-color / calc($shadow-strength + 3%)), 0 5px 5px -2px Hsl($shadow-color / calc($shadow-strength + 3%)), 0 10px 10px -2px Hsl($shadow-color / calc($shadow-strength + 4%)), 0 20px 20px -2px Hsl($shadow-color / calc($shadow-strength + 5%)), 0 40px 40px -2px Hsl($shadow-color / calc($shadow-strength + 7%))),
