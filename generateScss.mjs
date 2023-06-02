@@ -85,11 +85,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     generatedScss += `$shadow-color: 220 3% 15% !default;\n$shadow-strength: 1% !default;\n`;
     let mapKeyValue = '';
-    let index = 0;
+    const entries = Object.entries(importObj);
     
-    Object.entries(importObj).forEach(([key, value]) => {
+    for (let index = 0; index < entries.length; index++) {
+      const [key, value] = entries[index];
+    
       if (key.includes('@')) {
-        return; // Skip the key-value pair for anything containing @
+        continue; // Skip the key-value pair for anything containing @
       }
       key = key.replace('--shadow-', '');
       key = key.replace('--inner-shadow-', 'inner');
