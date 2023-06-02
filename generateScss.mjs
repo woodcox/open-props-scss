@@ -92,12 +92,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       key = key.replace('--shadow-', '');
       key = key.replace('--inner-shadow-', 'inner');
-      value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}');
+      value = value.replace(/var\(--(.*?)\)/g, '$$$1');
       value = value.replace(/hsl/g, 'Hsl')
-      mapKeyValue= `${key}: (${value})\n`;
+      mapKeyValue= `${key}: (${value})`;
     });
     
-    generatedScss += `$shadows-map: (${mapKeyValue}\n)`;
+    generatedScss += `$shadows-map: (${mapKeyValue})\n`;
   
   //=========================
   // All other Open Props
