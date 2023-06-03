@@ -76,6 +76,20 @@ const generateSCSSModule = async (moduleName, importObj) => {
       queryName = queryName.replace('--', '$');
       generatedScss += `${queryName}: '${processedQuery}';\n`;
     });
+    
+  // -------
+  // HD Colors
+  // -------
+  } else if (moduleName.toLowerCase() === 'colors-hd') {
+    generatedScss = '$color-hue: 1 !default;\n';
+
+    Object.entries(importObj).forEach(([key, value]) => {
+      key = key.replace('--', '$');
+      value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}');
+      value = value.replace(/oklch/g, 'Oklch');
+      
+      generatedScss += `${key}: ${value};\n`;
+    });
   
   // -------
   // Shadows
@@ -157,13 +171,8 @@ $-shadow-strength: null;
       }
       key = key.replace('--', '$');
       
-     
       if (typeof value === 'string' && value.includes('var(--')) {
         value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
-        if (moduleName == 'colors-hd') {
-          generatedScss += `$color-hue: 1 !default;\n`
-          value = value.replace(/oklch/g, 'Oklch');
-        }
       }
       
       generatedScss += `${key}: ${value};\n`;
