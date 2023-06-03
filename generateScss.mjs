@@ -106,6 +106,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (key.includes('strength-@media:dark')) {
         darkStrength = value;
       }
+      
+      if (key.includes('@')) {
+        continue;
+      }  
 
       key = key.replace('--shadow-', '');
       if (key.includes('--inner-shadow-')) {
