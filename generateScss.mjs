@@ -161,7 +161,7 @@ $-shadow-strength: null;
       if (typeof value === 'string' && value.includes('var(--')) {
         value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
         if (moduleName == 'colors-hd') {
-          generatedScss += `$color-hue = 1 !default;\n`
+          generatedScss += `$color-hue: 1 !default;\n`
           value = value.replace(/oklch/g, 'Oklch');
         }
       }
