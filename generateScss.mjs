@@ -123,8 +123,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
         $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);\n
         $shadows-map: (\n
           ${mapKeyValue}\n
-        );/n
-        /n
+        );\n
+        \n
         @return map.get($shadows-map, $level);\n
       }`;
     
