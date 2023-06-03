@@ -118,7 +118,7 @@ $-shadow-strength: null;
    $-shadow-strength: $shadow-strength !global;
  }
  
- @function shadow($level, $theme: light, $shadow-color: null, $shadow-strength: null) {
+ @function shadow($level, $theme: light, $-shadow-color: null, $-shadow-strength: null) {
    $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);
    $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);
    $shadows-map: (
