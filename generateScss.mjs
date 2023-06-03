@@ -83,27 +83,42 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'shadows') {
     
     generatedScss += `$shadow-color: 220 3% 15% !default;\n$shadow-strength: 1% !default;\n`;
-    let mapKeyValue = '';
+    
+    let mapKeysValues = '';
+    let lightColor = '';
+    let lightStrength = '';
+    let darkColor = '';
+    let darkStrength = '';
     const entries = Object.entries(importObj);
     
     for (let index = 0; index < entries.length; index++) {
       let [key, value] = entries[index];
-    
-      if (key.includes('@')) {
-        continue; // Skip the key-value pair for anything containing @
+      
+      if (key == '--shadow-color') {
+        lightColor = value;
+      }    
+      if (key == '--shadow-strength') {
+        lightStrength = value;
       }
+      if (key.includes('color-@media:dark')) {
+        darkColor = value;
+      }    
+      if (key.includes('strength-@media:dark')) {
+        darkStrength = value;
+      }
+
       key = key.replace('--shadow-', '');
       if (key.includes('--inner-shadow-')) {
-        key = key.replace('--inner-shadow-', '\'inner-'); // Add single quote before 'inner-'
-        key = key.replace(/$/, '\''); // Add single quote at the end
+        key = key.replace('--inner-shadow-', '\'inner-');
+        key = key.replace(/$/, '\'');
       }
      
       value = value.replace(/var\(--(.*?)\)/g, '$$$1');
       value = value.replace(/hsl/g, 'Hsl')
-      mapKeyValue += `${key}: (${value})`;
+      mapKeysValues += `${key}: (${value})`;
       
       if (index < entries.length - 1) {
-        mapKeyValue += ',\n '; // Add comma  and new linefor all entries except the last one
+        mapKeysValues += ',\n '; // Add comma and new line for all entries except the last one
       }
     };
     
@@ -119,10 +134,10 @@ $-shadow-strength: null;
  }
  
  @function shadow($level, $theme: light) {
-   $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);
+   $shadow-color: $-shadow-color or if($theme == dark, ${darkColor}, 220 3% 15%);
    $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);
    $shadows-map: (
-     ${mapKeyValue}
+     ${mapKeysValues}
    );
    
    @return map.get($shadows-map, $level);
