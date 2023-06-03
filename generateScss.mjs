@@ -108,6 +108,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
     };
     
     generatedScss += `
+      @use 'sass:map';\n
+      \n
       $-shadow-color: null;\n
       $-shadow-strength: null;\n
       \n
@@ -119,10 +121,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
       @function shadow($level, $theme: light) {\n
         $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);\n
         $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);\n
-        $shadows-map: (\n${mapKeyValue}\n);
-      
-      @return map.get($shadows-map, $level);\n
-    }`;
+        $shadows-map: (\n
+          ${mapKeyValue}\n
+        );/n
+        /n
+        @return map.get($shadows-map, $level);\n
+      }`;
     
   // --------------------
   // All other Open Props
