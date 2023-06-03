@@ -82,8 +82,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // -------
   } else if (moduleName.toLowerCase() === 'shadows') {
     
-    //generatedScss += `$shadow-color: 220 3% 15% !default;\n$shadow-strength: 1% !default;\n`;
-    
     let mapKeysValues = '';
     let lightColor = '';
     let lightStrength = '';
@@ -163,6 +161,7 @@ $-shadow-strength: null;
       if (typeof value === 'string' && value.includes('var(--')) {
         value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
         if (moduleName == 'colors-hd') {
+          generatedScss += `$color-hue = null;`
           value = value.replace(/oklch/g, 'Oklch');
         }
       }
