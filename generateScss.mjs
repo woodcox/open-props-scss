@@ -113,12 +113,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
 $-shadow-color: null;
 $-shadow-strength: null;
 
- @mixin custom-shadow($shadow-color: null, $shadow-strength: null) {
+ @mixin apply-shadows($shadow-color: null, $shadow-strength: null) {
    $-shadow-color: $shadow-color !global;
    $-shadow-strength: $shadow-strength !global;
  }
  
- @function shadow($level, $theme: light) {
+ @function get-shadow($level, $theme: light) {
    $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);
    $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);
    $shadows-map: (
