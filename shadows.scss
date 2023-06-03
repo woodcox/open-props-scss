@@ -1,7 +1,35 @@
 $shadow-color: 220 3% 15% !default;
 $shadow-strength: 1% !default;
-$shadows-map: (
-1: (0 1px 2px -1px Hsl($shadow-color / calc($shadow-strength + 9%))),
+
+      @use 'sass:map';
+
+      
+
+      $-shadow-color: null;
+
+      $-shadow-strength: null;
+
+      
+
+      @mixin custom-shadow($shadow-color: null, $shadow-strength: null) {
+
+        $-shadow-color: $shadow-color !global;
+
+        $-shadow-strength: $shadow-strength !global;
+
+      }
+
+      
+
+      @function shadow($level, $theme: light) {
+
+        $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);
+
+        $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);
+
+        $shadows-map: (
+
+          1: (0 1px 2px -1px Hsl($shadow-color / calc($shadow-strength + 9%))),
  2: (
     0 3px 5px -2px Hsl($shadow-color / calc($shadow-strength + 3%)),
     0 7px 14px -5px Hsl($shadow-color / calc($shadow-strength + 5%))),
@@ -38,4 +66,11 @@ $shadows-map: (
  'inner-2': (inset 0 1px 4px 0 Hsl($shadow-color / calc($shadow-strength + 9%))),
  'inner-3': (inset 0 2px 8px 0 Hsl($shadow-color / calc($shadow-strength + 9%))),
  'inner-4': (inset 0 2px 14px 0 Hsl($shadow-color / calc($shadow-strength + 9%)))
-)
+
+        );
+
+        
+
+        @return map.get($shadows-map, $level);
+
+      }
