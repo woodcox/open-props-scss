@@ -86,7 +86,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}');
-      value = value.replace(/oklch/g, 'oklch');
       
       generatedScss += `${key}: ${value};\n`;
     });
