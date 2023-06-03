@@ -129,8 +129,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
     };
     
-    generatedScss += `
-@use 'sass:map';
+    generatedScss += `@use 'sass:map';
 
 $-shadow-color: null;
 $-shadow-strength: null;
