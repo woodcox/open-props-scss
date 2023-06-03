@@ -53,10 +53,9 @@ const writeSCSSModule = async (moduleName, content) => {
 const generateSCSSModule = async (moduleName, importObj) => {
   let generatedScss = '';
   
-//=========================
-// Aspects
-//=========================
-
+  // -------
+  // Aspects
+  // -------
   if (moduleName.toLowerCase() === 'aspects') {
     generatedScss = '@use "sass:list";\n';
 
@@ -68,9 +67,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${key}: ${value};\n`;
     });
     
-  //=========================
+  // -----
   // Media
-  //=========================
+  // -----
   } else if (moduleName.toLowerCase() === 'media') {
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
@@ -78,9 +77,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${queryName}: '${processedQuery}';\n`;
     });
   
-  //=========================
+  // -------
   // Shadows
-  //=========================
+  // -------
   } else if (moduleName.toLowerCase() === 'shadows') {
     
     generatedScss += `$shadow-color: 220 3% 15% !default;\n$shadow-strength: 1% !default;\n`;
@@ -94,7 +93,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         continue; // Skip the key-value pair for anything containing @
       }
       key = key.replace('--shadow-', '');
-      key = key.replace('--inner-shadow-', 'inner-');
+      key = key.replace('--inner-shadow-', '\'inner-');
       value = value.replace(/var\(--(.*?)\)/g, '$$$1');
       value = value.replace(/hsl/g, 'Hsl')
       mapKeyValue += `${key}: (${value})`;
@@ -106,9 +105,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     generatedScss += `$shadows-map: (\n${mapKeyValue}\n)`;
   
-  //=========================
+  // --------------------
   // All other Open Props
-  //=========================
+  // --------------------
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@')) {
@@ -116,9 +115,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       key = key.replace('--', '$');
       
-      //==================
-      // Exclude colors-hd
-      //==================
+     
+      // Exclude colors-hd for time being
       if (typeof value === 'string' && value.includes('var(--')) {
         if (moduleName !== 'colors-hd') {
           value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
