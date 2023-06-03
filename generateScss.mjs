@@ -109,7 +109,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       
       if (key.includes('@')) {
         continue; // skip for the other loops
-      }  
+      }
+      if (value == '1%' || value == '220 3% 15%') {
+        continue; // skip for the other loops
+      } 
 
       key = key.replace('--shadow-', '');
       if (key.includes('--inner-shadow-')) {
