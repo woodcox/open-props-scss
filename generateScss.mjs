@@ -160,10 +160,10 @@ $-shadow-strength: null;
       key = key.replace('--', '$');
       
      
-      // Exclude colors-hd for time being
       if (typeof value === 'string' && value.includes('var(--')) {
-        if (moduleName !== 'colors-hd') {
-          value = value.replace(/oklch/g, 'Oklch'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
+        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
+        if (moduleName == 'colors-hd') {
+          value = value.replace(/oklch/g, 'Oklch');
         }
       }
       
