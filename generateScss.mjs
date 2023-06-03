@@ -107,8 +107,23 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
     };
     
-    generatedScss += `$shadows-map: (\n${mapKeyValue}\n)`;
-  
+    generatedScss += `
+      $-shadow-color: null;\n
+      $-shadow-strength: null;\n
+      \n
+      @mixin custom-shadow($shadow-color: null, $shadow-strength: null) {\n
+        $-shadow-color: $shadow-color !global;\n
+        $-shadow-strength: $shadow-strength !global;\n
+      }\n
+      \n
+      @function shadow($level, $theme: light) {\n
+        $shadow-color: $-shadow-color or if($theme == dark, 220 40% 2%, 220 3% 15%);\n
+        $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);\n
+        $shadows-map: (\n${mapKeyValue}\n)
+      }\n
+      @return map.get($shadows-map, $level);\n
+    }`;
+    
   // --------------------
   // All other Open Props
   // --------------------
