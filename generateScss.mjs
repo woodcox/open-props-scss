@@ -82,7 +82,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // -------
   } else if (moduleName.toLowerCase() === 'shadows') {
     
-    generatedScss += `$shadow-color: 220 3% 15% !default;\n$shadow-strength: 1% !default;\n`;
+    //generatedScss += `$shadow-color: 220 3% 15% !default;\n$shadow-strength: 1% !default;\n`;
     
     let mapKeysValues = '';
     let lightColor = '';
@@ -108,7 +108,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       
       if (key.includes('@')) {
-        continue;
+        continue; // skip for the other loops
       }  
 
       key = key.replace('--shadow-', '');
@@ -138,8 +138,8 @@ $-shadow-strength: null;
  }
  
  @function shadow($level, $theme: light) {
-   $shadow-color: $-shadow-color or if($theme == dark, ${darkColor}, 220 3% 15%);
-   $shadow-strength: $-shadow-strength or if($theme == dark, 25%, 1%);
+   $shadow-color: $-shadow-color or if($theme == dark, ${darkColor}, ${lightColor});
+   $shadow-strength: $-shadow-strength or if($theme == dark, ${darkStrength}, ${lightStrength});
    $shadows-map: (
      ${mapKeysValues}
    );
