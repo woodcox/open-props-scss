@@ -97,7 +97,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // Gray HD Color Shades
   // -------
   } else if (lowerModName === 'gray-oklch') {
-    generatedScss = '$gray-hue: 1 !default;\n$gray-chroma: 0 !default;\n$hd-opacity: 0 !default';
+    generatedScss = '$gray-hue: 1 !default;\n$gray-chroma: 0 !default;\n$hd-opacity: 0 !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$hd-'); // prevent naming conflict with the grays in colors module
