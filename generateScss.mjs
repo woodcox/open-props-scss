@@ -59,7 +59,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // -------
   // Aspects
   // -------
-  if (moduleName.toLowerCase() === 'aspects') {
+  if (lowerModName === 'aspects') {
     generatedScss = '@use "sass:list";\n';
 
     Object.entries(importObj).forEach(([key, value]) => {
@@ -73,7 +73,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // -----
   // Media
   // -----
-  } else if (moduleName.toLowerCase() === 'media') {
+  } else if (lowerModName === 'media') {
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
       queryName = queryName.replace('--', '$');
@@ -87,7 +87,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     if (lowerModName === 'colors-hd') { 
       generatedScss = '$color-hue: 1 !default;\n$opacity: 0 !default;\n';
     } else { generatedScss = '$gray-hue: 1 !default;\n$gray-chroma: 0 !default;\n';
-    Object.entries(importObj).forEach(([key, value]) => {
+           } Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1} / #{$$opacity}');
       
@@ -97,7 +97,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // -------
   // Shadows
   // -------
-  } else if (moduleName.toLowerCase() === 'shadows') {
+  } else if (lowerModName === 'shadows') {
     
     let mapKeysValues = '';
     let lightColor = '';
@@ -121,12 +121,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (key.includes('strength-@media:dark')) {
         darkStrength = value;
       }
-      
-      if (key.includes('@')) {
-        continue; // skip dark for the other loops
-      }
-      if (key == '--shadow-color' || key == '--shadow-strength') {
-        continue; // skip light for the other loops
+      if (key == '--shadow-color' || key == '--shadow-strength' || key.includes('@')) {
+        continue; // skip light and dark for the other loops
       } 
 
       key = key.replace('--shadow-', '');
