@@ -100,7 +100,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss = '$gray-hue: 1 !default;\n$gray-chroma: 0 !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
-      key = key.replace('--', '$hd-');
+      key = key.replace('--', '$hd-'); // prevent naming conflict with the grays in colors module
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1} / $2');
       
       generatedScss += `${key}: ${value};\n`;
