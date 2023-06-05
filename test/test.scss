@@ -1,4 +1,5 @@
 @use '../index' as op;
+@use sass:color as c;
 
 $shadow-color-light: op.get-prop('light', 'shadow-color');
 $shadow-str-light: op.get-prop('light', 'shadow-strength');
@@ -21,7 +22,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 .my-thing {
   box-shadow: op.shadow(2);
   background: oklch(100% 0 0);
-  color: alpha(hsl(op.$gray-0-hsl), 0.2);
+  color: c.alpha(hsl(op.$gray-0-hsl), 0.2);
 }
 
 :root {
