@@ -39,4 +39,15 @@
   box-shadow: var(--shadow-3);
 }
 
+/**
+ * hd-color Function
+ *
+ * Generates HD color variations based on the provided hue and opacity values.
+ * Supports CSS custom properties for flexibility.
+ *
+ * @param {Number} $color-hue - The hue value for the color. Defaults to 0.
+ * @param {Number} $opacity - The opacity value for the color. Defaults to 0.
+ * @returns {Color} - The HD color value.
+ */
+
 /*# sourceMappingURL=test.css.map */
