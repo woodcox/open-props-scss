@@ -84,7 +84,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // HD Colors
   // -------
   } else if (lowerModName === 'colors-hd') {
-    generatedScss = '$color-hue: 1 !default;\n$opacity: 0 !default;\n';
+    generatedScss = '$color-hue: 0 !default;\n$opacity: 0 !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$');
@@ -97,7 +97,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // HD Gray Shades
   // -------
   } else if (lowerModName === 'gray-oklch') {
-    generatedScss = '$gray-hue: 1 !default;\n$gray-chroma: 0 !default;\n$gray-opacity: 0 !default;\n';
+    generatedScss = '$gray-hue: null !default;\n$gray-chroma: null !default;\n$gray-opacity: 0 !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$hd-'); // prevent naming conflict with the grays in colors module
