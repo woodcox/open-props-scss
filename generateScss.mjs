@@ -84,11 +84,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // HD Colors
   // -------
   } else if (lowerModName === 'colors-hd') {
-    generatedScss = '$color-hue: 0 !default;\n$opacity: 0 !default;\n';
+    generatedScss = '$color-hue: 0 !default;\n$hd-opacity: 0 !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1} / #{$$opacity}');
+      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1} / #{$$hd-opacity}');
 
       generatedScss += `${key}: ${value};\n`;
     });
