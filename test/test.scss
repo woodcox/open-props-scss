@@ -22,7 +22,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 .my-thing {
   box-shadow: op.shadow(2);
   background: oklch(100% 0 0);
-  color: c.alpha(hsl($gray-1-hsl), 10%);
+  color: c.alpha(hsl(op.$gray-1-hsl), 10%);
 }
 
 :root {
