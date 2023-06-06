@@ -21,8 +21,8 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 
 .my-thing {
   box-shadow: op.shadow(2);
-  background: opacity(hsl, (100% 0 0), 50%;
-  color: opacity(hsl, op.$stone-1-hsl, 50%;
+  background: opacity(hsl, (100% 0 0), 50%);
+  color: opacity(hsl, op.$stone-1-hsl, 50%);
 }
 
 :root {
