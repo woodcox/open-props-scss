@@ -1,0 +1,65 @@
+@use 'sass:map';
+@use '../op-maps' as _m;
+
+/// GET DEEP THEME FUNCTION
+/// Retrieves nested theme values from the `$open-props-map` map for the specified `$theme`.
+/// Returns null if it can't find a match.
+///
+/// @param {map} $open-props-map - The map containing the theme values.
+/// @param {string} $theme - The theme ('light', 'dark' or the 'cssvar')
+/// @param {string} $keys - The key-value to retrieve.
+
+
+@function get-prop($theme, $key) {
+  $result: map.get(_m.$open-props-map, $theme, $key);
+
+  @if $result {
+    @return #{$result};
+  }
+  @warn #{'Open props "' + $key + '" not found in op-maps.$op-props-map for the "' + $theme + '" theme '};
+  
+  @return null;
+}
+
+/// GET DEEP FUNCTION TO ANY DEPTH
+/// Retrieves nested values from the `$open-props-map` map.
+/// Returns null if it can't find a match.
+///
+/// @param {Map} $open-props-map - The map containing the values
+/// @param {Arglist} $keys - The theme ('light' or 'dark') or the 'cssvar', then the relevant prop. E.g - get-open-oprops('cssvar', 'shadow-1')
+/// @return {*} - Desired value to retrieve
+
+@function get-op-props($keys...) {
+  @each $key in $keys {
+      $get: map-get(_m.$open-props-map, $key);
+  }
+  @if $get {
+    @return #{$get};
+  }
+  @warn #{'Open props "' + $key + '" not found in op-maps.$open-props-map'};
+  
+  @return null;
+}
+
+
+// HSL(A) TO STRING FOR USE IN MIXING OPEN PROPS HSL COLORS
+// These functions constructs the HSL/HSLA color value using the provided arguments and returns it as a string.
+//
+// @param {...*} $args - The arguments representing the hue, saturation, lightness and alpha values.
+// @returns {String} - The constructed HSL/HSLA color as a string.
+
+@function hsl-to-str($args...) {
+  @return #{'hsl(#{$args})'};
+}
+
+@function hsla-to-str($args...) {
+  @return hsl-to-str($args...);
+}
+
+@function opacity($color-space, $args...) {
+  @return #{'#{$color-space}(#{$args})'};
+}
+
+@function cssvar($prop-name) {
+  @return var(--#{$prop-name});
+}
