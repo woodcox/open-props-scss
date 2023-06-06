@@ -1,6 +1,6 @@
 $gray-hue: 0 !default;
 $gray-chroma: 0 !default;
-$gray-opacity: 0 !default;
+$gray-opacity: 100% !default;
 $hd-gray-0: oklch(99% #{$gray-chroma} #{$gray-hue} / #{$gray-opacity});
 $hd-gray-1: oklch(95% #{$gray-chroma} #{$gray-hue} / #{$gray-opacity});
 $hd-gray-2: oklch(88% #{$gray-chroma} #{$gray-hue} / #{$gray-opacity});
