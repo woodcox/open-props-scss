@@ -1,5 +1,18 @@
 @forward 'get-prop';
-@forward 'hsl-to-str';
+
+// HSL(A) TO STRING FOR USE IN MIXING OPEN PROPS HSL COLORS
+// These functions constructs the HSL/HSLA color value using the provided arguments and returns it as a string.
+//
+// @param {...*} $args - The arguments representing the hue, saturation, lightness and alpha values.
+// @returns {String} - The constructed HSL/HSLA color as a string.
+
+@function hsl-to-str($args...) {
+  @return #{'hsl(#{$args})'};
+}
+
+@function hsla-to-str($args...) {
+  @return hsl-to-str($args...);
+}
 
 @function opacity($color-space, $args...) {
   @return #{'#{$color-space}(#{$args})'};
