@@ -1,3 +1,10 @@
 @forward 'get-prop';
 @forward 'hsl-to-str';
-@forward 'opacity';
+
+@function opacity($color-space, $args...) {
+  @return #{'#{$color-space}(#{$args})'};
+}
+
+@function cssvar($prop-name) {
+  @return var(--#{$prop-name});
+}
