@@ -10,6 +10,7 @@
   box-shadow: 0 3px 5px -2px Hsl(var(--my-shadow-color-hsl)/13%), 0 7px 14px -5px Hsl(var(--my-shadow-color-hsl)/15%);
   background: oklch(100% 0 0/50%);
   color: color-mix(in oklch, oklch(74% 0.16 0/100%), transparent 50%);
+  background-color: color-mix(in hsl, Hsl(#adb5bd), transparent 60%);
 }
 
 :root {
