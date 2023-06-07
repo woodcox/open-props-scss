@@ -57,7 +57,7 @@
 }
 
 @function opacity($color-space, $color, $alpha) {
-  @return color-mix(in $color-space, $color, transparent $alpha);
+  @return color-mix(in $color-space, #{$color}, transparent $alpha);
 }
 
 @function cssvar($prop-name) {
