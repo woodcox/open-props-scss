@@ -56,8 +56,8 @@
   @return hsl-to-str($args...);
 }
 
-@function opacity($color-space, $args...) {
-  @return #{'#{$color-space}(#{$args})'};
+@function opacity($color-space, $color, $alpha) {
+  @return color-mix(in $color-space, $color, transparent $alpha);
 }
 
 @function cssvar($prop-name) {
