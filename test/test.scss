@@ -23,7 +23,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   box-shadow: op.shadow(2);
   background: oklch(100% 0 0 / 50%);
   color: op.opacity(oklch, op.$color-4, 50%);
-  background-color: op.opacity(hsl, hsl(op.$gray-5, 60%);
+  background-color: op.opacity(hsl, hsl(op.$gray-5), 60%);
 }
 
 :root {
