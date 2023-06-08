@@ -84,7 +84,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // HD Colors
   // -------
   } else if (lowerModName === 'colors-hd') {
-    generatedScss = '$color-hue: 0 !default\n';
+    generatedScss = '$color-hue: 0 !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$');
