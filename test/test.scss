@@ -7,7 +7,6 @@ $shadow-str-light: op.get-prop('light', 'shadow-strength');
 $shadow-color-dark: op.get-prop('dark', 'shadow-color');
 $shadow-str-dark: op.get-prop('dark', 'shadow-strength');
 $shdw-2: op.get-prop('cssvar', 'shadow-2');
---testing-css-vars: op.cssvar(op.$gray-6);
 
 
 .my-thing {
@@ -18,6 +17,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 
 :root {
   --my-shadow-color-hsl: 0 0% 0%;
+  --testing-css-vars: op.cssvar(op.$gray-6);
 }
 
 .my-thing {
