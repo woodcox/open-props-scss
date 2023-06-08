@@ -56,8 +56,12 @@
   @return hsl-to-str($args...);
 }
 
+// https://dev.to/astrit/a-deep-dive-into-the-css-color-mix-function-and-future-of-colors-on-the-web-2pgi
 @function opacity($color-space, $color, $alpha) {
-  @return color-mix(in $color-space, #{$color}, transparent $alpha);
+  @if ($color-space == oklch) {
+    @return color-mix(in $color-space, $color, transparent $alpha);
+  }
+  @return color-mix(in $color-space, $color-space($color), transparent $alpha);
 }
 
 @function cssvar($prop-name) {
