@@ -57,6 +57,10 @@
 }
 
 // https://dev.to/astrit/a-deep-dive-into-the-css-color-mix-function-and-future-of-colors-on-the-web-2pgi
+@function create-hd-color($hd-color, $hue) {
+  @return color-mix(in oklch, $hd-color, transparent $hue);
+}
+
 @function opacity($color-space, $color, $alpha) {
   @if ($color-space == oklch) {
     @return color-mix(in $color-space, $color, transparent $alpha);
