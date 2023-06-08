@@ -69,5 +69,5 @@
 }
 
 @function cssvar($prop-name) {
-  @return var(--#{$prop-name});
+  @return #{'var(--#{$prop-name})'};
 }
