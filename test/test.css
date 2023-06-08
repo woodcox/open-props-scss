@@ -4,6 +4,7 @@
 
 :root {
   --my-shadow-color-hsl: 0 0% 0%;
+  --testing-css-vars: op.cssvar(op.$gray-6);
 }
 
 .my-thing {
