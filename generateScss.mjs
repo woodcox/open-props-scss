@@ -84,11 +84,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // HD Colors
   // -------
   } else if (lowerModName === 'colors-hd') {
-    generatedScss = '$color-hue: 0 !default;\n$hd-opacity: 100% !default;\n';
+    generatedScss = '$color-hue: 0 !default\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1} / #{$$hd-opacity}');
+      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
 
       generatedScss += `${key}: ${value};\n`;
     });
@@ -97,12 +97,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // HD Gray Shades
   // -------
   } else if (lowerModName === 'gray-oklch') {
-    generatedScss = '$gray-hue: 0 !default;\n$gray-chroma: 0 !default;\n$gray-opacity: 100% !default;\n';
+    generatedScss = '$gray-hue: none !default;\n$gray-chroma: none !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$hd-'); // prevent naming conflict with the grays in colors module
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
-      value = value.replace(')', ' / #{$gray-opacity})');
       
       generatedScss += `${key}: ${value};\n`;
     });
