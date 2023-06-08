@@ -42,11 +42,11 @@
 }
 
 
-// HSL(A) TO STRING FOR USE IN MIXING OPEN PROPS HSL COLORS
-// These functions constructs the HSL/HSLA color value using the provided arguments and returns it as a string.
-//
-// @param {...*} $args - The arguments representing the hue, saturation, lightness and alpha values.
-// @returns {String} - The constructed HSL/HSLA color as a string.
+/// HSL(A) TO STRING FOR USE IN MIXING OPEN PROPS HSL COLORS
+/// These functions constructs the HSL/HSLA color value using the provided arguments and returns it as a string.
+///
+/// @param {...*} $args - The arguments representing the hue, saturation, lightness and alpha values.
+/// @returns {String} - The constructed HSL/HSLA color as a string.
 
 @function hsl-to-str($args...) {
   @return #{'hsl(#{$args})'};
@@ -56,10 +56,20 @@
   @return hsl-to-str($args...);
 }
 
-// https://dev.to/astrit/a-deep-dive-into-the-css-color-mix-function-and-future-of-colors-on-the-web-2pgi
+
 @function create-hd-color($hd-color, $hue) {
   @return color-mix(in oklch, $hd-color, transparent $hue);
 }
+
+
+/// OPACITY FUNCTION
+/// https://dev.to/astrit/a-deep-dive-into-the-css-color-mix-function-and-future-of-colors-on-the-web-2pgi
+/// Applies opacity to a color using the specified color space, color, and alpha value.
+///
+/// @param {string} $color-space - The color space of the color.
+/// @param {color} $color - The color to apply opacity to.
+/// @param {percentage} $alpha - The alpha value for opacity.
+/// @return {color} - The resulting color with the applied opacity.
 
 @function opacity($color-space, $color, $alpha) {
   @if ($color-space == oklch) {
@@ -67,6 +77,12 @@
   }
   @return color-mix(in $color-space, #{'#{$color-space}(#{$color})'}, transparent $alpha);
 }
+
+/// CSSVAR FUNCTION
+/// Returns the value of a CSS variable using the provided property name.
+///
+/// @param {string} $prop-name - The property name of the CSS variable.
+/// @return {*} - The value of the CSS variable.
 
 @function cssvar($prop-name) {
   @return var(--#{$prop-name});
