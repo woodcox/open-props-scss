@@ -7,10 +7,12 @@ $shadow-str-light: op.get-prop('light', 'shadow-strength');
 $shadow-color-dark: op.get-prop('dark', 'shadow-color');
 $shadow-str-dark: op.get-prop('dark', 'shadow-strength');
 $shdw-2: op.get-prop('cssvar', 'shadow-2');
+$color-hue: op.$hue-red;
 
 
 .my-thing {
   box-shadow: op.shadow(1, dark, --testing-cssvar);
+  color: op.$color-4;
 }
 
 @include op.apply-shadows(var(--my-shadow-color-hsl), 10%);
