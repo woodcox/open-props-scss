@@ -61,7 +61,7 @@
   @if ($color-space == oklch) {
     @return color-mix(in $color-space, $color, transparent $alpha);
   }
-  @return color-mix(in $color-space, $color-space($color), transparent $alpha);
+  @return color-mix(in $color-space, #{$color-space($color)}, transparent $alpha);
 }
 
 @function cssvar($prop-name) {
