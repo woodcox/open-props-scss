@@ -1,7 +1,6 @@
-@forward '../colors-hd' with (
-  $color-hue: op.$hue-red,
+@use '../index' as op with (
+  op.$color-hue: op.$hue-red,
 );
-@use '../index' as op;
 
 $shadow-color-light: op.get-prop('light', 'shadow-color');
 $shadow-str-light: op.get-prop('light', 'shadow-strength');
