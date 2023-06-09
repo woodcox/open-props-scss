@@ -1,5 +1,5 @@
 @use '../index' as op with (
-  $color-hue: op.$red-hue;
+  $color-hue: op.$hue-red,
 );
 
 $shadow-color-light: op.get-prop('light', 'shadow-color');
@@ -8,10 +8,9 @@ $shadow-str-light: op.get-prop('light', 'shadow-strength');
 $shadow-color-dark: op.get-prop('dark', 'shadow-color');
 $shadow-str-dark: op.get-prop('dark', 'shadow-strength');
 $shdw-2: op.get-prop('cssvar', 'shadow-2');
-$color-hue: op.$hue-red;
 
 
-.my-thing {
+.my-test-thing {
   box-shadow: op.shadow(1, dark, --testing-cssvar);
   color: op.$color-4;
 }
@@ -24,10 +23,11 @@ $color-hue: op.$hue-red;
 }
 
 .my-thing {
+  $color-hue: op.$hue-green;
   box-shadow: op.shadow(2);
   background: oklch(100% 0 0 / 50%);
   color: op.opacity(oklch, op.$color-4, 50%);
-  background-color: op.opacity(hsl, op.$gray-5-hsl, 60%);
+  background-color: op.$color-4;
 }
 
 :root {
