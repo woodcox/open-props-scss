@@ -1,5 +1,5 @@
 @use '../index' as op with (
-  $color-hue: oklch-hurs.$hue-red,
+  $color-hue: oklch-hues.$hue-red,
 );
 
 $shadow-color-light: op.get-prop('light', 'shadow-color');
