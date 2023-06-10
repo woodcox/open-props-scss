@@ -10,30 +10,10 @@ $shadow-color-dark: op.get-prop('dark', 'shadow-color');
 $shadow-str-dark: op.get-prop('dark', 'shadow-strength');
 $shdw-2: op.get-prop('cssvar', 'shadow-2');
 
-
-.my-test-thing {
-  box-shadow: op.shadow(1, dark, --testing-cssvar);
-  color: op.$color-4;
-}
-
-@include op.apply-shadows(var(--my-shadow-color-hsl), 10%);
-
 :root {
-  --my-shadow-color-hsl: 0 0% 0%;
+  --shadow-color: 100 4% 16%;
+  --shadow-strength: 2%;
   --testing-css-vars: op.cssvar(gray-6);
-}
-
-.my-thing {
-  $color-hue: op.$hue-green;
-  box-shadow: op.shadow(2);
-  background: oklch(100% 0 0 / 50%);
-  color: op.opacity(oklch, op.$color-4, 50%);
-  background-color: op.$color-4;
-}
-
-:root {
-  --shadow-color: #{$shadow-color-light};
-  --shadow-strength: #{$shadow-str-light};
   --shdw-2: #{$shdw-2};
 }
 
@@ -42,6 +22,20 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
    --shadow-color: #{$shadow-color-dark};
    --shadow-strength: #{$shadow-str-dark};
   }
+}
+}
+
+.my-test-thing {
+  box-shadow: op.shadow(1, dark, var(--shadow-color), var(--shadow-strength);
+  color: op.$color-4;
+}
+
+.my-thing {
+  $color-hue: op.$hue-green;
+  box-shadow: op.shadow(2);
+  background: oklch(100% 0 0 / 50%);
+  color: op.opacity(oklch, op.$color-4, 50%);
+  background-color: op.$color-4;
 }
 
 .card {
