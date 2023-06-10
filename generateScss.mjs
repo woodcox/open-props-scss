@@ -142,16 +142,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
     };
     
     generatedScss += `@use 'sass:map';
-
-$-shadow-color: null;
-$-shadow-strength: null;
-
- @mixin apply-shadows($shadow-color: null, $shadow-strength: null) {
-   $-shadow-color: $shadow-color !global;
-   $-shadow-strength: $shadow-strength !global;
- }
  
- @function shadow($level, $theme: light, $shadow-color: null, $shadow-strength: null) {
+ @function shadow($level, $theme: light, $-shadow-color: null, $-shadow-strength: null) {
    $shadow-color: $-shadow-color or if($theme == dark, ${darkColor}, ${lightColor});
    $shadow-strength: $-shadow-strength or if($theme == dark, ${darkStrength}, ${lightStrength});
    $shadows-map: (
