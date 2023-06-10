@@ -112,27 +112,28 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (lowerModName === 'shadows') {
     
     let mapKeysValues = '';
-    let lightColor = '';
-    let lightStrength = '';
-    let darkColor = '';
-    let darkStrength = '';
+    const lightColor = Shadows['--shadow-color'];
+    const lightStrength = Shadows['--shadow-strength'];
+    const darkColor = Shadows['--shadow-color-@media:dark'];
+    const darkStrength = Shadows['--shadow-strength-@media:dark'];
+    
     const entries = Object.entries(importObj);
     
     for (let index = 0; index < entries.length; index++) {
       let [key, value] = entries[index];
       
-      if (key == '--shadow-color') {
-        lightColor = value;
-      }    
-      if (key == '--shadow-strength') {
-        lightStrength = value;
-      }
-      if (key.includes('color-@media:dark')) {
-        darkColor = value;
-      }    
-      if (key.includes('strength-@media:dark')) {
-        darkStrength = value;
-      }
+      //if (key == '--shadow-color') {
+      //  lightColor = value;
+      //}    
+      //if (key == '--shadow-strength') {
+      //  lightStrength = value;
+     // }
+      //if (key.includes('color-@media:dark')) {
+      //  darkColor = value;
+      //}    
+      //if (key.includes('strength-@media:dark')) {
+      //  darkStrength = value;
+     // }
       if (key == '--shadow-color' || key == '--shadow-strength' || key.includes('@')) {
         continue; // skip light and dark for the other loops
       } 
