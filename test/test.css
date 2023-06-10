@@ -16,8 +16,8 @@
   color: oklch(74% 0.16 25);
 }
 
-.my-thing {
-  box-shadow: 0 3px 5px -2px Hsl(220 3% 15%/4%), 0 7px 14px -5px Hsl(220 3% 15%/6%);
+.dodo {
+  box-shadow: 0 3px 5px -2px Hsl(220 40% 2%/28%), 0 7px 14px -5px Hsl(220 40% 2%/30%);
   background: oklch(100% 0 0/50%);
   color: color-mix(in oklch, oklch(74% 0.16 25), transparent 50%);
   background-color: oklch(74% 0.16 25);
