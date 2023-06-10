@@ -42,8 +42,8 @@
 }
 
 
-/// HSL(A) TO STRING FOR USE IN MIXING OPEN PROPS HSL COLORS
-/// These functions constructs the HSL/HSLA color value using the provided arguments and returns it as a string.
+/// HSL TO STRING FOR USE IN MIXING OPEN PROPS HSL COLORS
+/// This function constructs the HSL/HSLA color value using the provided arguments and returns it as a string.
 ///
 /// @param {...*} $args - The arguments representing the hue, saturation, lightness and alpha values.
 /// @returns {String} - The constructed HSL/HSLA color as a string.
@@ -51,11 +51,6 @@
 @function hsl-to-str($args...) {
   @return #{'hsl(#{$args})'};
 }
-
-@function hsla-to-str($args...) {
-  @return hsl-to-str($args...);
-}
-
 
 @function create-hd-color($hd-color, $hue) {
   @return color-mix(in oklch, $hd-color, transparent $hue);
