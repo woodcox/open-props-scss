@@ -1,4 +1,4 @@
-@use '..oklch-hues' as hues;
+@use '../oklch-hues' as hues;
 @use '../index' as op with (
   $color-hue: hues.$hue-red,
 );
