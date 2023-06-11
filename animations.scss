@@ -25,67 +25,67 @@ $animation-float: float 3s var(#{_e.$ease-in-out-3}) infinite;
 $animation-bounce: bounce 2s var(#{_e.$ease-squish-2}) infinite;
 $animation-pulse: pulse 2s var(#{_e.$ease-out-3}) infinite;
 @mixin fade-in{
-@keyframes fade-in {-#{$random-id}
+@keyframes fade-in-#{$random-id} {
   to { opacity: 1 }
 }}
 @mixin fade-in-bloom{
-@keyframes fade-in-bloom {-#{$random-id}
+@keyframes fade-in-bloom-#{$random-id} {
   0% { opacity: 0; filter: brightness(1) blur(20px) }
  10% { opacity: 1; filter: brightness(2) blur(10px) }
 100% { opacity: 1; filter: brightness(1) blur(0) }
 }}
 @mixin fade-out{
-@keyframes fade-out {-#{$random-id}
+@keyframes fade-out-#{$random-id} {
   to { opacity: 0 }
 }}
 @mixin fade-out-bloom{
-@keyframes fade-out-bloom {-#{$random-id}
+@keyframes fade-out-bloom-#{$random-id} {
 100% { opacity: 0; filter: brightness(1) blur(20px) }
  10% { opacity: 1; filter: brightness(2) blur(10px) }
   0% { opacity: 1; filter: brightness(1) blur(0) }
 }}
 @mixin scale-up{
-@keyframes scale-up {-#{$random-id}
+@keyframes scale-up-#{$random-id} {
   to { transform: scale(1.25) }
 }}
 @mixin scale-down{
-@keyframes scale-down {-#{$random-id}
+@keyframes scale-down-#{$random-id} {
   to { transform: scale(.75) }
 }}
 @mixin slide-out-up{
-@keyframes slide-out-up {-#{$random-id}
+@keyframes slide-out-up-#{$random-id} {
   to { transform: translateY(-100%) }
 }}
 @mixin slide-out-down{
-@keyframes slide-out-down {-#{$random-id}
+@keyframes slide-out-down-#{$random-id} {
   to { transform: translateY(100%) }
 }}
 @mixin slide-out-right{
-@keyframes slide-out-right {-#{$random-id}
+@keyframes slide-out-right-#{$random-id} {
   to { transform: translateX(100%) }
 }}
 @mixin slide-out-left{
-@keyframes slide-out-left {-#{$random-id}
+@keyframes slide-out-left-#{$random-id} {
   to { transform: translateX(-100%) }
 }}
 @mixin slide-in-up{
-@keyframes slide-in-up {-#{$random-id}
+@keyframes slide-in-up-#{$random-id} {
   from { transform: translateY(100%) }
 }}
 @mixin slide-in-down{
-@keyframes slide-in-down {-#{$random-id}
+@keyframes slide-in-down-#{$random-id} {
   from { transform: translateY(-100%) }
 }}
 @mixin slide-in-right{
-@keyframes slide-in-right {-#{$random-id}
+@keyframes slide-in-right-#{$random-id} {
   from { transform: translateX(-100%) }
 }}
 @mixin slide-in-left{
-@keyframes slide-in-left {-#{$random-id}
+@keyframes slide-in-left-#{$random-id} {
   from { transform: translateX(100%) }
 }}
 @mixin shake-x{
-@keyframes shake-x {-#{$random-id}
+@keyframes shake-x-#{$random-id} {
   0%, 100% { transform: translateX(0%) }
   20% { transform: translateX(-5%) }
   40% { transform: translateX(5%) }
@@ -93,7 +93,7 @@ $animation-pulse: pulse 2s var(#{_e.$ease-out-3}) infinite;
   80% { transform: translateX(5%) }
 }}
 @mixin shake-y{
-@keyframes shake-y {-#{$random-id}
+@keyframes shake-y-#{$random-id} {
   0%, 100% { transform: translateY(0%) }
   20% { transform: translateY(-5%) }
   40% { transform: translateY(5%) }
@@ -101,18 +101,18 @@ $animation-pulse: pulse 2s var(#{_e.$ease-out-3}) infinite;
   80% { transform: translateY(5%) }
 }}
 @mixin spin{
-@keyframes spin {-#{$random-id}
+@keyframes spin-#{$random-id} {
   to { transform: rotate(1turn) }
 }}
 @mixin ping{
-@keyframes ping {-#{$random-id}
+@keyframes ping-#{$random-id} {
   90%, 100% {
     transform: scale(2);
     opacity: 0;
   }
 }}
 @mixin blink{
-@keyframes blink {-#{$random-id}
+@keyframes blink-#{$random-id} {
   0%, 100% {
     opacity: 1
   }
@@ -121,17 +121,17 @@ $animation-pulse: pulse 2s var(#{_e.$ease-out-3}) infinite;
   }
 }}
 @mixin float{
-@keyframes float {-#{$random-id}
+@keyframes float-#{$random-id} {
   50% { transform: translateY(-25%) }
 }}
 @mixin bounce{
-@keyframes bounce {-#{$random-id}
+@keyframes bounce-#{$random-id} {
   25% { transform: translateY(-20%) }
   40% { transform: translateY(-3%) }
   0%, 60%, 100% { transform: translateY(0) }
 }}
 @mixin pulse{
-@keyframes pulse {-#{$random-id}
+@keyframes pulse-#{$random-id} {
   50% { transform: scale(.9,.9) }
 }}
 
