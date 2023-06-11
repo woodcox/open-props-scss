@@ -132,7 +132,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         key = key.replace(/$/, '\'');
       }
      
-      value = value.replace(/var\(--(.*?)\)/g, '$$$--1');
+      value = value.replace(/var\(--(.*?)\)/g, '$--$$1');
       value = value.replace(/hsl/g, 'Hsl')
       mapKeysValues += `${key}: (${value})`;
       
