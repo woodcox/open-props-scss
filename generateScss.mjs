@@ -15,7 +15,7 @@ import Zindex from 'open-props/src/zindex';
 import MasksEdges from 'open-props/src/masks.edges';
 import MasksCornerCuts from 'open-props/src/masks.corner-cuts';
 import { CustomMedia as Media } from 'open-props/src/media';
-//import Animations from 'open-props/src/animations';
+import Animations from 'open-props/src/animations';
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -44,7 +44,7 @@ const openPropFiles = {
   'zindex': Zindex,
   'masks.edges': MasksEdges,
   'masks.corner-cuts': MasksCornerCuts,
-  //'animations': Animations,
+  'animations': Animations,
 };
 
 const writeSCSSModule = async (moduleName, content) => {
@@ -96,6 +96,28 @@ const generateSCSSModule = async (moduleName, importObj) => {
       
       generatedScss += `${key}: ${value};\n`;
     });
+
+  // animations.scss
+  } else if (moduleName.toLowerCase() === 'animations') {
+    generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n@use "sass:string";\n';
+    let animationsStr = '';
+    let keyframesStr = '';
+    let mediaStr = '';
+    
+    Object.entries(importObj).forEach(([key, value]) => {
+      if (key.includes('@media:dark')) {
+        key = key.replace(/--|@media:|animation-/g, '');
+        mediaStr += `@mixin ${key}{@media #{_mq.$OSdark} { ${value} }}\n`; // Create sass mixin for @media dark mode
+      } else if (value.includes('@keyframes')) {
+        key = key.replace(/--|-@|animation-/g, '');
+        keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
+      } else {
+        key = key.replace('--', '$');
+        const sassVar = value.replace(/var\(--(.*?)\)/g, 'var(#{_e.$$$1})'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
+        animationsStr += `${key}: ${sassVar};\n`;
+      }
+    });
+    generatedScss += `${animationsStr}${keyframesStr}\n${mediaStr}`;
   
   // shadows.scss
   } else if (moduleName.toLowerCase() === 'shadows') {
