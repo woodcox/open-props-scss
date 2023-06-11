@@ -126,7 +126,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         continue; // skip light and dark for the other loops
       } 
 
-      key = key.replace('--shadow-', '');
+      key = key.replace('--shadow-', '--');
       if (key.includes('--inner-shadow-')) {
         key = key.replace('--inner-shadow-', '\'inner-');
         key = key.replace(/$/, '\'');
@@ -143,9 +143,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     generatedScss += `@use 'sass:map';
  
- @function shadow($level, $theme: light, $-shadow-color: null, $-shadow-strength: null) {
-   $shadow-color: $-shadow-color or if($theme == dark, ${darkColor}, ${lightColor});
-   $shadow-strength: $-shadow-strength or if($theme == dark, ${darkStrength}, ${lightStrength});
+ @function shadow($level, $theme: light, $shadow-color: null, $shadow-strength: null) {
+   $--shadow-color: $shadow-color or if($theme == dark, ${darkColor}, if($theme == cssvar, var(--shadow-color), ${lightColor});
+   $--shadow-strength: $shadow-strength or if($theme == dark, ${darkStrength}, if($theme == cssvar, var(--shadow-color), ${lightStrength});
    $shadows-map: (
      ${mapKeysValues}
    );
