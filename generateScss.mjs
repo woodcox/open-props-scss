@@ -126,13 +126,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
         continue; // skip light and dark for the other loops
       } 
 
-      key = key.replace('--shadow-', '--');
+      key = key.replace('--shadow-', '');
       if (key.includes('--inner-shadow-')) {
         key = key.replace('--inner-shadow-', '\'inner-');
         key = key.replace(/$/, '\'');
       }
      
-      value = value.replace(/var\(--(.*?)\)/g, '$$$1');
+      value = value.replace(/var\(--(.*?)\)/g, '$$$--1');
       value = value.replace(/hsl/g, 'Hsl')
       mapKeysValues += `${key}: (${value})`;
       
