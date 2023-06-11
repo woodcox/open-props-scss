@@ -1,5 +1,6 @@
 @use "easings" as _e;
 @use "media" as _mq;
+@use "sass:string";
 $animation-fade-in: fade-in .5s var(#{_e.$ease-3});
 $animation-fade-in-bloom: fade-in-bloom 2s var(#{_e.$ease-3});
 $animation-fade-out: fade-out .5s var(#{_e.$ease-3});
