@@ -53,13 +53,10 @@ const writeSCSSModule = async (moduleName, content) => {
 };
 
 const generateSCSSModule = async (moduleName, importObj) => {
-  const lowerModName = moduleName.toLowerCase();
   let generatedScss = '';
   
-  // -------
-  // Aspects
-  // -------
-  if (lowerModName === 'aspects') {
+  // aspects.scss
+  if (moduleName.toLowerCase() === 'aspects') {
     generatedScss = '@use "sass:list";\n';
 
     Object.entries(importObj).forEach(([key, value]) => {
@@ -70,20 +67,16 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${key}: ${value};\n`;
     });
     
-  // -----
-  // Media
-  // -----
-  } else if (lowerModName === 'media') {
+  // media.scss
+  } else if (moduleName.toLowerCase() === 'media') {
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
       queryName = queryName.replace('--', '$');
       generatedScss += `${queryName}: '${processedQuery}';\n`;
     });
     
-  // -------
-  // HD Colors
-  // -------
-  } else if (lowerModName === 'colors-hd') {
+  // colors-hd.scss
+  } else if (moduleName.toLowerCase() === 'colors-hd') {
     generatedScss = '$color-hue: 0 !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
@@ -93,10 +86,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${key}: ${value};\n`;
     });
     
-  // -------
-  // HD Gray Shades
-  // -------
-  } else if (lowerModName === 'gray-oklch') {
+  // gray-oklch.scss
+  } else if (moduleName.toLowerCase() === 'gray-oklch') {
     generatedScss = '$gray-hue: none !default;\n$gray-chroma: none !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
@@ -106,10 +97,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${key}: ${value};\n`;
     });
   
-  // -------
-  // Shadows
-  // -------
-  } else if (lowerModName === 'shadows') {
+  // shadows.scss
+  } else if (moduleName.toLowerCase() === 'shadows') {
     
     let mapKeysValues = '';
     const lightColor = Shadows['--shadow-color'];
@@ -143,19 +132,17 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     generatedScss += `@use 'sass:map';
  
- @function shadow($level, $theme: light, $shadow-color: null, $shadow-strength: null) {
-   $--shadow-color: $shadow-color or if($theme == dark, ${darkColor}, if($theme == cssvar, var(--shadow-color), ${lightColor}));
-   $--shadow-strength: $shadow-strength or if($theme == dark, ${darkStrength}, if($theme == cssvar, var(--shadow-strength), ${lightStrength}));
-   $shadows-map: (
-     ${mapKeysValues}
-   );
-   
-   @return map.get($shadows-map, $level);
- }`;
+@function shadow($level, $theme: light, $shadow-color: null, $shadow-strength: null) {
+  $--shadow-color: $shadow-color or if($theme == dark, ${darkColor}, ${lightColor});
+  $--shadow-strength: $shadow-strength or if($theme == dark, ${darkStrength}, ${lightStrength});
+  $shadows-map: (
+    ${mapKeysValues}
+  );
+
+  @return map.get($shadows-map, $level);
+}`;
     
-  // --------------------
-  // All other Open Props
-  // --------------------
+  // All other open props
   } else {
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@')) {
