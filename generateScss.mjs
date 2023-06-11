@@ -110,10 +110,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
         mediaStr += `@mixin ${key}{@media #{_mq.$OSdark} { ${value} }}\n`; // Create sass mixin for @media dark mode
       } else if (value.includes('@keyframes')) {
         key = key.replace(/--|animation-|-@/g, '');
-        value = value.replace(/@keyframes\s+(\S+)/, `@keyframes $1-#{$random-id}`);
+        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$random-id}');
         keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
       } else {
         key = key.replace('--', '$');
+        value = value.replace(/\s+(\S+)/, '$1-#{$random-id}');
         const sassVar = value.replace(/var\(--(.*?)\)/g, 'var(#{_e.$$$1})'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
         animationsStr += `${key}: ${sassVar};\n`;
       }
