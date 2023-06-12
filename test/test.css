@@ -3,6 +3,9 @@
   --shadow-strength: 2%;
   --testing-css-vars: op.cssvar(gray-6);
   --shdw-2: 0 3px 5px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 3%)), 0 7px 14px -5px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 5%));
+  keyframes: "@keyframes fade-in-bloom-1234 { 0% { opacity: 0; filter: brightness(1) blur(20px) }  10% { opacity: 1; filter: brightness(0.5) blur(10px) } 100% { opacity: 1; filter: brightness(1) blur(0) }}";
+  keyframes: "@keyframes fade-in-bloom-1234 { 0% { opacity: 0; filter: brightness(1) blur(20px) } 10% { opacity: 1; filter: brightness(2) blur(10px) } 100% { opacity: 1; filter: brightness(1) blur(0) }}";
+  keyframes: "@keyframes fade-in-bloom-1234 { 0% { opacity: 0; filter: brightness(1) blur(20px) } 10% { opacity: 1; filter: brightness(2) blur(10px) } 100% { opacity: 1; filter: brightness(1) blur(0) }}";
 }
 
 @media (prefers-color-scheme: dark) {
