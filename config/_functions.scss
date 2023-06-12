@@ -82,3 +82,12 @@
 @function cssvar($prop-name) {
   @return var(--#{$prop-name});
 }
+
+@mixin set-keyframes($keyframes, $theme) {
+  $result: map.get($keyframe-map, $keyframes);
+  @if $result {
+    @return $result;
+  }
+  @warn #{'Open props "' + $keyframes + '" is not found in $keyframes-map'};
+  @return null;
+}
