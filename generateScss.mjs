@@ -102,6 +102,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
     const fadeInBloom = Animations['--animation-fade-in-bloom'];
     const fadeOutBloom = Animations['--animation-fade-out-bloom'];
+    const keyframeFIB = Animations['--animation-fade-in-bloom-@'];
+    const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'];
+    const keyframeFOB = Animations['--animation-fade-out-bloom-@'];
+    const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'];
     const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     let animationsStr = '';
@@ -112,7 +116,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (key.includes('-fade-in-bloom-@ || -fade-out-bloom-@')) {
         key = key.replace(/--|@media:|-@|animation-/g, '');
         value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
-        mediaStr += `${key}: ${value}\n`; // Create sass mixin for @media dark mode
+
       } else if (value.includes('@keyframes')) {
         key = key.replace(/--|animation-|-@/g, '');
         value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
@@ -124,6 +128,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         animationsStr += `${key}: ${sassVar};\n`
       }
     });
+    mediaStr += `${key}: ${value}\n`; // Create sass mixin for @media dark mode
     generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}\n${mediaStr}`;
   
   // shadows.scss
