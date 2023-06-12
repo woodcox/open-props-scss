@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'op-maps' as _m;
+@use 'sass:string';
 
 /// GET DEEP THEME FUNCTION
 /// Retrieves nested theme values from the `$open-props-map` map for the specified `$theme`.
@@ -98,9 +99,9 @@
   }";
 
   @if ($theme == dark) {
-    @return #{$dark-keyframes};
+    @return string.unquote(#{$dark-keyframes});
   }
 
-  @return #{$light-keyframes};
+  @return string.unqoute(#{$light-keyframes});
 }
 
