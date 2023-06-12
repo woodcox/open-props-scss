@@ -119,12 +119,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
         key = key.replace('--', '$');
         value = value.replace(/(\w+)\s+(\S+)/, '$1-#{animation-id} $2');
         const sassVar = value.replace(/var\(--(.*?)\)/g, 'var(#{_e.$$$1})'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        animationsStr += `${key}: ${sassVar};
-        $animation-fade-in-bloom-dark: ${fadeInBloomDark.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2')};
-        $animation-fade-out-bloom-dark: ${fadeOutBloomDark.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2')};\n\n`;
+        animationsStr += `${key}: ${sassVar};\n`
       }
     });
-    generatedScss += `${animationsStr}${keyframesStr}\n${mediaStr}`;
+    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2')};\n$animation-fade-out-bloom-dark: ${fadeOutBloomDark.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2')};\n\n${keyframesStr}\n${mediaStr}`;
   
   // shadows.scss
   } else if (moduleName.toLowerCase() === 'shadows') {
