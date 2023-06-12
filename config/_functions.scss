@@ -83,11 +83,24 @@
   @return var(--#{$prop-name});
 }
 
-@mixin fade-in-bloom-test($theme: light) {
-  $light-keyframes: @keyframes fade-in-bloom-#{$animation-id} { 0% { opacity: 0; filter: brightness(1) blur(20px) } 10% { opacity: 1; filter: brightness(2) blur(10px) } 100% { opacity: 1; filter: brightness(1) blur(0) }};
-  $dark-keyframes: @keyframes fade-in-bloom { 0% { opacity: 0; filter: brightness(1) blur(20px) } 10% { opacity: 1; filter: brightness(0.5) blur(10px) } 100% { opacity: 1; filter: brightness(1) blur(0) }};
-  @if ($theme == dark){
+
+@mixin fade-in-bloom-test($theme: light, $mixin-id: $animation-id) {
+  $light-keyframes: "@keyframes fade-in-bloom-#{$mixin-id} { 
+    0% { opacity: 0; filter: brightness(1) blur(20px) } 
+    10% { opacity: 1; filter: brightness(2) blur(10px) } 
+    100% { opacity: 1; filter: brightness(1) blur(0) }
+  }";
+
+  $dark-keyframes: "@keyframes fade-in-bloom-#{$mixin-id} { 
+    0% { opacity: 0; filter: brightness(1) blur(20px) } 
+    10% { opacity: 1; filter: brightness(0.5) blur(10px) } 
+    100% { opacity: 1; filter: brightness(1) blur(0) }
+  }";
+
+  @if ($theme == dark) {
     @return #{$dark-keyframes};
   }
-@return #{$light-keyframes};
+
+  @return #{$light-keyframes};
 }
+
