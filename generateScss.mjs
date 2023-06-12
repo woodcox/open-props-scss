@@ -99,7 +99,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
   // animations.scss
   } else if (moduleName.toLowerCase() === 'animations') {
-    generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n$animation-id: string.unique-id();\n\n";
+    generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
     let animationsStr = '';
     let keyframesStr = '';
     let mediaStr = '';
