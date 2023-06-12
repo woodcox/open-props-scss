@@ -4,6 +4,43 @@
   --testing-css-vars: op.cssvar(gray-6);
   --shdw-2: 0 3px 5px -2px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 3%)), 0 7px 14px -5px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 5%));
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-color: 220 40% 2%;
+    --shadow-strength: 25%;
+  }
+}
+.my-test-thing {
+  box-shadow: 0 1px 2px -1px Hsl(220 3% 15%/10%);
+  box-shadow: 0 1px 2px -1px Hsl(220 40% 2%/34%);
+  box-shadow: 0 1px 2px -1px Hsl(var(--shadow-color)/calc(var(--shadow-strength) + 9%));
+  color: oklch(74% 0.16 25);
+}
+
+.dodo {
+  box-shadow: 0 3px 5px -2px Hsl(220 40% 2%/28%), 0 7px 14px -5px Hsl(220 40% 2%/30%);
+  background: oklch(100% 0 0/50%);
+  color: color-mix(in oklch, oklch(74% 0.16 25), transparent 50%);
+  background-color: oklch(74% 0.16 25);
+}
+
+.card {
+  position: relative;
+  width: 450px;
+  height: 100%;
+  min-height: 200px;
+  padding: 20px;
+  margin: 50px auto;
+  background-color: hsl(210, 18%, 96%);
+  border-radius: 2px;
+  border: 0;
+  box-shadow: 0 1px 2px -1px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 9%));
+}
+.card:hover {
+  box-shadow: var(--shadow-3);
+}
+
 @keyframes fade-in-bloom-1234 {
   0% {
     opacity: 0;
@@ -46,43 +83,6 @@
     filter: brightness(1) blur(0);
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --shadow-color: 220 40% 2%;
-    --shadow-strength: 25%;
-  }
-}
-.my-test-thing {
-  box-shadow: 0 1px 2px -1px Hsl(220 3% 15%/10%);
-  box-shadow: 0 1px 2px -1px Hsl(220 40% 2%/34%);
-  box-shadow: 0 1px 2px -1px Hsl(var(--shadow-color)/calc(var(--shadow-strength) + 9%));
-  color: oklch(74% 0.16 25);
-}
-
-.dodo {
-  box-shadow: 0 3px 5px -2px Hsl(220 40% 2%/28%), 0 7px 14px -5px Hsl(220 40% 2%/30%);
-  background: oklch(100% 0 0/50%);
-  color: color-mix(in oklch, oklch(74% 0.16 25), transparent 50%);
-  background-color: oklch(74% 0.16 25);
-}
-
-.card {
-  position: relative;
-  width: 450px;
-  height: 100%;
-  min-height: 200px;
-  padding: 20px;
-  margin: 50px auto;
-  background-color: hsl(210, 18%, 96%);
-  border-radius: 2px;
-  border: 0;
-  box-shadow: 0 1px 2px -1px hsl(var(--shadow-color)/calc(var(--shadow-strength) + 9%));
-}
-.card:hover {
-  box-shadow: var(--shadow-3);
-}
-
 /**
  * hd-color Function
  *
