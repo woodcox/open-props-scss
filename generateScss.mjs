@@ -100,8 +100,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // animations.scss
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
-    const fadeInBloomDark = Animations['--animation-fade-in-bloom'];
-    const fadeOutBloomDark = Animations['--animation-fade-out-bloom'];
+    const fadeInBloom = Animations['--animation-fade-in-bloom'];
+    const fadeOutBloom = Animations['--animation-fade-out-bloom'];
+    const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
+    const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     let animationsStr = '';
     let keyframesStr = '';
     let mediaStr = '';
@@ -122,7 +124,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         animationsStr += `${key}: ${sassVar};\n`
       }
     });
-    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2')};\n$animation-fade-out-bloom-dark: ${fadeOutBloomDark.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2')};\n\n${keyframesStr}\n${mediaStr}`;
+    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}\n${mediaStr}`;
   
   // shadows.scss
   } else if (moduleName.toLowerCase() === 'shadows') {
