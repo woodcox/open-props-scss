@@ -56,8 +56,8 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   }
 }
 
-@include fade-in-bloom-x(dark);
-@include fade-in-bloom-x;
+@include op.fade-in-bloom-x(dark);
+@include op.fade-in-bloom-x;
 
 /**
  * hd-color Function
