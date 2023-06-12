@@ -99,9 +99,9 @@
   }";
 
   @if ($theme == dark) {
-    @return string.unquote($dark-keyframes);
+    @return #{$dark-keyframes};
   }
 
-  @return string.unqoute($light-keyframes);
+@return #{$light-keyframes};
 }
 
