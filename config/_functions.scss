@@ -84,18 +84,18 @@
 }
 
 @mixin fade-in-bloom-test($theme: light) {
-  $light-keyframe: @keyframes fade-in-bloom {
+  $light-keyframes: fade-in-bloom {
       0% { opacity: 0; filter: brightness(1) blur(20px) }
       10% { opacity: 1; filter: brightness(0.5) blur(10px) }
       100% { opacity: 1; filter: brightness(1) blur(0) }
     };
-  $dark-keyframe: @keyframes fade-in-bloom {
+  $dark-keyframes: fade-in-bloom {
       0% { opacity: 0; filter: brightness(1) blur(20px) }
       10% { opacity: 1; filter: brightness(0.5) blur(10px) }
       100% { opacity: 1; filter: brightness(1) blur(0) }
     };
   @if ($theme == dark){
-    @return $dark-keyframe;
+    @return @keyframes $dark-keyframes;
   }
-  @return $light-keyframe;
+  @return @keyframes $light-keyframes;
 }
