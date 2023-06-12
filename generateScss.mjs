@@ -124,7 +124,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         animationsStr += `${key}: ${sassVar};\n`
       }
     });
-    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}\n${mediaStr}`;
+    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}\n${mediaStr}`;
   
   // shadows.scss
   } else if (moduleName.toLowerCase() === 'shadows') {
