@@ -102,9 +102,9 @@
   $dark-keyframes: "@keyframes fade-in-bloom-#{$id} { 0% { opacity: 0; filter: brightness(1) blur(20px) }  10% { opacity: 1; filter: brightness(0.5) blur(10px) } 100% { opacity: 1; filter: brightness(1) blur(0) }}";
 
   @if ($theme == dark) {
-    #{$dark-keyframes};
+    string.unquote($dark-keyframes);
   }
-  #{$light-keyframes};
+  string.unquote($light-keyframes);
 }
 
 
