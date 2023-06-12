@@ -107,7 +107,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('@media:dark')) {
         key = key.replace(/--|@media:|animation-/g, '');
-        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{animation-id} $2');
+        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
         mediaStr += `@mixin ${key}{@media #{_mq.$OSdark} { ${value} }}\n`; // Create sass mixin for @media dark mode
       } else if (value.includes('@keyframes')) {
         key = key.replace(/--|animation-|-@/g, '');
