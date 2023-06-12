@@ -137,13 +137,13 @@ $animation-pulse: pulse-#{animation-id} 2s var(#{_e.$ease-out-3}) infinite;
 }}
 
 @mixin fade-in-bloom-dark{@media #{_mq.$OSdark} { 
-@keyframes fade-in-bloom {
+@keyframes-#{animation-id} fade-in-bloom {
   0% { opacity: 0; filter: brightness(1) blur(20px) }
  10% { opacity: 1; filter: brightness(0.5) blur(10px) }
 100% { opacity: 1; filter: brightness(1) blur(0) }
 } }}
 @mixin fade-out-bloom-dark{@media #{_mq.$OSdark} { 
-@keyframes fade-out-bloom {
+@keyframes-#{animation-id} fade-out-bloom {
 100% { opacity: 0; filter: brightness(1) blur(20px) }
  10% { opacity: 1; filter: brightness(0.5) blur(10px) }
   0% { opacity: 1; filter: brightness(1) blur(0) }
