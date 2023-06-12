@@ -110,7 +110,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (key.includes('-fade-in-bloom-@ || -fade-out-bloom-@')) {
-        key = key.replace(/--|@media:|animation-/g, '');
+        key = key.replace(/--|@media:|-@|animation-/g, '');
         value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
         mediaStr += `${key}: ${value}\n`; // Create sass mixin for @media dark mode
       } else if (value.includes('@keyframes')) {
