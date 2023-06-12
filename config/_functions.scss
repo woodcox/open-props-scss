@@ -1,5 +1,6 @@
 @use 'sass:map';
 @use 'op-maps' as _m;
+@use '../animations' as _a;
 @use 'sass:string';
 
 /// GET DEEP THEME FUNCTION
@@ -97,15 +98,15 @@
 @return #{$light-keyframes};
 }
 
-@mixin fade-in-bloom-x($theme: light, $id: 1234) {
+@mixin fade-in-bloom-x($theme: light) {
   @if ($theme == dark) {
-    @keyframes fade-in-bloom-#{$id} {
+    @keyframes fade-in-bloom-dark#{_a.$animation-id} {
       0% { opacity: 0; filter: brightness(1) blur(20px) }
      10% { opacity: 1; filter: brightness(0.5) blur(10px) }
     100% { opacity: 1; filter: brightness(1) blur(0) }
     }
   } @else {
-    @keyframes fade-in-bloom-#{$id} {
+    @keyframes fade-in-bloom-#{_a.$animation-id} {
       0% { opacity: 0; filter: brightness(1) blur(20px) }
      10% { opacity: 1; filter: brightness(2) blur(10px) }
     100% { opacity: 1; filter: brightness(1) blur(0) }
