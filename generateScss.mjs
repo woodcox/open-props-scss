@@ -99,7 +99,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
   // animations.scss
   } else if (moduleName.toLowerCase() === 'animations') {
-    generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n@use "sass:string";\n$random-id: string.unique-id();\n';
+    generatedScss = '@use "easings" as _e;\n@use "media" as _mq;\n@use "sass:string";\n$animation-id: string.unique-id();\n';
     let animationsStr = '';
     let keyframesStr = '';
     let mediaStr = '';
@@ -110,11 +110,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
         mediaStr += `@mixin ${key}{@media #{_mq.$OSdark} { ${value} }}\n`; // Create sass mixin for @media dark mode
       } else if (value.includes('@keyframes')) {
         key = key.replace(/--|animation-|-@/g, '');
-        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$random-id}');
+        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
         keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
       } else {
         key = key.replace('--', '$');
-        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{random-id} $2');
+        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{animation-id} $2');
         const sassVar = value.replace(/var\(--(.*?)\)/g, 'var(#{_e.$$$1})'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
         animationsStr += `${key}: ${sassVar};\n`;
       }
