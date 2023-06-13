@@ -100,6 +100,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // animations.scss
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
+    
+    const addIDToKeyframe = replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
     const fadeInBloom = Animations['--animation-fade-in-bloom'];
     const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     const fadeOutBloom = Animations['--animation-fade-out-bloom'];
@@ -114,7 +116,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(importObj).forEach(([key, value]) => {
       if (value.includes('@keyframes') && !value.includes('fade-in-bloom') && !value.includes('fade-out-bloom')) {
         key = key.replace(/--|animation-|-@/g, '');
-        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
+        value = value.addIDToKeyframe;
         keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
       } else if (!key.includes('-@')) {
         key = key.replace('--', '$');
@@ -127,9 +129,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}
 @mixin fade-in-bloom($theme: light) {
   @if ($theme == dark) {
-    ${keyframeFIBDark}.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}')
+    ${keyframeFIBDark}
   } @else {
-    ${keyframeFIB}.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}')
+    ${keyframeFIB}
   }
 }`;
   
