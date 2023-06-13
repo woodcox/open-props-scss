@@ -33,7 +33,7 @@ jobs:
         uses: actionsx/prettier@v2
         with: 
           # prettier CLI arguements
-          args: --write "*.scss"
+          args: --print-width 100 --single-quote --write "*.scss"
         
       - name: Commit changes
         if: env.UPDATE_NPM != 'true'
