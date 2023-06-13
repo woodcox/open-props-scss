@@ -1,6 +1,6 @@
-@use 'easings' as _e;
-@use 'media' as _mq;
-@use 'sass:string';
+@use "easings" as _e;
+@use "media" as _mq;
+@use "sass:string";
 
 $animation-id: string.unique-id();
 $animation-fade-in: fade-in-#{animation-id} 0.5s var(#{_e.$ease-3});
