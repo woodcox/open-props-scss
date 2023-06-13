@@ -54,6 +54,10 @@
   @return #{'hsl(#{$args})'};
 }
 
+@function hsla-to-str($args...) {
+  @return hsl-to-str($args...);
+}
+
 @function create-hd-color($hd-color, $hue) {
   @return color-mix(in oklch, $hd-color, transparent $hue);
 }
@@ -77,10 +81,15 @@
 /// @return {color} - The resulting color with the applied opacity.
 
 @function opacity($color-space, $color, $alpha) {
-  @if ($color-space == oklch) {
-    @return color-mix(in $color-space, $color, transparent $alpha);
+  @return mix($color-space, $color1: $color, $color2: transparent, $weight: $alpha);
+}
+
+@function lighten($color-space, $color, $weight: 0.5) {
+  @if $weight >= 0 {
+    @return mix($color-space, $color1: $color, $color2: white, $weight);
+  } @else {
+    @return darken($color-space, $color1: $color, -$weight);
   }
-  @return color-mix(in $color-space, #{'#{$color-space}(#{$color})'}, transparent $alpha);
 }
 
 /// CSSVAR FUNCTION
@@ -93,33 +102,5 @@
   @return var(--#{$prop-name});
 }
 
-
-@function fade-in-bloom-test($theme: light, $id: 1234) {
-  $light-keyframes: "@keyframes fade-in-bloom-#{$id} { 0% { opacity: 0; filter: brightness(1) blur(20px) } 10% { opacity: 1; filter: brightness(2) blur(10px) } 100% { opacity: 1; filter: brightness(1) blur(0) }}";
-
-  $dark-keyframes: "@keyframes fade-in-bloom-#{$id} { 0% { opacity: 0; filter: brightness(1) blur(20px) }  10% { opacity: 1; filter: brightness(0.5) blur(10px) } 100% { opacity: 1; filter: brightness(1) blur(0) }}";
-
-  @if ($theme == dark) {
-    @return #{$dark-keyframes};
-  }
-
-@return #{$light-keyframes};
-}
-
-@mixin fade-in-bloom-x($theme: light) {
-  @if ($theme == dark) {
-    @keyframes fade-in-bloom-dark-#{_a.$animation-id} {
-      0% { opacity: 0; filter: brightness(1) blur(20px) }
-     10% { opacity: 1; filter: brightness(0.5) blur(10px) }
-    100% { opacity: 1; filter: brightness(1) blur(0) }
-    }
-  } @else {
-    @keyframes fade-in-bloom-#{_a.$animation-id} {
-      0% { opacity: 0; filter: brightness(1) blur(20px) }
-     10% { opacity: 1; filter: brightness(2) blur(10px) }
-    100% { opacity: 1; filter: brightness(1) blur(0) }
-    }
-  }
-}
 
 
