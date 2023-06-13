@@ -144,3 +144,21 @@ $animation-fade-out-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s var(--eas
 }
   }
 }
+
+@mixin fade-out-bloom($theme: light) {
+  @if ($theme == dark) {
+    
+@keyframes fade-out-bloom-#{$animation-id} {
+100% { opacity: 0; filter: brightness(1) blur(20px) }
+ 10% { opacity: 1; filter: brightness(0.5) blur(10px) }
+  0% { opacity: 1; filter: brightness(1) blur(0) }
+}
+  } @else {
+    
+@keyframes fade-out-bloom-#{$animation-id} {
+100% { opacity: 0; filter: brightness(1) blur(20px) }
+ 10% { opacity: 1; filter: brightness(2) blur(10px) }
+  0% { opacity: 1; filter: brightness(1) blur(0) }
+}
+  }
+}
