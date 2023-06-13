@@ -110,14 +110,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
     const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     let animationsStr = '';
     let keyframesStr = '';
-    let mediaStr = '';
+    let themeMixinStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
-      if (key.includes('-fade-in-bloom-@ || -fade-out-bloom-@')) {
-        key = key.replace(/--|@media:|-@|animation-/g, '');
-        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
-
-      } else if (value.includes('@keyframes')) {
+      if (value.includes('@keyframes' && !'fade-in-bloom' || 'fade-out-bloom')) {
         key = key.replace(/--|animation-|-@/g, '');
         value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
         keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
@@ -128,8 +124,23 @@ const generateSCSSModule = async (moduleName, importObj) => {
         animationsStr += `${key}: ${sassVar};\n`
       }
     });
-    mediaStr += `${key}: ${value}\n`; // Create sass mixin for @media dark mode
-    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}\n${mediaStr}`;
+    themeMixinStr += `\n`; // Create sass mixin for @media dark mode
+    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}\n
+@mixin fade-in-bloom($theme: light) {
+  @if ($theme == dark) {
+    @keyframes fade-in-bloom-dark-#{$animation-id} {
+      0% { opacity: 0; filter: brightness(1) blur(20px) }
+     10% { opacity: 1; filter: brightness(0.5) blur(10px) }
+    100% { opacity: 1; filter: brightness(1) blur(0) }
+    }
+  } @else {
+    @keyframes fade-in-bloom-#{$animation-id} {
+      0% { opacity: 0; filter: brightness(1) blur(20px) }
+     10% { opacity: 1; filter: brightness(2) blur(10px) }
+    100% { opacity: 1; filter: brightness(1) blur(0) }
+    }
+  }
+}`;
   
   // shadows.scss
   } else if (moduleName.toLowerCase() === 'shadows') {
