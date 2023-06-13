@@ -127,9 +127,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}
 @mixin fade-in-bloom($theme: light) {
   @if ($theme == dark) {
-    ${keyframeFIBDark}
+    ${keyframeFIBDark}.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
   } @else {
-    ${keyframeFIB}
+    ${keyframeFIB}.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
   }
 }`;
   
