@@ -28,6 +28,13 @@ jobs:
         if: env.UPDATE_NPM != 'true'
         run: npm run build
         
+      - name: Prettier
+        if: env.UPDATE_NPM != 'true'
+        uses: actionsx/prettier@v2
+        with: 
+          # prettier CLI arguements
+          args: --write
+        
       - name: Commit changes
         if: env.UPDATE_NPM != 'true'
         uses: EndBug/add-and-commit@v9
