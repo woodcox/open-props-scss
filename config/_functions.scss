@@ -108,5 +108,9 @@
   @return var(--#{$prop-name});
 }
 
+//relative color syntax example
+--primary: #005f73;
+--primary-darker: oklch(from var(--primary) calc(l - 0.1) c h);
+
 
 
