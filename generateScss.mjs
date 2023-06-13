@@ -101,22 +101,21 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
     
-    const addIDToKeyframe = replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
     const fadeInBloom = Animations['--animation-fade-in-bloom'];
     const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     const fadeOutBloom = Animations['--animation-fade-out-bloom'];
     const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
-    const keyframeFIB = Animations['--animation-fade-in-bloom-@'];
-    const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'];
-    const keyframeFOB = Animations['--animation-fade-out-bloom-@'];
-    const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'];
+    const keyframeFIB = Animations['--animation-fade-in-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
+    const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
+    const keyframeFOB = Animations['--animation-fade-out-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
+    const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
     let animationsStr = '';
     let keyframesStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (value.includes('@keyframes') && !value.includes('fade-in-bloom') && !value.includes('fade-out-bloom')) {
         key = key.replace(/--|animation-|-@/g, '');
-        value = value.addIDToKeyframe;
+        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
         keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
       } else if (!key.includes('-@')) {
         key = key.replace('--', '$');
