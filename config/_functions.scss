@@ -63,7 +63,9 @@
 }
 
 @function mix($color-space, $color1, $color2, $weight: 0.5, $hue-method: null) {
-  @if string.index($color1, "margin") {}
+  @if string.index($color1, "#") {
+    @return color-mix(in srgb $hue-method, $color1, $color2 $weight);
+  }
   @if ($color-space == oklch) {
     @return color-mix(in $color-space $hue-method, $color1, $color2 $weight);
   }
