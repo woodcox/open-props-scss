@@ -81,7 +81,7 @@
 /// @return {color} - The resulting color with the applied opacity.
 
 @function opacity($color-space, $color, $alpha) {
-  @return mix($color-space, $color1: $color, transparent, $weight: $alpha);
+  @return mix($color-space, $color, transparent, $alpha);
 }
 
 @function lighten($color-space, $color, $weight: 0.5) {
