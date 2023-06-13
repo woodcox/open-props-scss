@@ -58,10 +58,6 @@
   @return hsl-to-str($args...);
 }
 
-@function create-hd-color($hd-color, $hue) {
-  @return color-mix(in oklch, $hd-color, transparent $hue);
-}
-
 @function mix($color-space, $color1, $color2, $weight: 0.5, $hue-method: null) {
   @if string.index($color1, "#") {
     @return color-mix(in srgb $hue-method, $color1, $color2 $weight);
