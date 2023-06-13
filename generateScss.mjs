@@ -101,16 +101,15 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'animations') {
     generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
     const fadeInBloom = Animations['--animation-fade-in-bloom'];
+    const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     const fadeOutBloom = Animations['--animation-fade-out-bloom'];
+    const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     const keyframeFIB = Animations['--animation-fade-in-bloom-@'];
     const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'];
     const keyframeFOB = Animations['--animation-fade-out-bloom-@'];
     const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'];
-    const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
-    const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
     let animationsStr = '';
     let keyframesStr = '';
-    let themeMixinStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (value.includes('@keyframes') && !value.includes('fade-in-bloom') && !value.includes('fade-out-bloom')) {
@@ -124,21 +123,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
         animationsStr += `${key}: ${sassVar};\n`
       }
     });
-    themeMixinStr += `\n`; // Create sass mixin for @media dark mode
-    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}\n
+    
+    generatedScss += `${animationsStr}$animation-fade-in-bloom-dark: ${fadeInBloomDark};\n$animation-fade-out-bloom-dark: ${fadeInBloomDark};\n\n${keyframesStr}
 @mixin fade-in-bloom($theme: light) {
   @if ($theme == dark) {
-    @keyframes fade-in-bloom-dark-#{$animation-id} {
-      0% { opacity: 0; filter: brightness(1) blur(20px) }
-     10% { opacity: 1; filter: brightness(0.5) blur(10px) }
-    100% { opacity: 1; filter: brightness(1) blur(0) }
-    }
+    ${keyframeFIBDark}
   } @else {
-    @keyframes fade-in-bloom-#{$animation-id} {
-      0% { opacity: 0; filter: brightness(1) blur(20px) }
-     10% { opacity: 1; filter: brightness(2) blur(10px) }
-    100% { opacity: 1; filter: brightness(1) blur(0) }
-    }
+    ${keyframeFIB}
   }
 }`;
   
