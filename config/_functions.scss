@@ -81,14 +81,22 @@
 /// @return {color} - The resulting color with the applied opacity.
 
 @function opacity($color-space, $color, $alpha) {
-  @return mix($color-space, $color1: $color, $color2: transparent, $weight: $alpha);
+  @return mix($color-space, $color1: $color, transparent, $weight: $alpha);
 }
 
 @function lighten($color-space, $color, $weight: 0.5) {
   @if $weight >= 0 {
-    @return mix($color-space, $color1: $color, $color2: white, $weight);
+    @return mix($color-space, $color, #fff, $weight);
   } @else {
-    @return darken($color-space, $color1: $color, -$weight);
+    @return darken($color-space, $color, -$weight);
+  }
+}
+
+@function darken($color-space, $color, $weight: 0.5) {
+  @if $weight >= 0 {
+    @return mix($color-space, $color, #000, $weight);
+  } @else {
+    @return lighten($color-space, $color, -$weight);
   }
 }
 
