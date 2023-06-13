@@ -33,7 +33,7 @@ jobs:
         uses: actionsx/prettier@v2
         with: 
           # prettier CLI arguements
-          args: --write
+          args: prettier --write .
         
       - name: Commit changes
         if: env.UPDATE_NPM != 'true'
