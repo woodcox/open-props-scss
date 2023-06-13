@@ -132,6 +132,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } @else {
     ${keyframeFIB}
   }
+}
+
+@mixin fade-out-bloom($theme: light) {
+  @if ($theme == dark) {
+    ${keyframeFOBDark}
+  } @else {
+    ${keyframeFOB}
+  }
 }`;
   
   // shadows.scss
