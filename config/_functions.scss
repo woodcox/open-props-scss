@@ -172,7 +172,7 @@ $colorspace-map: (
   }
   
   @if meta.type-of($alpha) != "number" {
-    @error "Invalid alpha value. Alpha must be a number or a percentage";
+    @warn "Invalid alpha value. Alpha must be a number or a percentage";
   }
 
   $adjusted-props: ();
