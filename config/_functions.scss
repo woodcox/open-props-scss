@@ -155,26 +155,28 @@
 
 $colorspace-map: (
   rgb: (
-    p1: r,
-    p2: g,
-    p3: b,
+    $p1: r,
+    $p2: g,
+    $p3: b,
   ),
   hsl: (
-    p1: h,
-    p2: s,
-    p3: l,
+    $p1: h,
+    $p2: s,
+    $p3: l,
   ),
   lch: (
-    p1: l,
-    p2: c,
-    p3: h,
+    $p1: l,
+    $p2: c,
+    $p3: h,
   ),
   oklch: (
-    p1: l,
-    p2: c,
-    p3: h,
+    $p1: l,
+    $p2: c,
+    $p3: h,
   ),
 );
+
+@return #{'hsl(#{$args})'}
 
 @function adjustx($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
   $adjustments: ();
@@ -182,8 +184,8 @@ $colorspace-map: (
   $color-space-config: map.get($colorspace-map, $color-space);
 
   @each $key, $component in $color-space-config {
-    $value: if(map.has-key($color-space-config, $key), calc(map.get($color-space-config, $key) + $#{$key}), $component);
-    $adjustments: append($adjustments, $value);
+    $value: if(map.has-key($color-space-config, $key), calc(map.get($color-space-config, $key) + #{$key}), #{$component});
+    $adjustments: append(#{$adjustments}, #{$value});
   }
 
   @if ($color-space == rgb) {
