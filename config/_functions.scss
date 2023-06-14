@@ -176,10 +176,10 @@ $colorspace-map: (
   ),
 );
 
-@function adjust($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
+@function adjustx($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
   $adjustments: ();
 
-  $color-space-config: map-get($colorspace-map, $color-space);
+  $color-space-config: map.get($colorspace-map, $color-space);
 
   @each $key, $component in $color-space-config {
     $value: if($component != 0, "calc(#{$component} + #{$p#{$key}})", $component);
