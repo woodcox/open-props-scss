@@ -1,4 +1,6 @@
 @use 'sass:map';
+@use 'sass:string';
+@use 'sass:meta';
 @use 'op-maps' as _m;
 @use '../animations' as _a;
 @use 'sass:string';
@@ -170,7 +172,7 @@ $colorspace-map: (
     @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch', or 'oklch'. Other color spaces are not currently supported.";
   }
   
-  @if type-of($alpha) != "number" {
+  @if meta.type-of($alpha) != "number" {
     @error "Invalid alpha value. Alpha must be a number or a percentage";
   }
 
