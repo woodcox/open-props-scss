@@ -29,15 +29,15 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   box-shadow: op.shadow(1);
   box-shadow: op.shadow(1, dark);
   box-shadow: op.shadow(1, dark, var(--shadow-color), var(--shadow-strength));
-  color: op.$color-4;
+  color: hd.$color-4;
 }
 
 .dodo {
   hd.$color-hue: hues.$hue-green;
   box-shadow: op.shadow(2, dark);
-  background: op.darker(hsl, oklch(100% 0 0);
-  color: op.opacity(oklch, op.$color-4, 50%);
-  background-color: op.$color-4;
+  background: op.darker(hsl, oklch(100% 0 0));
+  color: op.opacity(oklch, hd.$color-4, 50%);
+  background-color: hd.$color-4;
 }
 
 .card {
