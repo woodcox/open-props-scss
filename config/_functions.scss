@@ -146,7 +146,9 @@
     @return rgb(from $color calc(r + #{$p1}) calc(g + #{$p2}) calc(b + #{$p3}) / $alpha);
   } @else if ($color-space == hsl) {
     @return hsl(from $color calc(h + #{$p1}) calc(s + #{$p2}) calc(l + #{$p3}) / $alpha);
-  } @else if ($color-space == oklch) {
+  } @else if ($color-space == oklch) or ($color-space == lch) {
     @return lch(from $color calc(l + #{$p1}) calc(c + #{$p2}) calc(h + #{$p3}) / $alpha);
+  } @else {
+    @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch' or 'oklch'. Other color spaces are not currently supported";
   }
 }
