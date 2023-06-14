@@ -3,7 +3,6 @@
 @use 'sass:meta';
 @use 'op-maps' as _m;
 @use '../animations' as _a;
-@use 'sass:string';
 
 /// GET DEEP THEME FUNCTION
 /// Retrieves nested theme values from the `$open-props-map` map for the specified `$theme`.
