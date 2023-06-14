@@ -82,19 +82,19 @@
   @return mix($color-space, $color, transparent, $alpha);
 }
 
-@function lighten($color-space, $color, $weight: 0.5) {
+@function lighter($color-space, $color, $weight: 0.5) {
   @if $weight >= 0 {
     @return mix($color-space, $color, #fff, $weight);
   } @else {
-    @return darken($color-space, $color, -$weight);
+    @return darker($color-space, $color, -$weight);
   }
 }
 
-@function darken($color-space, $color, $weight: 0.5) {
+@function darker($color-space, $color, $weight: 0.5) {
   @if $weight >= 0 {
     @return mix($color-space, $color, #000, $weight);
   } @else {
-    @return lighten($color-space, $color, -$weight);
+    @return lighter($color-space, $color, -$weight);
   }
 }
 
