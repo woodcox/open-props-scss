@@ -179,10 +179,10 @@ $colorspace-map: (
 @function adjustx($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
   $adjustments: ();
 
-  $color-space-config: map-get($colorspace-map, $color-space);
+  $color-space-config: map.get($colorspace-map, $color-space);
 
   @each $key, $component in $color-space-config {
-    $value: if($p#{$key} != 0, calc(#{$component} + #{$p#{$key}}), #{$component});
+    $value: if(map-has-key($color-space-config, $key), calc(map.get($color-space-config, $key) + $p#{$key}), $component);
     $adjustments: append($adjustments, $value);
   }
 
@@ -196,3 +196,4 @@ $colorspace-map: (
     @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch' or 'oklch'. Other color spaces are not currently supported";
   }
 }
+
