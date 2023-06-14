@@ -233,7 +233,7 @@ $colorspace-mapz: (
   $adjusted-components: ();
   
   @each $key, $component in $color-space-config {
-    $pp: if(map.get($color-space-config, $key) != 0, map.get($color-space-config, $key) + $p#{-$key}, $component);
+    $pp: if(map.get($color-space-config, $key) != 0, map.get($color-space-config, $key) + #{-$key}, $component);
     $adjusted-components: append($adjusted-components, unquote('#{$component}: #{$pp}'), comma);
   }
 
