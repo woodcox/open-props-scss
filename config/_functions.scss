@@ -176,24 +176,25 @@ $colorspace-map: (
   ),
 );
 
-@function adjustx($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
+@function adjust($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
   $adjustments: ();
 
-  $color-space-config: map.get($colorspace-map, $color-space);
+  $color-space-config: map-get($colorspace-map, $color-space);
 
   @each $key, $component in $color-space-config {
-    $value: if(map-has-key($color-space-config, $key), calc(map.get($color-space-config, $key) + $p#{$key}), $component);
+    $value: if(map-has-key($color-space-config, $key), unquote("calc(#{map-get($color-space-config, $key)} + #{$p#{$key}})"), $component);
     $adjustments: append($adjustments, $value);
   }
 
   @if ($color-space == rgb) {
-    @return rgb(from $color join($adjustments, ' ') / $alpha);
+    @return rgb(from $color unquote(join($adjustments, ' ')) / $alpha);
   } @else if ($color-space == hsl) {
-    @return hsl(from $color join($adjustments, ' ') / $alpha);
+    @return hsl(from $color unquote(join($adjustments, ' ')) / $alpha);
   } @else if ($color-space == oklch) or ($color-space == lch) {
-    @return lch(from $color join($adjustments, ' ') / $alpha);
+    @return lch(from $color unquote(join($adjustments, ' ')) / $alpha);
   } @else {
     @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch' or 'oklch'. Other color spaces are not currently supported";
   }
 }
+
 
