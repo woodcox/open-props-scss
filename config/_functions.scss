@@ -182,7 +182,7 @@ $colorspace-map: (
   $color-space-config: map.get($colorspace-map, $color-space);
 
   @each $key, $component in $color-space-config {
-    $value: if(map.has-key($color-space-config, $key), calc(map.get($color-space-config, $key) + $p#{$key}), $component);
+    $value: if(map.has-key($color-space-config, $key), calc(map.get($color-space-config, $key) + $#{$key}), $component);
     $adjustments: append($adjustments, $value);
   }
 
