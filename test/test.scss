@@ -37,6 +37,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   box-shadow: op.shadow(2, dark);
   background: op.darker(hsl, oklch(100% 0 0));
   color: op.opacity(oklch, hd.$color-4, 50%);
+  color: op.adjust(oklch, hd.$color-4, $p3: hues.$hues-yellow);
   background-color: hd.$color-4;
 }
 
