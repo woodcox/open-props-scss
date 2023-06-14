@@ -109,8 +109,6 @@
 }
 
 //relative color syntax example
---primary: #005f73;
---primary-darker: oklch(from var(--primary) calc(l - 0.1) c h);
 
 @function adjust($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
   @if ($color-space == rgb) {
