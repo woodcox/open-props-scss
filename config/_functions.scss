@@ -197,29 +197,6 @@ $colorspace-map: (
   }
 }
 
-$colorspace-mapz: (
-  rgb: (
-    r: $p1,
-    g: $p2,
-    b: $p3,
-  ),
-  hsl: (
-    h: $p1,
-    s: $p2,
-    l: $p3,
-  ),
-  lch: (
-    l: $p1,
-    c: $p2,
-    h: $p3,
-  ),
-  oklch: (
-    l: $p1,
-    c: $p2,
-    h: $p3,
-  ),
-);
-
 @function adjustz($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
 $colorspace-mapz: (
   rgb: (
