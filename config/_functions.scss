@@ -69,11 +69,7 @@
 /// @returns {*} - The resulting css color-mix function.
 
 @function mix($color-space, $color1, $color2, $weight: 0.5) {
-  @if string.index($color1, "#") {
-    @return color-mix(in srgb, $color1, $color2 $weight);
-  } @else {
     @return color-mix(in $color-space, $color1, $color2 $weight);
-  }
 }
 
 /// OPACITY FUNCTION
