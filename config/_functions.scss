@@ -222,13 +222,13 @@ $colorspace-mapz: (
 );
   $color-space-config: map.get($colorspace-mapz, $color-space);
 
-  //@if (not $color-space-config) {
-  //  @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch', or 'oklch'. Other color spaces are not currently supported.";
-  //}
-
-  @if (type-of($color) != "color") {
-    @error "Invalid color value. Please provide a valid color object.";
+  @if (not $color-space-config) {
+    @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch', or 'oklch'. Other color spaces are not currently supported.";
   }
+
+  //@if (type-of($color) != "color") {
+  //  @error "Invalid color value. Please provide a valid color object.";
+  //}
 
   $adjusted-components: ();
   
