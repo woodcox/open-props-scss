@@ -112,5 +112,12 @@
 --primary: #005f73;
 --primary-darker: oklch(from var(--primary) calc(l - 0.1) c h);
 
-
-
+@function adjust($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
+  @if ($color-space == rgb) {
+    @return rgb(from $color calc(r + #{$p1}) calc(g + #{$p2}) calc(b + #{$p3}) / $alpha);
+  } @else if ($color-space == hsl) {
+    @return hsl(from $color calc(h + #{$p1}) calc(s + #{$p2}) calc(l + #{$p3}) / $alpha);
+  } @else if ($color-space == oklch) {
+    @return lch(from $color calc(l + #{$p1}) calc(c + #{$p2}) calc(h + #{$p3}) / $alpha);
+  }
+}
