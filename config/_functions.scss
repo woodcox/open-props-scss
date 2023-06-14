@@ -58,6 +58,15 @@
   @return hsl-to-str($args...);
 }
 
+/// MIX FUNCTION
+/// This function mixes two colors together based on a specified weight.
+///
+/// @param {string} $color-space - The color space of the colors.
+/// @param {color} $color1 - The first color to mix.
+/// @param {color} $color2 - The second color to mix.
+/// @param {number, optional} $weight - The weight or ratio of the mixing. Default is 0.5 (50%).
+/// @returns {*} - The resulting css color-mix function.
+
 @function mix($color-space, $color1, $color2, $weight: 0.5) {
   @if string.index($color1, "#") {
     @return color-mix(in srgb, $color1, $color2 $weight);
@@ -66,7 +75,6 @@
   }
 }
 
-
 /// OPACITY FUNCTION
 /// https://dev.to/astrit/a-deep-dive-into-the-css-color-mix-function-and-future-of-colors-on-the-web-2pgi
 /// Applies opacity to a color using the specified color space, color, and alpha value.
@@ -74,11 +82,19 @@
 /// @param {string} $color-space - The color space of the color.
 /// @param {color} $color - The color to apply opacity to.
 /// @param {percentage} $alpha - The alpha value for opacity.
-/// @return {color} - The resulting color with the applied opacity.
+/// @return {*} - The resulting opacity of a color as a css color-mix function.
 
 @function opacity($color-space, $color, $alpha) {
   @return mix($color-space, $color, transparent, $alpha);
 }
+
+/// LIGHTER FUNCTION
+/// Lightens a color by mixing it with white.
+///
+/// @param {string} $color-space - The color space of the color.
+/// @param {color} $color - The color to lighten.
+/// @param {number, optional} $weight - The weight or ratio of the lightening. Default is 0.5 (50%).
+/// @returns {*} - The resulting lightened color as a css color-mix function.
 
 @function lighter($color-space, $color, $weight: 0.5) {
   @if $weight >= 0 {
@@ -87,6 +103,14 @@
     @return darker($color-space, $color, -$weight);
   }
 }
+
+/// DARKER FUNCTION
+/// Darkens a color by mixing it with black.
+///
+/// @param {string} $color-space - The color space of the color.
+/// @param {color} $color - The color to darken.
+/// @param {number, optional} $weight - The weight or ratio of the darkening. Default is 0.5 (50%).
+/// @returns {*} - The resulting darkened color as a css color-mix function.
 
 @function darker($color-space, $color, $weight: 0.5) {
   @if $weight >= 0 {
@@ -106,7 +130,16 @@
   @return var(--#{$prop-name});
 }
 
-//relative color syntax example
+/// ADJUST FUNCTION
+/// Adjusts a color by modifying its components based on the specified color space.
+///
+/// @param {string} $color-space - The color space of the color.
+/// @param {color} $color - The color to adjust.
+/// @param {number, optional} $p1 - The adjustment value for the first prop. Default is 0.
+/// @param {number, optional} $p2 - The adjustment value for the second prop. Default is 0.
+/// @param {number, optional} $p3 - The adjustment value for the third prop. Default is 0.
+/// @param {number, optional} $alpha - The alpha value for transparency. Default is 1.
+/// @returns {*} - The resulting adjusted color as a css relative color syntax function.
 
 @function adjust($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
   @if ($color-space == rgb) {
