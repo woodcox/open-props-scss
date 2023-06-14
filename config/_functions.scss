@@ -176,8 +176,6 @@ $colorspace-map: (
   ),
 );
 
-@return #{'hsl(#{$args})'}
-
 @function adjustx($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
   $adjustments: ();
 
