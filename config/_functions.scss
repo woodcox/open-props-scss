@@ -131,7 +131,7 @@
 }
 
 /// ADJUST FUNCTION
-/// Adjusts a color by modifying its components based on the specified color space.
+/// Adjusts a color by modifying its props ($p1, $p2, $p3) for a given color space.
 ///
 /// @param {string} $color-space - The color space of the color.
 /// @param {color} $color - The color to adjust.
