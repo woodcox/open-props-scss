@@ -152,3 +152,47 @@
     @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch' or 'oklch'. Other color spaces are not currently supported";
   }
 }
+
+$colorspace-map: (
+  rgb: (
+    p1: r,
+    p2: g,
+    p3: b,
+  ),
+  hsl: (
+    p1: h,
+    p2: s,
+    p3: l,
+  ),
+  lch: (
+    p1: l,
+    p2: c,
+    p3: h,
+  ),
+  oklch: (
+    p1: l,
+    p2: c,
+    p3: h,
+  ),
+);
+
+@function adjustx($color-space, $color, $p1: 0, $p2: 0, $p3: 0, $alpha: 1) {
+  $adjustments: ();
+
+  $color-space-config: map-get($colorspace-map, $color-space);
+
+  @each $key, $component in $color-space-config {
+    $value: if($p#{$key} != 0, calc(#{$component} + #{$p#{$key}}), #{$component});
+    $adjustments: append($adjustments, $value);
+  }
+
+  @if ($color-space == rgb) {
+    @return rgb(from $color join($adjustments, ' ') / $alpha);
+  } @else if ($color-space == hsl) {
+    @return hsl(from $color join($adjustments, ' ') / $alpha);
+  } @else if ($color-space == oklch) or ($color-space == lch) {
+    @return lch(from $color join($adjustments, ' ') / $alpha);
+  } @else {
+    @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch' or 'oklch'. Other color spaces are not currently supported";
+  }
+}
