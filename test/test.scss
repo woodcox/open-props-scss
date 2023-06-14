@@ -1,5 +1,5 @@
 @use '../oklch-hues' as hues;
-@use '../colors-hd' as hd (
+@use '../colors-hd' as hd with (
   $color-hue: hues.$hue-red,
 );
 @use '../index' as op;
