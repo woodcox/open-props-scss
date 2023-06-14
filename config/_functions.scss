@@ -187,11 +187,11 @@ $colorspace-map: (
   }
 
   @if ($color-space == rgb) {
-    @return rgb(from $color join($adjustments) / $alpha);
+    @return rgb(from $color join($adjustments, ' ') / $alpha);
   } @else if ($color-space == hsl) {
-    @return hsl(from $color join($adjustments) / $alpha);
+    @return hsl(from $color join($adjustments, ' ') / $alpha);
   } @else if ($color-space == oklch) or ($color-space == lch) {
-    @return lch(from $color join($adjustments) / $alpha);
+    @return lch(from $color join($adjustments, ' ') / $alpha);
   } @else {
     @error "The #{$color-space} must be either 'rgb', 'hsl', 'lch' or 'oklch'. Other color spaces are not currently supported";
   }
