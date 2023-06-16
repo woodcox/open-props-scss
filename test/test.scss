@@ -17,7 +17,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   }
 }
 
-@include m.style(background, --bg);
+@include style(background, --bg);
 
 :root {
   --shadow-color: 100 4% 16%;
