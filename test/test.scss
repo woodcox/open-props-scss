@@ -11,6 +11,14 @@ $shadow-color-dark: op.get-prop('dark', 'shadow-color');
 $shadow-str-dark: op.get-prop('dark', 'shadow-strength');
 $shdw-2: op.get-prop('cssvar', 'shadow-2');
 
+@mixin style($prop, $value) {
+  .#{$value}, [style*="#{$value}:"] {
+    #{$prop}: var(#{$value});
+  }
+}
+
+@include m.style(background, --bg);
+
 :root {
   --shadow-color: 100 4% 16%;
   --shadow-strength: 2%;
