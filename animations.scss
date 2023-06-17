@@ -211,7 +211,7 @@ $animation-fade-out-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s #{_e.$eas
 
 @mixin fade-in-bloom($theme: light) {
   @if ($theme == dark) {
-    @keyframes fade-in-bloom-#{$animation-id} {
+    @keyframes fade-in-bloom-dark-#{$animation-id} {
       0% {
         opacity: 0;
         filter: brightness(1) blur(20px);
@@ -245,7 +245,7 @@ $animation-fade-out-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s #{_e.$eas
 
 @mixin fade-out-bloom($theme: light) {
   @if ($theme == dark) {
-    @keyframes fade-out-bloom-#{$animation-id} {
+    @keyframes fade-out-bloom-dark-#{$animation-id} {
       100% {
         opacity: 0;
         filter: brightness(1) blur(20px);
