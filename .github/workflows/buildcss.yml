@@ -6,7 +6,7 @@ on:
       
 # Conditional environmental if's      
 env:
-  UPDATE_NPM: true # false = deploy css , true = update npm
+  UPDATE_NPM: false # false = deploy css , true = update npm
 
 jobs:
   build_css:
@@ -22,7 +22,7 @@ jobs:
           # cache: 'npm'
 
       - name: Install dependencies
-        run: npm update  --save
+        run: npm install  #npm update  --save
         
       - name: Npm build
         if: env.UPDATE_NPM != 'true'
