@@ -26,13 +26,17 @@ import { CustomMediaHelper } from './CustomMediaHelper.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const customMediaHelper = new CustomMediaHelper(Media);
 
+const ColorsOklch = {
+'colors-hd': ColorsHd,
+'oklch-hues': OklchHues,
+};
+
 const openPropFiles = {
   'media': Media,
   'sizes': Sizes,
   'colors': Colors,
   'colors-hsl': ColorsHsl,
-  'colors-hd': ColorsHd,
-  'oklch-hues': OklchHues,
+  'colors-oklch': ColorOklch,
   'gray-oklch': GrayOklch,
   'shadows': Shadows,
   'aspects': Aspects,
@@ -206,12 +210,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
   await writeSCSSModule(moduleName, generatedScss);
 };
 
-const generateOklchFile = async () => {
-const openPropFiles = {
-'colors-hd': ColorsHd,
-'oklch-hues': OklchHues,
-};
-
 for (const [moduleName, importObj] of Object.entries(openPropFiles)) {
   generateSCSSModule(moduleName, importObj);
 }
@@ -226,6 +224,4 @@ indexScss += `@forward 'config';\n`;
 
 const indexOutFile = path.join(__dirname, 'index.scss');
 await fs.writeFile(indexOutFile, indexScss, { encoding: 'utf-8' });
-
-await generateOklchFile();
 
