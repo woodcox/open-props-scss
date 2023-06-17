@@ -30,7 +30,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 }
 
 .my-test-thing {
-  $color-hue: op.$hue-red !global;
+  op.$color-hue: op.$hue-red !global;
   box-shadow: op.shadow(1);
   box-shadow: op.shadow(1, dark);
   box-shadow: op.shadow(1, dark, var(--shadow-color), var(--shadow-strength));
