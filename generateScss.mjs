@@ -117,9 +117,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
     
     const fadeInBloom = Animations['--animation-fade-in-bloom'];
-    const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
+    const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
     const fadeOutBloom = Animations['--animation-fade-out-bloom'];
-    const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2');
+    const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2')replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
     const keyframeFIB = Animations['--animation-fade-in-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
     const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
     const keyframeFOB = Animations['--animation-fade-out-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
@@ -134,7 +134,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
       } else if (!key.includes('-@')) {
         key = key.replace('--', '$');
-        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{animation-id} $2');
+        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
         const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
         animationsStr += `${key}: ${sassVar};\n`
       }
