@@ -36,7 +36,7 @@ const openPropFiles = {
   'sizes': Sizes,
   'colors': Colors,
   'colors-hsl': ColorsHsl,
-  'colors-oklch': ColorOklch,
+  'colors-oklch': ColorsOklch,
   'gray-oklch': GrayOklch,
   'shadows': Shadows,
   'aspects': Aspects,
