@@ -211,7 +211,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--', '$');
       
       if (typeof value === 'string' && value.includes('var(--')) {
-        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1} !default'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
+        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
       }
       
       generatedScss += `${key}: ${value} !default;\n`;
