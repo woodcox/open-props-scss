@@ -134,7 +134,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
       } else if (!key.includes('-@')) {
         key = key.replace('--', '$');
-        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2 !default');
+        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
         const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1} !default'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
         animationsStr += `${key}: ${sassVar};\n`
       }
