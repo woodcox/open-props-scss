@@ -76,7 +76,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
       queryName = queryName.replace('--', '$');
-      generatedScss += `${queryName}: '${processedQuery}';\n`;
+      generatedScss += `${queryName}: '${processedQuery}' !default;\n`;
     });
     
   // colors-oklch.scss
@@ -136,7 +136,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         key = key.replace('--', '$');
         value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
         const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
-        animationsStr += `${key}: ${sassVar};\n`
+        animationsStr += `${key}: ${sassVar} !default;\n`
       }
     });
     
