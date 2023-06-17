@@ -87,7 +87,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     Object.entries(colorsHd).forEach(([key, value]) => {
       key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
+      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}' !default);
 
       generatedScss += `${key}: ${value};\n`;
     });
@@ -95,7 +95,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     Object.entries(oklchHues).forEach(([key, value]) => {
       key = key.replace('--', '$');
       if (typeof value === 'string' && value.includes('var(--')) {
-        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
+        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}' !default); // replace var(--cssvar) with #{$cssvar} when they occur in a value
       }
 
       generatedScss += `${key}: ${value};\n`;
@@ -107,7 +107,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
     Object.entries(importObj).forEach(([key, value]) => {
       key = key.replace('--', '$hd-'); // prevent naming conflict with the grays in colors module
-      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
+      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}' !default);
       
       generatedScss += `${key}: ${value};\n`;
     });
@@ -117,25 +117,25 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
     
     const fadeInBloom = Animations['--animation-fade-in-bloom'];
-    const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
+    const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1}' !default);
     const fadeOutBloom = Animations['--animation-fade-out-bloom'];
-    const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
-    const keyframeFIB = Animations['--animation-fade-in-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
-    const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-dark-#{$animation-id}');
-    const keyframeFOB = Animations['--animation-fade-out-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
-    const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-dark-#{$animation-id}');
+    const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1}' !default);
+    const keyframeFIB = Animations['--animation-fade-in-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}' !default);
+    const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-dark-#{$animation-id}' !default);
+    const keyframeFOB = Animations['--animation-fade-out-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}' !default);
+    const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-dark-#{$animation-id}' !default);
     let animationsStr = '';
     let keyframesStr = '';
     
     Object.entries(importObj).forEach(([key, value]) => {
       if (value.includes('@keyframes') && !value.includes('fade-in-bloom') && !value.includes('fade-out-bloom')) {
         key = key.replace(/--|animation-|-@/g, '');
-        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
+        value = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}' !default);
         keyframesStr += `@mixin ${key}{${value}}\n`; // create @keyframes sass mixins
       } else if (!key.includes('-@')) {
         key = key.replace('--', '$');
-        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
-        const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
+        value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2' !default);
+        const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}' !default); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
         animationsStr += `${key}: ${sassVar};\n`
       }
     });
@@ -181,7 +181,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         key = key.replace(/$/, '\'');
       }
      
-      value = value.replace(/var\(--(.*?)\)/g, '$$--$1');
+      value = value.replace(/var\(--(.*?)\)/g, '$$--$1' !default);
       value = value.replace(/hsl/g, 'Hsl')
       mapKeysValues += `${key}: (${value})`;
       
@@ -211,7 +211,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--', '$');
       
       if (typeof value === 'string' && value.includes('var(--')) {
-        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
+        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}' !default); // replace var(--cssvar) with #{$cssvar} when they occur in a value
       }
       
       generatedScss += `${key}: ${value};\n`;
