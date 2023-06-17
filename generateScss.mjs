@@ -68,7 +68,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (value.includes('/')) {
         value = `list.slash(${value.replace('/', ',')})`;
       }
-      generatedScss += `${key}: ${value};\n`;
+      generatedScss += `${key}: ${value} !default;\n`;
     });
     
   // media.scss
@@ -89,7 +89,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
 
-      generatedScss += `${key}: ${value};\n`;
+      generatedScss += `${key}: ${value} !default;\n`;
     });
 
     Object.entries(oklchHues).forEach(([key, value]) => {
@@ -98,7 +98,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
       }
 
-      generatedScss += `${key}: ${value};\n`;
+      generatedScss += `${key}: ${value} !default;\n`;
     });
     
   // gray-oklch.scss
@@ -109,7 +109,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       key = key.replace('--', '$hd-'); // prevent naming conflict with the grays in colors module
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
       
-      generatedScss += `${key}: ${value};\n`;
+      generatedScss += `${key}: ${value} !default;\n`;
     });
 
   // animations.scss
@@ -214,7 +214,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         value = value.replace(/var\(--(.*?)\)/g, '#{$$$1} !default'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
       }
       
-      generatedScss += `${key}: ${value};\n`;
+      generatedScss += `${key}: ${value} !default;\n`;
     });
   }
 
