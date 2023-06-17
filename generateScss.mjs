@@ -94,7 +94,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
     Object.entries(oklchHues).forEach(([key, value]) => {
       key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
+      if (typeof value === 'string' && value.includes('var(--')) {
+        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
+      }
 
       generatedScss += `${key}: ${value};\n`;
     });
