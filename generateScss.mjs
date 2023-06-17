@@ -26,7 +26,7 @@ import { CustomMediaHelper } from './CustomMediaHelper.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const customMediaHelper = new CustomMediaHelper(Media);
 
-const ColorsOklch = {
+const ColorsOklch = async() => {
 'colors-hd': ColorsHd,
 'oklch-hues': OklchHues,
 };
