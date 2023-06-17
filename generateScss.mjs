@@ -85,7 +85,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
    
     generatedScss = '$color-hue: 0 !default;\n';
     
-    Object.entries(colorHd).forEach(([key, value]) => {
+    Object.entries(colorsHd).forEach(([key, value]) => {
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
 
