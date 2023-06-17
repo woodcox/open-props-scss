@@ -80,7 +80,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
     
   // colors-hd.scss
-  } else if (moduleName.toLowerCase() === 'colors-hd') {
+  } else if (moduleName.toLowerCase() === 'colors-oklch') {
+    const { 'colors-hd': colorsHd, 'oklch-hues': oklchHues } = importObj;
+   
     generatedScss = '$color-hue: 0 !default;\n';
     
     Object.entries(importObj).forEach(([key, value]) => {
