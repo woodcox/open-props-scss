@@ -120,9 +120,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1} !default');
     const fadeOutBloom = Animations['--animation-fade-out-bloom'];
     const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, '$1-dark-#{$animation-id} $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1} !default');
-    const keyframeFIB = Animations['--animation-fade-in-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id} !default');
+    const keyframeFIB = Animations['--animation-fade-in-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
     const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-dark-#{$animation-id} !default');
-    const keyframeFOB = Animations['--animation-fade-out-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id} !default');
+    const keyframeFOB = Animations['--animation-fade-out-bloom-@'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
     const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes $1-dark-#{$animation-id} !default');
     let animationsStr = '';
     let keyframesStr = '';
