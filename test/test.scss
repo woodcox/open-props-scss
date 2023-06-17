@@ -1,4 +1,3 @@
-@use '../oklch-hues' as hues;
 @use '../colors-oklch' as hd with (
   $color-hue: $hue-red,
 );
@@ -41,7 +40,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 }
 
 .dodo {
-  hd.$color-hue: hues.$hue-green;
+  hd.$color-hue: hd.$hue-green;
   box-shadow: op.shadow(2, dark);
   background: op.darker(hsl, oklch(100% 0 0));
   color: op.opacity(oklch, hd.$color-4, 50%);
