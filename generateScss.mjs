@@ -27,8 +27,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const customMediaHelper = new CustomMediaHelper(Media);
 
 const ColorsOklch = async() => {
-'colors-hd': ColorsHd,
-'oklch-hues': OklchHues,
+ ColorsHd,
+ OklchHues,
 };
 
 const openPropFiles = {
