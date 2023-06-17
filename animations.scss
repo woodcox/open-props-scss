@@ -25,8 +25,8 @@ $animation-blink: blink-#{$animation-id} 1s #{_e.$ease-out-3} infinite;
 $animation-float: float-#{$animation-id} 3s #{_e.$ease-in-out-3} infinite;
 $animation-bounce: bounce-#{$animation-id} 2s #{_e.$ease-squish-2} infinite;
 $animation-pulse: pulse-#{$animation-id} 2s #{_e.$ease-out-3} infinite;
-$animation-fade-in-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s #{_e.$ease-3};
-$animation-fade-out-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s #{_e.$ease-3};
+$animation-fade-in-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s #{_e.$ease-3} !default;
+$animation-fade-out-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s #{_e.$ease-3} !default;
 
 @mixin fade-in {
   @keyframes fade-in-#{$animation-id} {
