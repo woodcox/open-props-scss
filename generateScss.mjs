@@ -75,7 +75,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'media') {
     Object.keys(importObj).forEach((queryName) => {
       const processedQuery = customMediaHelper.process(queryName);
-      queryName = queryName.replace('--', '$');
+      queryName = queryName.replace('--', '$').replace(/(|)/, '');
       generatedScss += `${queryName}: '${processedQuery}' !default;\n`;
     });
     
