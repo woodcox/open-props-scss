@@ -206,6 +206,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
   await writeSCSSModule(moduleName, generatedScss);
 };
 
+const generateOklchFile = async () => {
+const openPropFiles = {
+'colors-hd': ColorsHd,
+'oklch-hues': OklchHues,
+};
+
 for (const [moduleName, importObj] of Object.entries(openPropFiles)) {
   generateSCSSModule(moduleName, importObj);
 }
@@ -220,4 +226,6 @@ indexScss += `@forward 'config';\n`;
 
 const indexOutFile = path.join(__dirname, 'index.scss');
 await fs.writeFile(indexOutFile, indexScss, { encoding: 'utf-8' });
+
+await generateOklchFile();
 
