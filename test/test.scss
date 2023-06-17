@@ -1,7 +1,7 @@
-@use '../colors-oklch' as hd with (
+@use '../colors-oklch' as hd;
+@use '../index' as op with (
   $color-hue: $hue-red,
 );
-@use '../index' as op;
 
 $shadow-color-light: op.get-prop('light', 'shadow-color');
 $shadow-str-light: op.get-prop('light', 'shadow-strength');
