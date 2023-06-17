@@ -79,13 +79,20 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${queryName}: '${processedQuery}';\n`;
     });
     
-  // colors-hd.scss
+  // colors-oklch.scss
   } else if (moduleName.toLowerCase() === 'colors-oklch') {
     const { 'colors-hd': colorsHd, 'oklch-hues': oklchHues } = importObj;
    
     generatedScss = '$color-hue: 0 !default;\n';
     
-    Object.entries(importObj).forEach(([key, value]) => {
+    Object.entries(colorHd).forEach(([key, value]) => {
+      key = key.replace('--', '$');
+      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
+
+      generatedScss += `${key}: ${value};\n`;
+    });
+
+    Object.entries(oklchHues).forEach(([key, value]) => {
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
 
