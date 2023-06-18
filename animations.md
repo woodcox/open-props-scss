@@ -1,0 +1,166 @@
+```scss
+@use 'easings' as _e;
+@use 'media' as _mq;
+@use 'sass:string';
+
+$animation-id: string.unique-id();
+$animation-fade-in: fade-in-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-fade-in-bloom: fade-in-bloom-#{$animation-id} 2s #{_e.$ease-3} !default;
+$animation-fade-out: fade-out-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-fade-out-bloom: fade-out-bloom-#{$animation-id} 2s #{_e.$ease-3} !default;
+$animation-scale-up: scale-up-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-scale-down: scale-down-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-slide-out-up: slide-out-up-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-slide-out-down: slide-out-down-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-slide-out-right: slide-out-right-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-slide-out-left: slide-out-left-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-slide-in-up: slide-in-up-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-slide-in-down: slide-in-down-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-slide-in-right: slide-in-right-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-slide-in-left: slide-in-left-#{$animation-id} .5s #{_e.$ease-3} !default;
+$animation-shake-x: shake-x-#{$animation-id} .75s #{_e.$ease-out-5} !default;
+$animation-shake-y: shake-y-#{$animation-id} .75s #{_e.$ease-out-5} !default;
+$animation-spin: spin-#{$animation-id} 2s linear infinite !default;
+$animation-ping: ping-#{$animation-id} 5s #{_e.$ease-out-3} infinite !default;
+$animation-blink: blink-#{$animation-id} 1s #{_e.$ease-out-3} infinite !default;
+$animation-float: float-#{$animation-id} 3s #{_e.$ease-in-out-3} infinite !default;
+$animation-bounce: bounce-#{$animation-id} 2s #{_e.$ease-squish-2} infinite !default;
+$animation-pulse: pulse-#{$animation-id} 2s #{_e.$ease-out-3} infinite !default;
+$animation-fade-in-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s #{_e.$ease-3} !default;
+$animation-fade-out-bloom-dark: fade-in-bloom-dark-#{$animation-id} 2s #{_e.$ease-3} !default;
+
+@mixin fade-in{
+@keyframes fade-in-#{$animation-id} {
+  to { opacity: 1 }
+}}
+@mixin fade-out{
+@keyframes fade-out-#{$animation-id} {
+  to { opacity: 0 }
+}}
+@mixin scale-up{
+@keyframes scale-up-#{$animation-id} {
+  to { transform: scale(1.25) }
+}}
+@mixin scale-down{
+@keyframes scale-down-#{$animation-id} {
+  to { transform: scale(.75) }
+}}
+@mixin slide-out-up{
+@keyframes slide-out-up-#{$animation-id} {
+  to { transform: translateY(-100%) }
+}}
+@mixin slide-out-down{
+@keyframes slide-out-down-#{$animation-id} {
+  to { transform: translateY(100%) }
+}}
+@mixin slide-out-right{
+@keyframes slide-out-right-#{$animation-id} {
+  to { transform: translateX(100%) }
+}}
+@mixin slide-out-left{
+@keyframes slide-out-left-#{$animation-id} {
+  to { transform: translateX(-100%) }
+}}
+@mixin slide-in-up{
+@keyframes slide-in-up-#{$animation-id} {
+  from { transform: translateY(100%) }
+}}
+@mixin slide-in-down{
+@keyframes slide-in-down-#{$animation-id} {
+  from { transform: translateY(-100%) }
+}}
+@mixin slide-in-right{
+@keyframes slide-in-right-#{$animation-id} {
+  from { transform: translateX(-100%) }
+}}
+@mixin slide-in-left{
+@keyframes slide-in-left-#{$animation-id} {
+  from { transform: translateX(100%) }
+}}
+@mixin shake-x{
+@keyframes shake-x-#{$animation-id} {
+  0%, 100% { transform: translateX(0%) }
+  20% { transform: translateX(-5%) }
+  40% { transform: translateX(5%) }
+  60% { transform: translateX(-5%) }
+  80% { transform: translateX(5%) }
+}}
+@mixin shake-y{
+@keyframes shake-y-#{$animation-id} {
+  0%, 100% { transform: translateY(0%) }
+  20% { transform: translateY(-5%) }
+  40% { transform: translateY(5%) }
+  60% { transform: translateY(-5%) }
+  80% { transform: translateY(5%) }
+}}
+@mixin spin{
+@keyframes spin-#{$animation-id} {
+  to { transform: rotate(1turn) }
+}}
+@mixin ping{
+@keyframes ping-#{$animation-id} {
+  90%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}}
+@mixin blink{
+@keyframes blink-#{$animation-id} {
+  0%, 100% {
+    opacity: 1
+  }
+  50% {
+    opacity: .5
+  }
+}}
+@mixin float{
+@keyframes float-#{$animation-id} {
+  50% { transform: translateY(-25%) }
+}}
+@mixin bounce{
+@keyframes bounce-#{$animation-id} {
+  25% { transform: translateY(-20%) }
+  40% { transform: translateY(-3%) }
+  0%, 60%, 100% { transform: translateY(0) }
+}}
+@mixin pulse{
+@keyframes pulse-#{$animation-id} {
+  50% { transform: scale(.9,.9) }
+}}
+
+@mixin fade-in-bloom($theme: light) {
+  @if ($theme == dark) {
+    
+@keyframes fade-in-bloom-dark-#{$animation-id} {
+  0% { opacity: 0; filter: brightness(1) blur(20px) }
+ 10% { opacity: 1; filter: brightness(0.5) blur(10px) }
+100% { opacity: 1; filter: brightness(1) blur(0) }
+}
+  } @else {
+    
+@keyframes fade-in-bloom-#{$animation-id} {
+  0% { opacity: 0; filter: brightness(1) blur(20px) }
+ 10% { opacity: 1; filter: brightness(2) blur(10px) }
+100% { opacity: 1; filter: brightness(1) blur(0) }
+}
+  }
+}
+
+@mixin fade-out-bloom($theme: light) {
+  @if ($theme == dark) {
+    
+@keyframes fade-out-bloom-dark-#{$animation-id} {
+100% { opacity: 0; filter: brightness(1) blur(20px) }
+ 10% { opacity: 1; filter: brightness(0.5) blur(10px) }
+  0% { opacity: 1; filter: brightness(1) blur(0) }
+}
+  } @else {
+    
+@keyframes fade-out-bloom-#{$animation-id} {
+100% { opacity: 0; filter: brightness(1) blur(20px) }
+ 10% { opacity: 1; filter: brightness(2) blur(10px) }
+  0% { opacity: 1; filter: brightness(1) blur(0) }
+}
+  }
+}
+```

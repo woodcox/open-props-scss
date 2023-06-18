@@ -1,0 +1,44 @@
+```scss
+$font-sans: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif !default;
+$font-serif: ui-serif,serif !default;
+$font-mono: Dank Mono,Operator Mono,Inconsolata,Fira Mono,ui-monospace,SF Mono,Monaco,Droid Sans Mono,Source Code Pro,monospace !default;
+$font-weight-1: 100 !default;
+$font-weight-2: 200 !default;
+$font-weight-3: 300 !default;
+$font-weight-4: 400 !default;
+$font-weight-5: 500 !default;
+$font-weight-6: 600 !default;
+$font-weight-7: 700 !default;
+$font-weight-8: 800 !default;
+$font-weight-9: 900 !default;
+$font-lineheight-00: .95 !default;
+$font-lineheight-0: 1.1 !default;
+$font-lineheight-1: 1.25 !default;
+$font-lineheight-2: 1.375 !default;
+$font-lineheight-3: 1.5 !default;
+$font-lineheight-4: 1.75 !default;
+$font-lineheight-5: 2 !default;
+$font-letterspacing-0: -.05em !default;
+$font-letterspacing-1: .025em !default;
+$font-letterspacing-2: .050em !default;
+$font-letterspacing-3: .075em !default;
+$font-letterspacing-4: .150em !default;
+$font-letterspacing-5: .500em !default;
+$font-letterspacing-6: .750em !default;
+$font-letterspacing-7: 1em !default;
+$font-size-00: .5rem !default;
+$font-size-0: .75rem !default;
+$font-size-1: 1rem !default;
+$font-size-2: 1.1rem !default;
+$font-size-3: 1.25rem !default;
+$font-size-4: 1.5rem !default;
+$font-size-5: 2rem !default;
+$font-size-6: 2.5rem !default;
+$font-size-7: 3rem !default;
+$font-size-8: 3.5rem !default;
+$font-size-fluid-0: clamp(.75rem, 2vw, 1rem) !default;
+$font-size-fluid-1: clamp(1rem, 4vw, 1.5rem) !default;
+$font-size-fluid-2: clamp(1.5rem, 6vw, 2.5rem) !default;
+$font-size-fluid-3: clamp(2rem, 9vw, 3.5rem) !default;
+
+```

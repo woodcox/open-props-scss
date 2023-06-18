@@ -1,0 +1,46 @@
+```scss
+$motionOK: '(prefers-reduced-motion: no-preference)' !default;
+$motionNotOK: '(prefers-reduced-motion: reduce)' !default;
+$opacityOK: '(prefers-reduced-transparency: no-preference)' !default;
+$opacityNotOK: '(prefers-reduced-transparency: reduce)' !default;
+$useDataOK: '(prefers-reduced-data: no-preference)' !default;
+$useDataNotOK: '(prefers-reduced-data: reduce)' !default;
+$OSdark: '(prefers-color-scheme: dark)' !default;
+$OSlight: '(prefers-color-scheme: light)' !default;
+$highContrast: '(prefers-contrast: more)' !default;
+$lowContrast: '(prefers-contrast: less)' !default;
+$portrait: '(orientation: portrait)' !default;
+$landscape: '(orientation: landscape)' !default;
+$HDcolor: '(dynamic-range: high)' !default;
+$touch: '(hover: none) and (pointer: coarse)' !default;
+$stylus: '(hover: none) and (pointer: fine)' !default;
+$pointer: '(hover) and (pointer: coarse)' !default;
+$mouse: '(hover) and (pointer: fine)' !default;
+$xxs-only: '(min-width: 0) and (max-width: 240px)' !default;
+$xxs-n-above: '(min-width: 240px)' !default;
+$xxs-n-below: '(max-width: 239.999px)' !default;
+$xxs-phone: '(min-width: 0) and (max-width: 240px) and (orientation: portrait)' !default;
+$xs-only: '(min-width: 240px) and (max-width: 360px)' !default;
+$xs-n-above: '(min-width: 360px)' !default;
+$xs-n-below: '(max-width: 359.999px)' !default;
+$xs-phone: '(min-width: 240px) and (max-width: 360px) and (orientation: portrait)' !default;
+$sm-only: '(min-width: 360px) and (max-width: 480px)' !default;
+$sm-n-above: '(min-width: 480px)' !default;
+$sm-n-below: '(max-width: 479.999px)' !default;
+$sm-phone: '(min-width: 360px) and (max-width: 480px) and (orientation: portrait)' !default;
+$md-only: '(min-width: 480px) and (max-width: 768px)' !default;
+$md-n-above: '(min-width: 768px)' !default;
+$md-n-below: '(max-width: 767.999px)' !default;
+$md-phone: '(min-width: 480px) and (max-width: 768px) and (orientation: portrait)' !default;
+$lg-only: '(min-width: 768px) and (max-width: 1024px)' !default;
+$lg-n-above: '(min-width: 1024px)' !default;
+$lg-n-below: '(max-width: 1024px)' !default;
+$lg-phone: '(min-width: 768px) and (max-width: 1024px) and (orientation: portrait)' !default;
+$xl-only: '(min-width: 1024px) and (max-width: 1440px)' !default;
+$xl-n-above: '(min-width: 1440px)' !default;
+$xl-n-below: '(max-width: 1440px)' !default;
+$xxl-only: '(min-width: 1440px) and (max-width: 1920px)' !default;
+$xxl-n-above: '(min-width: 1920px)' !default;
+$xxl-n-below: '(max-width: 1920px)' !default;
+
+```
