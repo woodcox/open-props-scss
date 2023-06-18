@@ -185,8 +185,9 @@ $colorspace-map: (
   @return #{'#{$color-space}(from #{$color} #{$adjusted-props}#{$append-alpha})'};
 }
 
-@function adjust-hue($color, $new-hue) {
-  $color-hue: $new-hue;
-  meta.load-css($color);
+@function adjust-hue($color, $hue) {
+  meta.load-css('colors-oklch',
+    $with: ('color-hue': $hue)
+  );
   @return $color;
 }
