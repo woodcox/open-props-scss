@@ -2,7 +2,6 @@
 @use 'sass:string';
 @use 'sass:meta';
 @use 'op-maps' as _m;
-@use '../animations' as _a;
 
 /// GET DEEP THEME FUNCTION
 /// Retrieves nested theme values from the `$open-props-map` map for the specified `$theme`.
@@ -184,4 +183,10 @@ $colorspace-map: (
     @return #{'lch(from #{$color} #{$adjusted-props}#{$append-alpha})'};
   }
   @return #{'#{$color-space}(from #{$color} #{$adjusted-props}#{$append-alpha})'};
+}
+
+@function adjust-hue($color, $new-hue) {
+  $color-hue: $new-hue;
+  meta.load-css($color);
+  @return $color;
 }
