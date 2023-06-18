@@ -56,6 +56,13 @@ const writeSCSSModule = async (moduleName, content) => {
   await fs.writeFile(outFile, content, { encoding: 'utf-8' });
 };
 
+// md codeblock
+const writeMDCodeBlock = async (moduleName, content) => {
+  const outFile = path.join(__dirname, `${moduleName}.md`);
+  const codeBlock = '```scss\n' + content + '\n```';
+  await fs.writeFile(outFile, codeBlock, { encoding: 'utf-8' });
+};
+
 const generateSCSSModule = async (moduleName, importObj) => {
   let generatedScss = '';
   
@@ -218,7 +225,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
   }
 
+  // write scss & md files
   await writeSCSSModule(moduleName, generatedScss);
+  await writeMDCodeBlock(moduleName, generatedScss);
 };
 
 for (const [moduleName, importObj] of Object.entries(openPropFiles)) {
