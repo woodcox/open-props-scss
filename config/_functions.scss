@@ -186,7 +186,7 @@ $colorspace-map: (
 }
 
 @function adjust-hue($color, $hue) {
-  meta.load-css('colors-oklch',
+  @if meta.load-css('colors-oklch',
     $with: ('color-hue': $hue)
   );
   @return $color;
