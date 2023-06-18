@@ -41,14 +41,14 @@ jobs:
         with:
           default_author: github_actions
           message: "Add files"
-          add: '["*.json", "*.scss", "*.css", "*.js"]'
+          add: '["*.json", "*.scss", "*.css", "*.js", "*.md"]'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
           
       - name: pull request on npm update
         if: env.UPDATE_NPM == 'true'
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Update dependencies
