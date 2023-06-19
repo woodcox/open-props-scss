@@ -35,6 +35,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   box-shadow: op.shadow(1, dark);
   box-shadow: op.shadow(1, dark, var(--shadow-color), var(--shadow-strength));
   color: op.$color-4;
+  color: op.adjust-hue(op.$color-4, $hue-yellow);
 }
 
 .dodo {
