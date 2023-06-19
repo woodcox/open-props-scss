@@ -46,7 +46,7 @@
   box-shadow: var(--shadow-3);
 }
 
-@keyframes fade-in-bloom-dark-uorft5n {
+@keyframes fade-in-bloom-dark-uzfjf86 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -60,7 +60,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-uorft5n {
+@keyframes fade-in-bloom-uzfjf86 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -74,7 +74,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-uorft5n {
+@keyframes fade-in-bloom-uzfjf86 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -88,15 +88,16 @@
     filter: brightness(1) blur(0);
   }
 }
-/**
- * hd-color Function
- *
- * Generates HD color variations based on the provided hue and opacity values.
- * Supports CSS custom properties for flexibility.
- *
- * @param {Number} $color-hue - The hue value for the color. Defaults to 0.
- * @param {Number} $opacity - The opacity value for the color. Defaults to 0.
- * @returns {Color} - The HD color value.
- */
+.token1 {
+  font-size: clamp(20rem, 20rem + 30rem-20rem * 100vw-320px/920), 30rem);
+}
+
+.token2 {
+  font-size: clamp(30rem, 30rem + 48rem-30rem * 100vw-320px/920), 48rem);
+}
+
+.token3 {
+  font-size: clamp(48rem, 48rem + 77.5rem-48rem * 100vw-320px/920), 77.5rem);
+}
 
 /*# sourceMappingURL=test.css.map */
