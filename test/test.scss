@@ -69,55 +69,13 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 @include op.fade-in-bloom(light);
 @include op.fade-in-bloom;
 
-$rootSize: 16;
+@use 'sass:math';
+@use 'sass:map';
 
-$minViewport: 320;
-$maxViewport: 1240;
-
-$rootSize: 16;
-
-$minViewport: 320;
-$maxViewport: 1240;
-
-@function generateClamps($tokens) {
-  $clamps: ();
-
-  @each $token in $tokens {
-    $name: map-get($token, "name");
-    $min: map-get($token, "min") / $rootSize;
-    $max: map-get($token, "max") / $rootSize;
-
-    $minSize: #{$min}rem;
-    $maxSize: #{$max}rem;
-    $intersection: (100vw - #{$minViewport}px) / ($maxViewport - $minViewport);
-
-    $clampValue: #{"clamp(#{$minSize}, #{$minSize} + #{($maxSize - $minSize)} * #{$intersection}), #{$maxSize})"};
-
-    $clamp: (
-      "name": $name,
-      "value": $clampValue
-    );
-
-    $clamps: append($clamps, $clamp);
-  }
-
-  @return $clamps;
-}
-
-$generatedClamps: generateClamps((
-  ("name": "token1", "min": 320, "max": 480),
-  ("name": "token2", "min": 480, "max": 768),
-  ("name": "token3", "min": 768, "max": 1240)
-));
-
-// Usage example
-@each $clamp in $generatedClamps {
-  $name: map-get($clamp, "name");
-  $value: map-get($clamp, "value");
-
-  .#{$name} {
-    font-size: $value;
-  }
+// round to 2 decimal places
+@function tofixed($value, $decimal-place) {
+  $pow: math.pow(10, $decimal-place);
+  @return round($value * $pow) / $pow;
 }
 
 $rootSize: 16;
@@ -125,7 +83,7 @@ $rootSize: 16;
 $minViewport: 320;
 $maxViewport: 1440;
 
-@function generateClampsx($tokens) {
+@function generateClamps($tokens) {
   $clamps: ();
 
   @each $token in $tokens {
@@ -136,18 +94,18 @@ $maxViewport: 1440;
     $max: map.get($token, "max");
     
     // convert the min and max sizes to rems
-    $minRem: math.div($min, $rootSize);
-    $maxRem: math.div($max, $rootSize);
-    $minSize: #{$minRem}rem;
-    $maxSize: #{$maxRem}rem;
+    $minSize: $min / $rootSize; // rems
+    $maxSize: $max / $rootSize; // rems
+    //$minSize: #{$minRem}rem;
+    //$maxSize: #{$maxRem}rem;
     
     // Convert the pixel viewport sizes into rems
-    $minViewport: math.div($minViewport, rootSize);
-    $maxViewport: math.div($maxViewport, rootSize);
+    $minViewport: $minViewport / $rootSize;
+    $maxViewport: $maxViewport / $rootSize;
 
     // Slope and intersection allow us to have a fluid value but also keep that sensible
-    $slope: math.div(($maxSize - $minSize), ($maxViewport - $minViewport));
-    $intersection: -1 * $minViewport * $slope + $minSize;
+    $slope: tofixed(($maxSize - $minSize) / ($maxViewport - $minViewport), 2);
+    $intersection: tofixed(-$minViewport * $slope + $minSize, 2);
     
     
     //$intersection: (100vw - #{$minViewport}px) / ($maxViewport - $minViewport);
@@ -155,9 +113,9 @@ $maxViewport: 1440;
     $clampValue: null;
     
     @if ($min == $max) {
-      $clampValue: #{"#{$minSize}"}
+      $clampValue: #{"#{$minSize}rem"}
     } @else {
-      $clampValue: #{"clamp(#{$minSize}, (#{$intersection}rem + $slope * 100)vw, #{$maxSize})"};
+      $clampValue: #{"clamp(#{$minSize}rem, #{$intersection}rem + #{$slope * 100}vw, #{$maxSize}rem)"};
     }
       
     $clamp: (
@@ -186,4 +144,3 @@ $generatedClamps: generateClamps((
     font-size: $value;
   }
 }
-
