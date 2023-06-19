@@ -69,10 +69,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 @include op.fade-in-bloom(light);
 @include op.fade-in-bloom;
 
-@use 'sass:math';
-@use 'sass:map';
-
-// round to 2 decimal places
+// round a number to a fixed numebr of decimal places
 @function tofixed($value, $decimal-place) {
   $pow: math.pow(10, $decimal-place);
   @return round($value * $pow) / $pow;
