@@ -112,7 +112,7 @@ $maxViewport: 1440;
     @if ($min == $max) {
       $clampValue: #{"#{$minSize}rem"}
     } @else {
-      $clampValue: #{"clamp(#{$minSize}rem, #{$intersection}rem + #{$slope * 100}vw, #{$maxSize}rem)"};
+      $clampValue: #{"clamp(#{$minSize}rem, calc(#{$intersection}rem + #{$slope * 100}vw), #{$maxSize}rem)"};
     }
       
     $clamp: (
