@@ -1,4 +1,6 @@
 @use '../index' as op;
+@use 'sass:math';
+@use 'sass:map';
 
 $shadow-color-light: op.get-prop('light', 'shadow-color');
 $shadow-str-light: op.get-prop('light', 'shadow-strength');
@@ -91,6 +93,73 @@ $maxViewport: 1240;
 
     $clampValue: #{"clamp(#{$minSize}, #{$minSize} + #{($maxSize - $minSize)} * #{$intersection}), #{$maxSize})"};
 
+    $clamp: (
+      "name": $name,
+      "value": $clampValue
+    );
+
+    $clamps: append($clamps, $clamp);
+  }
+
+  @return $clamps;
+}
+
+$generatedClamps: generateClamps((
+  ("name": "token1", "min": 320, "max": 480),
+  ("name": "token2", "min": 480, "max": 768),
+  ("name": "token3", "min": 768, "max": 1240)
+));
+
+// Usage example
+@each $clamp in $generatedClamps {
+  $name: map-get($clamp, "name");
+  $value: map-get($clamp, "value");
+
+  .#{$name} {
+    font-size: $value;
+  }
+}
+
+$rootSize: 16;
+
+$minViewport: 320;
+$maxViewport: 1440;
+
+@function generateClampsx($tokens) {
+  $clamps: ();
+
+  @each $token in $tokens {
+    $name: map-get($token, "name");
+    
+    
+    $min: map.get($token, "min");
+    $max: map.get($token, "max");
+    
+    // convert the min and max sizes to rems
+    $minRem: math.div($min, $rootSize);
+    $maxRem: math.div($max, $rootSize);
+    $minSize: #{$minRem}rem;
+    $maxSize: #{$maxRem}rem;
+    
+    // Convert the pixel viewport sizes into rems
+    $minViewport: math.div($minViewport, rootSize);
+    $maxViewport: math.div($maxViewport, rootSize);
+
+    // Slope and intersection allow us to have a fluid value but also keep that sensible
+    $slope: math.div(($maxSize - $minSize), ($maxViewport - $minViewport));
+    $intersection: -1 * $minViewport * $slope + $minSize;
+    
+    
+    //$intersection: (100vw - #{$minViewport}px) / ($maxViewport - $minViewport);
+    
+    $clampValue: null;
+    
+    @if ($min == $max) {
+      $clampValue: #{"#{$minSize}"}
+    } @else {
+      $clampValue: #{"clamp(#{$minSize}, (#{$intersection}rem + $slope * 100)vw, #{$maxSize})"};
+    }
+      
     $clamp: (
       "name": $name,
       "value": $clampValue
