@@ -73,6 +73,11 @@ $rootSize: 16;
 $minViewport: 320;
 $maxViewport: 1240;
 
+$rootSize: 16;
+
+$minViewport: 320;
+$maxViewport: 1240;
+
 @function generateClamps($tokens) {
   $clamps: ();
 
@@ -81,18 +86,15 @@ $maxViewport: 1240;
     $min: map-get($token, "min") / $rootSize;
     $max: map-get($token, "max") / $rootSize;
 
+    $minSize: #{$min}rem;
+    $maxSize: #{$max}rem;
+    $intersection: (100vw - #{$minViewport}px) / ($maxViewport - $minViewport);
+
+    $clampValue: #{"clamp(#{$minSize}, #{$minSize} + #{($maxSize - $minSize)} * #{$intersection}), #{$maxSize})"};
+
     $clamp: (
       "name": $name,
-      "value": (
-        @if $min == $max {
-          #{$min}rem
-        } @else {
-          unquote("clamp(#{$min}rem, " +
-            (#{($min)}rem + (#{($max)}rem - #{($min)}rem) *
-              ((100vw - #{$minViewport}px) / (#{$maxViewport} - #{$minViewport})))
-            + "rem)")
-        }
-      )
+      "value": $clampValue
     );
 
     $clamps: append($clamps, $clamp);
