@@ -101,7 +101,7 @@ $maxViewport: 1440;
     $maxViewport: math.div($maxViewport, $rootSize);
 
     // Slope and intersection allow us to have a fluid value but also keep that sensible
-    $slope: tofixed(math.div($maxSize - $minSize), ($maxViewport - $minViewport), 2);
+    $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewport - $minViewport)), 2);
     $intersection: tofixed(-$minViewport * $slope + $minSize, 2);
     
     
