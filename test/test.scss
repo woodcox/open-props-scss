@@ -87,24 +87,24 @@ $maxViewport: 1440;
   $clamps: ();
 
   @each $token in $tokens {
-    $name: map-get($token, "name");
+    $name: map.get($token, "name");
     
     
     $min: map.get($token, "min");
     $max: map.get($token, "max");
     
     // convert the min and max sizes to rems
-    $minSize: $min / $rootSize; // rems
-    $maxSize: $max / $rootSize; // rems
+    $minSize: math.div($min, $rootSize); // rems
+    $maxSize: math.div($max, $rootSize); // rems
     //$minSize: #{$minRem}rem;
     //$maxSize: #{$maxRem}rem;
     
     // Convert the pixel viewport sizes into rems
-    $minViewport: $minViewport / $rootSize;
-    $maxViewport: $maxViewport / $rootSize;
+    $minViewport: math.div($minViewport, $rootSize);
+    $maxViewport: math.div($maxViewport, $rootSize);
 
     // Slope and intersection allow us to have a fluid value but also keep that sensible
-    $slope: tofixed(($maxSize - $minSize) / ($maxViewport - $minViewport), 2);
+    $slope: tofixed(math.div($maxSize - $minSize), ($maxViewport - $minViewport), 2);
     $intersection: tofixed(-$minViewport * $slope + $minSize, 2);
     
     
