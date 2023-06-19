@@ -190,5 +190,5 @@ $colorspace-map: (
   $oklch-map: meta.load-css('colors-oklch',
     $with: ('color-hue': $hue)
   )
-  @return map.get($oklch-map, $color)
+  @return map.get($oklch-map, $color);
 }
