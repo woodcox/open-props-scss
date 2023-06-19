@@ -1,6 +1,6 @@
-@use '../index' as op;
 @use 'sass:math';
 @use 'sass:map';
+@use '../index' as op;
 
 $shadow-color-light: op.get-prop('light', 'shadow-color');
 $shadow-str-light: op.get-prop('light', 'shadow-strength');
