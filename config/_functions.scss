@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use 'sass:string';
 @use 'sass:meta';
-@use 'colors-oklch';
+@use '../colors-oklch';
 @use 'op-maps' as _m;
 
 /// GET DEEP THEME FUNCTION
