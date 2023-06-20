@@ -46,7 +46,7 @@
   box-shadow: var(--shadow-3);
 }
 
-@keyframes fade-in-bloom-dark-uy09jv2 {
+@keyframes fade-in-bloom-dark-u2u26uv {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -60,7 +60,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-uy09jv2 {
+@keyframes fade-in-bloom-u2u26uv {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -74,7 +74,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-uy09jv2 {
+@keyframes fade-in-bloom-u2u26uv {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -89,15 +89,15 @@
   }
 }
 .token1 {
-  font-size: clamp(20rem, calc(17.2rem + 14vw), 30rem);
+  font-size: clamp(20rem, calc(17.14rem + 14.3vw), 30rem);
 }
 
 .token2 {
-  font-size: clamp(30rem, calc(24.86rem + 411vw), 48rem);
+  font-size: clamp(30rem, calc(24.858rem + 411.4vw), 48rem);
 }
 
 .token3 {
-  font-size: clamp(48rem, calc(39.57rem + 10789vw), 77.5rem);
+  font-size: clamp(48rem, calc(39.571rem + 10788.6vw), 77.5rem);
 }
 
 /*# sourceMappingURL=test.css.map */
