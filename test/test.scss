@@ -70,7 +70,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 @include op.fade-in-bloom;
 
 // round a number to a fixed numebr of decimal places
-@function tofixed($value, $decimal-place) {
+@function tofixed($value, $decimal-place: 3) {
   $pow: math.pow(10, $decimal-place);
   @return round($value * $pow) / $pow;
 }
@@ -101,8 +101,8 @@ $maxViewport: 1440;
     $maxViewport: math.div($maxViewport, $rootSize);
 
     // Slope and intersection allow us to have a fluid value but also keep that sensible
-    $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewport - $minViewport)), 2);
-    $intersection: tofixed(-$minViewport * $slope + $minSize, 2);
+    $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewport - $minViewport)));
+    $intersection: tofixed(-$minViewport * $slope + $minSize);
     
     
     //$intersection: (100vw - #{$minViewport}px) / ($maxViewport - $minViewport);
