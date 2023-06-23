@@ -93,8 +93,6 @@ $maxViewport: 1440;
     // convert the min and max sizes to rems
     $minSize: math.div($min, $rootSize); // rems
     $maxSize: math.div($max, $rootSize); // rems
-    //$minSize: #{$minRem}rem;
-    //$maxSize: #{$maxRem}rem;
     
     // Convert the pixel viewport sizes into rems
     $minViewport: math.div($minViewport, $rootSize);
@@ -103,9 +101,6 @@ $maxViewport: 1440;
     // Slope and intersection allow us to have a fluid value but also keep that sensible
     $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewport - $minViewport)));
     $intersection: tofixed(-$minViewport * $slope + $minSize);
-    
-    
-    //$intersection: (100vw - #{$minViewport}px) / ($maxViewport - $minViewport);
     
     $clampValue: null;
     
@@ -126,18 +121,38 @@ $maxViewport: 1440;
   @return $clamps;
 }
 
-$generatedClamps: generateClamps((
-  ("name": "token1", "min": 320, "max": 480),
-  ("name": "token2", "min": 480, "max": 768),
-  ("name": "token3", "min": 768, "max": 1240)
+$createTextSizes: generateClamps((
+  ("name": "step-0", "min": 16, "max": 18),
+  ("name": "step-1", "min": 19, "max": 22),
+  ("name": "step-2", "min": 23, "max": 28),
+  ("name": "step-3", "min": 27, "max": 35),
+  ("name": "step-4", "min": 33, "max": 43),
+));
+
+$createSpacing: generateClamps((
+  ("name": "zero", "min": 0, "max": 1),
+  ("name": "2XS", "min": 4, "max": 8),
+  ("name": "XS", "min": 12, "max": 14),
+  ("name": "S", "min": 16, "max": 18),
+  ("name": "M", "min": 24, "max": 27),
 ));
 
 // Usage example
-@each $clamp in $generatedClamps {
+@each $clamp in $createTextSizes {
   $name: map-get($clamp, "name");
   $value: map-get($clamp, "value");
 
   .#{$name} {
     font-size: $value;
+  }
+}
+
+// Usage example
+@each $clamp in $createSpacing {
+  $name: map-get($clamp, "name");
+  $value: map-get($clamp, "value");
+
+  .#{$name} {
+    --spacing: $value;
   }
 }
