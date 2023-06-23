@@ -46,7 +46,7 @@
   box-shadow: var(--shadow-3);
 }
 
-@keyframes fade-in-bloom-dark-ui1htxt {
+@keyframes fade-in-bloom-dark-uw4vlln {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -60,7 +60,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-ui1htxt {
+@keyframes fade-in-bloom-uw4vlln {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -74,7 +74,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-ui1htxt {
+@keyframes fade-in-bloom-uw4vlln {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -109,75 +109,75 @@
 }
 
 .spacing-zero {
-  --spacing: $value;
+  --spacing: clamp(0rem, calc(-0.02rem + 0.1vw), 0.0625rem);
 }
 
 .spacing-2XS {
-  --spacing: $value;
+  --spacing: clamp(0.25rem, calc(0.179rem + 5.7vw), 0.5rem);
 }
 
 .spacing-XS {
-  --spacing: $value;
+  --spacing: clamp(0.75rem, calc(0.714rem + 45.7vw), 0.875rem);
 }
 
 .spacing-S {
-  --spacing: $value;
+  --spacing: clamp(1rem, calc(0.964rem + 731.4vw), 1.125rem);
 }
 
 .spacing-M {
-  --spacing: $value;
+  --spacing: clamp(1.5rem, calc(1.446rem + 17554.3vw), 1.6875rem);
 }
 
 .spacing-L {
-  --spacing: $value;
+  --spacing: clamp(2rem, calc(1.929rem + 374491.4vw), 2.25rem);
 }
 
 .spacing-XL {
-  --spacing: $value;
+  --spacing: clamp(3rem, calc(2.893rem + 8987794.3vw), 3.375rem);
 }
 
 .spacing-2XL {
-  --spacing: $value;
+  --spacing: clamp(4rem, calc(3.857rem + 191739611.4vw), 4.5rem);
 }
 
 .spacing-3XL {
-  --spacing: $value;
+  --spacing: clamp(5rem, calc(4.821rem + 3834792228.6vw), 5.625rem);
 }
 
 .spacing-4XL {
-  --spacing: $value;
+  --spacing: clamp(6rem, calc(5.786rem + 73628010788.6vw), 6.75rem);
 }
 
 .spacing-XS-S {
-  --spacing: $value;
+  --spacing: clamp(0.75rem, calc(0.643rem + 589024086308.6001vw), 1.125rem);
 }
 
 .spacing-S-M {
-  --spacing: $value;
+  --spacing: clamp(1rem, calc(0.804rem + 17278039865051.4vw), 1.6875rem);
 }
 
 .spacing-S-L {
-  --spacing: $value;
+  --spacing: clamp(1rem, calc(0.643rem + 502633886983314.25vw), 2.25rem);
 }
 
 .spacing-M-L {
-  --spacing: $value;
+  --spacing: clamp(1.5rem, calc(1.286rem + 4825285315039817vw), 2.25rem);
 }
 
 .spacing-L-XL {
-  --spacing: $value;
+  --spacing: clamp(2rem, calc(1.607rem + 141541702574501300vw), 3.375rem);
 }
 
 .spacing-Xl-2XL {
-  --spacing: $value;
+  --spacing: clamp(3rem, calc(2.571rem + 2470546081300386300vw), 4.5rem);
 }
 
 .spacing-2Xl-3XL {
-  --spacing: $value;
+  --spacing: clamp(4rem, calc(3.536rem + 42822798742540030000vw), 5.625rem);
 }
 
 .spacing-3Xl-4XL {
-  --spacing: $value;
+  --spacing: clamp(5rem, calc(4.5rem + 737869762948382000000vw), 6.75rem);
 }
 
 /*# sourceMappingURL=test.css.map */
