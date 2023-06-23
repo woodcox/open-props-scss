@@ -46,7 +46,7 @@
   box-shadow: var(--shadow-3);
 }
 
-@keyframes fade-in-bloom-dark-u2u26uv {
+@keyframes fade-in-bloom-dark-ui1htxt {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -60,7 +60,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-u2u26uv {
+@keyframes fade-in-bloom-ui1htxt {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -74,7 +74,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-u2u26uv {
+@keyframes fade-in-bloom-ui1htxt {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -88,16 +88,96 @@
     filter: brightness(1) blur(0);
   }
 }
-.token1 {
-  font-size: clamp(20rem, calc(17.14rem + 14.3vw), 30rem);
+.step-0 {
+  font-size: clamp(1rem, calc(0.96rem + 0.2vw), 1.125rem);
 }
 
-.token2 {
-  font-size: clamp(30rem, calc(24.858rem + 411.4vw), 48rem);
+.step-1 {
+  font-size: clamp(1.1875rem, calc(1.134rem + 4.3vw), 1.375rem);
 }
 
-.token3 {
-  font-size: clamp(48rem, calc(39.571rem + 10788.6vw), 77.5rem);
+.step-2 {
+  font-size: clamp(1.4375rem, calc(1.348rem + 114.3vw), 1.75rem);
+}
+
+.step-3 {
+  font-size: clamp(1.6875rem, calc(1.545rem + 2925.7vw), 2.1875rem);
+}
+
+.step-4 {
+  font-size: clamp(2.0625rem, calc(1.884rem + 58514.3vw), 2.6875rem);
+}
+
+.spacing-zero {
+  --spacing: $value;
+}
+
+.spacing-2XS {
+  --spacing: $value;
+}
+
+.spacing-XS {
+  --spacing: $value;
+}
+
+.spacing-S {
+  --spacing: $value;
+}
+
+.spacing-M {
+  --spacing: $value;
+}
+
+.spacing-L {
+  --spacing: $value;
+}
+
+.spacing-XL {
+  --spacing: $value;
+}
+
+.spacing-2XL {
+  --spacing: $value;
+}
+
+.spacing-3XL {
+  --spacing: $value;
+}
+
+.spacing-4XL {
+  --spacing: $value;
+}
+
+.spacing-XS-S {
+  --spacing: $value;
+}
+
+.spacing-S-M {
+  --spacing: $value;
+}
+
+.spacing-S-L {
+  --spacing: $value;
+}
+
+.spacing-M-L {
+  --spacing: $value;
+}
+
+.spacing-L-XL {
+  --spacing: $value;
+}
+
+.spacing-Xl-2XL {
+  --spacing: $value;
+}
+
+.spacing-2Xl-3XL {
+  --spacing: $value;
+}
+
+.spacing-3Xl-4XL {
+  --spacing: $value;
 }
 
 /*# sourceMappingURL=test.css.map */
