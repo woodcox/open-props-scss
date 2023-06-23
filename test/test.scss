@@ -156,7 +156,7 @@ $createSpacing: generateClamps((
   $value: map-get($clamp, "value");
 
   .#{$name} {
-    font-size: $value;
+    font-size: #{$value};
   }
 }
 
@@ -166,6 +166,6 @@ $createSpacing: generateClamps((
   $value: map-get($clamp, "value");
 
   .spacing-#{$name} {
-    --spacing: $value;
+    --spacing: #{$value};
   }
 }
