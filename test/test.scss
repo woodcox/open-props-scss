@@ -72,7 +72,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 // round a number to a fixed numebr of decimal places
 @function tofixed($value, $decimal-place: 3) {
   $pow: math.pow(10, $decimal-place);
-  @return round($value * $pow) / $pow;
+  @return math.div(math.round($value * $pow), $pow);
 }
 
 $rootSize: 16;
