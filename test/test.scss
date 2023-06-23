@@ -72,7 +72,7 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 // round a number to a fixed numebr of decimal places
 @function tofixed($value, $decimal-place: 3) {
   $pow: math.pow(10, $decimal-place);
-  @return math.round(math.div($value * $pow, $pow));
+  @return math.div(round($value * $pow), $pow);
 }
 
 $rootSize: 16;
@@ -99,7 +99,7 @@ $maxViewport: 1440;
     $maxViewportRem: math.div($maxViewport, $rootSize);
 
     // Slope and intersection allow us to have a fluid value but also keep that sensible
-    $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewportRem - $minViewportRem)));
+    $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewportRem - $minViewportRem)), 4);
     $intersection: tofixed(-$minViewportRem * $slope + $minSize);
     
     $clampValue: null;
