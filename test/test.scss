@@ -95,12 +95,12 @@ $maxViewport: 1440;
     $maxSize: math.div($max, $rootSize); // rems
     
     // Convert the pixel viewport sizes into rems
-    $minViewport: math.div($minViewport, $rootSize);
-    $maxViewport: math.div($maxViewport, $rootSize);
+    $minViewportRem: math.div($minViewport, $rootSize);
+    $maxViewportRem: math.div($maxViewport, $rootSize);
 
     // Slope and intersection allow us to have a fluid value but also keep that sensible
-    $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewport - $minViewport)));
-    $intersection: tofixed(-$minViewport * $slope + $minSize);
+    $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewportRem - $minViewportRem)));
+    $intersection: tofixed(-$minViewportRem * $slope + $minSize);
     
     $clampValue: null;
     
