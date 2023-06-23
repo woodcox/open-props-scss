@@ -151,21 +151,26 @@ $createSpacing: generateClamps((
 ));
 
 // Usage example
-@each $clamp in $createTextSizes {
-  $name: map-get($clamp, "name");
-  $value: map-get($clamp, "value");
+@mixin createTextSizes($clamps: $createTextSizes) {
+  @each $clamp in $clamps {
+    $name: map-get($clamp, "name");
+    $value: map-get($clamp, "value");
 
-  .#{$name} {
-    font-size: #{$value};
+    --size-#{$name}: #{$value};
   }
 }
 
 // Usage example
-@each $clamp in $createSpacing {
-  $name: map-get($clamp, "name");
-  $value: map-get($clamp, "value");
+@mixin createSpacing($clamps: $createSpacing) {
+  @each $clamp in $clamps {
+    $name: map-get($clamp, "name");
+    $value: map-get($clamp, "value");
 
-  .space-#{$name} {
     --space-#{$name}: #{$value};
   }
+}
+
+:root {
+  @include createTextSizes;
+  @include createSpacing;
 }
