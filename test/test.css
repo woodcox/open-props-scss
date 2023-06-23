@@ -46,7 +46,7 @@
   box-shadow: var(--shadow-3);
 }
 
-@keyframes fade-in-bloom-dark-uw4vlln {
+@keyframes fade-in-bloom-dark-u1hxrf6 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -60,7 +60,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-uw4vlln {
+@keyframes fade-in-bloom-u1hxrf6 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -74,7 +74,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-uw4vlln {
+@keyframes fade-in-bloom-u1hxrf6 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -89,95 +89,95 @@
   }
 }
 .step-0 {
-  font-size: clamp(1rem, calc(0.96rem + 0.2vw), 1.125rem);
+  font-size: clamp(1rem, calc(1rem + 0vw), 1.125rem);
 }
 
 .step-1 {
-  font-size: clamp(1.1875rem, calc(1.134rem + 4.3vw), 1.375rem);
+  font-size: clamp(1.1875rem, calc(1rem + 0vw), 1.375rem);
 }
 
 .step-2 {
-  font-size: clamp(1.4375rem, calc(1.348rem + 114.3vw), 1.75rem);
+  font-size: clamp(1.4375rem, calc(1rem + 100vw), 1.75rem);
 }
 
 .step-3 {
-  font-size: clamp(1.6875rem, calc(1.545rem + 2925.7vw), 2.1875rem);
+  font-size: clamp(1.6875rem, calc(2rem + 2900vw), 2.1875rem);
 }
 
 .step-4 {
-  font-size: clamp(2.0625rem, calc(1.884rem + 58514.3vw), 2.6875rem);
+  font-size: clamp(2.0625rem, calc(2rem + 58500vw), 2.6875rem);
 }
 
-.spacing-zero {
-  --spacing: clamp(0rem, calc(-0.02rem + 0.1vw), 0.0625rem);
+.space-zero {
+  --space-zero: clamp(0rem, calc(0rem + 0vw), 0.0625rem);
 }
 
-.spacing-2XS {
-  --spacing: clamp(0.25rem, calc(0.179rem + 5.7vw), 0.5rem);
+.space-2xs {
+  --space-2xs: clamp(0.25rem, calc(0rem + 0vw), 0.5rem);
 }
 
-.spacing-XS {
-  --spacing: clamp(0.75rem, calc(0.714rem + 45.7vw), 0.875rem);
+.space-xs {
+  --space-xs: clamp(0.75rem, calc(1rem + 0vw), 0.875rem);
 }
 
-.spacing-S {
-  --spacing: clamp(1rem, calc(0.964rem + 731.4vw), 1.125rem);
+.space-s {
+  --space-s: clamp(1rem, calc(1rem + 700vw), 1.125rem);
 }
 
-.spacing-M {
-  --spacing: clamp(1.5rem, calc(1.446rem + 17554.3vw), 1.6875rem);
+.space-m {
+  --space-m: clamp(1.5rem, calc(1rem + 17600vw), 1.6875rem);
 }
 
-.spacing-L {
-  --spacing: clamp(2rem, calc(1.929rem + 374491.4vw), 2.25rem);
+.space-l {
+  --space-l: clamp(2rem, calc(2rem + 374500vw), 2.25rem);
 }
 
-.spacing-XL {
-  --spacing: clamp(3rem, calc(2.893rem + 8987794.3vw), 3.375rem);
+.space-xl {
+  --space-xl: clamp(3rem, calc(3rem + 8987800vw), 3.375rem);
 }
 
-.spacing-2XL {
-  --spacing: clamp(4rem, calc(3.857rem + 191739611.4vw), 4.5rem);
+.space-2xl {
+  --space-2xl: clamp(4rem, calc(4rem + 191739600vw), 4.5rem);
 }
 
-.spacing-3XL {
-  --spacing: clamp(5rem, calc(4.821rem + 3834792228.6vw), 5.625rem);
+.space-3xl {
+  --space-3xl: clamp(5rem, calc(5rem + 3834792200vw), 5.625rem);
 }
 
-.spacing-4XL {
-  --spacing: clamp(6rem, calc(5.786rem + 73628010788.6vw), 6.75rem);
+.space-4xl {
+  --space-4xl: clamp(6rem, calc(6rem + 73628010800vw), 6.75rem);
 }
 
-.spacing-XS-S {
-  --spacing: clamp(0.75rem, calc(0.643rem + 589024086308.6001vw), 1.125rem);
+.space-xs-s {
+  --space-xs-s: clamp(0.75rem, calc(1rem + 589024086300vw), 1.125rem);
 }
 
-.spacing-S-M {
-  --spacing: clamp(1rem, calc(0.804rem + 17278039865051.4vw), 1.6875rem);
+.space-s-m {
+  --space-s-m: clamp(1rem, calc(1rem + 17278039865100vw), 1.6875rem);
 }
 
-.spacing-S-L {
-  --spacing: clamp(1rem, calc(0.643rem + 502633886983314.25vw), 2.25rem);
+.space-s-l {
+  --space-s-l: clamp(1rem, calc(1rem + 502633886983300vw), 2.25rem);
 }
 
-.spacing-M-L {
-  --spacing: clamp(1.5rem, calc(1.286rem + 4825285315039817vw), 2.25rem);
+.space-m-l {
+  --space-m-l: clamp(1.5rem, calc(1rem + 4825285315039800vw), 2.25rem);
 }
 
-.spacing-L-XL {
-  --spacing: clamp(2rem, calc(1.607rem + 141541702574501300vw), 3.375rem);
+.space-l-xl {
+  --space-l-xl: clamp(2rem, calc(2rem + 141541702574501300vw), 3.375rem);
 }
 
-.spacing-Xl-2XL {
-  --spacing: clamp(3rem, calc(2.571rem + 2470546081300386300vw), 4.5rem);
+.space-xl-2xl {
+  --space-xl-2xl: clamp(3rem, calc(3rem + 2470546081300386300vw), 4.5rem);
 }
 
-.spacing-2Xl-3XL {
-  --spacing: clamp(4rem, calc(3.536rem + 42822798742540030000vw), 5.625rem);
+.space-2xl-3xl {
+  --space-2xl-3xl: clamp(4rem, calc(4rem + 42822798742540030000vw), 5.625rem);
 }
 
-.spacing-3Xl-4XL {
-  --spacing: clamp(5rem, calc(4.5rem + 737869762948382000000vw), 6.75rem);
+.space-3xl-4xl {
+  --space-3xl-4xl: clamp(5rem, calc(5rem + 737869762948382000000vw), 6.75rem);
 }
 
 /*# sourceMappingURL=test.css.map */
