@@ -1,7 +1,7 @@
 import Sizes from 'open-props/src/sizes';
 import Colors from 'open-props/src/colors';
 import ColorsHsl from 'open-props/src/colors-hsl';
-import ColorsHd from 'open-props/src/props.colors-oklch.js';
+import OklchColors from 'open-props/src/props.colors-oklch.js';
 import OklchHues from 'open-props/src/props.colors-oklch-hues.js';
 import GrayOklch from 'open-props/src/props.gray-oklch.js';
 import Shadows from 'open-props/src/shadows';
@@ -26,8 +26,8 @@ import { CustomMediaHelper } from './CustomMediaHelper.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const customMediaHelper = new CustomMediaHelper(Media);
 
-const ColorsOklch = {
- 'colors-hd': ColorsHd,
+const OklchColorsAndHues = {
+ 'oklch-colors': OklchColors,
  'oklch-hues': OklchHues,
 };
 
@@ -36,7 +36,7 @@ const openPropFiles = {
   'sizes': Sizes,
   'colors': Colors,
   'colors-hsl': ColorsHsl,
-  'colors-oklch': ColorsOklch,
+  'colors-oklch': OklchColorsAndHues,
   'gray-oklch': GrayOklch,
   'shadows': Shadows,
   'aspects': Aspects,
@@ -88,24 +88,33 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   // colors-oklch.scss
   } else if (moduleName.toLowerCase() === 'colors-oklch') {
-    const { 'colors-hd': colorsHd, 'oklch-hues': oklchHues } = importObj;
+    const { 'oklch-colors': oklchcolors, 'oklch-hues': oklchHues } = importObj;
    
-    generatedScss = '$color-hue: 0 !default;\n';
+    generatedScss = '';
     
-    Object.entries(colorsHd).forEach(([key, value]) => {
+    Object.entries(oklchcolors).forEach(([key, value]) => {
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
 
-      generatedScss += `${key}: ${value} !default;\n`;
+      generatedScss += `${key}: ${value};\n`;
     });
 
     Object.entries(oklchHues).forEach(([key, value]) => {
-      key = key.replace('--', '$');
-      if (typeof value === 'string' && value.includes('var(--')) {
-        value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
+      const hue = value.match(/\d+/); // Extract the numeric hue value
+      if (hue) {
+        const colorName = key.replace('--hue-', ''); // Extract the color name from the key
+        const colorValues = Array.from(Array(16).keys()).map(i => {
+          const lightness = 99 - (i * 5);
+          return `${colorName}-${i}: oklch(${lightness}% 0.${i < 10 ? '0' + i : i} ${hue[0]});`;
+        }).join('\n');
+        generatedScss += `${colorValues}\n\n`;
       }
+   //   key = key.replace('--', '$');
+   //   if (typeof value === 'string' && value.includes('var(--')) {
+   //     value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
+   //   }
 
-      generatedScss += `${key}: ${value} !default;\n`;
+   //   generatedScss += `${key}: ${value} !default;\n`;
     });
     
   // gray-oklch.scss
