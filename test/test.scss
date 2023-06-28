@@ -32,20 +32,18 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 }
 
 .my-test-thing {
-  op.$color-hue: op.$hue-red;
   box-shadow: op.shadow(1);
   box-shadow: op.shadow(1, dark);
   box-shadow: op.shadow(1, dark, var(--shadow-color), var(--shadow-strength));
-  color: op.$color-4;
 }
 
 .dodo {
   $color-hue: op.$hue-green;
   box-shadow: op.shadow(2, dark);
   background: op.darker(hsl, oklch(100% 0 0));
-  color: op.opacity(oklch, op.$color-4, 50%);
-  color: op.adjust(oklch, op.$color-4, $p3: op.$hue-yellow);
-  background-color: op.$color-4;
+  color: op.opacity(oklch, op.$red-4, 50%);
+  color: op.adjust(oklch, op.$red-4, $p3: 100);
+  background-color: op.$red-4;
 }
 
 .card {
