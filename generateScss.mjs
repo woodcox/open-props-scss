@@ -105,7 +105,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
         const colorName = key.replace('--hue-', ''); // Extract the color name from the key
         const colorValues = Array.from(Array(16).keys()).map(i => {
           const lightness = 99 - (i * 5);
-          return `${colorName}-${i}: oklch(${lightness}% 0.${i < 10 ? '0' + i : i} ${hue});`;
+          return `${colorName}-${i}: oklch(${lightness}% ${i < 10 ? '0' + i : i} ${hue});`;
         }).join('\n');
         generatedScss += `${colorValues}\n\n`;
       }
