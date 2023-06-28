@@ -26,7 +26,7 @@ jobs:
         
       - name: Npm build
         if: env.UPDATE_NPM != 'true'
-        run: npm run build
+        run: npm run dev
         
       - name: Prettier
         if: env.UPDATE_NPM != 'true'
