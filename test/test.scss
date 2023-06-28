@@ -38,12 +38,8 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 }
 
 .dodo {
-  $color-hue: op.$hue-green;
   box-shadow: op.shadow(2, dark);
   background: op.darker(hsl, oklch(100% 0 0));
-  color: op.opacity(oklch, op.$red-4, 50%);
-  color: op.adjust(oklch, op.$red-4, $p3: 100);
-  background-color: op.$red-4;
 }
 
 .card {
