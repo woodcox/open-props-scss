@@ -100,12 +100,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
 
     Object.entries(oklchHues).forEach(([key, value]) => {
-      const hue = value.match(/\d+/); // Extract the numeric hue value
-      if (hue) {
+      const hue = parseInt(value, 10); // Convert value to an integer
+      if (!isNaN(hue)) {
         const colorName = key.replace('--hue-', ''); // Extract the color name from the key
         const colorValues = Array.from(Array(16).keys()).map(i => {
           const lightness = 99 - (i * 5);
-          return `${colorName}-${i}: oklch(${lightness}% 0.${i < 10 ? '0' + i : i} ${hue[0]});`;
+          return `${colorName}-${i}: oklch(${lightness}% 0.${i < 10 ? '0' + i : i} ${hue});`;
         }).join('\n');
         generatedScss += `${colorValues}\n\n`;
       }
