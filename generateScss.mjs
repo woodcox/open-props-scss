@@ -95,7 +95,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
     Object.entries(oklchHues).forEach(([key, value]) => {
       const colorName = key.replace('--hue-', ''); // Extract the color name from the key
-      const hueStr = `${colorName}: ${value}`;
+      const hueStr = `${colorName}: ${value},`;
       hueArray += [...hueStr];
     });
    
