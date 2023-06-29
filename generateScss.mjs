@@ -100,6 +100,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
    
     Object.entries(oklchcolors).forEach(([key, value]) => {
+      generatedScss += `$color-hue: null;\n`;
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
 
