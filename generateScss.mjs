@@ -89,20 +89,19 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // colors-oklch.scss
   } else if (moduleName.toLowerCase() === 'colors-oklch') {
     const { 'oklch-colors': oklchcolors, 'oklch-hues': oklchHues } = importObj;
-    let hueArray = [];
+    let hueArr = [];
     let oklchName = '';
     generatedScss += `$color-hue: null;\n`;
 
     Object.entries(oklchHues).forEach(([key, value]) => {
       const colorName = key.replace('--hue-', ''); // Extract the color name from the key
-      const hueStr = `${colorName}: ${value},`;
-      hueArray += [...hueStr];
+      hueArr += [`${colorName}: ${value},`];
     });
    
     Object.entries(oklchcolors).forEach(([key, value]) => {
       key = key.replace('--', '$');
 
-      Object.entries(hueArray).forEach(([colorName, hue]) => {
+      Object.entries(hueArr).forEach(([colorName, hue]) => {
         if (key.includes('color-')) {
          oklchName = key.replace('color-', colorName);
          oklchName = oklchName.replace('--', '$');
