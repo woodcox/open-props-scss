@@ -99,8 +99,15 @@ const generateSCSSModule = async (moduleName, importObj) => {
    
     Object.entries(oklchcolors).forEach(([key, value]) => {
       key = key.replace('--', '$');
-      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
 
+      Object.entries(hueStr).forEach(([color, hue]) => {
+        if (key.includes('color-')) {
+         const colorName = key.replace('color-', color);
+          key = colorName.replace('--', '$');
+        }
+      });
+
+      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
       generatedScss += `${key}: ${value};\n`;
     });
     console.log(hueStr);
