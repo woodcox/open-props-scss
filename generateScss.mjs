@@ -111,7 +111,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
       generatedScss += `${oklchName}: ${value};\n`;
     });
-    console.log(hueArray);
+    console.log(hueArr);
     
    //   key = key.replace('--', '$');
    //   if (typeof value === 'string' && value.includes('var(--')) {
