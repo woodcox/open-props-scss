@@ -88,7 +88,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   // colors-oklch.scss
   } else if (moduleName.toLowerCase() === 'colors-oklch') {
-    const { 'oklch-colors': oklchcolors, 'oklch-hues': oklchHues } = importObj;
+    const { 'oklch-colors': oklchColors, 'oklch-hues': oklchHues } = importObj;
     let hueStr = '';
     let oklchName = '';
     generatedScss += `$color-hue: null;\n`;
@@ -98,7 +98,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       hueStr += `'${colorName}': ${value},\n`;
     });
    
-    Object.entries(oklchcolors).forEach(([key, value]) => {
+    Object.entries(oklchColors).forEach(([key, value]) => {
       key = key.replace('--', '$');
 
       Object.keys(hueStr).forEach((colorName) => {
