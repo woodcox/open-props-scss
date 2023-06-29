@@ -93,11 +93,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
     generatedScss += `$color-hue: null;\n`;
 
     Object.entries(oklchHues).forEach(([key, value]) => {
-      const hue = parseInt(value, 10); // Convert value to an integer
-      if (!isNaN(hue)) {
-        const colorName = key.replace('--hue-', ''); // Extract the color name from the key
-        hueArray += `${colorName}: ${hue}\n`;
-      }
+      const colorName = key.replace('--hue-', ''); // Extract the color name from the key
+      hueStr += `${colorName}: ${value}\n`;
     });
    
     Object.entries(oklchcolors).forEach(([key, value]) => {
