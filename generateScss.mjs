@@ -89,9 +89,16 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // colors-oklch.scss
   } else if (moduleName.toLowerCase() === 'colors-oklch') {
     const { 'oklch-colors': oklchcolors, 'oklch-hues': oklchHues } = importObj;
+    let hueArray = []; 
+
+    Object.entries(oklchHues).forEach(([key, value]) => {
+      const hue = parseInt(value, 10); // Convert value to an integer
+      if (!isNaN(hue)) {
+        const colorName = key.replace('--hue-', ''); // Extract the color name from the key
+        hueArray += `${colorName}: ${hue}\n`;
+      }
+    });
    
-    generatedScss = '';
-    
     Object.entries(oklchcolors).forEach(([key, value]) => {
       key = key.replace('--', '$');
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
@@ -99,24 +106,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
       generatedScss += `${key}: ${value};\n`;
     });
 
-    Object.entries(oklchHues).forEach(([key, value]) => {
-      const hue = parseInt(value, 10); // Convert value to an integer
-      if (!isNaN(hue)) {
-        const colorName = key.replace('--hue-', ''); // Extract the color name from the key
-        const colorValues = Array.from(Array(16).keys()).map(i => {
-          const lightness = 99 - (i * 5);
-          const chroma = i;
-          return `${colorName}-${i}: oklch(${lightness} ${chroma} ${hue});`;
-        }).join('\n');
-        generatedScss += `${colorValues}\n\n`;
-      }
+    
    //   key = key.replace('--', '$');
    //   if (typeof value === 'string' && value.includes('var(--')) {
    //     value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
    //   }
 
    //   generatedScss += `${key}: ${value} !default;\n`;
-    });
+    
     
   // gray-oklch.scss
   } else if (moduleName.toLowerCase() === 'gray-oklch') {
