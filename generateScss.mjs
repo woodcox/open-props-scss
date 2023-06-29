@@ -104,7 +104,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       Object.keys(hueStr).forEach((colorName) => {
         if (key.includes('color-')) {
          console.log(colorName);
-         oklchName = key.replace('color-', colorName);
+         oklchName = colorName.replace('color-', colorName);
          oklchName = oklchName.replace('--', '$');
          console.log(oklchName);
         }
