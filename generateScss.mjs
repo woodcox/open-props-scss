@@ -97,7 +97,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (!isNaN(hue)) {
         const colorName = key.replace('--hue-', ''); // Extract the color name from the key
         hueArray += `${colorName}: ${hue}\n`;
-        console.log(hueArray);
       }
     });
    
@@ -107,7 +106,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
       generatedScss += `${key}: ${value};\n`;
     });
-
+    console.log(hueArray);
     
    //   key = key.replace('--', '$');
    //   if (typeof value === 'string' && value.includes('var(--')) {
