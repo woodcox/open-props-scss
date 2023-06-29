@@ -89,13 +89,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // colors-oklch.scss
   } else if (moduleName.toLowerCase() === 'colors-oklch') {
     const { 'oklch-colors': oklchcolors, 'oklch-hues': oklchHues } = importObj;
-    let hueStr = '';
+    let hueArray = [];
     let oklchName = '';
     generatedScss += `$color-hue: null;\n`;
 
     Object.entries(oklchHues).forEach(([key, value]) => {
       const colorName = key.replace('--hue-', ''); // Extract the color name from the key
-      hueStr += `${colorName}: ${value}\n`;
+      hueArray += [...`${colorName}: ${value}`];
     });
    
     Object.entries(oklchcolors).forEach(([key, value]) => {
@@ -111,7 +111,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
       generatedScss += `${oklchName}: ${value};\n`;
     });
-    console.log(hueStr);
+    console.log(hueArray);
     
    //   key = key.replace('--', '$');
    //   if (typeof value === 'string' && value.includes('var(--')) {
