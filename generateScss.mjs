@@ -89,38 +89,23 @@ const generateSCSSModule = async (moduleName, importObj) => {
   // colors-oklch.scss
   } else if (moduleName.toLowerCase() === 'colors-oklch') {
     const { 'oklch-colors': oklchColors, 'oklch-hues': oklchHues } = importObj;
-    let hueStr = '';
-    let oklchName = '';
-    generatedScss += `$color-hue: null;\n`;
 
-    Object.entries(oklchHues).forEach(([key, value]) => {
-      const colorName = key.replace('--hue-', ''); // Extract the color name from the key
-      hueStr += `'${colorName}': ${value},\n`;
-    });
-   
-    Object.entries(oklchColors).forEach(([key, value]) => {
-      key = key.replace('--', '$');
+    for (const [hueKey, hueValue] of Object.entries(oklchHues)) {
+      const hueName = hueKey.replace('--hue-', '');
+      generatedScss += `$${hueName}: ${hueValue};\n`;
 
-      Object.keys(hueStr).forEach((colorName) => {
-        if (key.includes('color-')) {
-         console.log(colorName);
-         oklchName = colorName.replace('color-', colorName);
-         oklchName = oklchName.replace('--', '$');
-         console.log(oklchName);
-        }
-      });
+      for (let i = 0; i <= 15; i++) {
+        const colorKey = `--color-${i}`;
+        const colorValue = oklchColors[colorKey].replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`);
+      
+        generatedScss += `$${hueName}-${i}: ${colorValue};\n`;
+      }
 
-      value = value.replace(/var\(--(.*?)(?:,\s*(.*?))?\)/g, '#{$$$1}');
-      generatedScss += `${oklchName}: ${value};\n`;
-    });
-    console.log(hueStr);
-    
-   //   key = key.replace('--', '$');
-   //   if (typeof value === 'string' && value.includes('var(--')) {
-   //     value = value.replace(/var\(--(.*?)\)/g, '#{$$$1}'); // replace var(--cssvar) with #{$cssvar} when they occur in a value
-   //   }
+      const brightKey = '--color-bright';
+      const brightValue = oklchColors[brightKey].replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`);
 
-   //   generatedScss += `${key}: ${value} !default;\n`;
+      generatedScss += `$${hueName}-bright: ${brightValue};\n`;
+    }
     
     
   // gray-oklch.scss
