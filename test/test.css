@@ -42,7 +42,7 @@
   box-shadow: var(--shadow-3);
 }
 
-@keyframes fade-in-bloom-dark-ur3s1ak {
+@keyframes fade-in-bloom-dark-uotmxp0 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -56,7 +56,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-ur3s1ak {
+@keyframes fade-in-bloom-uotmxp0 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
@@ -70,7 +70,7 @@
     filter: brightness(1) blur(0);
   }
 }
-@keyframes fade-in-bloom-ur3s1ak {
+@keyframes fade-in-bloom-uotmxp0 {
   0% {
     opacity: 0;
     filter: brightness(1) blur(20px);
