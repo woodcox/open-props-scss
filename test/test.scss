@@ -68,7 +68,7 @@
 //  $pow: math.pow(10, $decimal-place);
 //  @return math.div(round($value * $pow), $pow);
 //}
-
+/*
 $rootSize: 16;
 
 $minViewport: 320;
@@ -168,3 +168,4 @@ $createSpacing: generateClamps((
   @include createTextSizes;
   @include createSpacing;
 }
+*/
