@@ -92,7 +92,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
     for (const [hueKey, hueValue] of Object.entries(oklchHues)) {
       const hueName = hueKey.replace('--hue-', '');
-      generatedScss += `$${hueName}: ${hueValue};\n`;
+      //generatedScss += `$${hueName}: ${hueValue};\n`;
 
       for (let i = 0; i <= 15; i++) {
         const colorKey = `--color-${i}`;
