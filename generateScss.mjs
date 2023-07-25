@@ -202,30 +202,34 @@ const generateSCSSModule = async (moduleName, importObj) => {
     });
   }
 
-  // Seperate scss module for colors-oklch.scss
-  const generateOklchScss = async (importObj) => {
-    let oklchScss = '';
-    const { 'oklch-colors': oklchColors, 'oklch-hues': oklchHues } = importObj;
-
-    for (const [hueKey, hueValue] of Object.entries(oklchHues)) {
-      const hueName = hueKey.replace('--hue-', '');
-
-      for (let i = 0; i <= 15; i++) {
-        const colorKey = `--color-${i}`;
-        const colorValue = oklchColors[colorKey].replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`);
-      
-        oklchScss += `$${hueName}-${i}: ${colorValue};\n`;
-      }
-
-      const brightKey = '--color-bright';
-      const brightValue = oklchColors[brightKey].replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`);
-
-      oklchScss += `$${hueName}-bright: ${brightValue};\n`;
-    }
-
   // write scss & md files
   await writeSCSSModule(moduleName, generatedScss);
   await writeMDCodeBlock(moduleName, generatedScss);
+};
+
+// Seperate scss module for colors-oklch.scss
+const generateOklchScss = async (importObj) => {
+  let oklchScss = '';
+  const { 'oklch-colors': oklchColors, 'oklch-hues': oklchHues } = importObj;
+
+  for (const [hueKey, hueValue] of Object.entries(oklchHues)) {
+    const hueName = hueKey.replace('--hue-', '');
+
+    for (let i = 0; i <= 15; i++) {
+      const colorKey = `--color-${i}`;
+      const colorValue = oklchColors[colorKey].replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`);
+    
+      oklchScss += `$${hueName}-${i}: ${colorValue};\n`;
+    }
+
+    const brightKey = '--color-bright';
+    const brightValue = oklchColors[brightKey].replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`);
+
+    oklchScss += `$${hueName}-bright: ${brightValue};\n`;
+  }
+
+  await writeSCSSModule('colors-oklch', oklchScss);
+  await writeMDCodeBlock('colors-oklch', oklchScss);
 };
 
 for (const [moduleName, importObj] of Object.entries(openPropFiles)) {
@@ -236,7 +240,6 @@ for (const [moduleName, importObj] of Object.entries(openPropFiles)) {
 for (const [moduleName, importObj] of Object.entries(hdColorFiles)) {
   generateSCSSModule(moduleName, importObj);
 }
-generateOklchScss(hdColors);
 
 // Generate index.scss
 let indexScss = '';
@@ -248,4 +251,3 @@ indexScss += `@forward 'config';\n`;
 
 const indexOutFile = path.join(__dirname, 'index.scss');
 await fs.writeFile(indexOutFile, indexScss, { encoding: 'utf-8' });
-
