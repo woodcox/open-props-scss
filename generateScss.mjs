@@ -237,9 +237,7 @@ for (const [moduleName, importObj] of Object.entries(openPropFiles)) {
 }
 
 // Generate colors-oklch.scss
-for (const [moduleName, importObj] of Object.entries(hdColorFiles)) {
-  generateSCSSModule(moduleName, importObj);
-}
+generateOklchScss(hdColorFiles);
 
 // Generate index.scss
 let indexScss = '';
