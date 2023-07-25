@@ -2,12 +2,12 @@
 @use 'sass:map';
 @use '../index' as op;
 
-$shadow-color-light: op.get-prop('light', 'shadow-color');
-$shadow-str-light: op.get-prop('light', 'shadow-strength');
+//$shadow-color-light: op.get-prop('light', 'shadow-color');
+//$shadow-str-light: op.get-prop('light', 'shadow-strength');
 
-$shadow-color-dark: op.get-prop('dark', 'shadow-color');
-$shadow-str-dark: op.get-prop('dark', 'shadow-strength');
-$shdw-2: op.get-prop('cssvar', 'shadow-2');
+//$shadow-color-dark: op.get-prop('dark', 'shadow-color');
+//$shadow-str-dark: op.get-prop('dark', 'shadow-strength');
+//$shdw-2: op.get-prop('cssvar', 'shadow-2');
 
 @mixin style($prop, $value) {
   .#{$value}, [style*="#{$value}:"] {
@@ -20,26 +20,26 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
 :root {
   --shadow-color: 100 4% 16%;
   --shadow-strength: 2%;
-  --testing-css-vars: op.cssvar(gray-6);
+ // --testing-css-vars: op.cssvar(gray-6);
   --shdw-2: #{$shdw-2};
 }
 
 @media (prefers-color-scheme: dark) {
  :root {
-   --shadow-color: #{$shadow-color-dark};
-   --shadow-strength: #{$shadow-str-dark};
+//   --shadow-color: #{$shadow-color-dark};
+  // --shadow-strength: #{$shadow-str-dark};
   }
 }
 
 .my-test-thing {
   box-shadow: op.shadow(1);
   box-shadow: op.shadow(1, dark);
-  box-shadow: op.shadow(1, dark, var(--shadow-color), var(--shadow-strength));
+ // box-shadow: op.shadow(1, dark, var(--shadow-color), var(--shadow-strength));
 }
 
 .dodo {
   box-shadow: op.shadow(2, dark);
-  background: op.darker(hsl, oklch(100% 0 0));
+//  background: op.darker(hsl, oklch(100% 0 0));
 }
 
 .card {
@@ -52,22 +52,22 @@ $shdw-2: op.get-prop('cssvar', 'shadow-2');
   background-color: hsl(op.$stone-1-hsl);
   border-radius: op.$radius-1;
   border: 0;
-  box-shadow: op.get-prop('cssvar', 'shadow-1');
+//  box-shadow: op.get-prop('cssvar', 'shadow-1');
 
   &:hover {
     box-shadow: var(--shadow-3);
   }
 }
 
-@include op.fade-in-bloom(dark);
-@include op.fade-in-bloom(light);
-@include op.fade-in-bloom;
+//@include op.fade-in-bloom(dark);
+//@include op.fade-in-bloom(light);
+//@include op.fade-in-bloom;
 
 // round a number to a fixed numebr of decimal places
-@function tofixed($value, $decimal-place: 3) {
-  $pow: math.pow(10, $decimal-place);
-  @return math.div(round($value * $pow), $pow);
-}
+//@function tofixed($value, $decimal-place: 3) {
+//  $pow: math.pow(10, $decimal-place);
+//  @return math.div(round($value * $pow), $pow);
+//}
 
 $rootSize: 16;
 
