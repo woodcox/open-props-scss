@@ -84,15 +84,15 @@ $maxViewport: 1440;
     $min: map.get($token, "min");
     $max: map.get($token, "max");
     
-    // convert the min and max sizes to rems
+     convert the min and max sizes to rems
     $minSize: math.div($min, $rootSize); // rems
     $maxSize: math.div($max, $rootSize); // rems
     
-    // Convert the pixel viewport sizes into rems
+     Convert the pixel viewport sizes into rems
     $minViewportRem: math.div($minViewport, $rootSize);
     $maxViewportRem: math.div($maxViewport, $rootSize);
 
-    // Slope and intersection allow us to have a fluid value but also keep that sensible
+     Slope and intersection allow us to have a fluid value but also keep that sensible
     $slope: tofixed(math.div(($maxSize - $minSize), ($maxViewportRem - $minViewportRem)), 4);
     $intersection: tofixed(-$minViewportRem * $slope + $minSize);
     
@@ -144,7 +144,7 @@ $createSpacing: generateClamps((
   ("name": "3xl-4xl", "min": 80, "max": 108)
 ));
 
-// Usage example
+ Usage example
 @mixin createTextSizes($clamps: $createTextSizes) {
   @each $clamp in $clamps {
     $name: map-get($clamp, "name");
@@ -154,7 +154,7 @@ $createSpacing: generateClamps((
   }
 }
 
-// Usage example
+ Usage example
 @mixin createSpacing($clamps: $createSpacing) {
   @each $clamp in $clamps {
     $name: map-get($clamp, "name");
