@@ -132,11 +132,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
 };
 
 // Seperate scss module for colors-oklch.scss
-const generateOklchScss = async (importObj) => {
-  const 'colors-oklch' = OklchColors;
+const generateOklchScss = async (OklchColors) => {
   let oklchScss = '';
 
-  for (const [hueKey, hueValue] of Object.entries(importObj)) {
+  for (const [hueKey, hueValue] of Object.entries(OklchHues)) {
     const hueName = hueKey.replace('--hue-', '');
 
     for (const [colorKey, colorValue] of Object.entries(hueValue)) {
