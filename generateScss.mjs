@@ -132,13 +132,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
 };
 
 // Seperate scss module for colors-oklch.scss
-const generateOklchScss = async (OklchColors) => {
+const generateOklchScss = async () => {
   let oklchScss = '';
 
   for (const [hueKey, hueValue] of Object.entries(OklchHues)) {
     const hueName = hueKey.replace('--hue-', '');
 
-    for (const [colorKey, colorValue] of Object.entries(hueValue)) {
+    for (const [colorKey, colorValue] of Object.entries(OklchColors)) {
       if (colorKey === '--color-bright') {
         oklchScss += `$${hueName}-bright: ${colorValue.replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`)};\n`;
       } else if (colorKey.startsWith('--color-')) {
