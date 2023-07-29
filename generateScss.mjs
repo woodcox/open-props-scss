@@ -141,7 +141,7 @@ const generateOklchScss = async () => {
     for (const [colorKey, colorValue] of Object.entries(OklchColors)) {
       if (colorKey === '--color-bright') {
         oklchScss += `$${hueName}-bright: ${colorValue.replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`)};\n`;
-      } else if (colorKey.startsWith('--color-')) {
+      } else if (colorKey.includes('--color-')) {
         const colorIndex = colorKey.replace('--color-', '');
         oklchScss += `$${hueName}-${colorIndex}: ${colorValue.replace(/\bvar\(--color-hue,\s*0\)/g, `${hueValue}`)};\n`;
       }
