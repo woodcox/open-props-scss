@@ -93,7 +93,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
   });
 
   generatedScss += `${animationsStr}`;
-}
   
   // media.scss
   } else if (moduleName.toLowerCase() === 'media') {
