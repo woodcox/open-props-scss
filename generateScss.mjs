@@ -12,7 +12,7 @@ import Zindex from 'open-props/src/zindex';
 import MasksEdges from 'open-props/src/masks.edges';
 import MasksCornerCuts from 'open-props/src/masks.corner-cuts';
 import { CustomMedia as Media } from 'open-props/src/media';
-// import Animations from 'open-props/src/animations';
+import Animations from 'open-props/src/animations';
 import OklchColors from 'open-props/src/props.colors-oklch.js';
 import OklchHues from 'open-props/src/props.colors-oklch-hues.js';
 
@@ -61,6 +61,39 @@ const generateSCSSModule = async (moduleName, importObj) => {
       }
       generatedScss += `${key}: ${value};\n`;
     });
+    
+  // animations.scss
+  } else if (moduleName.toLowerCase() === 'animations') {
+  generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
+
+  const createAnimationMixin = (animationName, keyframesContent, duration, easing) => {
+    return `@mixin ${animationName} {
+      $id: string.unique-id();
+      @keyframes #{$id} { ${keyframesContent} }
+      animation: #{$id} ${duration} ${easing};
+    }\n`;
+  };
+
+  let animationsStr = '';
+
+  Object.entries(importObj).forEach(([key, value]) => {
+    if (value.includes('@keyframes')) {
+      const animationName = key.replace('--animation-', ''); // Extract animation name
+      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
+      const duration = value.match(/(\d+\.\d+)s/)[1]; // Extract duration from animation value
+      const easing = value.match(/var\(--(.*?)\)/)[1]; // Extract easing from animation value
+
+      animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
+    } else if (!key.includes('-@')) {
+      key = key.replace('--', '$');
+      value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
+      const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
+      animationsStr += `${key}: ${sassVar} !default;\n`;
+    }
+  });
+
+  generatedScss += `${animationsStr}`;
+}
   
   // media.scss
   } else if (moduleName.toLowerCase() === 'media') {
