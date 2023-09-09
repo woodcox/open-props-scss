@@ -81,7 +81,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
     if (value.includes('@keyframes')) {
       const animationName = key.replace('--animation-', ''); // Extract animation name
       const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
-      const duration = value.match(/(\d+\.\d+)s/)[1]; // Extract duration from animation value
+      const durationMatch = value.match(/(\d+\.\d+)s/);
+      const duration = durationMatch ? durationMatch[1] : null; // Extract duration from animation value
       const easing = value.match(/var\(--(.*?)\)/)[1]; // Extract easing from animation value
 
       animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
