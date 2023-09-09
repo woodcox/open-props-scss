@@ -80,6 +80,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
   Object.entries(importObj).forEach(([key, value]) => {
     if (value.includes('@keyframes')) {
       const animationName = key.replace('--animation-', ''); // Extract animation name
+
+      // Check if the animation name ends with "-@"
+      if (animationName.endsWith('-@')) {
+        animationName = animationName.slice(0, -2); // Remove the "-@" suffix
+      }
+      
       const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
       const durationMatch = value.match(/(\d+\.\d+)s/);
       const duration = durationMatch ? durationMatch[1] : null; // Extract duration from animation value
