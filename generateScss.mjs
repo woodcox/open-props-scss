@@ -79,7 +79,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
   Object.entries(importObj).forEach(([key, value]) => {
     if (value.includes('@keyframes')) {
-      const animationName = key.replace('--animation-', ''); // Extract animation name
+      let animationName = key.replace('--animation-', ''); // Extract animation name
 
       // Check if the animation name ends with "-@"
       if (animationName.endsWith('-@')) {
