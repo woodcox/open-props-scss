@@ -1,0 +1,367 @@
+@use 'easings' as _e;
+@use 'media' as _mq;
+@use 'sass:string';
+
+$animation-id: string.unique-id();
+$animation-fade-in: fade-in-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin fade-in {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes fade-in-#{$animation-id} {
+      to {
+        opacity: 1;
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-fade-in-bloom: fade-in-bloom-#{$animation-id} 2s #{_e.$ease-3} !default;
+@mixin fade-in-bloom {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes fade-in-bloom-#{$animation-id} {
+      0% {
+        opacity: 0;
+        filter: brightness(1) blur(20px);
+      }
+      10% {
+        opacity: 1;
+        filter: brightness(2) blur(10px);
+      }
+      100% {
+        opacity: 1;
+        filter: brightness(1) blur(0);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+@mixin fade-in-bloom-dark {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes fade-in-bloom-#{$animation-id} {
+      0% {
+        opacity: 0;
+        filter: brightness(1) blur(20px);
+      }
+      10% {
+        opacity: 1;
+        filter: brightness(0.5) blur(10px);
+      }
+      100% {
+        opacity: 1;
+        filter: brightness(1) blur(0);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-fade-out: fade-out-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin fade-out {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes fade-out-#{$animation-id} {
+      to {
+        opacity: 0;
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-fade-out-bloom: fade-out-bloom-#{$animation-id} 2s #{_e.$ease-3} !default;
+@mixin fade-out-bloom {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes fade-out-bloom-#{$animation-id} {
+      100% {
+        opacity: 0;
+        filter: brightness(1) blur(20px);
+      }
+      10% {
+        opacity: 1;
+        filter: brightness(2) blur(10px);
+      }
+      0% {
+        opacity: 1;
+        filter: brightness(1) blur(0);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+@mixin fade-out-bloom-dark {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes fade-out-bloom-#{$animation-id} {
+      100% {
+        opacity: 0;
+        filter: brightness(1) blur(20px);
+      }
+      10% {
+        opacity: 1;
+        filter: brightness(0.5) blur(10px);
+      }
+      0% {
+        opacity: 1;
+        filter: brightness(1) blur(0);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-scale-up: scale-up-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin scale-up {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes scale-up-#{$animation-id} {
+      to {
+        transform: scale(1.25);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-scale-down: scale-down-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin scale-down {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes scale-down-#{$animation-id} {
+      to {
+        transform: scale(0.75);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-slide-out-up: slide-out-up-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin slide-out-up {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes slide-out-up-#{$animation-id} {
+      to {
+        transform: translateY(-100%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-slide-out-down: slide-out-down-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin slide-out-down {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes slide-out-down-#{$animation-id} {
+      to {
+        transform: translateY(100%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-slide-out-right: slide-out-right-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin slide-out-right {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes slide-out-right-#{$animation-id} {
+      to {
+        transform: translateX(100%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-slide-out-left: slide-out-left-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin slide-out-left {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes slide-out-left-#{$animation-id} {
+      to {
+        transform: translateX(-100%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-slide-in-up: slide-in-up-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin slide-in-up {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes slide-in-up-#{$animation-id} {
+      from {
+        transform: translateY(100%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-slide-in-down: slide-in-down-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin slide-in-down {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes slide-in-down-#{$animation-id} {
+      from {
+        transform: translateY(-100%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-slide-in-right: slide-in-right-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin slide-in-right {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes slide-in-right-#{$animation-id} {
+      from {
+        transform: translateX(-100%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-slide-in-left: slide-in-left-#{$animation-id} 0.5s #{_e.$ease-3} !default;
+@mixin slide-in-left {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes slide-in-left-#{$animation-id} {
+      from {
+        transform: translateX(100%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-shake-x: shake-x-#{$animation-id} 0.75s #{_e.$ease-out-5} !default;
+@mixin shake-x {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes shake-x-#{$animation-id} {
+      0%,
+      100% {
+        transform: translateX(0%);
+      }
+      20% {
+        transform: translateX(-5%);
+      }
+      40% {
+        transform: translateX(5%);
+      }
+      60% {
+        transform: translateX(-5%);
+      }
+      80% {
+        transform: translateX(5%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-shake-y: shake-y-#{$animation-id} 0.75s #{_e.$ease-out-5} !default;
+@mixin shake-y {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes shake-y-#{$animation-id} {
+      0%,
+      100% {
+        transform: translateY(0%);
+      }
+      20% {
+        transform: translateY(-5%);
+      }
+      40% {
+        transform: translateY(5%);
+      }
+      60% {
+        transform: translateY(-5%);
+      }
+      80% {
+        transform: translateY(5%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-spin: spin-#{$animation-id} 2s linear infinite !default;
+@mixin spin {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes spin-#{$animation-id} {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-ping: ping-#{$animation-id} 5s #{_e.$ease-out-3} infinite !default;
+@mixin ping {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes ping-#{$animation-id} {
+      90%,
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-blink: blink-#{$animation-id} 1s #{_e.$ease-out-3} infinite !default;
+@mixin blink {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes blink-#{$animation-id} {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-float: float-#{$animation-id} 3s #{_e.$ease-in-out-3} infinite !default;
+@mixin float {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes float-#{$animation-id} {
+      50% {
+        transform: translateY(-25%);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-bounce: bounce-#{$animation-id} 2s #{_e.$ease-squish-2} infinite !default;
+@mixin bounce {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes bounce-#{$animation-id} {
+      25% {
+        transform: translateY(-20%);
+      }
+      40% {
+        transform: translateY(-3%);
+      }
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
+$animation-pulse: pulse-#{$animation-id} 2s #{_e.$ease-out-3} infinite !default;
+@mixin pulse {
+  $id: string.unique-id();
+  @keyframes #{$id} {
+    @keyframes pulse-#{$animation-id} {
+      50% {
+        transform: scale(0.9, 0.9);
+      }
+    }
+  }
+  animation: #{$id} null null;
+}
