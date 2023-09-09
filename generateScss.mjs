@@ -31,6 +31,7 @@ const openPropFiles = {
   'colors': Colors,
   'colors-hsl': ColorsHsl,
   'shadows': Shadows,
+  'animations': Animations,
   'aspects': Aspects,
   'borders': Borders,
   'fonts': Fonts,
