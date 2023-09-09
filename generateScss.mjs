@@ -85,12 +85,15 @@ const generateSCSSModule = async (moduleName, importObj) => {
       if (animationName.endsWith('-@')) {
         animationName = animationName.slice(0, -2); // Remove the "-@" suffix
       }
+
+      // Remove "@media:" if it exists
+      animationName = animationName.replace('@media:', '');
       
       const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
       const durationMatch = value.match(/(\d+\.\d+)s/);
-      const duration = durationMatch ? durationMatch[1] : null; // Extract duration from animation value
+      const duration = durationMatch ? durationMatch[1] : null;
       const easingMatch = value.match(/var\(--(.*?)\)/);
-      const easing = easingMatch ? easingMatch[1] : null; // Extract easing from animation value
+      const easing = easingMatch ? easingMatch[1] : null;
 
       animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
     } else if (!key.includes('-@')) {
