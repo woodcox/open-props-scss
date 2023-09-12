@@ -2,11 +2,10 @@
 @use 'media' as _mq;
 @use 'sass:string';
 
-$animation-id: string.unique-id();
 @mixin fade-in {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes fade-in-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         opacity: 1;
       }
@@ -17,7 +16,7 @@ $animation-id: string.unique-id();
 @mixin fade-in-bloom {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes fade-in-bloom-#{$animation-id} {
+    @keyframes #{$id} {
       0% {
         opacity: 0;
         filter: brightness(1) blur(20px);
@@ -37,7 +36,7 @@ $animation-id: string.unique-id();
 @mixin fade-in-bloom-dark {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes fade-in-bloom-#{$animation-id} {
+    @keyframes #{$id} {
       0% {
         opacity: 0;
         filter: brightness(1) blur(20px);
@@ -57,7 +56,7 @@ $animation-id: string.unique-id();
 @mixin fade-out {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes fade-out-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         opacity: 0;
       }
@@ -68,7 +67,7 @@ $animation-id: string.unique-id();
 @mixin fade-out-bloom {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes fade-out-bloom-#{$animation-id} {
+    @keyframes #{$id} {
       100% {
         opacity: 0;
         filter: brightness(1) blur(20px);
@@ -88,7 +87,7 @@ $animation-id: string.unique-id();
 @mixin fade-out-bloom-dark {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes fade-out-bloom-#{$animation-id} {
+    @keyframes #{$id} {
       100% {
         opacity: 0;
         filter: brightness(1) blur(20px);
@@ -108,7 +107,7 @@ $animation-id: string.unique-id();
 @mixin scale-up {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes scale-up-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         transform: scale(1.25);
       }
@@ -119,7 +118,7 @@ $animation-id: string.unique-id();
 @mixin scale-down {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes scale-down-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         transform: scale(0.75);
       }
@@ -130,7 +129,7 @@ $animation-id: string.unique-id();
 @mixin slide-out-up {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes slide-out-up-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         transform: translateY(-100%);
       }
@@ -141,7 +140,7 @@ $animation-id: string.unique-id();
 @mixin slide-out-down {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes slide-out-down-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         transform: translateY(100%);
       }
@@ -152,7 +151,7 @@ $animation-id: string.unique-id();
 @mixin slide-out-right {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes slide-out-right-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         transform: translateX(100%);
       }
@@ -163,7 +162,7 @@ $animation-id: string.unique-id();
 @mixin slide-out-left {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes slide-out-left-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         transform: translateX(-100%);
       }
@@ -174,7 +173,7 @@ $animation-id: string.unique-id();
 @mixin slide-in-up {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes slide-in-up-#{$animation-id} {
+    @keyframes #{$id} {
       from {
         transform: translateY(100%);
       }
@@ -185,7 +184,7 @@ $animation-id: string.unique-id();
 @mixin slide-in-down {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes slide-in-down-#{$animation-id} {
+    @keyframes #{$id} {
       from {
         transform: translateY(-100%);
       }
@@ -196,7 +195,7 @@ $animation-id: string.unique-id();
 @mixin slide-in-right {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes slide-in-right-#{$animation-id} {
+    @keyframes #{$id} {
       from {
         transform: translateX(-100%);
       }
@@ -207,7 +206,7 @@ $animation-id: string.unique-id();
 @mixin slide-in-left {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes slide-in-left-#{$animation-id} {
+    @keyframes #{$id} {
       from {
         transform: translateX(100%);
       }
@@ -218,7 +217,7 @@ $animation-id: string.unique-id();
 @mixin shake-x {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes shake-x-#{$animation-id} {
+    @keyframes #{$id} {
       0%,
       100% {
         transform: translateX(0%);
@@ -242,7 +241,7 @@ $animation-id: string.unique-id();
 @mixin shake-y {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes shake-y-#{$animation-id} {
+    @keyframes #{$id} {
       0%,
       100% {
         transform: translateY(0%);
@@ -266,7 +265,7 @@ $animation-id: string.unique-id();
 @mixin spin {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes spin-#{$animation-id} {
+    @keyframes #{$id} {
       to {
         transform: rotate(1turn);
       }
@@ -277,7 +276,7 @@ $animation-id: string.unique-id();
 @mixin ping {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes ping-#{$animation-id} {
+    @keyframes #{$id} {
       90%,
       100% {
         transform: scale(2);
@@ -290,7 +289,7 @@ $animation-id: string.unique-id();
 @mixin blink {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes blink-#{$animation-id} {
+    @keyframes #{$id} {
       0%,
       100% {
         opacity: 1;
@@ -305,7 +304,7 @@ $animation-id: string.unique-id();
 @mixin float {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes float-#{$animation-id} {
+    @keyframes #{$id} {
       50% {
         transform: translateY(-25%);
       }
@@ -316,7 +315,7 @@ $animation-id: string.unique-id();
 @mixin bounce {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes bounce-#{$animation-id} {
+    @keyframes #{$id} {
       25% {
         transform: translateY(-20%);
       }
@@ -335,7 +334,7 @@ $animation-id: string.unique-id();
 @mixin pulse {
   $id: string.unique-id();
   @keyframes #{$id} {
-    @keyframes pulse-#{$animation-id} {
+    @keyframes #{$id} {
       50% {
         transform: scale(0.9, 0.9);
       }
