@@ -65,7 +65,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   // animations.scss
   } else if (moduleName.toLowerCase() === 'animations') {
-  generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n$animation-id: string.unique-id();\n";
+  generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n";
 
   const createAnimationMixin = (animationName, keyframesContent, duration, easing) => {
     return `@mixin ${animationName} {
@@ -89,18 +89,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
       // Remove "@media:" if it exists
       animationName = animationName.replace('@media:', '');
       
-      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes $1-#{$animation-id}');
+      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '');
       const durationMatch = value.match(/(\d+\.\d+)s/);
       const duration = durationMatch ? durationMatch[1] : null;
       const easingMatch = value.match(/var\(--(.*?)\)/);
       const easing = easingMatch ? easingMatch[1] : null;
 
       animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
-    //} else if (!key.includes('-@')) {
-    //  key = key.replace('--', '$');
-    //  value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
-    //  const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
-    //  animationsStr += `${key}: ${sassVar} !default;\n`;
     }
   });
 
