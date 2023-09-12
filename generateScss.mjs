@@ -70,7 +70,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   const createAnimationMixin = (animationName, keyframesContent, duration, easing) => {
     return `@mixin ${animationName} {
       $id: string.unique-id();
-      @keyframes #{$id} { ${keyframesContent} }
+      ${keyframesContent}
       animation: #{$id} ${duration} ${easing};
     }\n`;
   };
