@@ -4,7 +4,6 @@
 
 @mixin fade-in {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       opacity: 1;
@@ -14,7 +13,6 @@
 }
 @mixin fade-in-bloom {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     0% {
       opacity: 0;
@@ -33,7 +31,6 @@
 }
 @mixin fade-in-bloom-dark {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     0% {
       opacity: 0;
@@ -52,7 +49,6 @@
 }
 @mixin fade-out {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       opacity: 0;
@@ -62,7 +58,6 @@
 }
 @mixin fade-out-bloom {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     100% {
       opacity: 0;
@@ -81,7 +76,6 @@
 }
 @mixin fade-out-bloom-dark {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     100% {
       opacity: 0;
@@ -100,7 +94,6 @@
 }
 @mixin scale-up {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       transform: scale(1.25);
@@ -110,7 +103,6 @@
 }
 @mixin scale-down {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       transform: scale(0.75);
@@ -120,7 +112,6 @@
 }
 @mixin slide-out-up {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       transform: translateY(-100%);
@@ -130,7 +121,6 @@
 }
 @mixin slide-out-down {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       transform: translateY(100%);
@@ -140,7 +130,6 @@
 }
 @mixin slide-out-right {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       transform: translateX(100%);
@@ -150,7 +139,6 @@
 }
 @mixin slide-out-left {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       transform: translateX(-100%);
@@ -160,7 +148,6 @@
 }
 @mixin slide-in-up {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     from {
       transform: translateY(100%);
@@ -170,7 +157,6 @@
 }
 @mixin slide-in-down {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     from {
       transform: translateY(-100%);
@@ -180,7 +166,6 @@
 }
 @mixin slide-in-right {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     from {
       transform: translateX(-100%);
@@ -190,7 +175,6 @@
 }
 @mixin slide-in-left {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     from {
       transform: translateX(100%);
@@ -200,7 +184,6 @@
 }
 @mixin shake-x {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     0%,
     100% {
@@ -223,7 +206,6 @@
 }
 @mixin shake-y {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     0%,
     100% {
@@ -246,7 +228,6 @@
 }
 @mixin spin {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     to {
       transform: rotate(1turn);
@@ -256,7 +237,6 @@
 }
 @mixin ping {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     90%,
     100% {
@@ -268,7 +248,6 @@
 }
 @mixin blink {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     0%,
     100% {
@@ -282,7 +261,6 @@
 }
 @mixin float {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     50% {
       transform: translateY(-25%);
@@ -292,7 +270,6 @@
 }
 @mixin bounce {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     25% {
       transform: translateY(-20%);
@@ -310,7 +287,6 @@
 }
 @mixin pulse {
   $id: string.unique-id();
-
   @keyframes #{$id} {
     50% {
       transform: scale(0.9, 0.9);
