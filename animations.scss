@@ -4,340 +4,316 @@
 
 @mixin fade-in {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        opacity: 1;
-      }
+    to {
+      opacity: 1;
     }
   }
   animation: #{$id} null null;
 }
 @mixin fade-in-bloom {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      0% {
-        opacity: 0;
-        filter: brightness(1) blur(20px);
-      }
-      10% {
-        opacity: 1;
-        filter: brightness(2) blur(10px);
-      }
-      100% {
-        opacity: 1;
-        filter: brightness(1) blur(0);
-      }
+    0% {
+      opacity: 0;
+      filter: brightness(1) blur(20px);
+    }
+    10% {
+      opacity: 1;
+      filter: brightness(2) blur(10px);
+    }
+    100% {
+      opacity: 1;
+      filter: brightness(1) blur(0);
     }
   }
   animation: #{$id} null null;
 }
 @mixin fade-in-bloom-dark {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      0% {
-        opacity: 0;
-        filter: brightness(1) blur(20px);
-      }
-      10% {
-        opacity: 1;
-        filter: brightness(0.5) blur(10px);
-      }
-      100% {
-        opacity: 1;
-        filter: brightness(1) blur(0);
-      }
+    0% {
+      opacity: 0;
+      filter: brightness(1) blur(20px);
+    }
+    10% {
+      opacity: 1;
+      filter: brightness(0.5) blur(10px);
+    }
+    100% {
+      opacity: 1;
+      filter: brightness(1) blur(0);
     }
   }
   animation: #{$id} null null;
 }
 @mixin fade-out {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        opacity: 0;
-      }
+    to {
+      opacity: 0;
     }
   }
   animation: #{$id} null null;
 }
 @mixin fade-out-bloom {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      100% {
-        opacity: 0;
-        filter: brightness(1) blur(20px);
-      }
-      10% {
-        opacity: 1;
-        filter: brightness(2) blur(10px);
-      }
-      0% {
-        opacity: 1;
-        filter: brightness(1) blur(0);
-      }
+    100% {
+      opacity: 0;
+      filter: brightness(1) blur(20px);
+    }
+    10% {
+      opacity: 1;
+      filter: brightness(2) blur(10px);
+    }
+    0% {
+      opacity: 1;
+      filter: brightness(1) blur(0);
     }
   }
   animation: #{$id} null null;
 }
 @mixin fade-out-bloom-dark {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      100% {
-        opacity: 0;
-        filter: brightness(1) blur(20px);
-      }
-      10% {
-        opacity: 1;
-        filter: brightness(0.5) blur(10px);
-      }
-      0% {
-        opacity: 1;
-        filter: brightness(1) blur(0);
-      }
+    100% {
+      opacity: 0;
+      filter: brightness(1) blur(20px);
+    }
+    10% {
+      opacity: 1;
+      filter: brightness(0.5) blur(10px);
+    }
+    0% {
+      opacity: 1;
+      filter: brightness(1) blur(0);
     }
   }
   animation: #{$id} null null;
 }
 @mixin scale-up {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        transform: scale(1.25);
-      }
+    to {
+      transform: scale(1.25);
     }
   }
   animation: #{$id} null null;
 }
 @mixin scale-down {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        transform: scale(0.75);
-      }
+    to {
+      transform: scale(0.75);
     }
   }
   animation: #{$id} null null;
 }
 @mixin slide-out-up {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        transform: translateY(-100%);
-      }
+    to {
+      transform: translateY(-100%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin slide-out-down {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        transform: translateY(100%);
-      }
+    to {
+      transform: translateY(100%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin slide-out-right {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        transform: translateX(100%);
-      }
+    to {
+      transform: translateX(100%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin slide-out-left {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        transform: translateX(-100%);
-      }
+    to {
+      transform: translateX(-100%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin slide-in-up {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      from {
-        transform: translateY(100%);
-      }
+    from {
+      transform: translateY(100%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin slide-in-down {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      from {
-        transform: translateY(-100%);
-      }
+    from {
+      transform: translateY(-100%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin slide-in-right {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      from {
-        transform: translateX(-100%);
-      }
+    from {
+      transform: translateX(-100%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin slide-in-left {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      from {
-        transform: translateX(100%);
-      }
+    from {
+      transform: translateX(100%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin shake-x {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      0%,
-      100% {
-        transform: translateX(0%);
-      }
-      20% {
-        transform: translateX(-5%);
-      }
-      40% {
-        transform: translateX(5%);
-      }
-      60% {
-        transform: translateX(-5%);
-      }
-      80% {
-        transform: translateX(5%);
-      }
+    0%,
+    100% {
+      transform: translateX(0%);
+    }
+    20% {
+      transform: translateX(-5%);
+    }
+    40% {
+      transform: translateX(5%);
+    }
+    60% {
+      transform: translateX(-5%);
+    }
+    80% {
+      transform: translateX(5%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin shake-y {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      0%,
-      100% {
-        transform: translateY(0%);
-      }
-      20% {
-        transform: translateY(-5%);
-      }
-      40% {
-        transform: translateY(5%);
-      }
-      60% {
-        transform: translateY(-5%);
-      }
-      80% {
-        transform: translateY(5%);
-      }
+    0%,
+    100% {
+      transform: translateY(0%);
+    }
+    20% {
+      transform: translateY(-5%);
+    }
+    40% {
+      transform: translateY(5%);
+    }
+    60% {
+      transform: translateY(-5%);
+    }
+    80% {
+      transform: translateY(5%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin spin {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      to {
-        transform: rotate(1turn);
-      }
+    to {
+      transform: rotate(1turn);
     }
   }
   animation: #{$id} null null;
 }
 @mixin ping {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      90%,
-      100% {
-        transform: scale(2);
-        opacity: 0;
-      }
+    90%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
     }
   }
   animation: #{$id} null null;
 }
 @mixin blink {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.5;
-      }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
     }
   }
   animation: #{$id} null null;
 }
 @mixin float {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      50% {
-        transform: translateY(-25%);
-      }
+    50% {
+      transform: translateY(-25%);
     }
   }
   animation: #{$id} null null;
 }
 @mixin bounce {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      25% {
-        transform: translateY(-20%);
-      }
-      40% {
-        transform: translateY(-3%);
-      }
-      0%,
-      60%,
-      100% {
-        transform: translateY(0);
-      }
+    25% {
+      transform: translateY(-20%);
+    }
+    40% {
+      transform: translateY(-3%);
+    }
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
     }
   }
   animation: #{$id} null null;
 }
 @mixin pulse {
   $id: string.unique-id();
+
   @keyframes #{$id} {
-    @keyframes #{$id} {
-      50% {
-        transform: scale(0.9, 0.9);
-      }
+    50% {
+      transform: scale(0.9, 0.9);
     }
   }
   animation: #{$id} null null;
