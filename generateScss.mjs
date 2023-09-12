@@ -96,11 +96,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
       const easing = easingMatch ? easingMatch[1] : null;
 
       animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
-    } else if (!key.includes('-@')) {
-      key = key.replace('--', '$');
-      value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
-      const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
-      animationsStr += `${key}: ${sassVar} !default;\n`;
+    //} else if (!key.includes('-@')) {
+    //  key = key.replace('--', '$');
+    //  value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
+    //  const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
+    //  animationsStr += `${key}: ${sassVar} !default;\n`;
     }
   });
 
