@@ -89,7 +89,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       // Remove "@media:" if it exists
       animationName = animationName.replace('@media:', '');
       
-      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '');
+      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
       const durationMatch = value.match(/(\d+\.\d+)s/);
       const duration = durationMatch ? durationMatch[1] : null;
       const easingMatch = value.match(/var\(--(.*?)\)/);
