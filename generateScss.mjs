@@ -124,7 +124,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   Object.entries(importObj).forEach(([key, value]) => {
     let animationName = '';
     let keyframesContent = '';
-    let durationAndEasing = '':
+    let durationAndEasing = '';
     
     if (value.includes('@keyframes')) {
       animationName = key.replace('--animation-', ''); // Extract animation name
