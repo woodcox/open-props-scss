@@ -70,7 +70,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   const createAnimationMixin = (animationName, keyframesContent, durationAndEasing) => {
     return `@mixin ${animationName} {
       $id: string.unique-id(); ${keyframesContent}
-      animation: #{$id} ${durationAndEasing};
+      animation: #{$id} ${duration} ${easing};
     }\n`;
   };
 
@@ -79,7 +79,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
   Object.entries(importObj).forEach(([key, value]) => {
     let animationName = '';
     let keyframesContent = '';
-    let durationAndEasing = '';
+    let duration = '';
+    let easing = '';
     
     if (value.includes('@keyframes')) {
       animationName = key.replace('--animation-', ''); // Extract animation name
@@ -96,11 +97,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
     } //else if (!key.includes('-@')) {
     if (typeof value === 'string' && !key.includes('-@')) {
       value = value.replace('--', '$');
-      durationAndEasing = value.replace(/(\w+)\s+(\S+)/, '#{_e.$$2}');
+      duration = value.replace(/(\w+)\s+(\S+)/, '$2');
+      easing = value.replace(/(\w+)\s+(\S+)/, '$3');
      // const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
      // animationsStr += `${key}: ${sassVar} !default;\n`
     }
-    animationsStr += createAnimationMixin(animationName, keyframesContent, durationAndEasing);
+    animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
   });
 
   generatedScss += `${animationsStr}`;
