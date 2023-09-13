@@ -115,15 +115,19 @@ const generateSCSSModule = async (moduleName, importObj) => {
   const createAnimationMixin = (animationName, keyframesContent, duration, easing) => {
     return `@mixin ${animationName} {
       $id: string.unique-id(); ${keyframesContent}
-      animation: #{$id} ${duration} ${easing};
+      animation: #{$id} ${durationAndEasing};
     }\n`;
   };
 
   let animationsStr = '';
 
   Object.entries(importObj).forEach(([key, value]) => {
+    let animationName = '';
+    let keyframesContent = '';
+    let durationAndEasing = '':
+    
     if (value.includes('@keyframes')) {
-      let animationName = key.replace('--animation-', ''); // Extract animation name
+      animationName = key.replace('--animation-', ''); // Extract animation name
 
       // Check if the animation name ends with "-@"
       if (animationName.endsWith('-@')) {
@@ -133,19 +137,19 @@ const generateSCSSModule = async (moduleName, importObj) => {
       // Remove "@media:" if it exists
       animationName = animationName.replace('@media:', '');
       
-      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
-      const durationMatch = value.match(/(\d+\.\d+)s/);
-      const duration = durationMatch ? durationMatch[1] + 's' : null;
-      const easingMatch = value.match(/var\(--(.*?)\)/);
-      const easing = easingMatch ? `_e.${easingMatch[1]}` : null;
+      keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
+      //const durationMatch = value.match(/(\d+\.\d+)s/);
+      //const duration = durationMatch ? durationMatch[1] + 's' : null;
+      //const easingMatch = value.match(/var\(--(.*?)\)/);
+      //const easing = easingMatch ? `_e.${easingMatch[1]}` : null;
       
-    //} else if (!key.includes('-@')) {
+    } else if (!key.includes('-@')) {
      // key = key.replace('--', '$');
-     // value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
+      durationAndEasing = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
      // const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
      // animationsStr += `${key}: ${sassVar} !default;\n`
-      animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
     }
+    animationsStr += createAnimationMixin(animationName, keyframesContent, durationAndEasing);
   });
 
   generatedScss += `${animationsStr}`;
