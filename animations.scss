@@ -4,7 +4,7 @@
 
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} fade-.5s var($ease-3) fade-$3 var($ease-3);
+  animation: #{$id} fade-in 0.5s var($ease-3) fade-$3 var($ease-3);
 }
 @mixin fade-in {
   $id: string.unique-id();
@@ -17,7 +17,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} fade-in-2s var($ease-3) fade-in-$3 var($ease-3);
+  animation: #{$id} fade-in-bloom 2s var($ease-3) fade-in-$3 var($ease-3);
 }
 @mixin fade-in-bloom {
   $id: string.unique-id();
@@ -57,7 +57,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} fade-.5s var($ease-3) fade-$3 var($ease-3);
+  animation: #{$id} fade-out 0.5s var($ease-3) fade-$3 var($ease-3);
 }
 @mixin fade-out {
   $id: string.unique-id();
@@ -70,7 +70,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} fade-out-2s var($ease-3) fade-out-$3 var($ease-3);
+  animation: #{$id} fade-out-bloom 2s var($ease-3) fade-out-$3 var($ease-3);
 }
 @mixin fade-out-bloom {
   $id: string.unique-id();
@@ -110,7 +110,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} scale-.5s var($ease-3) scale-$3 var($ease-3);
+  animation: #{$id} scale-up 0.5s var($ease-3) scale-$3 var($ease-3);
 }
 @mixin scale-up {
   $id: string.unique-id();
@@ -123,7 +123,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} scale-.5s var($ease-3) scale-$3 var($ease-3);
+  animation: #{$id} scale-down 0.5s var($ease-3) scale-$3 var($ease-3);
 }
 @mixin scale-down {
   $id: string.unique-id();
@@ -136,7 +136,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} slide-out-.5s var($ease-3) slide-out-$3 var($ease-3);
+  animation: #{$id} slide-out-up 0.5s var($ease-3) slide-out-$3 var($ease-3);
 }
 @mixin slide-out-up {
   $id: string.unique-id();
@@ -149,7 +149,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} slide-out-.5s var($ease-3) slide-out-$3 var($ease-3);
+  animation: #{$id} slide-out-down 0.5s var($ease-3) slide-out-$3 var($ease-3);
 }
 @mixin slide-out-down {
   $id: string.unique-id();
@@ -162,7 +162,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} slide-out-.5s var($ease-3) slide-out-$3 var($ease-3);
+  animation: #{$id} slide-out-right 0.5s var($ease-3) slide-out-$3 var($ease-3);
 }
 @mixin slide-out-right {
   $id: string.unique-id();
@@ -175,7 +175,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} slide-out-.5s var($ease-3) slide-out-$3 var($ease-3);
+  animation: #{$id} slide-out-left 0.5s var($ease-3) slide-out-$3 var($ease-3);
 }
 @mixin slide-out-left {
   $id: string.unique-id();
@@ -188,7 +188,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} slide-in-.5s var($ease-3) slide-in-$3 var($ease-3);
+  animation: #{$id} slide-in-up 0.5s var($ease-3) slide-in-$3 var($ease-3);
 }
 @mixin slide-in-up {
   $id: string.unique-id();
@@ -201,7 +201,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} slide-in-.5s var($ease-3) slide-in-$3 var($ease-3);
+  animation: #{$id} slide-in-down 0.5s var($ease-3) slide-in-$3 var($ease-3);
 }
 @mixin slide-in-down {
   $id: string.unique-id();
@@ -214,7 +214,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} slide-in-.5s var($ease-3) slide-in-$3 var($ease-3);
+  animation: #{$id} slide-in-right 0.5s var($ease-3) slide-in-$3 var($ease-3);
 }
 @mixin slide-in-right {
   $id: string.unique-id();
@@ -227,7 +227,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} slide-in-.5s var($ease-3) slide-in-$3 var($ease-3);
+  animation: #{$id} slide-in-left 0.5s var($ease-3) slide-in-$3 var($ease-3);
 }
 @mixin slide-in-left {
   $id: string.unique-id();
@@ -240,7 +240,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} shake-.75s var($ease-out-5) shake-$3 var($ease-out-5);
+  animation: #{$id} shake-x 0.75s var($ease-out-5) shake-$3 var($ease-out-5);
 }
 @mixin shake-x {
   $id: string.unique-id();
@@ -266,7 +266,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} shake-.75s var($ease-out-5) shake-$3 var($ease-out-5);
+  animation: #{$id} shake-y 0.75s var($ease-out-5) shake-$3 var($ease-out-5);
 }
 @mixin shake-y {
   $id: string.unique-id();
@@ -292,7 +292,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 2s linear infinite $3 linear infinite;
+  animation: #{$id} spin 2s linear infinite $3 linear infinite;
 }
 @mixin spin {
   $id: string.unique-id();
@@ -305,7 +305,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 5s var($ease-out-3) infinite $3 var($ease-out-3) infinite;
+  animation: #{$id} ping 5s var($ease-out-3) infinite $3 var($ease-out-3) infinite;
 }
 @mixin ping {
   $id: string.unique-id();
@@ -320,7 +320,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 1s var($ease-out-3) infinite $3 var($ease-out-3) infinite;
+  animation: #{$id} blink 1s var($ease-out-3) infinite $3 var($ease-out-3) infinite;
 }
 @mixin blink {
   $id: string.unique-id();
@@ -337,7 +337,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 3s var($ease-in-out-3) infinite $3 var($ease-in-out-3) infinite;
+  animation: #{$id} float 3s var($ease-in-out-3) infinite $3 var($ease-in-out-3) infinite;
 }
 @mixin float {
   $id: string.unique-id();
@@ -350,7 +350,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 2s var($ease-squish-2) infinite $3 var($ease-squish-2) infinite;
+  animation: #{$id} bounce 2s var($ease-squish-2) infinite $3 var($ease-squish-2) infinite;
 }
 @mixin bounce {
   $id: string.unique-id();
@@ -371,7 +371,7 @@
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 2s var($ease-out-3) infinite $3 var($ease-out-3) infinite;
+  animation: #{$id} pulse 2s var($ease-out-3) infinite $3 var($ease-out-3) infinite;
 }
 @mixin pulse {
   $id: string.unique-id();
