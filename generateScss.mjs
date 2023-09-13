@@ -97,12 +97,15 @@ const generateSCSSModule = async (moduleName, importObj) => {
     } //else if (!key.includes('-@')) {
     if (typeof value === 'string' && !key.includes('-@')) {
       //value = value.replace('--', '$');
-      
-      const durationMatch = value.match(/(\d+\.\d+)s/);
-      duration = durationMatch ? durationMatch[1] : null;
 
-      const easingMatch = value.match(/var\(--(.*?)\)/);
-      easing = easingMatch ? `_e.${easingMatch[1]}` : null;
+      const animationParts = value.split(' ');
+      const duration = animationParts[1]; // Extract duration (assuming it's always in the second position)
+      const easing = animationParts[2].replace('var(--', '_e.$').replace(')', ''); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
+     // const durationMatch = value.match(/(\d+\.\d+)s/);
+     // duration = durationMatch ? durationMatch[1] : null;
+
+     // const easingMatch = value.match(/var\(--(.*?)\)/);
+     // easing = easingMatch ? `_e.${easingMatch[1]}` : null;
 
      // const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
      // animationsStr += `${key}: ${sassVar} !default;\n`
