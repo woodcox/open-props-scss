@@ -93,9 +93,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
       const duration = durationMatch ? durationMatch[1] + 's' : null;
       const easingMatch = value.match(/var\(--(.*?)\)/);
       const easing = easingMatch ? `_e.${easingMatch[1]}` : null;
-
-      animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
+      
+    //} else if (!key.includes('-@')) {
+     // key = key.replace('--', '$');
+     // value = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
+     // const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
+     // animationsStr += `${key}: ${sassVar} !default;\n`
     }
+    animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
   });
 
   generatedScss += `${animationsStr}`;
