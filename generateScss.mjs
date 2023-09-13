@@ -138,10 +138,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
       animationName = animationName.replace('@media:', '');
       
       keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
-      //const durationMatch = value.match(/(\d+\.\d+)s/);
-      //const duration = durationMatch ? durationMatch[1] + 's' : null;
-      //const easingMatch = value.match(/var\(--(.*?)\)/);
-      //const easing = easingMatch ? `_e.${easingMatch[1]}` : null;
       
     } else if (!key.includes('-@')) {
      // key = key.replace('--', '$');
