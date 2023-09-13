@@ -70,7 +70,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   const createAnimationMixin = (animationName, keyframesContent, duration, easing) => {
     return `@mixin ${animationName} {
       $id: string.unique-id(); ${keyframesContent}
-      animation: #{$id} ${duration} _e.$${easing};
+      animation: #{$id} ${duration} ${easing};
     }\n`;
   };
 
@@ -98,8 +98,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
     if (typeof value === 'string' && !key.includes('-@')) {
       //value = value.replace('--', '$');
       
-      duration = value.match(/(\d+\.\d+)s/);
-      easing = value.match(/var\(--(.*?)\)/);
+      const durationMatch = value.match(/(\d+\.\d+)s/);
+      duration = durationMatch ? durationMatch[1] : null;
+
+      const easingMatch = value.match(/var\(--(.*?)\)/);
+      easing = easingMatch ? `_e.${easingMatch[1]}` : null;
+
      // const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
      // animationsStr += `${key}: ${sassVar} !default;\n`
     }
