@@ -67,7 +67,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
   } else if (moduleName.toLowerCase() === 'animations') {
   generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n";
 
-  const createAnimationMixin = (animationName, keyframesContent, durationAndEasing) => {
+  const createAnimationMixin = (animationName, keyframesContent, duration, easing) => {
     return `@mixin ${animationName} {
       $id: string.unique-id(); ${keyframesContent}
       animation: #{$id} ${duration} ${easing};
