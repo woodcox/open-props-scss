@@ -97,8 +97,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
     } //else if (!key.includes('-@')) {
     if (typeof value === 'string' && !key.includes('-@')) {
       //value = value.replace('--', '$');
-      duration = value.replace(/(\d+\.\d+)s/g, '$1');
-      easing = value.replace(/var\(--(.*?)\)/g, '_e.#{$$1}');
+      
+      duration = value.match(/(\d+\.\d+)s/);
+      easing = value.match(/var\(--(.*?)\)/);
      // const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
      // animationsStr += `${key}: ${sassVar} !default;\n`
     }
