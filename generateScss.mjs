@@ -99,8 +99,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
       //value = value.replace('--', '$');
 
       const animationParts = value.split(' ');
-      const duration = animationParts[1]; // Extract duration (assuming it's always in the second position)
-      const easing = animationParts[2].replace('var(--', '_e.$').replace(')', ''); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
+      duration = animationParts[1]; // Extract duration (assuming it's always in the second position)
+      easing = animationParts[2].replace('var(--', '_e.$').replace(')', ''); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
      // const durationMatch = value.match(/(\d+\.\d+)s/);
      // duration = durationMatch ? durationMatch[1] : null;
 
