@@ -140,7 +140,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
     } 
     
-    if (typeof value === 'string' && !key.includes('-@') {
+    if (typeof value === 'string' && !key.includes('-@')) {
      // key = key.replace('--', '$');
       durationAndEasing = value.replace(/(\w+)\s+(\S+)/, '$1-#{$animation-id} $2');
      // const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
