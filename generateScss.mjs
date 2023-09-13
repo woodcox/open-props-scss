@@ -93,10 +93,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       animationName = animationName.replace('@media:', '');
       
       keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
-    } else if (!key.includes('-@')) {
-    //if (typeof value === 'string' && !key.includes('-@')) {
-      key = key.replace('--', '$');
-      durationAndEasing = value.replace(/(\w+)\s+(\S+)/, '$2');
+    } //else if (!key.includes('-@')) {
+    if (typeof value === 'string' && && !key.includes('-@')) {
+      value = value.replace('--', '$');
+      durationAndEasing = value.replace(/(\w+)\s+(\S+)/, '#{_e.$$2}');
      // const sassVar = value.replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Replace var(--cssvar) with e.$cssvar when they occurs in a value
      // animationsStr += `${key}: ${sassVar} !default;\n`
     }
