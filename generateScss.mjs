@@ -101,7 +101,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
           duration = animationParts[1]; // Extract duration (assuming it's always in the second position)
           easing = animationParts[2].replace('var(--', '_e.$').replace(')', ''); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
         }
-      }
+      });
     } //else if (!key.includes('-@')) {
     
     animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
