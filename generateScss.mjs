@@ -73,7 +73,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       animation: #{$id} ${duration} ${easing};
     }\n`;
   };
-
+  
   let animationsStr = '';
 
   Object.entries(importObj).forEach(([key, value]) => {
@@ -90,7 +90,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       
       const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
       
-      const animationKey = `${animationName}-@`;
+      const animationKey = `--animation-${animationName}`;
       
       if (importObj[animationKey]) {
         const animationParts = importObj[animationKey].split(' ');
