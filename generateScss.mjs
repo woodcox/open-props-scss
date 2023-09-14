@@ -77,13 +77,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
   let animationsStr = '';
 
   Object.entries(importObj).forEach(([key, value]) => {
-    let animationName = '';
-    let keyframesContent = '';
-    let duration = '';
-    let easing = '';
-    
     if (value.includes('@keyframes')) {
-      animationName = key.replace('--animation-', ''); // Extract animation name
+      let animationName = key.replace('--animation-', ''); // Extract animation name
 
       // Check if the animation name ends with "-@"
       if (animationName.endsWith('-@')) {
@@ -93,18 +88,17 @@ const generateSCSSModule = async (moduleName, importObj) => {
       // Remove "@media:" if it exists
       animationName = animationName.replace('@media:', '');
       
-      keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
-
-      Object.entries(importObj).forEach(([key, value]) => {
-        if (typeof value === 'string' && !key.includes('-@')) {
-          const animationParts = value.split(' ');
-          duration = animationParts[1]; // Extract duration (assuming it's always in the second position)
-          easing = animationParts[2].replace('var(--', '_e.$').replace(')', ''); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
-        }
-      });
-    } //else if (!key.includes('-@')) {
-    
-    animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
+      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
+      
+      const relatedAnimationKey = `${animationName}-@`;
+      
+      if (importObj[relatedAnimationKey] && typeof importObj[relatedAnimationKey] === 'string') {
+        const animationParts = importObj[relatedAnimationKey].split(' ');
+        const duration = animationParts[1]; // Extract duration (assuming it's always in the second position)
+        const easing = animationParts[2].replace('var(--', '_e.$').replace(')', ''); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
+        animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
+      }
+    }
   });
 
   generatedScss += `${animationsStr}`;
