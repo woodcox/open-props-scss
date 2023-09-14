@@ -90,10 +90,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       
       const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
       
-      const relatedAnimationKey = `${animationName}-@`;
+      const animationKey = `${animationName}-@`;
       
-      if (importObj[relatedAnimationKey] && typeof importObj[relatedAnimationKey] === 'string') {
-        const animationParts = importObj[relatedAnimationKey].split(' ');
+      if (importObj[animationKey]) {
+        const animationParts = importObj[animationKey].split(' ');
         const duration = animationParts[1]; // Extract duration (assuming it's always in the second position)
         const easing = animationParts[2].replace('var(--', '_e.$').replace(')', ''); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
         animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
