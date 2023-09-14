@@ -4,7 +4,7 @@
 
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin fade-in {
   $id: string.unique-id();
@@ -13,11 +13,11 @@
       opacity: 1;
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 2s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin fade-in-bloom {
   $id: string.unique-id();
@@ -35,7 +35,7 @@
       filter: brightness(1) blur(0);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin fade-in-bloom-dark {
   $id: string.unique-id();
@@ -53,11 +53,11 @@
       filter: brightness(1) blur(0);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin fade-out {
   $id: string.unique-id();
@@ -66,11 +66,11 @@
       opacity: 0;
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 2s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin fade-out-bloom {
   $id: string.unique-id();
@@ -88,7 +88,7 @@
       filter: brightness(1) blur(0);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin fade-out-bloom-dark {
   $id: string.unique-id();
@@ -106,11 +106,11 @@
       filter: brightness(1) blur(0);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin scale-up {
   $id: string.unique-id();
@@ -119,11 +119,11 @@
       transform: scale(1.25);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin scale-down {
   $id: string.unique-id();
@@ -132,11 +132,11 @@
       transform: scale(0.75);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin slide-out-up {
   $id: string.unique-id();
@@ -145,11 +145,11 @@
       transform: translateY(-100%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin slide-out-down {
   $id: string.unique-id();
@@ -158,11 +158,11 @@
       transform: translateY(100%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin slide-out-right {
   $id: string.unique-id();
@@ -171,11 +171,11 @@
       transform: translateX(100%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin slide-out-left {
   $id: string.unique-id();
@@ -184,11 +184,11 @@
       transform: translateX(-100%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin slide-in-up {
   $id: string.unique-id();
@@ -197,11 +197,11 @@
       transform: translateY(100%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin slide-in-down {
   $id: string.unique-id();
@@ -210,11 +210,11 @@
       transform: translateY(-100%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin slide-in-right {
   $id: string.unique-id();
@@ -223,11 +223,11 @@
       transform: translateX(-100%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$id};
 }
 @mixin slide-in-left {
   $id: string.unique-id();
@@ -236,11 +236,11 @@
       transform: translateX(100%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.75s _e.$ease-out-5;
+  animation: #{$id};
 }
 @mixin shake-x {
   $id: string.unique-id();
@@ -262,11 +262,11 @@
       transform: translateX(5%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 0.75s _e.$ease-out-5;
+  animation: #{$id};
 }
 @mixin shake-y {
   $id: string.unique-id();
@@ -288,11 +288,11 @@
       transform: translateY(5%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 2s linear;
+  animation: #{$id};
 }
 @mixin spin {
   $id: string.unique-id();
@@ -301,11 +301,11 @@
       transform: rotate(1turn);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 5s _e.$ease-out-3;
+  animation: #{$id};
 }
 @mixin ping {
   $id: string.unique-id();
@@ -316,11 +316,11 @@
       opacity: 0;
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 1s _e.$ease-out-3;
+  animation: #{$id};
 }
 @mixin blink {
   $id: string.unique-id();
@@ -333,11 +333,11 @@
       opacity: 0.5;
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 3s _e.$ease-in-out-3;
+  animation: #{$id};
 }
 @mixin float {
   $id: string.unique-id();
@@ -346,11 +346,11 @@
       transform: translateY(-25%);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 2s _e.$ease-squish-2;
+  animation: #{$id};
 }
 @mixin bounce {
   $id: string.unique-id();
@@ -367,11 +367,11 @@
       transform: translateY(0);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
 @mixin {
   $id: string.unique-id();
-  animation: #{$id} 2s _e.$ease-out-3;
+  animation: #{$id};
 }
 @mixin pulse {
   $id: string.unique-id();
@@ -380,5 +380,5 @@
       transform: scale(0.9, 0.9);
     }
   }
-  animation: #{$id};
+  animation: #{$id} 2s _e.$ease-out-3;
 }
