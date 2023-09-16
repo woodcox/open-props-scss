@@ -259,3 +259,43 @@ $id: string.unique-id();
   }
   animation: #{$name} 2s _e.$ease-out-3;
 }
+
+@mixin fade-in-op-#{$id}-bloom-dark 2s #{_e.$ease-3} {
+  $name: fade-in-op-#{$id}-bloom-dark 2s #{_e.$ease-3};
+
+  @keyframes op-#{$id}-fade-in-bloom-dark {
+    0% {
+      opacity: 0;
+      filter: brightness(1) blur(20px);
+    }
+    10% {
+      opacity: 1;
+      filter: brightness(0.5) blur(10px);
+    }
+    100% {
+      opacity: 1;
+      filter: brightness(1) blur(0);
+    }
+  }
+  animation: fade-in-op-#{$id}-bloom-dark 2s #{_e.$ease-3};
+}
+
+@mixin fade-out-op-#{$id}bloom-dark 2s #{_e.$ease-3} {
+  $name: fade-out-op-#{$id}bloom-dark 2s #{_e.$ease-3};
+
+  @keyframes op-#{$id}-fade-out-bloom-dark {
+    100% {
+      opacity: 0;
+      filter: brightness(1) blur(20px);
+    }
+    10% {
+      opacity: 1;
+      filter: brightness(0.5) blur(10px);
+    }
+    0% {
+      opacity: 1;
+      filter: brightness(1) blur(0);
+    }
+  }
+  animation: fade-out-op-#{$id}bloom-dark 2s #{_e.$ease-3};
+}
