@@ -73,7 +73,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
       animation: #{$name} ${duration} ${easing};
     }\n`;
   };
-  
+
+  const fadeInBloom = Animations['--animation-fade-in-bloom'];
+  const fadeInBloomDark = fadeInBloom.replace(/(\w+)\s+(\S+)/, 'op-#{$id}-$1-dark $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
+  const fadeOutBloom = Animations['--animation-fade-out-bloom'];
+  const fadeOutBloomDark = fadeOutBloom.replace(/(\w+)\s+(\S+)/, 'op-#{$id}$1-dark $2').replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
+  const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes op-#{$id}-$1-dark');
+  const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes op-#{$id}-$1-dark');
   let animationsStr = '';
 
   Object.entries(importObj).forEach(([key, value]) => {
@@ -101,7 +107,18 @@ const generateSCSSModule = async (moduleName, importObj) => {
     }
   });
 
-  generatedScss += `${animationsStr}`;
+  generatedScss += `${animationsStr}
+@mixin ${fadeInBloomDark} {
+  $name: ${fadeInBloomDark};
+  ${keyframeFIBDark}
+  animation: ${fadeInBloomDark};
+}
+
+@mixin ${fadeOutBloomDark} {
+  $name: ${fadeOutBloomDark};
+  ${keyframeFOBDark}
+  animation: ${fadeOutBloomDark};
+}`;
   
   // media.scss
   } else if (moduleName.toLowerCase() === 'media') {
