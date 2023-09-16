@@ -1,19 +1,20 @@
 @use 'easings' as _e;
 @use 'media' as _mq;
 @use 'sass:string';
+$id: string.unique-id();
 
 @mixin fade-in {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-fade-in;
+  @keyframes #{$name} {
     to {
       opacity: 1;
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin fade-in-bloom {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-fade-in-bloom;
+  @keyframes #{$name} {
     0% {
       opacity: 0;
       filter: brightness(1) blur(20px);
@@ -27,20 +28,20 @@
       filter: brightness(1) blur(0);
     }
   }
-  animation: #{$id} 2s _e.$ease-3;
+  animation: #{$name} 2s _e.$ease-3;
 }
 @mixin fade-out {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-fade-out;
+  @keyframes #{$name} {
     to {
       opacity: 0;
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin fade-out-bloom {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-fade-out-bloom;
+  @keyframes #{$name} {
     100% {
       opacity: 0;
       filter: brightness(1) blur(20px);
@@ -54,101 +55,101 @@
       filter: brightness(1) blur(0);
     }
   }
-  animation: #{$id} 2s _e.$ease-3;
+  animation: #{$name} 2s _e.$ease-3;
 }
 @mixin scale-up {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-scale-up;
+  @keyframes #{$name} {
     to {
       transform: scale(1.25);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin scale-down {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-scale-down;
+  @keyframes #{$name} {
     to {
       transform: scale(0.75);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin slide-out-up {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-slide-out-up;
+  @keyframes #{$name} {
     to {
       transform: translateY(-100%);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin slide-out-down {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-slide-out-down;
+  @keyframes #{$name} {
     to {
       transform: translateY(100%);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin slide-out-right {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-slide-out-right;
+  @keyframes #{$name} {
     to {
       transform: translateX(100%);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin slide-out-left {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-slide-out-left;
+  @keyframes #{$name} {
     to {
       transform: translateX(-100%);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin slide-in-up {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-slide-in-up;
+  @keyframes #{$name} {
     from {
       transform: translateY(100%);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin slide-in-down {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-slide-in-down;
+  @keyframes #{$name} {
     from {
       transform: translateY(-100%);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin slide-in-right {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-slide-in-right;
+  @keyframes #{$name} {
     from {
       transform: translateX(-100%);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin slide-in-left {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-slide-in-left;
+  @keyframes #{$name} {
     from {
       transform: translateX(100%);
     }
   }
-  animation: #{$id} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s _e.$ease-3;
 }
 @mixin shake-x {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-shake-x;
+  @keyframes #{$name} {
     0%,
     100% {
       transform: translateX(0%);
@@ -166,11 +167,11 @@
       transform: translateX(5%);
     }
   }
-  animation: #{$id} 0.75s _e.$ease-out-5;
+  animation: #{$name} 0.75s _e.$ease-out-5;
 }
 @mixin shake-y {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-shake-y;
+  @keyframes #{$name} {
     0%,
     100% {
       transform: translateY(0%);
@@ -188,31 +189,31 @@
       transform: translateY(5%);
     }
   }
-  animation: #{$id} 0.75s _e.$ease-out-5;
+  animation: #{$name} 0.75s _e.$ease-out-5;
 }
 @mixin spin {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-spin;
+  @keyframes #{$name} {
     to {
       transform: rotate(1turn);
     }
   }
-  animation: #{$id} 2s linear;
+  animation: #{$name} 2s linear;
 }
 @mixin ping {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-ping;
+  @keyframes #{$name} {
     90%,
     100% {
       transform: scale(2);
       opacity: 0;
     }
   }
-  animation: #{$id} 5s _e.$ease-out-3;
+  animation: #{$name} 5s _e.$ease-out-3;
 }
 @mixin blink {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-blink;
+  @keyframes #{$name} {
     0%,
     100% {
       opacity: 1;
@@ -221,20 +222,20 @@
       opacity: 0.5;
     }
   }
-  animation: #{$id} 1s _e.$ease-out-3;
+  animation: #{$name} 1s _e.$ease-out-3;
 }
 @mixin float {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-float;
+  @keyframes #{$name} {
     50% {
       transform: translateY(-25%);
     }
   }
-  animation: #{$id} 3s _e.$ease-in-out-3;
+  animation: #{$name} 3s _e.$ease-in-out-3;
 }
 @mixin bounce {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-bounce;
+  @keyframes #{$name} {
     25% {
       transform: translateY(-20%);
     }
@@ -247,14 +248,14 @@
       transform: translateY(0);
     }
   }
-  animation: #{$id} 2s _e.$ease-squish-2;
+  animation: #{$name} 2s _e.$ease-squish-2;
 }
 @mixin pulse {
-  $id: string.unique-id();
-  @keyframes #{$id} {
+  $name: op-#{$id}-pulse;
+  @keyframes #{$name} {
     50% {
       transform: scale(0.9, 0.9);
     }
   }
-  animation: #{$id} 2s _e.$ease-out-3;
+  animation: #{$name} 2s _e.$ease-out-3;
 }
