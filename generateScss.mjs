@@ -65,12 +65,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
     
   // animations.scss
   } else if (moduleName.toLowerCase() === 'animations') {
-  generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n\n";
+  generatedScss = "@use 'easings' as _e;\n@use 'media' as _mq;\n@use 'sass:string';\n$id: string.unique-id();\n\n";
 
   const createAnimationMixin = (animationName, keyframesContent, duration, easing) => {
     return `@mixin ${animationName} {
-      $id: string.unique-id(); ${keyframesContent}
-      animation: #{$id} ${duration} ${easing};
+      $name: op-#{$id}-${animationName}; ${keyframesContent}
+      animation: #{$name} ${duration} ${easing};
     }\n`;
   };
   
@@ -88,7 +88,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       // Remove "@media:" if it exists
       animationName = animationName.replace('@media:', '');
       
-      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$id}');
+      const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
       
       const animationKey = `--animation-${animationName}`;
       
