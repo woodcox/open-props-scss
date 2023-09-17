@@ -75,11 +75,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
   };
 
   const fadeInBloom = Animations['--animation-fade-in-bloom'].split(' ');
-  const darkNameFIB = fadeInBloom[0].replace(/(\w+)\s+(\S+)/, '$1-dark');
+  const darkNameFIB = fadeInBloom[0].replace('fade-in-bloom', 'fade-in-bloom-dark');
   const darkDurationFIB = fadeInBloom[1];
   const darkEasingFIB = fadeInBloom[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
   const fadeOutBloom = Animations['--animation-fade-out-bloom'].split(' ');
-  const darkNameFOB = fadeOutBloom[0].replace(/(\w+)\s+(\S+)/, '$1-dark');
+  const darkNameFOB = fadeOutBloom[0].replace('fade-out-bloom', 'fade-out-bloom-dark');
   const darkDurationFOB = fadeOutBloom[1];
   const darkEasingFOB = fadeOutBloom[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
   const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
