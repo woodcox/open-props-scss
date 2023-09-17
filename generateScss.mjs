@@ -88,7 +88,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
   Object.entries(importObj).forEach(([key, value]) => {
     if (value.includes('@keyframes')) {
-      const animationKey = key;
       let animationName = key.replace('--animation-', ''); // Extract animation name
 
       // Check if the animation name ends with "-@"
@@ -100,6 +99,8 @@ const generateSCSSModule = async (moduleName, importObj) => {
       animationName = animationName.replace('@media:', '');
       
       const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
+
+      const animationKey = `--animation-${animationName}`;
       
       if (importObj[animationKey]) {
         const animationParts = importObj[animationKey].split(' ');
