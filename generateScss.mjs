@@ -112,12 +112,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
   generatedScss += `${animationsStr}
 @mixin ${darkNameFIB} {
-  $name: op-#{$id}-${darkNameFIB}; ${keyframeFIBDark}
+  $name: op-#{$id}-${darkNameFIB}; 
+  ${keyframeFIBDark}
   animation: #{$name} ${darkDurationFIB} ${darkEasingFIB};
 }
 
 @mixin ${darkNameFOB} {
-  $name: op-#{$id}-${darkNameFOB}; ${keyframeFOBDark}
+  $name: op-#{$id}-${darkNameFOB}; 
+  ${keyframeFOBDark}
   animation: #{$name} ${darkDurationFOB} ${darkEasingFOB};
 }`;
   
