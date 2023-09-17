@@ -74,20 +74,21 @@ const generateSCSSModule = async (moduleName, importObj) => {
     }\n`;
   };
 
-  const fadeInBloom = Animations['--animation-fade-in-bloom'].split(' ');
-  const darkNameFIB = fadeInBloom[0].replace('fade-in-bloom', 'fade-in-bloom-dark');
-  const darkDurationFIB = fadeInBloom[1];
-  const darkEasingFIB = fadeInBloom[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
-  const fadeOutBloom = Animations['--animation-fade-out-bloom'].split(' ');
-  const darkNameFOB = fadeOutBloom[0].replace('fade-out-bloom', 'fade-out-bloom-dark');
-  const darkDurationFOB = fadeOutBloom[1];
-  const darkEasingFOB = fadeOutBloom[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
+  const fadeInBloomPart = Animations['--animation-fade-in-bloom'].split(' ');
+  const darkNameFIB = fadeInBloomPart[0].replace('fade-in-bloom', 'fade-in-bloom-dark');
+  const darkDurationFIB = fadeInBloomPart[1];
+  const darkEasingFIB = fadeInBloomPart[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
+  const fadeOutBloomPart = Animations['--animation-fade-out-bloom'].split(' ');
+  const darkNameFOB = fadeOutBloomPart[0].replace('fade-out-bloom', 'fade-out-bloom-dark');
+  const darkDurationFOB = fadeOutBloomPart[1];
+  const darkEasingFOB = fadeOutBloomPart[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
   const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
   const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
   let animationsStr = '';
 
   Object.entries(importObj).forEach(([key, value]) => {
     if (value.includes('@keyframes')) {
+      const animationKey = key;
       let animationName = key.replace('--animation-', ''); // Extract animation name
 
       // Check if the animation name ends with "-@"
@@ -100,12 +101,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
       
       const keyframesContent = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
       
-      const animationKey = `--animation-${animationName}`;
-      
       if (importObj[animationKey]) {
         const animationParts = importObj[animationKey].split(' ');
         const duration = animationParts[1]; // Extract duration (assuming it's always in the second position)
-        const easing = animationParts[2].replace('var(--', '_e.$').replace(')', ''); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
+        const easing = animationParts[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}'); // Extract easing by replacing 'var(--' and ')' with '_e.' (assuming it's always in the third position)
         animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
       }
     }
@@ -113,14 +112,12 @@ const generateSCSSModule = async (moduleName, importObj) => {
 
   generatedScss += `${animationsStr}
 @mixin ${darkNameFIB} {
-  $name: op-#{$id}-${darkNameFIB};
-  ${keyframeFIBDark}
+  $name: op-#{$id}-${darkNameFIB}; ${keyframeFIBDark}
   animation: #{$name} ${darkDurationFIB} ${darkEasingFIB};
 }
 
 @mixin ${darkNameFOB} {
-  $name: op-#{$id}-${darkNameFOB};
-  ${keyframeFOBDark}
+  $name: op-#{$id}-${darkNameFOB}; ${keyframeFOBDark}
   animation: #{$name} ${darkDurationFOB} ${darkEasingFOB};
 }`;
   
