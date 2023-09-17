@@ -260,8 +260,8 @@ $id: string.unique-id();
   animation: #{$name} 2s _e.$ease-out-3;
 }
 
-@mixin fade-in-bloom {
-  $name: op-#{$id}-fade-in-bloom;
+@mixin fade-in-bloom-dark {
+  $name: op-#{$id}-fade-in-bloom-dark;
 
   @keyframes #{$name} {
     0% {
@@ -280,8 +280,8 @@ $id: string.unique-id();
   animation: #{$name} 2s #{_e.$ease-3};
 }
 
-@mixin fade-out-bloom {
-  $name: op-#{$id}-fade-out-bloom;
+@mixin fade-out-bloom-dark {
+  $name: op-#{$id}-fade-out-bloom-dark;
 
   @keyframes #{$name} {
     100% {
