@@ -10,7 +10,7 @@ $id: string.unique-id();
       opacity: 1;
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin fade-in-bloom {
   $name: op-#{$id}-fade-in-bloom;
@@ -28,7 +28,7 @@ $id: string.unique-id();
       filter: brightness(1) blur(0);
     }
   }
-  animation: #{$name} 2s _e.$ease-3;
+  animation: #{$name} 2s #{_e.$ease-3};
 }
 @mixin fade-out {
   $name: op-#{$id}-fade-out;
@@ -37,7 +37,7 @@ $id: string.unique-id();
       opacity: 0;
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin fade-out-bloom {
   $name: op-#{$id}-fade-out-bloom;
@@ -55,7 +55,7 @@ $id: string.unique-id();
       filter: brightness(1) blur(0);
     }
   }
-  animation: #{$name} 2s _e.$ease-3;
+  animation: #{$name} 2s #{_e.$ease-3};
 }
 @mixin scale-up {
   $name: op-#{$id}-scale-up;
@@ -64,7 +64,7 @@ $id: string.unique-id();
       transform: scale(1.25);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin scale-down {
   $name: op-#{$id}-scale-down;
@@ -73,7 +73,7 @@ $id: string.unique-id();
       transform: scale(0.75);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin slide-out-up {
   $name: op-#{$id}-slide-out-up;
@@ -82,7 +82,7 @@ $id: string.unique-id();
       transform: translateY(-100%);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin slide-out-down {
   $name: op-#{$id}-slide-out-down;
@@ -91,7 +91,7 @@ $id: string.unique-id();
       transform: translateY(100%);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin slide-out-right {
   $name: op-#{$id}-slide-out-right;
@@ -100,7 +100,7 @@ $id: string.unique-id();
       transform: translateX(100%);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin slide-out-left {
   $name: op-#{$id}-slide-out-left;
@@ -109,7 +109,7 @@ $id: string.unique-id();
       transform: translateX(-100%);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin slide-in-up {
   $name: op-#{$id}-slide-in-up;
@@ -118,7 +118,7 @@ $id: string.unique-id();
       transform: translateY(100%);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin slide-in-down {
   $name: op-#{$id}-slide-in-down;
@@ -127,7 +127,7 @@ $id: string.unique-id();
       transform: translateY(-100%);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin slide-in-right {
   $name: op-#{$id}-slide-in-right;
@@ -136,7 +136,7 @@ $id: string.unique-id();
       transform: translateX(-100%);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin slide-in-left {
   $name: op-#{$id}-slide-in-left;
@@ -145,7 +145,7 @@ $id: string.unique-id();
       transform: translateX(100%);
     }
   }
-  animation: #{$name} 0.5s _e.$ease-3;
+  animation: #{$name} 0.5s #{_e.$ease-3};
 }
 @mixin shake-x {
   $name: op-#{$id}-shake-x;
@@ -167,7 +167,7 @@ $id: string.unique-id();
       transform: translateX(5%);
     }
   }
-  animation: #{$name} 0.75s _e.$ease-out-5;
+  animation: #{$name} 0.75s #{_e.$ease-out-5};
 }
 @mixin shake-y {
   $name: op-#{$id}-shake-y;
@@ -189,7 +189,7 @@ $id: string.unique-id();
       transform: translateY(5%);
     }
   }
-  animation: #{$name} 0.75s _e.$ease-out-5;
+  animation: #{$name} 0.75s #{_e.$ease-out-5};
 }
 @mixin spin {
   $name: op-#{$id}-spin;
@@ -209,7 +209,7 @@ $id: string.unique-id();
       opacity: 0;
     }
   }
-  animation: #{$name} 5s _e.$ease-out-3;
+  animation: #{$name} 5s #{_e.$ease-out-3};
 }
 @mixin blink {
   $name: op-#{$id}-blink;
@@ -222,7 +222,7 @@ $id: string.unique-id();
       opacity: 0.5;
     }
   }
-  animation: #{$name} 1s _e.$ease-out-3;
+  animation: #{$name} 1s #{_e.$ease-out-3};
 }
 @mixin float {
   $name: op-#{$id}-float;
@@ -231,7 +231,7 @@ $id: string.unique-id();
       transform: translateY(-25%);
     }
   }
-  animation: #{$name} 3s _e.$ease-in-out-3;
+  animation: #{$name} 3s #{_e.$ease-in-out-3};
 }
 @mixin bounce {
   $name: op-#{$id}-bounce;
@@ -248,7 +248,7 @@ $id: string.unique-id();
       transform: translateY(0);
     }
   }
-  animation: #{$name} 2s _e.$ease-squish-2;
+  animation: #{$name} 2s #{_e.$ease-squish-2};
 }
 @mixin pulse {
   $name: op-#{$id}-pulse;
@@ -257,7 +257,7 @@ $id: string.unique-id();
       transform: scale(0.9, 0.9);
     }
   }
-  animation: #{$name} 2s _e.$ease-out-3;
+  animation: #{$name} 2s #{_e.$ease-out-3};
 }
 
 @mixin fade-in-bloom-dark {
