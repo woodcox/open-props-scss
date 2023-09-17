@@ -260,10 +260,10 @@ $id: string.unique-id();
   animation: #{$name} 2s _e.$ease-out-3;
 }
 
-@mixin fade-in-op-#{$id}-bloom-dark 2s #{_e.$ease-3} {
-  $name: fade-in-op-#{$id}-bloom-dark 2s #{_e.$ease-3};
+@mixin fade-in-bloom {
+  $name: op-#{$id}-fade-in-bloom;
 
-  @keyframes op-#{$id}-fade-in-bloom-dark {
+  @keyframes #{$name} {
     0% {
       opacity: 0;
       filter: brightness(1) blur(20px);
@@ -277,13 +277,13 @@ $id: string.unique-id();
       filter: brightness(1) blur(0);
     }
   }
-  animation: fade-in-op-#{$id}-bloom-dark 2s #{_e.$ease-3};
+  animation: #{$name} 2s #{_e.$ease-3};
 }
 
-@mixin fade-out-op-#{$id}bloom-dark 2s #{_e.$ease-3} {
-  $name: fade-out-op-#{$id}bloom-dark 2s #{_e.$ease-3};
+@mixin fade-out-bloom {
+  $name: op-#{$id}-fade-out-bloom;
 
-  @keyframes op-#{$id}-fade-out-bloom-dark {
+  @keyframes #{$name} {
     100% {
       opacity: 0;
       filter: brightness(1) blur(20px);
@@ -297,5 +297,5 @@ $id: string.unique-id();
       filter: brightness(1) blur(0);
     }
   }
-  animation: fade-out-op-#{$id}bloom-dark 2s #{_e.$ease-3};
+  animation: #{$name} 2s #{_e.$ease-3};
 }
