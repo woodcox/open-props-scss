@@ -133,7 +133,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       console.log(lightAnimation);
       console.log(darkDuration);
       console.log(darkEasing);
-      console.log(darkKeyframeContents);
+      console.log(darkKeyframesContents);
       animationsStr += createDarkAnimationMixin(darkName, darkKeyframesContent, darkDuration, darkEasing);
     }
   });
