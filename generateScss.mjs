@@ -109,14 +109,17 @@ const generateSCSSModule = async (moduleName, importObj) => {
         animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
       }
     }
-    // Dark keyframes
+    // Dark animations and keyframes
     if (key.includes('@media:dark')) {
       let keyframesParts = value.split(' '); 
-      let keyframesName = keyframesParts[1]; // Extract keyframes name
-      const d = 'dark';
-      const darkName = keyframesName + d;
-      console.log(keyframesName);
+      let lightName = keyframesParts[1]; // Extract keyframes name
+      const d = '-dark';
+      const a = '--animation-'
+      const darkName = lightName + d;
+      const darkAnimationName = a + lightName;
+      console.log(lightName);
       console.log(darkName);
+      console.log(darkAnimationName);
     }
   });
 
