@@ -116,10 +116,15 @@ const generateSCSSModule = async (moduleName, importObj) => {
       const d = '-dark';
       const a = '--animation-'
       const darkName = lightName + d;
-      const darkAnimationName = a + lightName;
+      const namedAnimation = a + lightName;
+      const animationPart = Animations[namedAnimation].split(' ');
+      const darkDuration = animationPart[1];
+      const darkEasing = animationPart[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
       console.log(lightName);
       console.log(darkName);
-      console.log(darkAnimationName);
+      console.log(namedAnimation);
+      console.log(darkDuration);
+      console.log(darkEasing);
     }
   });
 
