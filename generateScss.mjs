@@ -119,7 +119,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
     // Dark animations and keyframes
     if (key.includes('@media:dark')) {
       const keyframesParts = value.split(' ');
-      const darkKeyframeContents = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
+      const darkKeyframesContents = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
       const lightName = keyframesParts[1]; // Extract keyframes name
       const d = '-dark';
       const a = '--animation-'
