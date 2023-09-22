@@ -114,7 +114,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       let keyframesParts = value.split(' '); 
       let keyframesName = keyframesParts[1]; // Extract keyframes name
       const d = 'dark';
-      const darkName = keyframeName + d;
+      const darkName = keyframesName + d;
       console.log(keyframesName);
       console.log(darkName);
     }
