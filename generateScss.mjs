@@ -81,16 +81,6 @@ const generateSCSSModule = async (moduleName, importObj) => {
     }\n`;
   };
 
-  const fadeInBloomPart = Animations['--animation-fade-in-bloom'].split(' ');
-  const darkNameFIB = fadeInBloomPart[0].replace('fade-in-bloom', 'fade-in-bloom-dark');
-  const darkDurationFIB = fadeInBloomPart[1];
-  const darkEasingFIB = fadeInBloomPart[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
-  const fadeOutBloomPart = Animations['--animation-fade-out-bloom'].split(' ');
-  const darkNameFOB = fadeOutBloomPart[0].replace('fade-out-bloom', 'fade-out-bloom-dark');
-  const darkDurationFOB = fadeOutBloomPart[1];
-  const darkEasingFOB = fadeOutBloomPart[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
-  const keyframeFIBDark = Animations['--animation-fade-in-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
-  const keyframeFOBDark = Animations['--animation-fade-out-bloom-@media:dark'].replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
   let animationsStr = '';
 
   Object.entries(importObj).forEach(([key, value]) => {
@@ -128,26 +118,11 @@ const generateSCSSModule = async (moduleName, importObj) => {
       const animationPart = Animations[lightAnimation].split(' ');
       const darkDuration = animationPart[1];
       const darkEasing = animationPart[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
-      console.log(lightName);
-      console.log(darkName);
-      console.log(lightAnimation);
-      console.log(darkDuration);
-      console.log(darkEasing);
-      console.log(darkKeyframesContent);
       animationsStr += createDarkAnimationMixin(darkName, darkKeyframesContent, darkDuration, darkEasing);
     }
   });
 
-  generatedScss += `${animationsStr}
-@mixin ${darkNameFIB} {
-  $name: op-#{$id}-${darkNameFIB}; ${keyframeFIBDark}
-  animation: #{$name} ${darkDurationFIB} ${darkEasingFIB};
-}
-
-@mixin ${darkNameFOB} {
-  $name: op-#{$id}-${darkNameFOB}; ${keyframeFOBDark}
-  animation: #{$name} ${darkDurationFOB} ${darkEasingFOB};
-}`;
+  generatedScss += `${animationsStr}`;
   
   // media.scss
   } else if (moduleName.toLowerCase() === 'media') {
