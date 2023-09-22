@@ -123,7 +123,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       const darkEasing = animationPart[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
       console.log(lightName);
       console.log(darkName);
-      console.log(namedAnimation);
+      console.log(lightAnimation);
       console.log(darkDuration);
       console.log(darkEasing);
       console.log(darkKeyframeContents);
