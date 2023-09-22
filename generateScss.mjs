@@ -109,6 +109,9 @@ const generateSCSSModule = async (moduleName, importObj) => {
         animationsStr += createAnimationMixin(animationName, keyframesContent, duration, easing);
       }
     }
+    if (key.includes('@media:dark')) {
+      let keyframesName = value.replace('@keyframes', ''); // Extract keyframes name
+      console.log(keyframesName);
   });
 
   generatedScss += `${animationsStr}
