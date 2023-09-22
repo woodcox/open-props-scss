@@ -111,13 +111,14 @@ const generateSCSSModule = async (moduleName, importObj) => {
     }
     // Dark animations and keyframes
     if (key.includes('@media:dark')) {
-      let keyframesParts = value.split(' '); 
-      let lightName = keyframesParts[1]; // Extract keyframes name
+      const keyframesParts = value.split(' ');
+      const darkKeyframeContents = value.replace(/@keyframes\s+(\S+)/, '@keyframes #{$name}');
+      const lightName = keyframesParts[1]; // Extract keyframes name
       const d = '-dark';
       const a = '--animation-'
       const darkName = lightName + d;
-      const namedAnimation = a + lightName;
-      const animationPart = Animations[namedAnimation].split(' ');
+      const lightAnimation = a + lightName;
+      const animationPart = Animations[lightAnimation].split(' ');
       const darkDuration = animationPart[1];
       const darkEasing = animationPart[2].replace(/var\(--(.*?)\)/g, '#{_e.$$$1}');
       console.log(lightName);
@@ -125,6 +126,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       console.log(namedAnimation);
       console.log(darkDuration);
       console.log(darkEasing);
+      console.log(darkKeyframeContents);
     }
   });
 
