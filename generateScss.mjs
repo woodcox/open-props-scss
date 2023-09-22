@@ -74,6 +74,13 @@ const generateSCSSModule = async (moduleName, importObj) => {
     }\n`;
   };
 
+  const createDarkAnimationMixin = (darkName, darkKeyframesContent, darkDuration, darkEasing) => {
+    return `@mixin ${darkName} {
+      $name: op-#{$id}-${darkName}; ${darkKeyframesContent}
+      animation: #{$name} ${darkDuration} ${darkEasing};
+    }\n`;
+  };
+
   const fadeInBloomPart = Animations['--animation-fade-in-bloom'].split(' ');
   const darkNameFIB = fadeInBloomPart[0].replace('fade-in-bloom', 'fade-in-bloom-dark');
   const darkDurationFIB = fadeInBloomPart[1];
@@ -127,6 +134,7 @@ const generateSCSSModule = async (moduleName, importObj) => {
       console.log(darkDuration);
       console.log(darkEasing);
       console.log(darkKeyframeContents);
+      animationsStr += createDarkAnimationMixin(darkName, darkKeyframesContent, darkDuration, darkEasing);
     }
   });
 
