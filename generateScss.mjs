@@ -113,7 +113,10 @@ const generateSCSSModule = async (moduleName, importObj) => {
     if (key.includes('@media:dark')) {
       let keyframesParts = value.split(' '); 
       let keyframesName = keyframesParts[1]; // Extract keyframes name
+      const d = 'dark';
+      const darkName = keyframeName + d;
       console.log(keyframesName);
+      console.log(darkName);
     }
   });
 
